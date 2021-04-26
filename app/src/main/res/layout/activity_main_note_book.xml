@@ -24,6 +24,7 @@
         android:id="@+id/editTextTextPersonName"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#FFFFFF"
         android:ems="10"
         android:gravity="top"
         android:inputType="textMultiLine|textPersonName"
@@ -35,8 +36,8 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:background="@color/purple_500"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
