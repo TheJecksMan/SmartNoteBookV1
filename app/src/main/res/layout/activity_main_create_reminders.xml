@@ -8,7 +8,7 @@
     tools:context=".MainActivityCreateReminders">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarMainMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar5"
+        app:layout_constraintBottom_toTopOf="@+id/toolbarMenuTwo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
@@ -45,10 +45,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarMainMenu" />
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar5"
+        android:id="@+id/toolbarMenuTwo"
         android:layout_width="411dp"
         android:layout_height="45dp"
         android:background="#FFFFFF"
@@ -70,7 +70,7 @@
         android:importantForAutofill="no"
         android:inputType="textMultiLine|textPersonName"
         android:scrollbarAlwaysDrawVerticalTrack="true"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar5"
+        app:layout_constraintBottom_toTopOf="@+id/toolbarMenuTwo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,8 +86,8 @@
         android:background="#00FFFFFF"
         app:icon="@drawable/abc_vector_test"
         app:iconGravity="textStart"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbarMainMenu"
+        app:layout_constraintEnd_toEndOf="@+id/toolbarMainMenu"
         app:layout_constraintHorizontal_bias="0.64"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

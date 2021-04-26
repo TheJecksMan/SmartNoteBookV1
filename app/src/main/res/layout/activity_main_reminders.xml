@@ -7,7 +7,7 @@
     tools:context=".MainActivityReminders">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar4"
+        android:id="@+id/toolbarRem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -40,7 +40,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.173"
-        app:layout_constraintStart_toStartOf="@+id/toolbar4"
+        app:layout_constraintStart_toStartOf="@+id/toolbarRem"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -53,6 +53,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar4"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbarRem"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,7 @@ public class MainActivityReminders extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_reminders);
+
         BtnActCreateText = (Button) findViewById(R.id.buttonCreateText);
         BtnActCreateText.setOnClickListener(this);
     }

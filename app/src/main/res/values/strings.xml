@@ -4,5 +4,6 @@
     <string name="buttonCreateText">+</string>
     <string name="textViewHead">Заголовок</string>
     <string name="textViewNotes">Заметки</string>
+    <string name="buttonNotebook">Текстовый редактор</string>
 
 </resources>
