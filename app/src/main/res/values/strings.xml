@@ -5,5 +5,6 @@
     <string name="textViewHead">Заголовок</string>
     <string name="textViewNotes">Заметки</string>
     <string name="buttonNotebook">Текстовый редактор</string>
+    <string name="Load">Загрузка</string>
 
 </resources>
