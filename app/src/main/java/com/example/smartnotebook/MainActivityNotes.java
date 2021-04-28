@@ -2,29 +2,29 @@ package com.example.smartnotebook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivityCreateReminders extends AppCompatActivity implements View.OnClickListener{
+public class MainActivityNotes extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnActBackReminders;
+    Button BtnActCreateText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_create_reminders);
-        btnActBackReminders = (Button) findViewById(R.id.buttonBackReminders);
-        btnActBackReminders.setOnClickListener(this);
+        setContentView(R.layout.activity_main_notes);
+
+        BtnActCreateText = (Button) findViewById(R.id.buttonCreateText);
+        BtnActCreateText.setOnClickListener(this);
     }
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.buttonBackReminders:
-                Intent intent = new Intent(this, MainActivityReminders.class);
+            case R.id.buttonCreateText:
+                Intent intent = new Intent(this, MainActivityCreateNotes.class);
                 startActivity(intent);
                 break;
             default:
