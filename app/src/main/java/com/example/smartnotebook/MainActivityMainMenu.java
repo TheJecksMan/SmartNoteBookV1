@@ -16,14 +16,15 @@ public class MainActivityMainMenu extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_main_menu);
+
         btnActCreateNotes = (Button) findViewById(R.id.buttonSelectNotes);
         btnActCreateNotes.setOnClickListener(this);
-
+        /*
         btnActEditNoteBook = (Button) findViewById(R.id.buttonSelectEditText);
         btnActEditNoteBook.setOnClickListener(this);
 
         btnActReminders = (Button) findViewById(R.id.buttonReminders);
-        btnActReminders.setOnClickListener(this);
+        btnActReminders.setOnClickListener(this);*/
     }
 
     @Override
@@ -33,7 +34,7 @@ public class MainActivityMainMenu extends AppCompatActivity implements View.OnCl
                 Intent intent1 = new Intent(this, MainActivityNotes.class);
                 startActivity(intent1);
                 break;
-
+            /*
             case R.id.buttonSelectEditText:
                 Intent intent2 = new Intent(this, MainActivityNoteBook.class);
                 startActivity(intent2);
@@ -42,9 +43,11 @@ public class MainActivityMainMenu extends AppCompatActivity implements View.OnCl
             case R.id.buttonReminders:
                 Intent intent3 = new Intent(this, MainActivityReminders.class);
                 startActivity(intent3);
-                break;
+                break;*/
             default:
                 break;
         }
     }
+
+
 }

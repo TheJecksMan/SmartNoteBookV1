@@ -7,4 +7,6 @@
     <string name="buttonNotebook">Текстовый редактор</string>
     <string name="buttonReminders">Напоминания</string>
     <string name="Load">Загрузка</string>
+    <string name="MainMenu">Главное меню</string>
+    <string name="Search">Поиск</string>
 </resources>

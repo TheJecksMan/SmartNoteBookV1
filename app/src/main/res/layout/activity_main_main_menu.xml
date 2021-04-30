@@ -5,41 +5,205 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/MainMenuBackground"
+    android:foregroundTint="#984444"
     tools:context=".MainActivityMainMenu">
 
-    <Button
-        android:id="@+id/buttonSelectNotes"
+    <View
+        android:id="@+id/viewMainMenuBar"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:background="@drawable/ic_custom_menu_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/viewDopMenuBar"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ViewButton3" />
+
+    <View
+        android:id="@+id/ViewButton2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_menu_2"
+        app:layout_constraintBottom_toTopOf="@+id/ViewButton4"
+        app:layout_constraintEnd_toEndOf="@+id/viewSettingSearch"
+        app:layout_constraintStart_toEndOf="@+id/ViewButton1"
+        app:layout_constraintTop_toBottomOf="@+id/viewSearch"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/ViewButton3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="11dp"
+        android:background="@drawable/btn_menu_3"
+        app:layout_constraintBottom_toTopOf="@+id/viewDopMenuBar"
+        app:layout_constraintEnd_toStartOf="@+id/ViewButton4"
+        app:layout_constraintStart_toStartOf="@+id/viewSearch"
+        app:layout_constraintTop_toBottomOf="@+id/ViewButton1" />
+
+    <View
+        android:id="@+id/ViewButton4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/btn_menu_4"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewButton3"
+        app:layout_constraintEnd_toEndOf="@+id/viewSettingSearch"
+        app:layout_constraintStart_toEndOf="@+id/ViewButton3"
+        app:layout_constraintTop_toBottomOf="@+id/ViewButton2" />
+
+    <View
+        android:id="@+id/ViewButton1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/btn_menu_1"
+        app:layout_constraintBottom_toTopOf="@+id/ViewButton3"
+        app:layout_constraintEnd_toStartOf="@+id/ViewButton2"
+        app:layout_constraintStart_toStartOf="@+id/viewSearch"
+        app:layout_constraintTop_toBottomOf="@+id/viewSearch"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/viewSearch"
+        android:layout_width="268dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_custom_icon_bar"
+        app:layout_constraintEnd_toStartOf="@+id/viewSettingSearch"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewMainMenuBar" />
+
+    <View
+        android:id="@+id/viewSettingSearch"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/ic_custom_icon_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/viewSearch"
+        app:layout_constraintTop_toBottomOf="@+id/viewMainMenuBar" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/app_name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/ViewVoiceHelper"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/ic_custom_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"></View>
+
+    <View
+        android:id="@+id/ViewDopButton1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/btn_dop_menu_1"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewButton1"
+        app:layout_constraintEnd_toEndOf="@+id/ViewButton1"
+        app:layout_constraintStart_toStartOf="@+id/ViewButton1"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textViewNotes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.163"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.534" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewButton1"
+        app:layout_constraintEnd_toEndOf="@+id/ViewButton1"
+        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintStart_toStartOf="@+id/ViewButton1"
+        app:layout_constraintTop_toTopOf="@+id/ViewButton1"
+        app:layout_constraintVertical_bias="0.233" />
 
-    <Button
-        android:id="@+id/buttonSelectEditText"
+    <View
+        android:id="@+id/ViewIconNotes"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/ic_outline_event_note_24"
+        app:layout_constraintBottom_toTopOf="@+id/ViewDopButton1"
+        app:layout_constraintEnd_toEndOf="@+id/ViewButton1"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="@+id/ViewButton1"
+        app:layout_constraintTop_toTopOf="@+id/ViewButton1"
+        app:layout_constraintVertical_bias="0.958" />
+
+    <View
+        android:id="@+id/viewIconCircle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/ui_main_menu__white_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewButton1"
+        app:layout_constraintEnd_toEndOf="@+id/ViewDopButton1"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="@+id/ViewDopButton1"
+        app:layout_constraintTop_toTopOf="@+id/ViewDopButton1"
+        app:layout_constraintVertical_bias="0.461" />
+
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/buttonNotebook"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.251"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326" />
+        android:layout_marginTop="5dp"
+        android:text="Всего заметок"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewButton1"
+        app:layout_constraintEnd_toEndOf="@+id/ViewDopButton1"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toEndOf="@+id/viewIconCircle"
+        app:layout_constraintTop_toTopOf="@+id/ViewDopButton1"
+        app:layout_constraintVertical_bias="0.378" />
 
     <Button
-        android:id="@+id/buttonReminders"
-        android:layout_width="158dp"
-        android:layout_height="50dp"
-        android:text="@string/buttonReminders"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433" />
+        android:id="@+id/buttonSelectNotes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/ViewButton1"
+        app:layout_constraintEnd_toEndOf="@+id/ViewButton1"
+        app:layout_constraintStart_toStartOf="@+id/ViewButton1"
+        app:layout_constraintTop_toTopOf="@+id/ViewButton1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
