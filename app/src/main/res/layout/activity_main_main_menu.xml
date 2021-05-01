@@ -196,4 +196,21 @@
         app:layout_constraintTop_toTopOf="@+id/ViewButton1"
         tools:visibility="gone" />
 
+    <Button
+        android:id="@+id/buttonAccount"
+        android:layout_width="45dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="2dp"
+        android:background="#00FFFFFF"
+        app:icon="@drawable/ic_outline_account_circle_24"
+        app:iconGravity="top"
+        app:iconSize="30dp"
+        app:iconTint="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/viewDopMenuBar"
+        app:layout_constraintEnd_toEndOf="@+id/viewDopMenuBar"
+        app:layout_constraintHorizontal_bias="0.739"
+        app:layout_constraintStart_toStartOf="@+id/viewDopMenuBar"
+        app:layout_constraintTop_toTopOf="@+id/viewDopMenuBar"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

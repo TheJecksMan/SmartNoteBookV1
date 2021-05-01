@@ -12,6 +12,7 @@ public class MainActivityMainMenu extends AppCompatActivity implements View.OnCl
     private Button btnActCreateNotes;
     private Button btnActEditNoteBook;
     private Button btnActReminders;
+    private Button btnAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +20,10 @@ public class MainActivityMainMenu extends AppCompatActivity implements View.OnCl
 
         btnActCreateNotes = (Button) findViewById(R.id.buttonSelectNotes);
         btnActCreateNotes.setOnClickListener(this);
+
+        btnAccount = (Button) findViewById(R.id.buttonAccount);
+        btnAccount.setOnClickListener(this);
+
         /*
         btnActEditNoteBook = (Button) findViewById(R.id.buttonSelectEditText);
         btnActEditNoteBook.setOnClickListener(this);
@@ -34,6 +39,9 @@ public class MainActivityMainMenu extends AppCompatActivity implements View.OnCl
                 Intent intent1 = new Intent(this, MainActivityNotes.class);
                 startActivity(intent1);
                 break;
+            case R.id.buttonAccount:
+                Intent intent2 = new Intent(this, Account.class);
+                startActivity(intent2);
             /*
             case R.id.buttonSelectEditText:
                 Intent intent2 = new Intent(this, MainActivityNoteBook.class);
