@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-        <activity android:name=".MainActivityReminders"></activity>
+        <activity android:name=".Account"></activity>
+        <activity android:name=".MainActivityReminders" />
         <activity android:name=".MainActivityMainMenu" />
         <activity android:name=".MainActivityNoteBook" />
         <activity android:name=".MainActivityCreateNotes" />

@@ -119,21 +119,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/ViewVoiceHelper"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="28dp"
-        android:background="@drawable/ic_custom_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"></View>
-
-    <View
         android:id="@+id/ViewDopButton1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/btn_dop_menu_1"
         app:layout_constraintBottom_toBottomOf="@+id/ViewButton1"
         app:layout_constraintEnd_toEndOf="@+id/ViewButton1"
@@ -159,14 +148,13 @@
         android:id="@+id/ViewIconNotes"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginBottom="64dp"
         android:background="@drawable/ic_outline_event_note_24"
         app:layout_constraintBottom_toTopOf="@+id/ViewDopButton1"
         app:layout_constraintEnd_toEndOf="@+id/ViewButton1"
         app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="@+id/ViewButton1"
         app:layout_constraintTop_toTopOf="@+id/ViewButton1"
-        app:layout_constraintVertical_bias="0.958" />
+        app:layout_constraintVertical_bias="0.476" />
 
     <View
         android:id="@+id/viewIconCircle"
@@ -201,9 +189,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#00FFFFFF"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/ViewButton1"
         app:layout_constraintEnd_toEndOf="@+id/ViewButton1"
         app:layout_constraintStart_toStartOf="@+id/ViewButton1"
-        app:layout_constraintTop_toTopOf="@+id/ViewButton1" />
+        app:layout_constraintTop_toTopOf="@+id/ViewButton1"
+        tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
