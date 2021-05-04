@@ -1,17 +1,17 @@
 package com.example.smartnotebook;
 
 import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
+
 import android.view.View;
 import android.widget.Button;
 
@@ -20,45 +20,43 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 
+
 public class MainActivityMainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
+    Button bntDopMenuLeft;
+    BottomNavigationView BottomNavigationMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_main_menu);
-        // badgeDrawable =  bottomNavigation.getBadge(menuItemId)
 
+        drawerLayout =  findViewById(R.id.MainDrawerLayout);
+        bntDopMenuLeft = findViewById(R.id.buttonCallDopMenu);
         navigationView = findViewById(R.id.dopMenuLeft);
-        drawerLayout = findViewById(R.id.MainDrawerLayout);
-        BottomNavigationView BottomNavigationMenu = findViewById(R.id.BottomNavigationMenu);
 
+        BottomNavigationMenu = findViewById(R.id.BottomNavigationMenu);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentPager, new notes_fg()).commit();
 
-        //----------------------------CallDopMenu----------------------------------------//
-        Button bntDopMenuLeft = findViewById(R.id.buttonCallDopMenu);
-        bntDopMenuLeft.setOnClickListener(new View.OnClickListener() {
+        BottomNavigationMenu.setOnNavigationItemSelectedListener(navListener);
+
+        //----------------------------NavigationView-------------------------------------//
+        navigationView.bringToFront();
+        toggle = new ActionBarDrawerToggle(this,drawerLayout, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        bntDopMenuLeft.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
-
-        //----------------------------NavigationView-------------------------------------//
-        BottomNavigationMenu.setOnNavigationItemSelectedListener(navListener);
-        navigationView.bringToFront();
-        toggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        //--
-        navigationView.setNavigationItemSelectedListener(this);
-        //--------------------------------------------------------------------------------//
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -75,6 +73,7 @@ public class MainActivityMainMenu extends AppCompatActivity implements Navigatio
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
     @Override
     public void onBackPressed(){

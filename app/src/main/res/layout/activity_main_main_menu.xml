@@ -14,10 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:visibility="gone"
         app:headerLayout="@layout/header"
-        app:menu="@menu/menu_dop_left"
-        tools:visibility="gone" />
+        app:menu="@menu/menu_dop_left" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -72,9 +70,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/BottomNavigationMenu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewMainMenuBar">
-
-            </FrameLayout>
+                app:layout_constraintTop_toBottomOf="@+id/viewMainMenuBar"/>
 
             <Button
                 android:id="@+id/buttonCallDopMenu"
