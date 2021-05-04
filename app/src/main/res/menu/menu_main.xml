@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ItemNotes"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_event_note"
+        android:title="Notes" />
+    <item
+        android:id="@+id/ItemReminders"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_alarm"
+        android:title="Reminders" />
+    <item
+        android:id="@+id/ItemFolders"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_folder"
+        android:title="Folders" />
+    <item
+        android:id="@+id/ItemAccount"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_account_circle"
+        android:title="Account" />
+</menu>

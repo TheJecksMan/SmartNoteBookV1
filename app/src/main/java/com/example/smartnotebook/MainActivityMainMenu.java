@@ -1,61 +1,58 @@
 package com.example.smartnotebook;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
-public class MainActivityMainMenu extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnActCreateNotes;
-    private Button btnActEditNoteBook;
-    private Button btnActReminders;
-    private Button btnAccount;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+
+public class MainActivityMainMenu extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_main_menu);
+        // badgeDrawable =  bottomNavigation.getBadge(menuItemId)
 
-        btnActCreateNotes = (Button) findViewById(R.id.buttonSelectNotes);
-        btnActCreateNotes.setOnClickListener(this);
+        BottomNavigationView BottomNavigationMenu = findViewById(R.id.BottomNavigationMenu);
+        BottomNavigationMenu.setOnNavigationItemSelectedListener(navListener);
 
-        btnAccount = (Button) findViewById(R.id.buttonAccount);
-        btnAccount.setOnClickListener(this);
-
-        /*
-        btnActEditNoteBook = (Button) findViewById(R.id.buttonSelectEditText);
-        btnActEditNoteBook.setOnClickListener(this);
-
-        btnActReminders = (Button) findViewById(R.id.buttonReminders);
-        btnActReminders.setOnClickListener(this);*/
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentPager, new notes_fg()).commit();
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.buttonSelectNotes:
-                Intent intent1 = new Intent(this, MainActivityNotes.class);
-                startActivity(intent1);
-                break;
-            case R.id.buttonAccount:
-                Intent intent2 = new Intent(this, Account.class);
-                startActivity(intent2);
-            /*
-            case R.id.buttonSelectEditText:
-                Intent intent2 = new Intent(this, MainActivityNoteBook.class);
-                startActivity(intent2);
-                break;
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-            case R.id.buttonReminders:
-                Intent intent3 = new Intent(this, MainActivityReminders.class);
-                startActivity(intent3);
-                break;*/
-            default:
-                break;
+            Fragment selectedFragment = null;
+            switch (item.getItemId()) {
+                case R.id.ItemNotes:
+                    selectedFragment = new notes_fg();
+                    break;
+                case R.id.ItemReminders:
+                    selectedFragment = new reminders_fg();
+                    break;
+                case R.id.ItemFolders:
+                    selectedFragment = new folders_fg();
+                    break;
+                case R.id.ItemAccount:
+                    selectedFragment = new account_fg();
+                    break;
+            }
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentPager, selectedFragment)
+                    .commit();
+            return true;
         }
-    }
-
+    };
 
 }
+
