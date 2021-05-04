@@ -13,5 +13,7 @@
     <string name="hint_password">Пароль</string>
     <string name="hint_button_cancel">Отмена</string>
     <string name="hint_button_next">Продолжить</string>
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
 
 </resources>

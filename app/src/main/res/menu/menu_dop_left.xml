@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/editTextItem"
+            android:icon="@drawable/ic_outline_edit_note"
+            android:title="Редактор текста" />
+    </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/TrashItem"
+            android:icon="@drawable/ic_outline_restore_from_trash"
+            android:title="Корзина" />
+    </group>
+
+    <group
+            android:id="@+id/group3"
+            android:checkableBehavior="single">
+
+            <item
+            android:id="@+id/SettingItem"
+            android:icon="@drawable/ic_outline_settings"
+            android:title="Настройки" />
+
+            <item
+            android:id="@+id/InfoItem"
+            android:icon="@drawable/ic_outline_info"
+            android:title="Справка" />
+        </group>
+
+</menu>

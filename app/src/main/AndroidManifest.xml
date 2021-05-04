@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-        <activity android:name=".CreateNote"></activity>
+        <activity android:name=".Trash"></activity>
+        <activity android:name=".EditText" />
+        <activity android:name=".CreateNote" />
         <activity android:name=".MainActivityMainMenu" />
         <activity android:name=".MainActivityNoteBook" />
         <activity android:name=".MainActivity">
