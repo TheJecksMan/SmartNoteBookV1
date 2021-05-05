@@ -69,7 +69,16 @@ public class MainActivityMainMenu extends AppCompatActivity implements Navigatio
                 Intent intentTrash = new Intent(this, Trash.class);
                 startActivity(intentTrash);
                 break;
+            case R.id.SettingItem:
+                Intent intentSetting = new Intent(this, Setting.class);
+                startActivity(intentSetting);
+                break;
+            case R.id.InfoItem:
+                Intent intentInfo = new Intent(this, Info.class);
+                startActivity(intentInfo);
+                break;
         }
+
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }

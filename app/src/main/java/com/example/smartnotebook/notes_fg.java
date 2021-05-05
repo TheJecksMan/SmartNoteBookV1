@@ -30,7 +30,7 @@ public class notes_fg extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent intentCreateNote = new Intent(getContext(), CreateAndEditNote.class);
+                Intent intentCreateNote = new Intent(getContext(), CreateNote.class);
                 startActivity(intentCreateNote);
             }
         });

@@ -1,19 +1,27 @@
 package com.example.smartnotebook;
 
+import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+
 import java.util.Date;
 
-public class CreateAndEditNote extends AppCompatActivity {
+public class CreateNote extends AppCompatActivity {
 
     View editTextHead;
     View editTextBody;
-    TextView lastModifiedDate;
+
+    private TextView lastModifiedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +33,7 @@ public class CreateAndEditNote extends AppCompatActivity {
          editTextBody= findViewById(R.id.editTextNotes);
          lastModifiedDate = findViewById(R.id.lastModifiedDate);
 
-
+       //------------------------Последние изменения-------------------------------//
         editTextBody.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
@@ -45,9 +53,32 @@ public class CreateAndEditNote extends AppCompatActivity {
                 }
             }
         });
+        //---------------------Нижняя панель навигации----------------------------//
+        /*downMenuEditText = findViewById(R.id.bottomNavigationViewEditText);
+        downMenuEditText.setOnNavigationItemSelectedListener(navEditTextListener);
 
-
+         */
     }
+
+    /*
+    private BottomNavigationView.OnNavigationItemSelectedListener navEditTextListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            Fragment selectedFragment = null;
+            switch (item.getItemId()) {
+                default:
+                    break;
+            }
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentPager, selectedFragment)
+                    .commit();
+            return true;
+        }
+    };
+
+     */
 
     private void setAdjustScreen() {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -59,4 +90,6 @@ public class CreateAndEditNote extends AppCompatActivity {
         super.onDestroy();
         lastModifiedDate = null;
     }
+
+
 }
