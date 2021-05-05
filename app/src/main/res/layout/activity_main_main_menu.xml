@@ -20,8 +20,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:fitsSystemWindows="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/MainConstraintLayout"
@@ -70,14 +70,14 @@
                 app:layout_constraintBottom_toTopOf="@+id/BottomNavigationMenu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewMainMenuBar"/>
+                app:layout_constraintTop_toBottomOf="@+id/viewMainMenuBar" />
 
             <Button
                 android:id="@+id/buttonCallDopMenu"
                 android:layout_width="58dp"
                 android:layout_height="49dp"
                 android:background="#00FFFFFF"
-                android:drawableLeft="@drawable/ic_outline_notes"
+                android:drawableLeft="@drawable/main_menu_outline_notes"
                 app:layout_constraintBottom_toBottomOf="@+id/viewMainMenuBar"
                 app:layout_constraintEnd_toStartOf="@+id/textView2"
                 app:layout_constraintHorizontal_bias="0.213"

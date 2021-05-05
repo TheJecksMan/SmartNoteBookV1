@@ -8,16 +8,16 @@
     <item
         android:id="@+id/ItemReminders"
         android:enabled="true"
-        android:icon="@drawable/ic_outline_alarm"
+        android:icon="@drawable/main_menu_outline_alarm"
         android:title="Reminders" />
     <item
         android:id="@+id/ItemFolders"
         android:enabled="true"
-        android:icon="@drawable/ic_outline_folder"
+        android:icon="@drawable/main_menu_outline_folder"
         android:title="Folders" />
     <item
         android:id="@+id/ItemAccount"
         android:enabled="true"
-        android:icon="@drawable/ic_outline_account_circle"
+        android:icon="@drawable/main_menu_outline_account_circle"
         android:title="Account" />
 </menu>
