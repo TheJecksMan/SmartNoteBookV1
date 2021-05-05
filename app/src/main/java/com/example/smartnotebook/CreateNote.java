@@ -27,7 +27,7 @@ public class CreateNote extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
-        setAdjustScreen();
+        //setAdjustScreen();
         
          editTextHead = findViewById(R.id.editTextHeadText);
          editTextBody= findViewById(R.id.editTextNotes);
@@ -80,10 +80,14 @@ public class CreateNote extends AppCompatActivity {
 
      */
 
-    private void setAdjustScreen() {
+   /*private void setAdjustScreen() {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
     }
+
+    */
+
+
 
     @Override
     protected void onDestroy() {

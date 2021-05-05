@@ -49,6 +49,8 @@ public class MainActivityMainMenu extends AppCompatActivity implements Navigatio
         toggle = new ActionBarDrawerToggle(this,drawerLayout, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        
+        navigationView.setNavigationItemSelectedListener(this);
 
         bntDopMenuLeft.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -74,7 +76,7 @@ public class MainActivityMainMenu extends AppCompatActivity implements Navigatio
                 startActivity(intentSetting);
                 break;
             case R.id.InfoItem:
-                Intent intentInfo = new Intent(this, Info.class);
+                Intent intentInfo = new Intent(MainActivityMainMenu.this, Info.class);
                 startActivity(intentInfo);
                 break;
         }
