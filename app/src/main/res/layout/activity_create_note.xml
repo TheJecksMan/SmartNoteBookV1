@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/NotesToolbarUp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/MainMenu"
@@ -13,13 +14,14 @@
         android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationViewEditText"
+        app:layout_constraintBottom_toTopOf="@+id/viewEditMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3">
+        app:layout_constraintTop_toBottomOf="@+id/viewUpPanel">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/textLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -84,7 +86,7 @@
     </ScrollView>
 
     <View
-        android:id="@+id/view3"
+        android:id="@+id/viewUpPanel"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@color/white"
@@ -93,13 +95,71 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationViewEditText"
+    <View
+        android:id="@+id/viewEditMenu"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/create_notes_down_menu"/>
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="53dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:background="#00FFFFFF"
+        android:drawableRight="@drawable/ic_outline_color_lens_24"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/viewEditMenu"
+        app:layout_constraintStart_toStartOf="@+id/viewEditMenu"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3"
+        app:layout_constraintVertical_bias="1.0"
+        tools:visibility="gone" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="53dp"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        android:drawableRight="@drawable/ic_outline_title_24"
+        android:text="Button"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3"
+        app:layout_constraintVertical_bias="0.0"
+        tools:visibility="gone" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="53dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="32dp"
+        android:background="#00FFFFFF"
+        android:drawableRight="@drawable/ic_outline_settings"
+        android:text="Button"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewEditMenu"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3"
+        app:layout_constraintVertical_bias="1.0"
+        tools:visibility="gone" />
+
+    <Button
+        android:id="@+id/NotesButtonMenu"
+        android:layout_width="50dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="8dp"
+        android:background="#00FFFFFF"
+        android:drawableLeft="@drawable/notes_outline_more_vert"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="@+id/viewUpPanel"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="@+id/viewUpPanel"
+        app:layout_constraintTop_toTopOf="@+id/viewUpPanel"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

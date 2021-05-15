@@ -13,11 +13,11 @@ import android.widget.Button;
 
 public class notes_fg extends Fragment {
 
+    View view;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override

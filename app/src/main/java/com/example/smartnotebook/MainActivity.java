@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity  {
     protected void onStop() {
         super.onStop();
         mImageView.setImageDrawable(null);
+
     }
     @Override
     public void onDestroy() {

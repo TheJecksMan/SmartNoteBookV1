@@ -1,18 +1,15 @@
 package com.example.smartnotebook;
 
-import androidx.annotation.NonNull;
-
+import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+
 
 import android.os.Bundle;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 
 import java.util.Date;
 
@@ -20,7 +17,7 @@ public class CreateNote extends AppCompatActivity {
 
     View editTextHead;
     View editTextBody;
-
+    private Button NotesButtonMenu;
     private TextView lastModifiedDate;
 
     @Override
@@ -33,7 +30,18 @@ public class CreateNote extends AppCompatActivity {
          editTextBody= findViewById(R.id.editTextNotes);
          lastModifiedDate = findViewById(R.id.lastModifiedDate);
 
-       //------------------------Последние изменения-------------------------------//
+         NotesButtonMenu = findViewById(R.id.NotesButtonMenu);
+         //Кнопка открытия меню
+        NotesButtonMenu.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                showPopup(v);
+            }
+        });
+
+        //------------------------Последние изменения в тексте---------------------------//
         editTextBody.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
@@ -53,47 +61,39 @@ public class CreateNote extends AppCompatActivity {
                 }
             }
         });
-        //---------------------Нижняя панель навигации----------------------------//
-        /*downMenuEditText = findViewById(R.id.bottomNavigationViewEditText);
-        downMenuEditText.setOnNavigationItemSelectedListener(navEditTextListener);
-
-         */
     }
 
-    /*
-    private BottomNavigationView.OnNavigationItemSelectedListener navEditTextListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    private void showPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        popup.getMenuInflater().inflate(R.menu.notes_menu, popup.getMenu());
 
-            Fragment selectedFragment = null;
-            switch (item.getItemId()) {
-                default:
-                    break;
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener(){
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.ImportItem:
+
+                        return true;
+
+                    default:
+                        return false;
+                }
+
             }
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragmentPager, selectedFragment)
-                    .commit();
-            return true;
-        }
-    };
-
-     */
-
-   /*private void setAdjustScreen() {
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        });
+        popup.show();
     }
 
-    */
 
-
-
+    /*private void setAdjustScreen() {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        }
+        */
     @Override
     protected void onDestroy() {
         super.onDestroy();
         lastModifiedDate = null;
     }
-
-
 }
