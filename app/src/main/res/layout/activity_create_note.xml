@@ -153,11 +153,25 @@
         android:layout_width="50dp"
         android:layout_height="43dp"
         android:layout_marginBottom="8dp"
-        android:background="#00FFFFFF"
+        android:background="@color/transparent"
         android:drawableLeft="@drawable/notes_outline_more_vert"
         app:layout_constraintBottom_toTopOf="@+id/scrollView3"
         app:layout_constraintEnd_toEndOf="@+id/viewUpPanel"
         app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="@+id/viewUpPanel"
+        app:layout_constraintTop_toTopOf="@+id/viewUpPanel"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/BackToNote"
+        android:layout_width="49dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/transparent"
+        android:drawableLeft="@drawable/notes_outline_arrow_back"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="@+id/viewUpPanel"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="@+id/viewUpPanel"
         app:layout_constraintTop_toTopOf="@+id/viewUpPanel"
         app:layout_constraintVertical_bias="1.0" />

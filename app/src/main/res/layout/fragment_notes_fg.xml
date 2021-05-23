@@ -22,8 +22,23 @@
             <LinearLayout
                 android:id="@+id/ListNotes"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"/>
+                android:layout_height="65dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingLeft="8dp"
+                android:paddingTop="5dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="5dp">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_custom_icon_bar"
+                    android:text="Заголовок"
+                    android:textAlignment="viewStart"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </ScrollView>
 
         <Button

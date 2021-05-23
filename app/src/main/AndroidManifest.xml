@@ -18,7 +18,7 @@
         <activity android:name=".Trash" />
         <activity android:name=".EditText" />
         <activity android:name=".CreateNote" />
-        <activity android:name=".MainActivityMainMenu" />
+        <activity android:name=".MainMenu" />
         <activity android:name=".MainActivityNoteBook" />
         <activity android:name=".MainActivity">
             <intent-filter>

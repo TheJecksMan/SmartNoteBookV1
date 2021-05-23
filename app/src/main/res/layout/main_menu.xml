@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/MainMenuBackground"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivityMainMenu">
+    tools:context=".MainMenu">
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/dopMenuLeft"

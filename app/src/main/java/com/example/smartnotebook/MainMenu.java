@@ -21,7 +21,7 @@ import com.google.android.material.navigation.NavigationView;
 
 
 
-public class MainActivityMainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -32,7 +32,7 @@ public class MainActivityMainMenu extends AppCompatActivity implements Navigatio
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_main_menu);
+        setContentView(R.layout.main_menu);
 
         drawerLayout =  findViewById(R.id.MainDrawerLayout);
         bntDopMenuLeft = findViewById(R.id.buttonCallDopMenu);
@@ -76,7 +76,7 @@ public class MainActivityMainMenu extends AppCompatActivity implements Navigatio
                 startActivity(intentSetting);
                 break;
             case R.id.InfoItem:
-                Intent intentInfo = new Intent(MainActivityMainMenu.this, Info.class);
+                Intent intentInfo = new Intent(MainMenu.this, Info.class);
                 startActivity(intentInfo);
                 break;
         }

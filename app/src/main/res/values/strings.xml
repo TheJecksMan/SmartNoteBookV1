@@ -1,19 +1,31 @@
 <resources>
     <string name="app_name">SmartNoteBook</string>
+
+    <!--MainMenu string start-->
     <string name="buttonSelectReminders">Напоминания</string>
     <string name="buttonCreateText">+</string>
     <string name="textViewHead">Заголовок</string>
     <string name="textViewNotes">Заметки</string>
     <string name="buttonNotebook">Текстовый редактор</string>
     <string name="buttonReminders">Напоминания</string>
+    <!--MainMenu string end-->
+
     <string name="Load">Загрузка</string>
     <string name="MainMenu">Главное меню</string>
     <string name="Search">Поиск</string>
+    <!--Account string start-->
     <string name="hint_username">Имя пользователя</string>
     <string name="hint_password">Пароль</string>
     <string name="hint_button_cancel">Отмена</string>
     <string name="hint_button_next">Продолжить</string>
+    <!--MainMenu string end-->
+
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
+
+    <!--Setting start-->
+    <string name="ClearDatabase">Очистить базу данных</string>
+    <string name="SizeDataBase">Размер базы данных </string>
+    <!--Setting end-->
 
 </resources>

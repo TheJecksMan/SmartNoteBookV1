@@ -4,33 +4,54 @@ import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.Date;
 
 public class CreateNote extends AppCompatActivity {
 
-    View editTextHead;
-    View editTextBody;
+    private View editTextHead;
+    private View editTextBody;
     private Button NotesButtonMenu;
+
     private TextView lastModifiedDate;
+    private TextView editTextHeadTextView;
+    private TextView editTextBodyTextView;
+
+    SQLiteHelper sqLiteHelper;
+    ContentValues contentValues;
+    SQLiteDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
-        //setAdjustScreen();
+
+        sqLiteHelper = new SQLiteHelper(this);
+        database = sqLiteHelper.getWritableDatabase();
+        contentValues = new ContentValues();
         
          editTextHead = findViewById(R.id.editTextHeadText);
          editTextBody= findViewById(R.id.editTextNotes);
          lastModifiedDate = findViewById(R.id.lastModifiedDate);
 
          NotesButtonMenu = findViewById(R.id.NotesButtonMenu);
+
+         editTextHeadTextView = findViewById(R.id.editTextHeadText);
+         editTextBodyTextView = findViewById(R.id.editTextNotes);
+
+        Button button = findViewById(R.id.BackToNote);
+
          //Кнопка открытия меню
         NotesButtonMenu.setOnClickListener(new View.OnClickListener() {
 
@@ -38,6 +59,15 @@ public class CreateNote extends AppCompatActivity {
             public void onClick(View v) {
 
                 showPopup(v);
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WriteSQL();
+                Intent intentBackMenu = new Intent(getApplicationContext(), MainMenu.class);
+                startActivity(intentBackMenu);
             }
         });
 
@@ -75,7 +105,6 @@ public class CreateNote extends AppCompatActivity {
                     case R.id.ImportItem:
 
                         return true;
-
                     default:
                         return false;
                 }
@@ -86,11 +115,24 @@ public class CreateNote extends AppCompatActivity {
     }
 
 
-    /*private void setAdjustScreen() {
-            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+    private void WriteSQL(){
+        if (editTextHeadTextView.getText().toString() != null)
+        {
+            contentValues.put(sqLiteHelper.KEY_HEAD_NOTES, editTextHeadTextView.getText().toString());
+            contentValues.put(sqLiteHelper.KEY_BODY_NOTES, editTextBodyTextView.getText().toString());
+
+            database.insert(sqLiteHelper.TABLE_CONTACTS, null, contentValues);
         }
-        */
+    }
+    @Override
+    public void onBackPressed() {
+
+        WriteSQL();
+        Intent intentBackNotes = new Intent(this, MainMenu.class);
+        startActivity(intentBackNotes);
+        finish();
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

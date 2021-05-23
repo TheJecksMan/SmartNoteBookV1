@@ -6,22 +6,22 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
 
-    private static final int VERSION = 1;
-    private static final String BD_TABLE_NAME = "Notes";
-    private static final String TABLE_CONTACTS = "contactsNotes";
-    private static  final String KEY_ID = "_id";
-    private static final String COL_HEAD_NOTES = "HeadNotes";
-    private static final String COL_BODY_NOTES = "BodyNotes";
+    public static final int VERSION = 1;
+    public static final String BD_TABLE_NAME = "Notes";
+    public static final String TABLE_CONTACTS = "contactsNotes";
+    public static  final String KEY_ID = "ID";
+    public static final String KEY_HEAD_NOTES = "HeadNotes";
+    public static final String KEY_BODY_NOTES = "BodyNotes";
 
     public SQLiteHelper(Context context)
     {
-        super(context, BD_TABLE_NAME, null, 1);
+        super(context, BD_TABLE_NAME, null, VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
        try{
-           //db.execSQL(ВНУТРИ ЗАПРОС!);
+           db.execSQL("create table " + TABLE_CONTACTS + "(" + KEY_ID + " integer primary key," + KEY_HEAD_NOTES + " text," + KEY_BODY_NOTES + " text" + ")");
        }
        catch (Exception e)
        {
