@@ -1,9 +1,15 @@
 package com.example.smartnotebook.util;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,11 +22,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     private static final String TAG = "RecyclerAdapter";
     List<String> NotesList;
+    Context context;
+    public RecyclerAdapter(List<String> NotesList, Context context) {
 
-    public RecyclerAdapter(List<String> NotesList) {
         this.NotesList = NotesList;
+        this.context = context;
     }
-
 
     @NonNull
     @Override
@@ -34,6 +41,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.imageView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.load_animate));
+        holder.container.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_load_animate));
         holder.rowCountTextView.setText(String.valueOf(position));
         holder.textView.setText(NotesList.get(position));
     }
@@ -48,12 +57,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         ImageView imageView;
         TextView textView, rowCountTextView;
+        RelativeLayout container;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             textView = itemView.findViewById(R.id.textView);
             rowCountTextView = itemView.findViewById(R.id.rowCountTextView);
+            container = itemView.findViewById(R.id.container);
 
             itemView.setOnClickListener(this);
         }
@@ -63,8 +74,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
             //Toast.makeText(view.getContext(), moviesList.get(getAdapterPosition()), Toast.LENGTH_SHORT).show();
         }
-
-
     }
+
 
 }

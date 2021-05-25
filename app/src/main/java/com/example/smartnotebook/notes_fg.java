@@ -1,5 +1,6 @@
 package com.example.smartnotebook;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -31,7 +32,6 @@ public class notes_fg extends Fragment {
 
     private View view;
     private LinearLayout linearLayout;
-
     SQLiteHelper sqLiteHelper;
     SQLiteDatabase database;
 
@@ -69,7 +69,7 @@ public class notes_fg extends Fragment {
         //-----------------------------------------------------
 
         recyclerView = v.findViewById(R.id.recyclerView);
-        recyclerAdapter = new RecyclerAdapter(NotesList);
+        recyclerAdapter = new RecyclerAdapter(NotesList, getContext());
 
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setHasFixedSize(true);
