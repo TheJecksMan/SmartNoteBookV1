@@ -56,7 +56,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             rowCountTextView = itemView.findViewById(R.id.rowCountTextView);
 
             itemView.setOnClickListener(this);
-
         }
 
         @Override

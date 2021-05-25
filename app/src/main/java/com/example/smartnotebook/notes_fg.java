@@ -53,18 +53,26 @@ public class notes_fg extends Fragment {
         //---------------БД-----------------------------------
         sqLiteHelper = new SQLiteHelper(getContext());
         database = sqLiteHelper.getReadableDatabase();
-
         Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes", null);
-        while (cursor.moveToNext()) {
-            NotesList.add(cursor.getString(cursor.getColumnIndex("HeadNotes")));
+
+        String temp = null;
+        cursor.moveToFirst();
+        if(cursor!=null && cursor.getCount()>0) {
+            do {
+                temp = cursor.getString(cursor.getColumnIndex("HeadNotes"));
+                if (temp != null) {
+                    NotesList.add(temp);
+                }
+            } while (cursor.moveToNext());
         }
+
         //-----------------------------------------------------
-        NotesList.add("Iron Man");
 
         recyclerView = v.findViewById(R.id.recyclerView);
         recyclerAdapter = new RecyclerAdapter(NotesList);
 
         recyclerView.setAdapter(recyclerAdapter);
+        recyclerView.setHasFixedSize(true);
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
@@ -103,9 +111,11 @@ public class notes_fg extends Fragment {
                 case ItemTouchHelper.LEFT:
                     NotesList.remove(position);
                     recyclerView.getAdapter().notifyItemRemoved(position);
+
                     SQLiteDatabase databaseDelete = sqLiteHelper.getWritableDatabase();
-                   // databaseDelete.delete("contactsNotes", "_id=?",position);
-                    //Cursor cursorDelete = database.delete("DELETE FROM contactsNotes WHERE id=" + position);
+                    sqLiteHelper.deleteNote(databaseDelete, position + 1);
+
+                    //recyclerView.getAdapter().notifyDataSetChanged();
                     break;
             }
         }

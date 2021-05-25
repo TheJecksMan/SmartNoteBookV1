@@ -30,4 +30,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("drop table if exists " + TABLE_CONTACTS);
         onCreate(db);
     }
+
+    public boolean deleteNote(SQLiteDatabase db, int id)
+    {
+        return db.delete(TABLE_CONTACTS, KEY_ID + "=" + id, null) > 0;
+    }
 }
