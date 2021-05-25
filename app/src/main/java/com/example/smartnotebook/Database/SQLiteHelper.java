@@ -1,4 +1,4 @@
-package com.example.smartnotebook;
+package com.example.smartnotebook.Database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,13 +20,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-       try{
-           db.execSQL("create table " + TABLE_CONTACTS + "(" + KEY_ID + " integer primary key," + KEY_HEAD_NOTES + " text," + KEY_BODY_NOTES + " text" + ")");
-       }
-       catch (Exception e)
-       {
 
-       }
+        db.execSQL("create table " + TABLE_CONTACTS + "(" + KEY_ID + " integer primary key," + KEY_HEAD_NOTES + " text," + KEY_BODY_NOTES + " text" + ")");
+
     }
 
     @Override

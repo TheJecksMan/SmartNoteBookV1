@@ -2,11 +2,10 @@ package com.example.smartnotebook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import java.io.File;
+import com.example.smartnotebook.Database.SQLiteHelper;
 
 public class Setting extends AppCompatActivity {
 

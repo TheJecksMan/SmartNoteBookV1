@@ -16,4 +16,7 @@
 
     <!--Custom color for button-->
     <color name="transparent">#00FFFFFF</color>
+
+    <!--Notes-->
+    <color name="NotesBg">#bfbfbf</color>
 </resources>

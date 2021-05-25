@@ -8,13 +8,13 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.smartnotebook.Database.SQLiteHelper;
 
 import java.util.Date;
 
@@ -114,16 +114,6 @@ public class CreateNote extends AppCompatActivity {
         popup.show();
     }
 
-
-    private void WriteSQL(){
-        if (editTextHeadTextView.getText().toString() != null)
-        {
-            contentValues.put(sqLiteHelper.KEY_HEAD_NOTES, editTextHeadTextView.getText().toString());
-            contentValues.put(sqLiteHelper.KEY_BODY_NOTES, editTextBodyTextView.getText().toString());
-
-            database.insert(sqLiteHelper.TABLE_CONTACTS, null, contentValues);
-        }
-    }
     @Override
     public void onBackPressed() {
 
@@ -131,6 +121,16 @@ public class CreateNote extends AppCompatActivity {
         Intent intentBackNotes = new Intent(this, MainMenu.class);
         startActivity(intentBackNotes);
         finish();
+    }
+
+    private void WriteSQL(){
+        if (editTextHeadTextView.getText().toString() != null)
+        {
+            contentValues.put(SQLiteHelper.KEY_HEAD_NOTES, editTextHeadTextView.getText().toString());
+            contentValues.put(SQLiteHelper.KEY_BODY_NOTES, editTextBodyTextView.getText().toString());
+
+            database.insert(SQLiteHelper.TABLE_CONTACTS, null, contentValues);
+        }
     }
 
     @Override
