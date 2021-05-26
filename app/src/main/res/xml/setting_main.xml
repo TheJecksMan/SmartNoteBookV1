@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        android:id="@+id/MainSetting"
+        android:title="@string/main_setting"
+        app:fragment=""
+        app:icon="@drawable/ic_outline_settings" />
+    <Preference
+        android:id="@+id/SecuriteSetting"
+        android:title="@string/securite_setting"
+        app:fragment=""
+        app:icon="@drawable/setting_outline_security" />
+    <Preference
+        android:id="@+id/InfoSetting"
+        android:title="@string/info_setting"
+        app:fragment=""
+        app:icon="@drawable/ic_outline_info" />
+
+
+    <PreferenceCategory android:title="Язык">
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/lang_info"
+            android:entryValues="@array/lang_info"
+            android:key="key_preference_language"
+            android:title="Выбрать язык" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Анимации">
+        <SwitchPreference
+            android:id="@+id/UsageAnimate"
+            android:defaultValue="true"
+            android:key="key_preference_animate"
+            android:title="Использовать анимацию" />
+    </PreferenceCategory>
+</PreferenceScreen>
