@@ -21,7 +21,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table " + TABLE_CONTACTS + "(" + KEY_ID + " integer primary key," + KEY_HEAD_NOTES + " text," + KEY_BODY_NOTES + " text" + ")");
+        db.execSQL("create table " + TABLE_CONTACTS + "(" + KEY_ID + " integer primary key," + KEY_HEAD_NOTES + " text not null," + KEY_BODY_NOTES + " text" + ")");
 
     }
 

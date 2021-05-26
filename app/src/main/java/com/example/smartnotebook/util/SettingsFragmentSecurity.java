@@ -6,11 +6,10 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.smartnotebook.R;
 
-public class SettingsFragment extends PreferenceFragmentCompat {
+public class SettingsFragmentSecurity extends PreferenceFragmentCompat {
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.setting_main);
-
+        setPreferencesFromResource(R.xml.setting_security, rootKey);
     }
 }

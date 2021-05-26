@@ -26,9 +26,27 @@
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
 
-    <!--Setting start-->
+    <!--Setting Main start-->
     <string name="main_setting">Основное</string>
     <string name="security_setting">Безопасность</string>
     <string name="info_setting">О программе</string>
-    <!-- Preference Titles -->
+    <!--Setting Main end-->
+
+    <!--Setting General start-->
+    <string name="AnimatePref">Анимация</string>
+    <string name="GeneralPref">Общее</string>
+    <string name="UsageAnimate">Использовать анимацию</string>
+    <string name="LanguagePref">Язык</string>
+    <string name="UsageLanguage">Выбрать язык</string>
+    <!--Setting General end-->
+    
+    <!--Setting About start-->
+    <string name="RateApp">Оценить приложение</string>
+    <string name="LicenseApp">Лицензионное соглашение</string>
+    <string name="PrivacyPolicy_app">Политика конфиденциальности</string>
+    <!--Setting About end-->
+
+    <!--Setting Security start-->
+
+    <!--Setting Security end-->
 </resources>

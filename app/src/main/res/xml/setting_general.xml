@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/GeneralPref">
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/AnimatePref">
+        <SwitchPreference
+            android:id="@+id/UsageAnimate"
+            android:defaultValue="true"
+            android:key="key_preference_animate"
+            android:title="@string/UsageAnimate" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/LanguagePref">
+        <ListPreference
+            android:id="@+id/ChangeLanguage"
+            android:defaultValue="1"
+            android:entries="@array/lang_info"
+            android:entryValues="@array/lang_values"
+            android:key="key_preference_language"
+            android:title="@string/UsageLanguage" />
+    </PreferenceCategory>
+</PreferenceScreen>

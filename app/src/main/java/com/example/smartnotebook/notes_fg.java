@@ -78,7 +78,7 @@ public class notes_fg extends Fragment {
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
 
-        Button button = (Button) v.findViewById(R.id.buttonCreateNotes);
+        Button button = v.findViewById(R.id.buttonCreateNotes);
         //linearLayout = (LinearLayout) v.findViewById(R.id.ListNotes);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +101,7 @@ public class notes_fg extends Fragment {
             int toPosition = target.getAdapterPosition();
             Collections.swap(NotesList, fromPosition, toPosition);
             recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
+
             return false;
         }
 

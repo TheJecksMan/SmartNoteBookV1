@@ -7,11 +7,11 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.smartnotebook"
+        applicationId 'com.example.smartnotebook'
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
-        versionName 'v.1.0.4b'
+        versionName 'v.1.0.5b'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

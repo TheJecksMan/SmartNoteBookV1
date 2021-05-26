@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        android:id="@+id/Info_Build"
+        android:title="@string/app_name"
+        app:summary="version"/>
+
+    <Preference
+        android:id="@+id/Rate_app"
+        android:title="@string/RateApp">
+        <intent
+            android:data="https://www.google.ru/"
+            />
+    </Preference>
+
+    <Preference
+        android:id="@+id/License"
+        android:title="@string/LicenseApp"/>
+
+    <Preference
+        android:id="@+id/PrivacyPolicyApp"
+        android:title="@string/PrivacyPolicy_app"/>
+</PreferenceScreen>
