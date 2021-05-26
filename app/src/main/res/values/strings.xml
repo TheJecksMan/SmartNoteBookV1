@@ -2,12 +2,15 @@
     <string name="app_name">SmartNoteBook</string>
 
     <!--MainMenu string start-->
-    <string name="buttonSelectReminders">Напоминания</string>
     <string name="buttonCreateText">+</string>
-    <string name="textViewHead">Заголовок</string>
-    <string name="textViewNotes">Заметки</string>
+    <string name="buttonSelectReminders">Напоминания</string>
     <string name="buttonNotebook">Текстовый редактор</string>
     <string name="buttonReminders">Напоминания</string>
+    <string name="buttonNotes">Заметки</string>
+    <string name="buttonFolder">Папки</string>
+    <string name="buttonAccount">Аккаунт</string>
+    <string name="textViewHead">Заголовок</string>
+    <string name="textViewNotes">Заметки</string>
     <!--MainMenu string end-->
 
     <string name="Load">Загрузка</string>
@@ -25,22 +28,7 @@
 
     <!--Setting start-->
     <string name="main_setting">Основное</string>
-    <string name="securite_setting">Безопасность</string>
+    <string name="security_setting">Безопасность</string>
     <string name="info_setting">О программе</string>
     <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <!--Setting end-->
-
 </resources>

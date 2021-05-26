@@ -7,8 +7,8 @@
         app:fragment=""
         app:icon="@drawable/ic_outline_settings" />
     <Preference
-        android:id="@+id/SecuriteSetting"
-        android:title="@string/securite_setting"
+        android:id="@+id/SecuritySetting"
+        android:title="@string/security_setting"
         app:fragment=""
         app:icon="@drawable/setting_outline_security" />
     <Preference

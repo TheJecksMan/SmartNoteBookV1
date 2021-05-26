@@ -4,20 +4,20 @@
         android:id="@+id/ItemNotes"
         android:enabled="true"
         android:icon="@drawable/ic_outline_event_note"
-        android:title="Notes" />
+        android:title="@string/buttonNotes" />
     <item
         android:id="@+id/ItemReminders"
         android:enabled="true"
         android:icon="@drawable/main_menu_outline_alarm"
-        android:title="Reminders" />
+        android:title="@string/buttonReminders" />
     <item
         android:id="@+id/ItemFolders"
         android:enabled="true"
         android:icon="@drawable/main_menu_outline_folder"
-        android:title="Folders" />
+        android:title="@string/buttonFolder" />
     <item
         android:id="@+id/ItemAccount"
         android:enabled="true"
         android:icon="@drawable/main_menu_outline_account_circle"
-        android:title="Account" />
+        android:title="@string/buttonAccount" />
 </menu>
