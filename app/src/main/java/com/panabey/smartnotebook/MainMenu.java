@@ -20,7 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 
-
 public class MainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
@@ -28,7 +27,6 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
     ActionBarDrawerToggle toggle;
     Button bntDopMenuLeft;
     BottomNavigationView BottomNavigationMenu;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +37,6 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         navigationView = findViewById(R.id.dopMenuLeft);
 
         BottomNavigationMenu = findViewById(R.id.BottomNavigationMenu);
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentPager, new notes_fg()).commit();
 
         BottomNavigationMenu.setOnNavigationItemSelectedListener(navListener);
@@ -59,6 +56,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
             }
         });
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -92,8 +90,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         else
-        {super.onBackPressed();
-        }
+        {super.onBackPressed(); }
     }
 
     //---------------------------------------Нижняя панель-----------------------------------//
@@ -113,7 +110,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
                     selectedFragment = new folders_fg();
                     break;
                 case R.id.ItemAccount:
-                    selectedFragment = new account_fg();
+                        selectedFragment = new accountLogin_fg();
                     break;
             }
             getSupportFragmentManager()

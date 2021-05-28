@@ -6,6 +6,7 @@ import androidx.preference.PreferenceFragmentCompat;
 
 import com.panabey.smartnotebook.R;
 
+
 public class SettingsFragmentAbout extends PreferenceFragmentCompat {
 
     @Override

@@ -4,21 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".account_fg">
+    tools:context=".accountLogin_fg">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="wrap_content"
-            android:layout_height="281dp"
-            android:background="@drawable/account_theme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayoutRegister"
@@ -36,23 +27,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="48dp"
-                android:layout_marginBottom="60dp"
-                app:srcCompat="@drawable/ic_outline_event_note" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginBottom="90dp"
                 android:padding="10dp"
-                android:text="Register"
-                android:textAllCaps="true"
-                android:textColor="#FFFFFF"
+                android:text="@string/Register"
+                android:textAllCaps="false"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -60,8 +42,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="@string/hint_username"
-                >
+                android:hint="@string/hint_username_register"
+                app:startIconDrawable="@drawable/account_baseline_person">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -71,15 +53,15 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_Register"
+                android:id="@+id/login_Register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="@string/hint_password"
+                android:hint="@string/hint_button_login"
                 app:startIconDrawable="@drawable/account_baseline_mail">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password_Register_"
+                    android:id="@+id/login_Register_"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/account_view_login_password"
@@ -87,7 +69,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_text_input"
+                android:id="@+id/password_Register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
@@ -95,16 +77,16 @@
                 app:startIconDrawable="@drawable/account_baseline_vpn_key">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password_edit_text"
+                    android:id="@+id/password_Register_"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
+                    android:layout_marginBottom="50dp"
                     android:background="@drawable/account_view_login_password"
                     android:inputType="textNoSuggestions|textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/buttonRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/hint_button_register"
@@ -113,7 +95,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/textViewRegisterFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"

@@ -2,28 +2,20 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FrameLayoutAccount"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".account_fg">
+    tools:context=".accountLogin_fg">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="wrap_content"
-            android:layout_height="281dp"
-            android:background="@drawable/account_theme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:clipChildren="false"
             android:clipToPadding="false"
             android:orientation="vertical"
@@ -31,39 +23,30 @@
             android:paddingTop="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.473"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
-
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="48dp"
-                android:layout_marginBottom="60dp"
-                app:srcCompat="@drawable/ic_outline_event_note" />
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:layout_marginBottom="90dp"
                 android:padding="10dp"
-                android:text="Login"
+                android:text="@string/Login"
                 android:textAllCaps="true"
-                android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:hint="@string/hint_username"
+                android:hint="@string/hint_email"
                 app:startIconDrawable="@drawable/account_baseline_mail">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/layoutEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/account_view_login_password"
@@ -71,18 +54,18 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password_text_input"
+                android:id="@+id/textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:hint="@string/hint_password"
+                app:passwordToggleEnabled="true"
                 app:startIconDrawable="@drawable/account_baseline_vpn_key">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password_edit_text"
+                    android:id="@+id/layoutPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="15dp"
                     android:background="@drawable/account_view_login_password"
                     android:inputType="textNoSuggestions|textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -91,24 +74,32 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="60dp"
-                android:gravity="right"
-                android:text="Забыли пароль?"
+                android:layout_marginBottom="80dp"
+                android:gravity="end"
+                android:text="@string/forgotPass"
                 android:textSize="15sp" />
 
-            <Button
-                android:id="@+id/button2"
+            <TextView
+                android:id="@+id/CheckEmpty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/hint_button_login"
-                android:background="@drawable/account_buttom_login"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_horizontal" />
+
+            <Button
+                android:id="@+id/buttonLoginAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="60dp"
+                android:background="@drawable/account_buttom_login"
+                android:text="@string/hint_button_login"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/textViewRegisterFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:gravity="center_horizontal"
                 android:text="@string/textRegister"
                 android:textSize="15sp"

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "298118901887",
+    "firebase_url": "https://smartnotebook-e7cb8-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "smartnotebook-e7cb8",
+    "storage_bucket": "smartnotebook-e7cb8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:298118901887:android:31a33c9a2e11a8dffd0f4a",
+        "android_client_info": {
+          "package_name": "com.panabey.smartnotebook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "298118901887-acr6fain3q7ltrrllqon4g7tii2cdrcb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9JmGsFCc8C_ZyVyyrC7kr9okeg238bZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "298118901887-acr6fain3q7ltrrllqon4g7tii2cdrcb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -16,14 +16,20 @@
     <string name="Load">Загрузка</string>
     <string name="MainMenu">Главное меню</string>
     <string name="Search">Поиск</string>
+
     <!--Account login string start-->
-    <string name="hint_username">Имя пользователя</string>
+    <string name="Login">Login</string>
+    <string name="hint_email">Почта</string>
     <string name="hint_password">Пароль</string>
     <string name="hint_button_login">Войти</string>
+    <string name="forgotPass">Забыли пароль?</string>
     <string name="textRegister">Ещё нет аккаунта? <font color="#FF6200EE"> Register</font></string>
+    <string name="checkTextEmpty"><font color="#FF0000">Не все поля заполнены!</font></string>
     <!--Account login string end-->
 
     <!--Account register string start-->
+    <string name="Register">Register</string>
+    <string name="hint_username_register">Имя пользователя (Необязательно)</string>
     <string name="hint_button_register">Регистрация</string>
     <string name="textLogin">Ужe есть аккаунт? <font color="#FF6200EE"> Login</font></string>
     <!--Account register string end-->
