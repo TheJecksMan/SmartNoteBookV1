@@ -4,17 +4,17 @@
     <Preference
         android:id="@+id/MainSetting"
         android:title="@string/main_setting"
-        app:fragment="com.example.smartnotebook.util.SettingsFragmentGeneral"
+        app:fragment="com.panabey.smartnotebook.util.SettingsFragmentGeneral"
         app:icon="@drawable/ic_outline_settings" />
     <Preference
         android:id="@+id/SecuritySetting"
         android:title="@string/security_setting"
-        app:fragment="com.example.smartnotebook.util.SettingsFragmentSecurity"
+        app:fragment="com.panabey.smartnotebook.util.SettingsFragmentSecurity"
         app:icon="@drawable/setting_outline_security" />
     <Preference
         android:id="@+id/InfoSetting"
         android:title="@string/info_setting"
-        app:fragment="com.example.smartnotebook.util.SettingsFragmentAbout"
+        app:fragment="com.panabey.smartnotebook.util.SettingsFragmentAbout"
         app:icon="@drawable/ic_outline_info" />
     <Preference
         android:id="@+id/BugReportSetting"
