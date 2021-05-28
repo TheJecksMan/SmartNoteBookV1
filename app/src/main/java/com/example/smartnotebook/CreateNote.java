@@ -16,7 +16,10 @@ import android.widget.TextView;
 
 import com.example.smartnotebook.Database.SQLiteHelper;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 public class CreateNote extends AppCompatActivity {
 
@@ -25,8 +28,10 @@ public class CreateNote extends AppCompatActivity {
     private Button NotesButtonMenu;
 
     private TextView lastModifiedDate;
-    private TextView editTextHeadTextView;
+    private TextView EditTextHeadTextView;
     private TextView editTextBodyTextView;
+    String lastModify;
+    DateFormat dateFormat;
 
     SQLiteHelper sqLiteHelper;
     ContentValues contentValues;
@@ -47,17 +52,18 @@ public class CreateNote extends AppCompatActivity {
 
          NotesButtonMenu = findViewById(R.id.NotesButtonMenu);
 
-         editTextHeadTextView = findViewById(R.id.editTextHeadText);
+         EditTextHeadTextView = findViewById(R.id.editTextHeadText);
          editTextBodyTextView = findViewById(R.id.editTextNotes);
 
         Button button = findViewById(R.id.BackToNote);
+        //DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault());
+        dateFormat= new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 
          //Кнопка открытия меню
         NotesButtonMenu.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
                 showPopup(v);
             }
         });
@@ -76,8 +82,8 @@ public class CreateNote extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (!hasFocus) {
-                    Date dateBody = new Date();
-                    lastModifiedDate.setText("Последние изменения:\n" + dateBody.toString());
+                    String lastModify = dateFormat.format(new Date());
+                    lastModifiedDate.setText("Последние изменения: " + lastModify);
                 }
             }
         });
@@ -86,11 +92,18 @@ public class CreateNote extends AppCompatActivity {
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if (!hasFocus) {
-                    Date dateHead = new Date();
-                    lastModifiedDate.setText("Последние изменения:\n" + dateHead.toString());
+                    String lastModify = dateFormat.format(new Date());
+                    lastModifiedDate.setText("Последние изменения: " + lastModify);
                 }
             }
         });
+
+
+    }
+    private String getDateTime() {
+        Date dateBody = new Date();
+        String lastModify = dateFormat.format(dateBody);
+        return lastModify;
     }
 
     private void showPopup(View v) {
@@ -108,7 +121,6 @@ public class CreateNote extends AppCompatActivity {
                     default:
                         return false;
                 }
-
             }
         });
         popup.show();
@@ -116,18 +128,19 @@ public class CreateNote extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
         WriteSQL();
+
         Intent intentBackNotes = new Intent(this, MainMenu.class);
         startActivity(intentBackNotes);
         finish();
     }
 
     private void WriteSQL(){
-        if (editTextHeadTextView.getText().toString() != null)
+        if (EditTextHeadTextView.getText().length()  != 0)
         {
-            contentValues.put(SQLiteHelper.KEY_HEAD_NOTES, editTextHeadTextView.getText().toString());
+            contentValues.put(SQLiteHelper.KEY_HEAD_NOTES, EditTextHeadTextView.getText().toString());
             contentValues.put(SQLiteHelper.KEY_BODY_NOTES, editTextBodyTextView.getText().toString());
+            contentValues.put(SQLiteHelper.KEY_DATETIME, getDateTime());
 
             database.insert(SQLiteHelper.TABLE_CONTACTS, null, contentValues);
         }

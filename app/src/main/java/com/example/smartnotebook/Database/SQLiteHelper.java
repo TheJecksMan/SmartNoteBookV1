@@ -12,6 +12,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static  final String KEY_ID = "ID";
     public static final String KEY_HEAD_NOTES = "HeadNotes";
     public static final String KEY_BODY_NOTES = "BodyNotes";
+    public static final String KEY_DATETIME = "DateTime";
 
     public SQLiteHelper(Context context)
     {
@@ -21,7 +22,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table " + TABLE_CONTACTS + "(" + KEY_ID + " integer primary key," + KEY_HEAD_NOTES + " text not null," + KEY_BODY_NOTES + " text" + ")");
+        db.execSQL("create table " + TABLE_CONTACTS + "(" + KEY_ID + " integer primary key," + KEY_HEAD_NOTES + " text not null," + KEY_BODY_NOTES + " text," + KEY_DATETIME + " text" + ")");
 
     }
 

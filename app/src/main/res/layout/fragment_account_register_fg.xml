@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/linearLayoutRegister"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:clipChildren="false"
@@ -50,7 +50,7 @@
                 android:layout_gravity="right"
                 android:layout_marginBottom="90dp"
                 android:padding="10dp"
-                android:text="Login"
+                android:text="Register"
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
@@ -61,13 +61,29 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:hint="@string/hint_username"
-                app:startIconDrawable="@drawable/account_baseline_mail">
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/account_view_login_password"
                     android:inputType="textNoSuggestions|text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_Register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:hint="@string/hint_password"
+                app:startIconDrawable="@drawable/account_baseline_mail">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_Register_"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/account_view_login_password"
+                    android:inputType="textNoSuggestions|textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -87,20 +103,11 @@
                     android:inputType="textNoSuggestions|textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="60dp"
-                android:gravity="right"
-                android:text="Забыли пароль?"
-                android:textSize="15sp" />
-
             <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/hint_button_login"
+                android:text="@string/hint_button_register"
                 android:background="@drawable/account_buttom_login"
                 android:layout_marginBottom="60dp"
                 android:textStyle="bold" />
@@ -110,12 +117,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="@string/textRegister"
+                android:text="@string/textLogin"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>

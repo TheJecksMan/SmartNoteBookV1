@@ -42,6 +42,7 @@
                 android:inputType="textMultiLine|textNoSuggestions|textPersonName"
                 android:padding="10dp"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextHeadText" />
@@ -79,6 +80,7 @@
                 android:padding="10dp"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:textColorHint="#000000"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

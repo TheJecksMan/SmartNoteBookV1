@@ -16,12 +16,17 @@
     <string name="Load">Загрузка</string>
     <string name="MainMenu">Главное меню</string>
     <string name="Search">Поиск</string>
-    <!--Account string start-->
+    <!--Account login string start-->
     <string name="hint_username">Имя пользователя</string>
     <string name="hint_password">Пароль</string>
-    <string name="hint_button_cancel">Отмена</string>
-    <string name="hint_button_next">Продолжить</string>
-    <!--MainMenu string end-->
+    <string name="hint_button_login">Войти</string>
+    <string name="textRegister">Ещё нет аккаунта? <font color="#FF6200EE"> Register</font></string>
+    <!--Account login string end-->
+
+    <!--Account register string start-->
+    <string name="hint_button_register">Регистрация</string>
+    <string name="textLogin">Ужe есть аккаунт? <font color="#FF6200EE"> Login</font></string>
+    <!--Account register string end-->
 
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
