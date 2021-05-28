@@ -1,23 +1,22 @@
-package com.example.smartnotebook;
+package com.panabey.smartnotebook;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class accountRegister_fg extends Fragment {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
+public class folders_fg extends Fragment {
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_account_register_fg, container, false);
+        return inflater.inflate(R.layout.fragment_folders_fg, container, false);
+
     }
+
 }

@@ -1,4 +1,4 @@
-package com.example.smartnotebook;
+package com.panabey.smartnotebook;
 
 import android.os.Bundle;
 
@@ -9,14 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+public class account_fg extends Fragment {
 
-public class folders_fg extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_folders_fg, container, false);
-
+        return inflater.inflate(R.layout.fragment_account_fg, container, false);
     }
-
 }

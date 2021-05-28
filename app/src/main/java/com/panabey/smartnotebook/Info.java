@@ -1,14 +1,14 @@
-package com.example.smartnotebook;
+package com.panabey.smartnotebook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Trash extends AppCompatActivity {
+public class Info extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trash);
+        setContentView(R.layout.activity_info);
     }
 }

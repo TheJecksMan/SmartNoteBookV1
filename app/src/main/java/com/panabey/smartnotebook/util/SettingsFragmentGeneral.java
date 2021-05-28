@@ -1,10 +1,10 @@
-package com.example.smartnotebook.util;
+package com.panabey.smartnotebook.util;
 
 import android.os.Bundle;
 
 import androidx.preference.PreferenceFragmentCompat;
 
-import com.example.smartnotebook.R;
+import com.panabey.smartnotebook.R;
 
 public class SettingsFragmentGeneral extends PreferenceFragmentCompat {
 

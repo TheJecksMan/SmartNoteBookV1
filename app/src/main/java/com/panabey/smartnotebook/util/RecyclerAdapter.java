@@ -1,4 +1,4 @@
-package com.example.smartnotebook.util;
+package com.panabey.smartnotebook.util;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,8 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartnotebook.CreateNote;
-import com.example.smartnotebook.R;
+import com.panabey.smartnotebook.CreateNote;
+import com.panabey.smartnotebook.R;
 
 import java.util.List;
 

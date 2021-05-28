@@ -1,4 +1,4 @@
-package com.example.smartnotebook;
+package com.panabey.smartnotebook;
 
 import android.content.Context;
 

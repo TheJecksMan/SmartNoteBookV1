@@ -1,4 +1,4 @@
-package com.example.smartnotebook;
+package com.panabey.smartnotebook;
 
 import androidx.annotation.NonNull;
 

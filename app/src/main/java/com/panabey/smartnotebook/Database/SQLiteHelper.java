@@ -1,4 +1,4 @@
-package com.example.smartnotebook.Database;
+package com.panabey.smartnotebook.Database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

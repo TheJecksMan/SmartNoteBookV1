@@ -1,4 +1,4 @@
-package com.example.smartnotebook;
+package com.panabey.smartnotebook;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;

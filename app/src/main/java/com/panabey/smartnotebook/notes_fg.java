@@ -1,4 +1,4 @@
-package com.example.smartnotebook;
+package com.panabey.smartnotebook;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -16,8 +16,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.example.smartnotebook.Database.SQLiteHelper;
-import com.example.smartnotebook.util.RecyclerAdapter;
+import com.panabey.smartnotebook.Database.SQLiteHelper;
+import com.panabey.smartnotebook.util.RecyclerAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;

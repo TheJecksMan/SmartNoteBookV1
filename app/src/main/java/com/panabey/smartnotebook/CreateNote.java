@@ -1,4 +1,4 @@
-package com.example.smartnotebook;
+package com.panabey.smartnotebook;
 
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.smartnotebook.Database.SQLiteHelper;
+import com.panabey.smartnotebook.Database.SQLiteHelper;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
