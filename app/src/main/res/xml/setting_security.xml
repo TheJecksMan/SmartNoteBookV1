@@ -1,4 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Безопасность">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="switch_preference_1"
+            android:title="Щифрование данных" />
+        <Preference
+            android:title="Код-пароль" />
+        <Preference
+            android:title="Подсказка пароля" />
+        <Preference
+            android:title="Вход по отпечатку пальца" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Защита заметок">
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_preference_1"
+            android:title="Ложный пароль"
+            android:summary="Скрытие выбраных меток"/>
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="switch_preference_1"
+            android:title="Самоуничтожение"
+            android:summary="Удаление заметок"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Прочее">
+        <Preference android:title="Фото взломщика"/>
+    </PreferenceCategory>
 
 </PreferenceScreen>

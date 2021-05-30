@@ -38,6 +38,9 @@
     <string name="navigation_drawer_close">close</string>
 
     <!--Setting Main start-->
+    <string name="notif_setting">Уведомления и звук</string>
+    <string name="language_setting">Язык</string>
+    <string name="date_setting">Данные и память</string>
     <string name="main_setting">Основное</string>
     <string name="security_setting">Конфиденциальность</string>
     <string name="info_setting">О программе</string>
@@ -48,7 +51,7 @@
 
     <!--Setting General start-->
     <string name="UsageAnimate">Анимация</string>
-    <string name="LanguagePref">Язык</string>
+
     <string name="UsageLanguage">Выбрать язык</string>
     <!--Setting General end-->
 

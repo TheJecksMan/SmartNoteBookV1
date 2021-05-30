@@ -5,35 +5,35 @@
         <Preference
             android:id="@+id/MainSetting"
             android:title="@string/main_setting"
-            app:fragment="com.panabey.smartnotebook.util.SettingsFragmentGeneral"
+            app:fragment="com.panabey.smartnotebook.SettingsApp.SettingsFragmentGeneral"
             app:icon="@drawable/ic_outline_settings" />
         <Preference
             android:id="@+id/NotificationSetting"
-            android:title="Уведомления и звук"
-            app:fragment=""
+            android:title="@string/notif_setting"
+            app:fragment="com.panabey.smartnotebook.SettingsApp.SettingNotification"
             app:icon="@drawable/setting_outline_notifications" />
         <Preference
             android:id="@+id/SecuritySetting"
             android:title="@string/security_setting"
-            app:fragment="com.panabey.smartnotebook.util.SettingsFragmentSecurity"
+            app:fragment="com.panabey.smartnotebook.SettingsApp.SettingsFragmentSecurity"
             app:icon="@drawable/setting_outline_lock" />
         <Preference
             android:id="@+id/DataSetting"
-            android:title="Данные и память"
-            app:fragment=""
+            android:title="@string/date_setting"
+            app:fragment="com.panabey.smartnotebook.SettingsApp.SettingDate"
             app:icon="@drawable/setting_outline_storage" />
         <Preference
             android:id="@+id/LanguageSetting"
-            android:title="Язык"
-            app:fragment=""
+            android:title="@string/language_setting"
+            app:fragment="com.panabey.smartnotebook.SettingsApp.SettingLanguage"
             app:icon="@drawable/setting_outline_language" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="Помощь">
 
+    <PreferenceCategory android:title="Помощь">
         <Preference
             android:id="@+id/InfoSetting"
             android:title="@string/info_setting"
-            app:fragment="com.panabey.smartnotebook.util.SettingsFragmentAbout"
+            app:fragment="com.panabey.smartnotebook.SettingsApp.SettingsFragmentAbout"
             app:icon="@drawable/ic_outline_info" />
         <Preference
             android:id="@+id/BugReportSetting"

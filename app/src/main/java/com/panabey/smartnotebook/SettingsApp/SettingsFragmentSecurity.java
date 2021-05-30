@@ -1,4 +1,4 @@
-package com.panabey.smartnotebook.util;
+package com.panabey.smartnotebook.SettingsApp;
 
 import android.os.Bundle;
 

@@ -3,7 +3,7 @@ package com.panabey.smartnotebook;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.panabey.smartnotebook.util.SettingsFragment;
+import com.panabey.smartnotebook.SettingsApp.SettingsFragment;
 
 public class Setting extends AppCompatActivity {
 
