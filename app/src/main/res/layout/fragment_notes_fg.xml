@@ -21,40 +21,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="gone">
-
-            <LinearLayout
-                android:id="@+id/ListNotes"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingLeft="8dp"
-                android:paddingTop="5dp"
-                android:paddingRight="8dp"
-                android:paddingBottom="5dp">
-
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/notes_custom_bg"
-                    android:text="Заголовок"
-                    android:textAlignment="viewStart"
-                    android:textStyle="bold"
-                    android:visibility="gone"
-                    tools:visibility="gone" />
-            </LinearLayout>
-        </ScrollView>
-
         <Button
             android:id="@+id/buttonCreateNotes"
             android:layout_width="60dp"

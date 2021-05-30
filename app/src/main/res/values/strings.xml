@@ -39,19 +39,17 @@
 
     <!--Setting Main start-->
     <string name="main_setting">Основное</string>
-    <string name="security_setting">Безопасность</string>
+    <string name="security_setting">Конфиденциальность</string>
     <string name="info_setting">О программе</string>
     <string name="bug_setting">Сообщить об ошибке</string>
     <!--Setting Main end-->
 
+    <string name="SettingPref">Настройки</string>
+
     <!--Setting General start-->
-    <string name="AnimatePref">Анимация</string>
-    <string name="GeneralPref">Общее</string>
-    <string name="UsageAnimate">Использовать анимацию</string>
+    <string name="UsageAnimate">Анимация</string>
     <string name="LanguagePref">Язык</string>
     <string name="UsageLanguage">Выбрать язык</string>
-    <string name="DatabaseInfoPref">База данных</string>
-    <string name="ClearDatabase">Очистить базу данных</string>
     <!--Setting General end-->
 
     <!--Setting About start-->

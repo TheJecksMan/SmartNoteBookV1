@@ -6,6 +6,11 @@
         android:id="@+id/group1"
         android:checkableBehavior="single">
         <item
+            android:id="@+id/app_bar_switch"
+            android:title="Dark Mode"
+            app:actionLayout="@layout/switch_item"
+            app:showAsAction="always" />
+        <item
             android:id="@+id/editTextItem"
             android:icon="@drawable/ic_outline_edit_note"
             android:title="Редактор текста" />

@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <Preference
-        android:id="@+id/MainSetting"
-        android:title="@string/main_setting"
-        app:fragment="com.panabey.smartnotebook.util.SettingsFragmentGeneral"
-        app:icon="@drawable/ic_outline_settings" />
-    <Preference
-        android:id="@+id/SecuritySetting"
-        android:title="@string/security_setting"
-        app:fragment="com.panabey.smartnotebook.util.SettingsFragmentSecurity"
-        app:icon="@drawable/setting_outline_security" />
-    <Preference
-        android:id="@+id/InfoSetting"
-        android:title="@string/info_setting"
-        app:fragment="com.panabey.smartnotebook.util.SettingsFragmentAbout"
-        app:icon="@drawable/ic_outline_info" />
-    <Preference
-        android:id="@+id/BugReportSetting"
-        android:title = "@string/bug_setting"
-        app:icon="@drawable/setting_outline_bug_report" />
+    <PreferenceCategory android:title="Настройки">
+        <Preference
+            android:id="@+id/MainSetting"
+            android:title="@string/main_setting"
+            app:fragment="com.panabey.smartnotebook.util.SettingsFragmentGeneral"
+            app:icon="@drawable/ic_outline_settings" />
+        <Preference
+            android:id="@+id/NotificationSetting"
+            android:title="Уведомления и звук"
+            app:fragment=""
+            app:icon="@drawable/setting_outline_notifications" />
+        <Preference
+            android:id="@+id/SecuritySetting"
+            android:title="@string/security_setting"
+            app:fragment="com.panabey.smartnotebook.util.SettingsFragmentSecurity"
+            app:icon="@drawable/setting_outline_lock" />
+        <Preference
+            android:id="@+id/DataSetting"
+            android:title="Данные и память"
+            app:fragment=""
+            app:icon="@drawable/setting_outline_storage" />
+        <Preference
+            android:id="@+id/LanguageSetting"
+            android:title="Язык"
+            app:fragment=""
+            app:icon="@drawable/setting_outline_language" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Помощь">
+
+        <Preference
+            android:id="@+id/InfoSetting"
+            android:title="@string/info_setting"
+            app:fragment="com.panabey.smartnotebook.util.SettingsFragmentAbout"
+            app:icon="@drawable/ic_outline_info" />
+        <Preference
+            android:id="@+id/BugReportSetting"
+            android:title="@string/bug_setting"
+            app:icon="@drawable/setting_outline_bug_report" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

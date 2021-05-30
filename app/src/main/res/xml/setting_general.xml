@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/GeneralPref">
-    <Preference
-        android:title="Выбрать цвет темы" />
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <SeekBarPreference android:title="Размер текста" />
 
-        <Preference
-            android:title="Выбрать дополнительный цвет" />
+    <PreferenceCategory android:title="Цветовая тема">
+        <Preference android:title="Выбрать цвет темы" />
+        <Preference android:title="Выбрать дополнительный цвет" />
+
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/AnimatePref">
+    <PreferenceCategory android:title="@string/SettingPref">
+        <Preference android:title="Настроить ночную тему"
+            android:summary="Не используется"/>
         <SwitchPreference
             android:id="@+id/UsageAnimate"
             android:defaultValue="true"
@@ -16,20 +19,4 @@
             android:title="@string/UsageAnimate" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/LanguagePref">
-        <ListPreference
-            android:id="@+id/ChangeLanguage"
-            android:defaultValue="1"
-            android:entries="@array/lang_info"
-            android:entryValues="@array/lang_values"
-            android:key="key_preference_language"
-            android:title="@string/UsageLanguage" />
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/DatabaseInfoPref">
-        <Preference
-            android:id="@+id/UsageDatabase"
-            android:key="key_preference_database"
-            android:title="@string/ClearDatabase" />
-    </PreferenceCategory>
 </PreferenceScreen>
