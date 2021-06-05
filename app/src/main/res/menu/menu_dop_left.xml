@@ -16,7 +16,7 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/TrashItem"
-            android:icon="@drawable/ic_outline_restore_from_trash"
+            android:icon="@drawable/main_menu_outline_delete"
             android:title="Корзина" />
     </group>
 

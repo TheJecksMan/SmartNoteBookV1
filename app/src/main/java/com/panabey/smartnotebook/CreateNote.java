@@ -1,19 +1,15 @@
 package com.panabey.smartnotebook;
 
-import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 
 
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.panabey.smartnotebook.Database.SQLiteHelper;
@@ -26,14 +22,14 @@ import java.util.Date;
 public class CreateNote extends AppCompatActivity {
 
     private View editTextHead;
-    private View editTextBody;-
+    private View editTextBody;
 
     private TextView lastModifiedDate;
     private TextView EditTextHeadTextView;
     private TextView editTextBodyTextView;
     private Toolbar toolbarCreateNote;
-    String lastModify;
-    DateFormat dateFormat;
+    private String lastModify;
+    private DateFormat dateFormat;
 
     SQLiteHelper sqLiteHelper;
     ContentValues contentValues;
@@ -109,7 +105,7 @@ public class CreateNote extends AppCompatActivity {
     }
     private String getDateTime() {
         Date dateBody = new Date();
-        String lastModify = dateFormat.format(dateBody);
+        String lastModify = dateFormat.format(new Date());
         return lastModify;
     }
 

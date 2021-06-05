@@ -63,6 +63,19 @@
     <string name="PrivacyPolicy_app">Политика конфиденциальности</string>
     <!--Setting About end-->
 
+    <!--CreateNotes start-->
+    <string name="NotesImportItem">Импорт файла</string>
+    <string name="NotesAdvanceSettingNotesItem">Расширенные настройки</string>
+    <!--CreateNotes end-->
+
+    <!--Setting Security start-->
+
+    <!--Setting Security end-->
+
+    <!--Setting Security start-->
+
+    <!--Setting Security end-->
+
     <!--Setting Security start-->
 
     <!--Setting Security end-->
