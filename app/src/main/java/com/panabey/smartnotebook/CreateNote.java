@@ -2,6 +2,8 @@ package com.panabey.smartnotebook;
 
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
 
 
 import android.content.ContentValues;
@@ -24,12 +26,12 @@ import java.util.Date;
 public class CreateNote extends AppCompatActivity {
 
     private View editTextHead;
-    private View editTextBody;
-    private Button NotesButtonMenu;
+    private View editTextBody;-
 
     private TextView lastModifiedDate;
     private TextView EditTextHeadTextView;
     private TextView editTextBodyTextView;
+    private Toolbar toolbarCreateNote;
     String lastModify;
     DateFormat dateFormat;
 
@@ -50,25 +52,17 @@ public class CreateNote extends AppCompatActivity {
          editTextBody= findViewById(R.id.editTextNotes);
          lastModifiedDate = findViewById(R.id.lastModifiedDate);
 
-         NotesButtonMenu = findViewById(R.id.NotesButtonMenu);
 
          EditTextHeadTextView = findViewById(R.id.editTextHeadText);
          editTextBodyTextView = findViewById(R.id.editTextNotes);
 
-        Button button = findViewById(R.id.BackToNote);
+
         //DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault());
         dateFormat= new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 
-         //Кнопка открытия меню
-        NotesButtonMenu.setOnClickListener(new View.OnClickListener() {
+        toolbarCreateNote = findViewById(R.id.toolbarUpPanel);
+        toolbarCreateNote.setNavigationOnClickListener(new View.OnClickListener(){
 
-            @Override
-            public void onClick(View v) {
-                showPopup(v);
-            }
-        });
-
-        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 WriteSQL();
@@ -77,6 +71,19 @@ public class CreateNote extends AppCompatActivity {
             }
         });
 
+        toolbarCreateNote.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
+
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.ImportItem:
+
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
         //------------------------Последние изменения в тексте---------------------------//
         editTextBody.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -106,25 +113,6 @@ public class CreateNote extends AppCompatActivity {
         return lastModify;
     }
 
-    private void showPopup(View v) {
-        PopupMenu popup = new PopupMenu(this, v);
-        MenuInflater inflater = popup.getMenuInflater();
-        popup.getMenuInflater().inflate(R.menu.notes_menu, popup.getMenu());
-
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener(){
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.ImportItem:
-
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
-        popup.show();
-    }
 
     @Override
     public void onBackPressed() {

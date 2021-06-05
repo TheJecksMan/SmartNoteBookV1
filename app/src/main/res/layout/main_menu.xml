@@ -28,29 +28,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <View
-                android:id="@+id/viewMainMenuBar"
-                android:layout_width="0dp"
-                android:layout_height="75dp"
-                android:background="@drawable/ic_custom_menu_bar"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarMenuMainBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/UIComponent"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
                 app:layout_constraintBottom_toTopOf="@+id/fragmentPager"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/app_name"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationIcon="@drawable/main_outline_menu"
+                app:title="@string/app_name_menu"
+                app:menu="@menu/toolbar_up_main_menu"/>
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/BottomNavigationMenu"
@@ -70,21 +61,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/BottomNavigationMenu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewMainMenuBar" />
-
-            <Button
-                android:id="@+id/buttonCallDopMenu"
-                android:layout_width="58dp"
-                android:layout_height="49dp"
-                android:background="#00FFFFFF"
-                android:drawableLeft="@drawable/main_menu_outline_notes"
-                app:layout_constraintBottom_toBottomOf="@+id/viewMainMenuBar"
-                app:layout_constraintEnd_toStartOf="@+id/textView2"
-                app:layout_constraintHorizontal_bias="0.213"
-                app:layout_constraintStart_toStartOf="@+id/viewMainMenuBar"
-                app:layout_constraintTop_toTopOf="@+id/viewMainMenuBar"
-                app:layout_constraintVertical_bias="0.269" />
-
+                app:layout_constraintTop_toBottomOf="@+id/toolbarMenuMainBar" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

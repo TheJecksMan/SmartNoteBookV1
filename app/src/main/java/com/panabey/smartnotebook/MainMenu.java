@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -13,9 +14,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -26,15 +24,14 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
-    Button bntDopMenuLeft;
     BottomNavigationView BottomNavigationMenu;
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
 
         drawerLayout =  findViewById(R.id.MainDrawerLayout);
-        bntDopMenuLeft = findViewById(R.id.buttonCallDopMenu);
         navigationView = findViewById(R.id.dopMenuLeft);
 
         BottomNavigationMenu = findViewById(R.id.BottomNavigationMenu);
@@ -49,7 +46,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         toggle.syncState();
         
         navigationView.setNavigationItemSelectedListener(this);
-
+/*
         View.OnClickListener OnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,8 +57,17 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
                 }
             }
         };
-
         bntDopMenuLeft.setOnClickListener(OnClickListener);
+ */
+
+        toolbar = findViewById(R.id.toolbarMenuMainBar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
     }
 
     @Override
