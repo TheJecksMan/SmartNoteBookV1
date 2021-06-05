@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <PreferenceCategory android:title="Настройки">
+
         <Preference
             android:id="@+id/MainSetting"
             android:title="@string/main_setting"
@@ -27,7 +27,6 @@
             android:title="@string/language_setting"
             app:fragment="com.panabey.smartnotebook.SettingsApp.SettingLanguage"
             app:icon="@drawable/setting_outline_language" />
-    </PreferenceCategory>
 
     <PreferenceCategory android:title="Помощь">
         <Preference

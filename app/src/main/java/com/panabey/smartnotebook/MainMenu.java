@@ -46,19 +46,6 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         toggle.syncState();
         
         navigationView.setNavigationItemSelectedListener(this);
-/*
-        View.OnClickListener OnClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()){
-                    case R.id.buttonCallDopMenu:
-                        drawerLayout.openDrawer(GravityCompat.START);
-                        break;
-                }
-            }
-        };
-        bntDopMenuLeft.setOnClickListener(OnClickListener);
- */
 
         toolbar = findViewById(R.id.toolbarMenuMainBar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener(){
