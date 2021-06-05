@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -49,14 +50,19 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         
         navigationView.setNavigationItemSelectedListener(this);
 
-        bntDopMenuLeft.setOnClickListener(new View.OnClickListener(){
+        View.OnClickListener OnClickListener = new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                drawerLayout.openDrawer(GravityCompat.START);
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.buttonCallDopMenu:
+                        drawerLayout.openDrawer(GravityCompat.START);
+                        break;
+                }
             }
-        });
-    }
+        };
 
+        bntDopMenuLeft.setOnClickListener(OnClickListener);
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -82,7 +88,6 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
     @Override
     public void onBackPressed(){

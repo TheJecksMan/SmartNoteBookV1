@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--LightTheme-->
+    <!--DarkTheme-->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -9,16 +9,16 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorText">#FFFFFFFF</color>
+    <color name="colorText">#FF000000</color>
     <color name="Greyple">#99AAB5</color>
     <color name="Dark">#2C2F33</color>
     <color name="NotQuiteBlack">#23272a</color>
 
-    <color name="IcoComponent">#FFFFFFFF</color>
-    <color name="UIComponent">#FFFFFFFF</color>
+    <color name="IcoComponent">#FF000000</color>
+    <color name="UIComponent">#202124</color>
     <!--MainMenu color start-->
-    <color name="MainMenuBackground">#FFEFF3FB</color>
-    <color name="MainMenu">#FFE4E9F5</color>
+    <color name="MainMenuBackground">#2E3134</color>
+    <color name="MainMenu">#99AAB5</color>
     <color name="LiteBlue">#FF5e81f4</color>
     <!--MainMenu color end-->
 

@@ -1,7 +1,11 @@
 package com.panabey.smartnotebook;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.SeekBarPreference;
+
 import android.os.Bundle;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.panabey.smartnotebook.SettingsApp.SettingsFragment;
 
@@ -18,4 +22,9 @@ public class Setting extends AppCompatActivity {
                 .commit();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.gc();
+    }
 }
