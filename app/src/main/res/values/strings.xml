@@ -65,6 +65,7 @@
 
     <!--CreateNotes start-->
     <string name="NotesImportItem">Импорт файла</string>
+    <string name="SearchByCreateNotes">Поиск в..</string>
     <string name="NotesAdvanceSettingNotesItem">Расширенные настройки</string>
     <!--CreateNotes end-->
 

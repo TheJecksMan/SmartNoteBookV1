@@ -41,8 +41,8 @@ public class accountLogin_fg extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account_login_fg, container, false);
 
-        email = (TextInputEditText) view.findViewById(R.id.layoutEmail);
-        password = (TextInputEditText) view.findViewById(R.id.layoutPassword);
+        email = view.findViewById(R.id.layoutEmail);
+        password = view.findViewById(R.id.layoutPassword);
 
         LoginButton = view.findViewById(R.id.buttonLoginAccount);
         InfoEmpty = view.findViewById(R.id.CheckEmpty);

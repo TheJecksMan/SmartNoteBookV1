@@ -7,5 +7,5 @@
         android:title="@string/buttomSearch"
         android:icon="@drawable/menu_outline_search"
         app:showAsAction="ifRoom"
-        />
+        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
 </menu>

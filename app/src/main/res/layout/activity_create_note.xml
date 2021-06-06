@@ -39,7 +39,7 @@
                 android:gravity="top"
                 android:hint="@string/textViewNotes"
                 android:importantForAutofill="no"
-                android:inputType="textMultiLine|textNoSuggestions|textPersonName"
+                android:inputType="textLongMessage|textAutoCorrect|textMultiLine|textNoSuggestions|textPersonName"
                 android:padding="10dp"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:textSize="15sp"
@@ -76,7 +76,7 @@
                 android:gravity="top"
                 android:hint="@string/textViewHead"
                 android:importantForAutofill="no"
-                android:inputType="textMultiLine|textNoSuggestions|textPersonName"
+                android:inputType="textAutoCorrect|textMultiLine|textNoSuggestions|textPersonName"
                 android:padding="10dp"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:textColorHint="#000000"
@@ -99,7 +99,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/notes_menu"
-        app:navigationIcon="@drawable/notes_outline_arrow_back"/>
+        app:navigationIcon="@drawable/notes_outline_arrow_back" />
 
     <View
         android:id="@+id/viewEditMenu"

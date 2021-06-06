@@ -7,10 +7,15 @@
         android:max="30"
         android:title="Размер текста"
         app:showSeekBarValue="true" />
+
     <Preference android:layout="@layout/item_recyclerview" />
+
     <PreferenceCategory android:title="Цветовая тема">
+
         <Preference android:title="Выбрать цвет темы" />
+
         <Preference android:title="Выбрать дополнительный цвет" />
+
         <SwitchPreference
             android:id="@+id/DarkThemeSwitch"
             android:defaultValue="false"
@@ -20,14 +25,17 @@
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/SettingPref">
+
         <Preference
             android:summary="Не используется"
             android:title="Настроить ночную тему" />
+
         <SwitchPreference
             android:id="@+id/UsageAnimate"
             android:defaultValue="true"
             android:key="key_preference_animate"
             android:title="@string/UsageAnimate" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -5,7 +5,7 @@
     android:id="@+id/MainDrawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/MainMenuBackground"
+    android:background="@null"
     android:fitsSystemWindows="true"
     tools:context=".MainMenu">
 
@@ -39,9 +39,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:menu="@menu/toolbar_up_main_menu"
                 app:navigationIcon="@drawable/main_outline_menu"
-                app:title="@string/app_name_menu"
-                app:menu="@menu/toolbar_up_main_menu"/>
+                app:title="@string/app_name_menu" />
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/BottomNavigationMenu"
@@ -58,6 +58,7 @@
                 android:id="@+id/fragmentPager"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:background="@color/MainMenuBackground"
                 app:layout_constraintBottom_toTopOf="@+id/BottomNavigationMenu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

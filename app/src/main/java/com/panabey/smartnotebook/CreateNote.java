@@ -44,10 +44,9 @@ public class CreateNote extends AppCompatActivity {
         database = sqLiteHelper.getWritableDatabase();
         contentValues = new ContentValues();
         
-         editTextHead = findViewById(R.id.editTextHeadText);
-         editTextBody= findViewById(R.id.editTextNotes);
-         lastModifiedDate = findViewById(R.id.lastModifiedDate);
-
+        editTextHead = findViewById(R.id.editTextHeadText);
+        editTextBody= findViewById(R.id.editTextNotes);
+        lastModifiedDate = findViewById(R.id.lastModifiedDate);
 
          EditTextHeadTextView = findViewById(R.id.editTextHeadText);
          editTextBodyTextView = findViewById(R.id.editTextNotes);
@@ -73,11 +72,15 @@ public class CreateNote extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.ImportItem:
-
-                        return true;
+                        break;
+                    case R.id.UndoItem:
+                        break;
+                    case R.id.RedoItem:
+                        break;
                     default:
                         return false;
                 }
+                return true;
             }
         });
         //------------------------Последние изменения в тексте---------------------------//
@@ -100,7 +103,6 @@ public class CreateNote extends AppCompatActivity {
                 }
             }
         });
-
 
     }
     private String getDateTime() {

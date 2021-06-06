@@ -13,12 +13,14 @@
         android:title=""
         app:showAsAction="ifRoom"/>
 
-    <item
-        android:id="@+id/ImportItem"
-        android:title="@string/NotesImportItem" />
+    <group >
+        <item
+            android:id="@+id/ImportItem"
+            android:title="@string/NotesImportItem" />
 
-    <item
-        android:id="@+id/advanceSettingNotesItem"
-        android:title="@string/NotesAdvanceSettingNotesItem" />
+        <item
+            android:id="@+id/advanceSettingNotesItem"
+            android:title="@string/NotesAdvanceSettingNotesItem" />
+    </group>
 
 </menu>

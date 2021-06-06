@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mImageView = (ImageView)  findViewById(R.id.imageViewSplashScreen);
-        mProgress = (ProgressBar) findViewById(R.id.progressBarLoad);
-        TextView mTextViewVersion = (TextView) findViewById(R.id.textViewVersion);
+        mImageView = findViewById(R.id.imageViewSplashScreen);
+        mProgress = findViewById(R.id.progressBarLoad);
+        TextView mTextViewVersion = findViewById(R.id.textViewVersion);
 
         try {
 

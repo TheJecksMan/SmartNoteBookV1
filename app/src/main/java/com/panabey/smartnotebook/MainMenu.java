@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -14,6 +15,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -21,11 +24,12 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    ActionBarDrawerToggle toggle;
-    BottomNavigationView BottomNavigationMenu;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private ActionBarDrawerToggle toggle;
+    private BottomNavigationView BottomNavigationMenu;
     private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +46,21 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         //----------------------------NavigationView-------------------------------------//
         navigationView.bringToFront();
         toggle = new ActionBarDrawerToggle(this,drawerLayout, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        
+
         navigationView.setNavigationItemSelectedListener(this);
+
+        View viewHeader = navigationView.getHeaderView(0);
+        ImageButton imageDarkTheme = viewHeader.findViewById(R.id.imageButtonDarkMode);
+        
+        imageDarkTheme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
+        });
 
         toolbar = findViewById(R.id.toolbarMenuMainBar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener(){
@@ -88,7 +103,10 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         else
-        {super.onBackPressed(); }
+        {
+            super.onBackPressed();
+            finish();
+        }
     }
 
     //---------------------------------------Нижняя панель-----------------------------------//
