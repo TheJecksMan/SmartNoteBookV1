@@ -15,18 +15,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import android.view.View;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-import leakcanary.AppWatcher;
-
 
 public class MainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private DrawerLayout drawerLayout;
+    public DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ActionBarDrawerToggle toggle;
     private BottomNavigationView BottomNavigationMenu;
@@ -94,7 +91,6 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
                 startActivity(intentInfo);
                 break;
         }
-
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }

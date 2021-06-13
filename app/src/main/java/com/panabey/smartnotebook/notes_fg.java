@@ -114,8 +114,6 @@ public class notes_fg extends Fragment {
 
                     SQLiteDatabase databaseDelete = sqLiteHelper.getWritableDatabase();
                     sqLiteHelper.deleteNote(databaseDelete, position + 1);
-
-                    //recyclerView.getAdapter().notifyDataSetChanged();
                     break;
             }
         }

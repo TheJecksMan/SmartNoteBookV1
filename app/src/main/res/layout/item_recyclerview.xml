@@ -11,7 +11,7 @@
         android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/notes_custom_bg"
         android:paddingBottom="16dp"
@@ -26,7 +26,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="16dp"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="20dp"
             android:text="Simple Title Text "
@@ -58,18 +58,5 @@
             android:text="TextView"
             android:textColor="@color/black" />
     </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:drawingCacheQuality="auto"
-        app:layout_constraintEnd_toStartOf="@+id/container"
-        app:layout_constraintStart_toStartOf="@+id/container"
-        app:layout_constraintTop_toTopOf="@+id/container"
-        app:srcCompat="@mipmap/ic_launcher" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

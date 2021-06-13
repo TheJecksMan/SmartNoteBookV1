@@ -41,7 +41,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.imageView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.load_animate));
+       // holder.imageView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.load_animate));
         holder.container.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_load_animate));
         holder.rowCountTextView.setText(String.valueOf(position));
         holder.textView.setText(NotesList.get(position));
@@ -62,7 +62,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.imageView);
+           // imageView = itemView.findViewById(R.id.imageView);
             textView = itemView.findViewById(R.id.textView);
             rowCountTextView = itemView.findViewById(R.id.rowCountTextView);
             container = itemView.findViewById(R.id.container);
