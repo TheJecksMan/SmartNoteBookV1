@@ -4,17 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.preference.SeekBarPreference;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.panabey.smartnotebook.SettingsApp.SettingsFragment;
-import com.panabey.smartnotebook.SettingsApp.SettingsFragmentGeneral;
 
 public class Setting extends AppCompatActivity {
     private Toolbar toolbarSetting;

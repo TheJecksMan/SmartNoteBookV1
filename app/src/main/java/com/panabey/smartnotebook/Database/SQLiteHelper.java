@@ -35,4 +35,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     {
         return db.delete(TABLE_CONTACTS, KEY_ID + "=" + id, null) > 0;
     }
+    /*
+    public boolean updateNotes(SQLiteDatabase db, int toPos, int fromPos)
+    {
+        return  db.update(TABLE_CONTACTS, )
+    }
+
+     */
 }

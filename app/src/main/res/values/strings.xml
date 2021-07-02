@@ -61,6 +61,7 @@
     <string name="RateApp">Оценить приложение</string>
     <string name="LicenseApp">Лицензионное соглашение</string>
     <string name="PrivacyPolicy_app">Политика конфиденциальности</string>
+    <string name="versionApp">Текущая версия: </string>
     <!--Setting About end-->
 
     <!--CreateNotes start-->

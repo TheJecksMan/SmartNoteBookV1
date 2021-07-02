@@ -101,6 +101,8 @@ public class notes_fg extends Fragment {
             Collections.swap(NotesList, fromPosition, toPosition);
             recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
 
+            sqLiteHelper = new SQLiteHelper(getContext());
+            database = sqLiteHelper.getWritableDatabase();
             return false;
         }
 

@@ -5,21 +5,5 @@
     android:id="@+id/Panel"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="@color/purple_500"
-    android:orientation="vertical">
-
-
-    <ImageButton
-        android:id="@+id/imageButtonDarkMode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.503"
-        app:srcCompat="@drawable/setting_outline_mode_night"
-        app:tint="@color/white" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:background="@color/white"
+    android:orientation="vertical"/>

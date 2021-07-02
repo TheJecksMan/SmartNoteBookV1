@@ -4,7 +4,7 @@
     <Preference
         android:id="@+id/Info_Build"
         android:title="@string/app_name"
-        app:summary="version"/>
+        app:summary="@string/versionApp"/>
 
     <Preference
         android:id="@+id/Rate_app"

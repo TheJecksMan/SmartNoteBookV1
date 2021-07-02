@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -50,16 +51,6 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-
-        View viewHeader = navigationView.getHeaderView(0);
-        ImageButton imageDarkTheme = viewHeader.findViewById(R.id.imageButtonDarkMode);
-        
-        imageDarkTheme.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            }
-        });
 
         toolbar = findViewById(R.id.toolbarMenuMainBar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener(){

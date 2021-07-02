@@ -17,7 +17,7 @@
     <color name="IcoComponent">#FFFFFFFF</color>
     <color name="UIComponent">#FFFFFFFF</color>
     <!--MainMenu color start-->
-    <color name="MainMenuBackground">#FFEFF3FB</color>
+    <color name="MainMenuBackground">#f7f7f7</color>
     <color name="MainMenu">#FFE4E9F5</color>
     <color name="LiteBlue">#FF5e81f4</color>
     <!--MainMenu color end-->
