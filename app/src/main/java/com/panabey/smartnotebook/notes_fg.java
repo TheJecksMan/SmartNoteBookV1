@@ -72,6 +72,8 @@ public class notes_fg extends Fragment {
 
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setHasFixedSize(true);
+        //recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setItemViewCacheSize(30);
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
@@ -114,11 +116,13 @@ public class notes_fg extends Fragment {
                     NotesList.remove(position);
                     recyclerView.getAdapter().notifyItemRemoved(position);
 
+
                     SQLiteDatabase databaseDelete = sqLiteHelper.getWritableDatabase();
                     sqLiteHelper.deleteNote(databaseDelete, position + 1);
                     break;
             }
         }
+
 
     };
 }

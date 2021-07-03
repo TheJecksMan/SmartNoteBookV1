@@ -20,7 +20,6 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    private static final String TAG = "RecyclerAdapter";
     List<String> NotesList;
     Context context;
     public RecyclerAdapter(List<String> NotesList, Context context) {
