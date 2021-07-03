@@ -43,7 +43,6 @@ public class notes_fg extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_notes_fg, null);
-
         NotesList = new ArrayList<>();
 
         //---------------БД-----------------------------------
@@ -74,7 +73,9 @@ public class notes_fg extends Fragment {
         recyclerView.setHasFixedSize(true);
         //recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setItemViewCacheSize(30);
-        //recyclerView.setRecycledViewPool(pool);
+        //recyclerView.getRecycledViewPool().setMaxRecycledViews(0,20);
+        //recyclerAdapter.setHasStableIds(true);
+
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);

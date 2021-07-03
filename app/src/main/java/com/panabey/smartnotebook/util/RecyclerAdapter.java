@@ -18,16 +18,19 @@ import com.panabey.smartnotebook.R;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     List<String> NotesList;
+    List<String> SearchNotesList;
     Context context;
-    
+
     public RecyclerAdapter(List<String> NotesList, Context context) {
 
         this.NotesList = NotesList;
+        this.SearchNotesList = new ArrayList<>(NotesList);
         this.context = context;
     }
 
@@ -62,6 +65,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return true;
     }
 
+
+
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 
@@ -89,8 +94,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
   */
             view.getContext().startActivity(new Intent(view.getContext(), CreateNote.class));
-
-
         }
 
     }
