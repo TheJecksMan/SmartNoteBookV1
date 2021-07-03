@@ -74,6 +74,7 @@ public class notes_fg extends Fragment {
         recyclerView.setHasFixedSize(true);
         //recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setItemViewCacheSize(30);
+        //recyclerView.setRecycledViewPool(pool);
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);

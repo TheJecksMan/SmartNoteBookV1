@@ -5,10 +5,24 @@
     android:id="@+id/NotesToolbarUp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/MainMenu"
+    android:background="@color/MainMenuBackground"
     android:focusableInTouchMode="true"
     tools:context=".CreateNote">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarUpPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/UIComponent"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/notes_menu"
+        app:navigationIcon="@drawable/notes_outline_arrow_back" />
 
     <ScrollView
         android:id="@+id/scrollView3"
@@ -32,7 +46,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:background="@color/MainMenu"
+                android:background="@null"
                 android:ems="10"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
@@ -86,20 +100,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarUpPanel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/UIComponent"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/notes_menu"
-        app:navigationIcon="@drawable/notes_outline_arrow_back" />
 
     <View
         android:id="@+id/viewEditMenu"

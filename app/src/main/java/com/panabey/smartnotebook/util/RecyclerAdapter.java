@@ -16,12 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.panabey.smartnotebook.CreateNote;
 import com.panabey.smartnotebook.R;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     List<String> NotesList;
     Context context;
+    
     public RecyclerAdapter(List<String> NotesList, Context context) {
 
         this.NotesList = NotesList;
@@ -31,6 +34,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_recyclerview, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
@@ -50,6 +54,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public int getItemCount() {
 
         return NotesList.size();
+    }
+
+    @Override
+    public boolean onFailedToRecycleView(@NonNull @NotNull ViewHolder holder) {
+        super.onFailedToRecycleView(holder);
+        return true;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
