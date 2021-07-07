@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.panabey.smartnotebook.Database.SQLiteHelper;
+import com.panabey.smartnotebook.util.LoadPrefStartup;
 import com.panabey.smartnotebook.util.RecyclerAdapter;
 
 import java.util.ArrayList;

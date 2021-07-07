@@ -1,5 +1,6 @@
 package com.panabey.smartnotebook.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.panabey.smartnotebook.CreateNote;
+import com.panabey.smartnotebook.MainMenu;
 import com.panabey.smartnotebook.R;
 
 import org.jetbrains.annotations.NotNull;
@@ -27,10 +29,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     List<String> SearchNotesList;
     Context context;
 
+
     public RecyclerAdapter(List<String> NotesList, Context context) {
 
         this.NotesList = NotesList;
-        this.SearchNotesList = new ArrayList<>(NotesList);
         this.context = context;
     }
 
@@ -47,7 +49,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-       // holder.imageView.setAnimation(AnimationUtils.loadAnimation(context, R.anim.load_animate));
         holder.container.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_load_animate));
         holder.rowCountTextView.setText(String.valueOf(position));
         holder.textView.setText(NotesList.get(position));

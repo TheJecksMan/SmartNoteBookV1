@@ -1,21 +1,27 @@
 package com.panabey.smartnotebook;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.panabey.smartnotebook.util.LoadPrefStartup;
+import com.panabey.smartnotebook.util.SharedPref;
+
+import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity  {
 
     private ProgressBar mProgress;
     private ImageView mImageView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +34,14 @@ public class MainActivity extends AppCompatActivity  {
 
         try {
 
-            mTextViewVersion.setText(this.getPackageManager() .getPackageInfo(this.getPackageName(), 0).versionName);
+            mTextViewVersion.setText(this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName);
         }
         catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+
+        LoadPrefStartup loadPrefStartup = new LoadPrefStartup(MainActivity.this, this);
+        loadPrefStartup.DarkThemeLoadPref();
 
         //-------------------------//
         new Thread(new Runnable() {
@@ -66,6 +75,7 @@ public class MainActivity extends AppCompatActivity  {
         mImageView.setImageDrawable(null);
 
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
