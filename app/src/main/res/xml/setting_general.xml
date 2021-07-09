@@ -18,7 +18,6 @@
 
         <Preference android:title="Выбрать цвет темы" />
 
-        <Preference android:title="Выбрать дополнительный цвет" />
 
         <SwitchPreference
             android:id="@+id/DarkThemeSwitch"

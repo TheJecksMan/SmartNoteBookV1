@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".reminders_fg">
+    tools:context=".list_fg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/buttonCreateReminders"
+            android:id="@+id/buttonCreateList"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@drawable/ic_custom_button"

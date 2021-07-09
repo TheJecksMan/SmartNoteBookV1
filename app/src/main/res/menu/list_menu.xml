@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/UndoItem"
+        android:icon="@drawable/notes_outline_undo"
+        android:title=""
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/RedoItem"
+        android:icon="@drawable/notes_outline_redo"
+        android:title=""
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/EditListItem"
+        android:title="Режим редактирования"
+        android:checkable="true"
+        app:actionViewClass="android.widget.CheckBox"/>
+
+</menu>

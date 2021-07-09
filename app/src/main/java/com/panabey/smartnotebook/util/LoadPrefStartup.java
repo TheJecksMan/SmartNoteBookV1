@@ -36,5 +36,4 @@ public class LoadPrefStartup {
     public boolean AnimLoadPref(){
         return ChangeAnim = Pref.getBoolean("key_preference_animate", false);
     }
-
 }

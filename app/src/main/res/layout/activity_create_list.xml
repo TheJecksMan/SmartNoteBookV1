@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@null"
+    tools:context=".CreateList">
+
+    <Button
+        android:id="@+id/buttonAddList"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:text="Добавить"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarUpPanelList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/UIComponent"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/list_menu"
+        app:navigationIcon="@drawable/notes_outline_arrow_back" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/MainMenuBackground"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAddList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarUpPanelList">
+
+        <LinearLayout
+            android:id="@+id/LinearLayoutList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/MainMenuBackground"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/ListHead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@null"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="top"
+                android:hint="@string/textViewHead"
+                android:importantForAutofill="no"
+                android:inputType="textAutoCorrect|textMultiLine|textNoSuggestions|textPersonName"
+                android:padding="10dp"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:textColorHint="#000000"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

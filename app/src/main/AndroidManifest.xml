@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartNoteBook"
         android:windowSoftInputMode="adjustPan|adjustResize">
-        <activity android:name=".CreateReminders"/>
+        <activity android:name=".CreateList"/>
         <activity android:name=".Info" />
         <activity android:name=".Setting" />
         <activity android:name=".Trash" />
