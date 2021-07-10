@@ -1,21 +1,15 @@
 package com.panabey.smartnotebook;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.panabey.smartnotebook.util.LoadPrefStartup;
-import com.panabey.smartnotebook.util.SharedPref;
-
-import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity  {
@@ -44,12 +38,10 @@ public class MainActivity extends AppCompatActivity  {
         loadPrefStartup.DarkThemeLoadPref();
 
         //-------------------------//
-        new Thread(new Runnable() {
-            public void run() {
-                doWork();
-                StartApp();
-                finish();
-            }
+        new Thread(() -> {
+            doWork();
+            StartApp();
+            finish();
         }).start();
     }
 

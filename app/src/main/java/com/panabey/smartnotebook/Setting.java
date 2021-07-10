@@ -24,16 +24,12 @@ public class Setting extends AppCompatActivity {
                 .commit();
 
         toolbarSetting = findViewById(R.id.toolbarSettingBar);
-        toolbarSetting.setNavigationOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                fragmentManager.popBackStack();
-                Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.settings_container);
-                if(fragment instanceof SettingsFragment)
-                {
-                    finish();
-                }
+        toolbarSetting.setNavigationOnClickListener(v -> {
+            fragmentManager.popBackStack();
+            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.settings_container);
+            if(fragment instanceof SettingsFragment)
+            {
+                finish();
             }
         });
     }

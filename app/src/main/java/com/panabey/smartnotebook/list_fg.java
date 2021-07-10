@@ -48,12 +48,9 @@ public class list_fg extends Fragment {
         Button createList = v.findViewById(R.id.buttonCreateList);
 
 
-        createList.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                Intent intentCreateList = new Intent(getContext(), CreateList.class);
-                startActivity(intentCreateList);
-            }
+        createList.setOnClickListener(v1 -> {
+            Intent intentCreateList = new Intent(getContext(), CreateList.class);
+            startActivity(intentCreateList);
         });
 
         return v;

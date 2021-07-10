@@ -50,13 +50,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         navigationView.setNavigationItemSelectedListener(this);
 
         toolbar = findViewById(R.id.toolbarMenuMainBar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
     }
 
     @Override

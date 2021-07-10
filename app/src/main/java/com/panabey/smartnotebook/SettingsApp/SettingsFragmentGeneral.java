@@ -25,17 +25,14 @@ public class SettingsFragmentGeneral extends PreferenceFragmentCompat {
     @Override
     public void onResume() {
         super.onResume();
-        darkTheme.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                if (darkTheme.isChecked()) {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                } else {
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                }
-
-                return true;
+        darkTheme.setOnPreferenceChangeListener((preference, newValue) -> {
+            if (darkTheme.isChecked()) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             }
+
+            return true;
         });
     }
 }

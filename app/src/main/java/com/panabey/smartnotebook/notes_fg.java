@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.panabey.smartnotebook.Database.SQLiteHelper;
-import com.panabey.smartnotebook.util.LoadPrefStartup;
 import com.panabey.smartnotebook.util.RecyclerAdapter;
 
 import java.util.ArrayList;
@@ -47,22 +46,20 @@ public class notes_fg extends Fragment {
         NotesList = new ArrayList<>();
 
         //---------------БД-----------------------------------
-        new Thread(new Runnable() {
-            public void run() {
-                sqLiteHelper = new SQLiteHelper(getContext());
-                database = sqLiteHelper.getReadableDatabase();
-                Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes", null);
+        new Thread(() -> {
+            sqLiteHelper = new SQLiteHelper(getContext());
+            database = sqLiteHelper.getReadableDatabase();
+            Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes", null);
 
-                String temp = null;
-                cursor.moveToFirst();
-                if(cursor!=null && cursor.getCount()>0) {
-                    do {
-                        temp = cursor.getString(cursor.getColumnIndex("HeadNotes"));
-                        if (temp != null) {
-                            NotesList.add(temp);
-                        }
-                    } while (cursor.moveToNext());
-                }
+            String temp = null;
+            cursor.moveToFirst();
+            if(cursor!=null && cursor.getCount()>0) {
+                do {
+                    temp = cursor.getString(cursor.getColumnIndex("HeadNotes"));
+                    if (temp != null) {
+                        NotesList.add(temp);
+                    }
+                } while (cursor.moveToNext());
             }
         }).start();
         //-----------------------------------------------------
@@ -85,12 +82,9 @@ public class notes_fg extends Fragment {
         Button button = v.findViewById(R.id.buttonCreateNotes);
         //linearLayout = (LinearLayout) v.findViewById(R.id.ListNotes);
 
-        button.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                Intent intentCreateNote = new Intent(getContext(), CreateNote.class);
-                startActivity(intentCreateNote);
-            }
+        button.setOnClickListener(v1 -> {
+            Intent intentCreateNote = new Intent(getContext(), CreateNote.class);
+            startActivity(intentCreateNote);
         });
 
         return v;

@@ -22,12 +22,7 @@ public class EditText extends AppCompatActivity {
 
         EditTextButtonMenu = findViewById(R.id.EditButtonMenu);
 
-        EditTextButtonMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showEditPopup(v);
-            }
-        });
+        EditTextButtonMenu.setOnClickListener(v -> showEditPopup(v));
 
     }
     private void showEditPopup(View v) {
@@ -35,21 +30,18 @@ public class EditText extends AppCompatActivity {
         MenuInflater inflater = editPopup.getMenuInflater();
         editPopup.getMenuInflater().inflate(R.menu.text_edit_menu, editPopup.getMenu());
 
-        editPopup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener(){
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.ImportFileItem:
+        editPopup.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.ImportFileItem:
 
-                        break;
-                    case R.id.SaveFileItem:
-                        break;
+                    break;
+                case R.id.SaveFileItem:
+                    break;
 
-                    default:
-                        return false;
-                }
-                return true;
+                default:
+                    return false;
             }
+            return true;
         });
         editPopup.show();
     }

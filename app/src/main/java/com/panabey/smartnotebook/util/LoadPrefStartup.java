@@ -11,8 +11,8 @@ public class LoadPrefStartup {
     Boolean ChangeDarkTheme;
     Boolean ChangeAnim;
 
-    Context context;
-    Activity activity;
+    final Context context;
+    final Activity activity;
 
     SharedPreferences Pref;
 

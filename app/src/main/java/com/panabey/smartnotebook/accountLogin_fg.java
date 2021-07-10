@@ -49,37 +49,30 @@ public class accountLogin_fg extends Fragment {
 
 
         OnClickRegister = view.findViewById(R.id.textViewRegisterFragment);
-        OnClickRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*
-                FragmentManager frag = getChildFragmentManager();
-                frag.popBackStack();
+        OnClickRegister.setOnClickListener(v -> {
+            /*
+            FragmentManager frag = getChildFragmentManager();
+            frag.popBackStack();
 
-                Fragment newFragment = new accountRegister_fg();
-                FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+            Fragment newFragment = new accountRegister_fg();
+            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 
-                transaction.replace(R.id.FrameLayoutAccount, newFragment);
+            transaction.replace(R.id.FrameLayoutAccount, newFragment);
 
-                transaction.commit();
+            transaction.commit();
 
-                 */
-            }
+             */
         });
 
         mAuth = FirebaseAuth.getInstance();
 
-        LoginButton.setOnClickListener(new View.OnClickListener() {
+        LoginButton.setOnClickListener(v -> {
+            String emailID = email.getText().toString();
+            String passwordID = password.getText().toString();
 
-            @Override
-            public void onClick(View v) {
-                String emailID = email.getText().toString();
-                String passwordID = password.getText().toString();
-
-                if (emailID.isEmpty() || passwordID.isEmpty())
-                {
-                   InfoEmpty.setText(R.string.checkTextEmpty);
-                }
+            if (emailID.isEmpty() || passwordID.isEmpty())
+            {
+               InfoEmpty.setText(R.string.checkTextEmpty);
             }
         });
 

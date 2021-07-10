@@ -43,7 +43,7 @@ public class CreateNote extends AppCompatActivity {
         sqLiteHelper = new SQLiteHelper(this);
         database = sqLiteHelper.getWritableDatabase();
         contentValues = new ContentValues();
-        
+
         editTextHead = findViewById(R.id.editTextHeadText);
         editTextBody= findViewById(R.id.editTextNotes);
         lastModifiedDate = findViewById(R.id.lastModifiedDate);
@@ -56,50 +56,37 @@ public class CreateNote extends AppCompatActivity {
         dateFormat= new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 
         toolbarCreateNote = findViewById(R.id.toolbarUpPanel);
-        toolbarCreateNote.setNavigationOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                WriteSQL();
-                Intent intentBackMenu = new Intent(getApplicationContext(), MainMenu.class);
-                startActivity(intentBackMenu);
-            }
+        toolbarCreateNote.setNavigationOnClickListener(v -> {
+            WriteSQL();
+            Intent intentBackMenu = new Intent(getApplicationContext(), MainMenu.class);
+            startActivity(intentBackMenu);
         });
 
-        toolbarCreateNote.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
-
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.ImportItem:
-                        break;
-                    case R.id.UndoItem:
-                        break;
-                    case R.id.RedoItem:
-                        break;
-                    default:
-                        return false;
-                }
-                return true;
+        toolbarCreateNote.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.ImportItem:
+                    break;
+                case R.id.UndoItem:
+                    break;
+                case R.id.RedoItem:
+                    break;
+                default:
+                    return false;
             }
+            return true;
         });
         //------------------------Последние изменения в тексте---------------------------//
-        editTextBody.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                if (!hasFocus) {
-                    String lastModify = dateFormat.format(new Date());
-                    lastModifiedDate.setText("Последние изменения: " + lastModify);
-                }
+        editTextBody.setOnFocusChangeListener((view, hasFocus) -> {
+            if (!hasFocus) {
+                String lastModify = dateFormat.format(new Date());
+                lastModifiedDate.setText("Последние изменения: " + lastModify);
             }
         });
 
-        editTextHead.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                if (!hasFocus) {
-                    String lastModify = dateFormat.format(new Date());
-                    lastModifiedDate.setText("Последние изменения: " + lastModify);
-                }
+        editTextHead.setOnFocusChangeListener((view, hasFocus) -> {
+            if (!hasFocus) {
+                String lastModify = dateFormat.format(new Date());
+                lastModifiedDate.setText("Последние изменения: " + lastModify);
             }
         });
 
