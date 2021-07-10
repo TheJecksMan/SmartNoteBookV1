@@ -6,10 +6,10 @@
         android:icon="@drawable/ic_outline_event_note"
         android:title="@string/buttonNotes" />
     <item
-        android:id="@+id/ItemReminders"
+        android:id="@+id/ItemList"
         android:enabled="true"
-        android:icon="@drawable/main_menu_outline_alarm"
-        android:title="@string/buttonReminders" />
+        android:icon="@drawable/outline_shopping_cart"
+        android:title="@string/buttonList" />
     <item
         android:id="@+id/ItemFolders"
         android:enabled="true"

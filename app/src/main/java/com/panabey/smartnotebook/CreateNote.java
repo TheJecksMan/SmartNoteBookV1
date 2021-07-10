@@ -57,7 +57,6 @@ public class CreateNote extends AppCompatActivity {
 
         toolbarCreateNote = findViewById(R.id.toolbarUpPanel);
         toolbarCreateNote.setNavigationOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v) {
                 WriteSQL();

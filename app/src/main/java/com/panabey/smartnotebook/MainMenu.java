@@ -103,7 +103,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
             case R.id.ItemNotes:
                 selectedFragment = new notes_fg();
                 break;
-            case R.id.ItemReminders:
+            case R.id.ItemList:
                 selectedFragment = new list_fg();
                 break;
             case R.id.ItemFolders:

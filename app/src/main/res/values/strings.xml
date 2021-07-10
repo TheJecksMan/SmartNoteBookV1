@@ -13,6 +13,7 @@
     <string name="textViewHead">Заголовок</string>
     <string name="textViewNotes">Заметки</string>
     <string name="buttomSearch">Поиск</string>
+    <string name="buttonList">Покупки</string>
     <!--MainMenu string end-->
 
     <string name="Load">Загрузка</string>

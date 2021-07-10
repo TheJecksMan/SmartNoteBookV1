@@ -2,6 +2,7 @@ package com.panabey.smartnotebook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -37,11 +38,13 @@ public class CreateList extends AppCompatActivity {
 
         //Создание списка
         buttonAddList.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
 
                 checkBox = new CheckBox(getApplicationContext());
                 checkBox.setText(TagText);
+                checkBox.setTextColor(R.color.black);
 
                 checkBox.setLayoutParams(new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -60,6 +63,15 @@ public class CreateList extends AppCompatActivity {
                 checkBox.setId(countID);
                 linearLayoutList.addView(checkBox);
                 countID++;
+            }
+        });
+
+        toolbarCreateList.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentBackMenu = new Intent(getApplicationContext(), MainMenu.class);
+                startActivity(intentBackMenu);
+                countID = 0;
             }
         });
 
@@ -86,5 +98,6 @@ public class CreateList extends AppCompatActivity {
         Intent intentBackList = new Intent(this, MainMenu.class);
         startActivity(intentBackList);
         finish();
+        countID = 0;
     }
 }

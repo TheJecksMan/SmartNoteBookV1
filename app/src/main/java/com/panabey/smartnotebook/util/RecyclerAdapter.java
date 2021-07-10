@@ -1,13 +1,11 @@
 package com.panabey.smartnotebook.util;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -15,23 +13,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.panabey.smartnotebook.CreateNote;
-import com.panabey.smartnotebook.MainMenu;
 import com.panabey.smartnotebook.R;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     List<String> NotesList;
-    List<String> SearchNotesList;
     Context context;
 
 
     public RecyclerAdapter(List<String> NotesList, Context context) {
-
         this.NotesList = NotesList;
         this.context = context;
     }
@@ -39,7 +33,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_recyclerview, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
@@ -67,11 +60,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
 
-
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-
-        ImageView imageView;
+        //ImageView imageView;
         TextView textView, rowCountTextView;
         RelativeLayout container;
 
@@ -87,13 +78,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         @Override
         public void onClick(View view) {
- /*
+            /*
             TextView recycler = view.findViewHolderForAdapterPosition
             int clickedPosition = getAdapterPosition();
             TextView text1 = recyclerView.findViewHolderForAdapterPosition(position).itemView.findViewById(R.id.text1);
             //Toast.makeText(view.getContext(), NotesList.get(getAdapterPosition()), Toast.LENGTH_SHORT).show();
-
-  */
+        */
             view.getContext().startActivity(new Intent(view.getContext(), CreateNote.class));
         }
 
