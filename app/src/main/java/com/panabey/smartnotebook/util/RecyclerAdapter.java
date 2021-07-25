@@ -2,6 +2,8 @@ package com.panabey.smartnotebook.util;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.panabey.smartnotebook.CreateNote;
+import com.panabey.smartnotebook.Database.SQLiteHelper;
 import com.panabey.smartnotebook.R;
 
 import org.jetbrains.annotations.NotNull;
@@ -23,7 +26,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     List<String> NotesList;
     Context context;
-
 
     public RecyclerAdapter(List<String> NotesList, Context context) {
         this.NotesList = NotesList;
@@ -54,7 +56,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     @Override
-    public boolean onFailedToRecycleView(@NonNull @NotNull ViewHolder holder) {
+    public boolean onFailedToRecycleView(@NonNull ViewHolder holder) {
         super.onFailedToRecycleView(holder);
         return true;
     }
@@ -78,13 +80,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         @Override
         public void onClick(View view) {
-            /*
-            TextView recycler = view.findViewHolderForAdapterPosition
-            int clickedPosition = getAdapterPosition();
-            TextView text1 = recyclerView.findViewHolderForAdapterPosition(position).itemView.findViewById(R.id.text1);
-            //Toast.makeText(view.getContext(), NotesList.get(getAdapterPosition()), Toast.LENGTH_SHORT).show();
-        */
-            view.getContext().startActivity(new Intent(view.getContext(), CreateNote.class));
+            Boolean ClickOnRecycler = true;
+            Intent intentOnClickRecyclerView =  new Intent(view.getContext(), CreateNote.class);
+            intentOnClickRecyclerView.putExtra("BooleanCheckRecyclerView", ClickOnRecycler);
+            intentOnClickRecyclerView.putExtra("Id", getItemId());
+
+            view.getContext().startActivity(intentOnClickRecyclerView);
         }
 
     }

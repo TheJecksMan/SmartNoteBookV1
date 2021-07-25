@@ -46,20 +46,22 @@ public class notes_fg extends Fragment {
         NotesList = new ArrayList<>();
 
         //---------------БД-----------------------------------
-        new Thread(() -> {
-            sqLiteHelper = new SQLiteHelper(getContext());
-            database = sqLiteHelper.getReadableDatabase();
-            Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes", null);
+        new Thread(new Runnable() {
+            public void run() {
+                sqLiteHelper = new SQLiteHelper(getContext());
+                database = sqLiteHelper.getReadableDatabase();
+                Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes", null);
 
-            String temp = null;
-            cursor.moveToFirst();
-            if(cursor!=null && cursor.getCount()>0) {
-                do {
-                    temp = cursor.getString(cursor.getColumnIndex("HeadNotes"));
-                    if (temp != null) {
-                        NotesList.add(temp);
-                    }
-                } while (cursor.moveToNext());
+                String temp = null;
+                cursor.moveToFirst();
+                if(cursor!=null && cursor.getCount()>0) {
+                    do {
+                        temp = cursor.getString(cursor.getColumnIndex("HeadNotes"));
+                        if (temp != null) {
+                            NotesList.add(temp);
+                        }
+                    } while (cursor.moveToNext());
+                }
             }
         }).start();
         //-----------------------------------------------------
@@ -90,7 +92,7 @@ public class notes_fg extends Fragment {
         return v;
     }
 
-    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
+    final ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.START | ItemTouchHelper.END, ItemTouchHelper.LEFT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {

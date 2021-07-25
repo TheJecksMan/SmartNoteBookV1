@@ -9,7 +9,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static final int VERSION = 1;
     public static final String BD_TABLE_NAME = "Notes";
     public static final String TABLE_CONTACTS = "contactsNotes";
-    public static  final String KEY_ID = "ID";
+    public static final String KEY_ID = "ID";
     public static final String KEY_HEAD_NOTES = "HeadNotes";
     public static final String KEY_BODY_NOTES = "BodyNotes";
     public static final String KEY_DATETIME = "DateTime";

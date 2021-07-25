@@ -6,9 +6,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -48,8 +48,38 @@ public class CreateNote extends AppCompatActivity {
         editTextBody= findViewById(R.id.editTextNotes);
         lastModifiedDate = findViewById(R.id.lastModifiedDate);
 
-         EditTextHeadTextView = findViewById(R.id.editTextHeadText);
-         editTextBodyTextView = findViewById(R.id.editTextNotes);
+        EditTextHeadTextView = findViewById(R.id.editTextHeadText);
+        editTextBodyTextView = findViewById(R.id.editTextNotes);
+
+/*
+        try {
+            Bundle extras = getIntent().getExtras();
+            Boolean LoadText = (Boolean) extras.get("BooleanCheckRecyclerView");
+            int getIdRecycler = (int) extras.get("Id");
+
+            if (LoadText == true && getIdRecycler != 0){
+                new Thread(() -> {
+                    sqLiteHelper = new SQLiteHelper(getApplicationContext());
+                    database = sqLiteHelper.getWritableDatabase();
+                    Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes where ID = " + getIdRecycler, null);
+
+
+                    cursor.moveToFirst();
+                    if(cursor!=null && cursor.getCount()>0) {
+                        String headText = cursor.getString(cursor.getColumnIndex("HeadNotes"));
+                        String bodyText = cursor.getString(cursor.getColumnIndex("HeadNotes"));
+
+                        EditTextHeadTextView.setText(headText);
+                        editTextBodyTextView.setText(bodyText);
+                    }
+                }).start();
+            }
+        }
+        catch (Exception e) {
+
+        }
+
+ */
 
 
         //DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault());
@@ -96,7 +126,6 @@ public class CreateNote extends AppCompatActivity {
         String lastModify = dateFormat.format(new Date());
         return lastModify;
     }
-
 
     @Override
     public void onBackPressed() {
