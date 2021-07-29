@@ -80,9 +80,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         @Override
         public void onClick(View view) {
-            Boolean ClickOnRecycler = true;
             Intent intentOnClickRecyclerView =  new Intent(view.getContext(), CreateNote.class);
-            intentOnClickRecyclerView.putExtra("BooleanCheckRecyclerView", ClickOnRecycler);
+            intentOnClickRecyclerView.putExtra("BooleanCheckRecyclerView", true);
             intentOnClickRecyclerView.putExtra("Id", getItemId());
 
             view.getContext().startActivity(intentOnClickRecyclerView);
