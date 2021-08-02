@@ -20,8 +20,7 @@
         <activity android:name=".EditText" />
         <activity android:name=".CreateNote" />
         <activity android:name=".MainMenu" />
-        <activity android:name=".MainActivity"
-            android:exported="TODO">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
