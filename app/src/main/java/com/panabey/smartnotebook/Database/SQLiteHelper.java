@@ -44,6 +44,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public void ReindexNotes(SQLiteDatabase db, int id){
         new Thread(new Runnable() {
             public void run() {
+
                 db.execSQL("UPDATE contactsNotes SET ID = ID - 1 WHERE ID >" + id);
             }
         }).start();
