@@ -52,6 +52,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
+    }
+
+    @Override
     public boolean onFailedToRecycleView(@NonNull ViewHolder holder) {
         super.onFailedToRecycleView(holder);
         return true;
@@ -77,8 +82,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         @Override
         public void onClick(View view) {
             Intent intentOnClickRecyclerView =  new Intent(view.getContext(), CreateNote.class);
-            intentOnClickRecyclerView.putExtra("BooleanCheckRecyclerView", true);
-            intentOnClickRecyclerView.putExtra("Id", getItemId());
+            intentOnClickRecyclerView.putExtra("BooleanClickRecyclerView", true);
+
+            int pos = getAdapterPosition() + 1;
+            intentOnClickRecyclerView.putExtra("Id", String.valueOf(pos));
 
             view.getContext().startActivity(intentOnClickRecyclerView);
         }

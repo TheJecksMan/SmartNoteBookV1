@@ -3,9 +3,8 @@ package com.panabey.smartnotebook;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-
-import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -25,33 +24,57 @@ public class CreateNote extends AppCompatActivity {
 
     private TextView lastModifiedDate;
     private TextView EditTextHeadTextView;
-    private TextView editTextBodyTextView;
+    private TextView EditTextBodyTextView;
     private Toolbar toolbarCreateNote;
     private String lastModify;
     private DateFormat dateFormat;
 
     SQLiteHelper sqLiteHelper;
-    ContentValues contentValues;
     SQLiteDatabase database;
+
+    private boolean clickNoteBoolean;
+    String InfoDate = "Последние изменения: ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
+        sqLiteHelper = new SQLiteHelper(this);
+        database = sqLiteHelper.getWritableDatabase();
+
+
         editTextHead = findViewById(R.id.editTextHeadText);
         editTextBody= findViewById(R.id.editTextNotes);
         lastModifiedDate = findViewById(R.id.lastModifiedDate);
 
         EditTextHeadTextView = findViewById(R.id.editTextHeadText);
-        editTextBodyTextView = findViewById(R.id.editTextNotes);
+        EditTextBodyTextView = findViewById(R.id.editTextNotes);
+
+        Bundle ClickNote = getIntent().getExtras();
+
+        if(ClickNote != null) {
+            clickNoteBoolean = ClickNote.getBoolean("BooleanClickRecyclerView");
+             if(clickNoteBoolean){
+                 String ItemID = ClickNote.getString("Id");
+
+                 Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes WHERE ID  = " + ItemID, null);
+                 cursor.moveToFirst();
+
+                 EditTextHeadTextView.setText(cursor.getString(cursor.getColumnIndex("HeadNotes")));
+                 EditTextBodyTextView.setText(cursor.getString(cursor.getColumnIndex("BodyNotes")));
+                 lastModifiedDate.setText(InfoDate + cursor.getString(cursor.getColumnIndex("DateTime")));
+             }
+
+        }
 
         //DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault());
         dateFormat= new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 
         toolbarCreateNote = findViewById(R.id.toolbarUpPanel);
         toolbarCreateNote.setNavigationOnClickListener(v -> {
-            WriteSQL();
+
+            WriteSQLAndUpdate();
             Intent intentBackMenu = new Intent(getApplicationContext(), MainMenu.class);
             startActivity(intentBackMenu);
         });
@@ -73,14 +96,14 @@ public class CreateNote extends AppCompatActivity {
         editTextBody.setOnFocusChangeListener((view, hasFocus) -> {
             if (!hasFocus) {
                 String lastModify = dateFormat.format(new Date());
-                lastModifiedDate.setText("Последние изменения: " + lastModify);
+                lastModifiedDate.setText(InfoDate + lastModify);
             }
         });
 
         editTextHead.setOnFocusChangeListener((view, hasFocus) -> {
             if (!hasFocus) {
                 String lastModify = dateFormat.format(new Date());
-                lastModifiedDate.setText("Последние изменения: " + lastModify);
+                lastModifiedDate.setText(InfoDate + lastModify);
             }
         });
 
@@ -93,21 +116,21 @@ public class CreateNote extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        WriteSQL();
+        WriteSQLAndUpdate();
 
         Intent intentBackNotes = new Intent(this, MainMenu.class);
         startActivity(intentBackNotes);
         finish();
     }
 
-    private void WriteSQL(){
+    private void WriteSQLAndUpdate(){
         //запись в базу данных
-        sqLiteHelper = new SQLiteHelper(this);
-        database = sqLiteHelper.getWritableDatabase();
+        if(clickNoteBoolean != true) {
+            sqLiteHelper.UploadInDatabase(database, EditTextHeadTextView.getText().toString(),
+                    EditTextBodyTextView.getText().toString(),
+                    getDateTime());
+        }
 
-        sqLiteHelper.UploadInDatabase(database, EditTextHeadTextView.getText().toString(),
-                editTextBodyTextView.getText().toString(),
-                getDateTime());
     }
 
     @Override
