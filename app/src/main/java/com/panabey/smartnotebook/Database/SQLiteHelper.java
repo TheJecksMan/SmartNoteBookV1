@@ -41,6 +41,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return db.delete(TABLE_CONTACTS, KEY_ID + "=" + id, null) > 0;
     }
 
+    public void ReindexNotes(SQLiteDatabase db, int id){
+        db.execSQL("UPDATE contactsNotes SET ID = ID - 1 WHERE ID >" + id);
+    }
+
     public  void LoadItem(SQLiteDatabase db){
         //db.execSQL(TABLE_CONTACTS, );
     }

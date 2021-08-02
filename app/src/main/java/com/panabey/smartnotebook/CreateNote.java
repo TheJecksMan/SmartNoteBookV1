@@ -115,5 +115,6 @@ public class CreateNote extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         lastModifiedDate = null;
+        System.gc();
     }
 }
