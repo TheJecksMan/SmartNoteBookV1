@@ -40,10 +40,6 @@ public class CreateNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
-        sqLiteHelper = new SQLiteHelper(this);
-        database = sqLiteHelper.getWritableDatabase();
-        contentValues = new ContentValues();
-
         editTextHead = findViewById(R.id.editTextHeadText);
         editTextBody= findViewById(R.id.editTextNotes);
         lastModifiedDate = findViewById(R.id.lastModifiedDate);
@@ -106,19 +102,13 @@ public class CreateNote extends AppCompatActivity {
     }
 
     private void WriteSQL(){
-        new Thread(new Runnable() {
-            public void run() {
-                if (EditTextHeadTextView.getText().length()  != 0)
-                {
-                    contentValues.put(SQLiteHelper.KEY_HEAD_NOTES, EditTextHeadTextView.getText().toString());
-                    contentValues.put(SQLiteHelper.KEY_BODY_NOTES, editTextBodyTextView.getText().toString());
-                    contentValues.put(SQLiteHelper.KEY_DATETIME, getDateTime());
+        //запись в базу данных
+        sqLiteHelper = new SQLiteHelper(this);
+        database = sqLiteHelper.getWritableDatabase();
 
-                    database.insert(SQLiteHelper.TABLE_CONTACTS, null, contentValues);
-                }
-            }
-        }).start();
-
+        sqLiteHelper.UploadInDatabase(database, EditTextHeadTextView.getText().toString(),
+                editTextBodyTextView.getText().toString(),
+                getDateTime());
     }
 
     @Override

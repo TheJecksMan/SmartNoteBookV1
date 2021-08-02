@@ -1,5 +1,6 @@
 package com.panabey.smartnotebook.Database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -40,8 +41,25 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return db.delete(TABLE_CONTACTS, KEY_ID + "=" + id, null) > 0;
     }
 
-    public  void Upload(SQLiteDatabase db){
+    public  void LoadItem(SQLiteDatabase db){
+        //db.execSQL(TABLE_CONTACTS, );
+    }
 
+    private  ContentValues contentValues;
+
+    public void UploadInDatabase(SQLiteDatabase db, String HeadText, String BodyText, String DateTime){
+
+        new Thread(new Runnable() {
+            public void run() {
+                contentValues = new ContentValues();
+
+                contentValues.put(SQLiteHelper.KEY_HEAD_NOTES, HeadText);
+                contentValues.put(SQLiteHelper.KEY_BODY_NOTES, BodyText);
+                contentValues.put(SQLiteHelper.KEY_DATETIME, DateTime);
+
+                db.insert(SQLiteHelper.TABLE_CONTACTS, null, contentValues);
+            }
+        }).start();
     }
 
     public void SearchItem(SQLiteDatabase db, String Item)
