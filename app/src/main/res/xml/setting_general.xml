@@ -4,7 +4,6 @@
     <PreferenceCategory android:title="Стиль">
 
     <SeekBarPreference
-        android:id="@+id/SizeTextBar"
         android:defaultValue="14"
         android:max="30"
         android:title="Размер текста"
@@ -20,7 +19,6 @@
 
 
         <SwitchPreference
-            android:id="@+id/DarkThemeSwitch"
             android:defaultValue="false"
             android:key="key_switch_DarkTheme"
             android:title="Ночная тема"
@@ -35,7 +33,6 @@
             android:title="Настроить ночную тему" />
 
         <SwitchPreference
-            android:id="@+id/UsageAnimate"
             android:defaultValue="true"
             android:key="key_preference_animate"
             android:title="@string/UsageAnimate" />

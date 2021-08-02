@@ -56,7 +56,7 @@ public class notes_fg extends Fragment {
 
                     String temp = null;
                     cursor.moveToFirst();
-                    if (cursor != null && cursor.getCount() > 0) {
+                    if (cursor.getCount() > 0) {
                         do {
                             temp = cursor.getString(cursor.getColumnIndex("HeadNotes"));
                             if (temp != null) {
@@ -119,16 +119,14 @@ public class notes_fg extends Fragment {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             final int position = viewHolder.getAdapterPosition();
-            switch (direction) {
-                case ItemTouchHelper.LEFT:
-                    NotesList.remove(position);
-                    recyclerView.getAdapter().notifyItemRemoved(position);
+            if (direction == ItemTouchHelper.LEFT) {
+                NotesList.remove(position);
+                recyclerView.getAdapter().notifyItemRemoved(position);
 
-                    SQLiteDatabase databaseDelete = sqLiteHelper.getWritableDatabase();
-                    sqLiteHelper.deleteNote(databaseDelete, position + 1);
-                    sqLiteHelper.ReindexNotes(databaseDelete, position + 1);
-                    recyclerAdapter.notifyDataSetChanged();
-                    break;
+                SQLiteDatabase databaseDelete = sqLiteHelper.getWritableDatabase();
+                sqLiteHelper.deleteNote(databaseDelete, position + 1);
+                sqLiteHelper.ReindexNotes(databaseDelete, position + 1);
+                recyclerAdapter.notifyDataSetChanged();
             }
         }
 

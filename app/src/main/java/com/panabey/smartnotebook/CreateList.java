@@ -14,9 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public class CreateList extends AppCompatActivity {
 
-    private Toolbar toolbarCreateList;
     private LinearLayout linearLayoutList;
-    private Button buttonAddList;
     private CheckBox checkBox;
 
     private int countID = 1;
@@ -27,10 +25,10 @@ public class CreateList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_list);
 
-        toolbarCreateList = findViewById(R.id.toolbarUpPanelList);
+        Toolbar toolbarCreateList = findViewById(R.id.toolbarUpPanelList);
 
         linearLayoutList = findViewById(R.id.LinearLayoutList);
-        buttonAddList = findViewById(R.id.buttonAddList);
+        Button buttonAddList = findViewById(R.id.buttonAddList);
 
         final String TagText = "text";
 

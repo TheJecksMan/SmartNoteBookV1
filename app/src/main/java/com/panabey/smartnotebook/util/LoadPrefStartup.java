@@ -25,7 +25,7 @@ public class LoadPrefStartup {
         Pref = activity.getSharedPreferences("com.panabey.smartnotebook_preferences", Context.MODE_PRIVATE);
         ChangeDarkTheme = Pref.getBoolean("key_switch_DarkTheme", false);
 
-        if (ChangeDarkTheme != true) {
+        if (!ChangeDarkTheme) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         } else {

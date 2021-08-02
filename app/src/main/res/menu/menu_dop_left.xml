@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group
-        android:id="@+id/group1"
-        android:checkableBehavior="single">
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/editTextItem"
             android:icon="@drawable/ic_outline_edit_note"
             android:title="Редактор текста" />
     </group>
 
-    <group
-        android:id="@+id/group2"
-        android:checkableBehavior="single">
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/TrashItem"
             android:icon="@drawable/main_menu_outline_delete"
             android:title="Корзина" />
     </group>
 
-    <group
-            android:id="@+id/group3"
-            android:checkableBehavior="single">
+    <group android:checkableBehavior="single">
 
             <item
             android:id="@+id/SettingItem"

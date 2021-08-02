@@ -2,23 +2,16 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <Preference
-        android:id="@+id/Info_Build"
         android:title="@string/app_name"
         app:summary="@string/versionApp"/>
 
-    <Preference
-        android:id="@+id/Rate_app"
-        android:title="@string/RateApp">
+    <Preference android:title="@string/RateApp">
         <intent
             android:data="https://www.google.ru/"
             />
     </Preference>
 
-    <Preference
-        android:id="@+id/License"
-        android:title="@string/LicenseApp"/>
+    <Preference android:title="@string/LicenseApp"/>
 
-    <Preference
-        android:id="@+id/PrivacyPolicyApp"
-        android:title="@string/PrivacyPolicy_app"/>
+    <Preference android:title="@string/PrivacyPolicy_app"/>
 </PreferenceScreen>

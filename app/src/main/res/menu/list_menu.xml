@@ -14,7 +14,7 @@
         android:title=""
         app:showAsAction="ifRoom"/>
 
-    <item android:id="@+id/EditListItem"
+    <item
         android:title="Режим редактирования"
         android:checkable="true"
         app:actionViewClass="android.widget.CheckBox"/>

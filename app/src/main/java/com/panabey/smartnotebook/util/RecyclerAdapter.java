@@ -2,8 +2,6 @@ package com.panabey.smartnotebook.util;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.panabey.smartnotebook.CreateNote;
-import com.panabey.smartnotebook.Database.SQLiteHelper;
 import com.panabey.smartnotebook.R;
 
 
@@ -23,7 +20,7 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    List<String> NotesList;
+    final List<String> NotesList;
     final Context context;
 
     public RecyclerAdapter(List<String> NotesList, Context context) {
@@ -64,7 +61,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         //ImageView imageView;
-        TextView textView, rowCountTextView;
+        final TextView textView, rowCountTextView;
         final RelativeLayout container;
 
         public ViewHolder(@NonNull View itemView) {

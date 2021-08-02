@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 public class EditText extends AppCompatActivity {
 
-    private Button EditTextButtonMenu;
     private TextView EditTextAndWrite;
 
     @Override
@@ -19,9 +18,9 @@ public class EditText extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_text);
 
-        EditTextButtonMenu = findViewById(R.id.EditButtonMenu);
+        Button editTextButtonMenu = findViewById(R.id.EditButtonMenu);
 
-        EditTextButtonMenu.setOnClickListener(v -> showEditPopup(v));
+        editTextButtonMenu.setOnClickListener(v -> showEditPopup(v));
 
     }
     private void showEditPopup(View v) {

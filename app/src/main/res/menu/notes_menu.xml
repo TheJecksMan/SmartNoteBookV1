@@ -18,9 +18,7 @@
             android:id="@+id/ImportItem"
             android:title="@string/NotesImportItem" />
 
-        <item
-            android:id="@+id/advanceSettingNotesItem"
-            android:title="@string/NotesAdvanceSettingNotesItem" />
+        <item android:title="@string/NotesAdvanceSettingNotesItem" />
     </group>
 
 </menu>

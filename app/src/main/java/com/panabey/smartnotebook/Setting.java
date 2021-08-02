@@ -10,8 +10,9 @@ import android.os.Bundle;
 import com.panabey.smartnotebook.SettingsApp.SettingsFragment;
 
 public class Setting extends AppCompatActivity {
-    private Toolbar toolbarSetting;
+
     private FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -22,7 +23,7 @@ public class Setting extends AppCompatActivity {
                 .replace(R.id.settings_container, new SettingsFragment())
                 .commit();
 
-        toolbarSetting = findViewById(R.id.toolbarSettingBar);
+        Toolbar toolbarSetting = findViewById(R.id.toolbarSettingBar);
         toolbarSetting.setNavigationOnClickListener(v -> {
             fragmentManager.popBackStack();
             Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.settings_container);

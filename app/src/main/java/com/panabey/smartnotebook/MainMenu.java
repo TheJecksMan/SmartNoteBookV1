@@ -20,10 +20,6 @@ import com.google.android.material.navigation.NavigationView;
 public class MainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public DrawerLayout drawerLayout;
-    private NavigationView navigationView;
-    private ActionBarDrawerToggle toggle;
-    private BottomNavigationView BottomNavigationMenu;
-    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,23 +27,23 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.main_menu);
 
         drawerLayout =  findViewById(R.id.MainDrawerLayout);
-        navigationView = findViewById(R.id.dopMenuLeft);
+        NavigationView navigationView = findViewById(R.id.dopMenuLeft);
 
-        BottomNavigationMenu = findViewById(R.id.BottomNavigationMenu);
+        BottomNavigationView bottomNavigationMenu = findViewById(R.id.BottomNavigationMenu);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentPager, new notes_fg()).commit();
 
-        BottomNavigationMenu.setOnItemSelectedListener(navListener);
+        bottomNavigationMenu.setOnItemSelectedListener(navListener);
 
         //----------------------------NavigationView-------------------------------------//
         navigationView.bringToFront();
-        toggle = new ActionBarDrawerToggle(this,drawerLayout, R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        toolbar = findViewById(R.id.toolbarMenuMainBar);
+        Toolbar toolbar = findViewById(R.id.toolbarMenuMainBar);
         toolbar.setNavigationOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
     }
 

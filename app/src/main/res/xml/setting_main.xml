@@ -3,39 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <Preference
-            android:id="@+id/MainSetting"
             android:title="@string/main_setting"
             app:fragment="com.panabey.smartnotebook.SettingsApp.SettingsFragmentGeneral"
             app:icon="@drawable/ic_outline_settings" />
         <Preference
-            android:id="@+id/NotificationSetting"
             android:title="@string/notif_setting"
             app:fragment="com.panabey.smartnotebook.SettingsApp.SettingNotification"
             app:icon="@drawable/setting_outline_notifications" />
         <Preference
-            android:id="@+id/SecuritySetting"
             android:title="@string/security_setting"
             app:fragment="com.panabey.smartnotebook.SettingsApp.SettingsFragmentSecurity"
             app:icon="@drawable/setting_outline_lock" />
         <Preference
-            android:id="@+id/DataSetting"
             android:title="@string/date_setting"
             app:fragment="com.panabey.smartnotebook.SettingsApp.SettingDate"
             app:icon="@drawable/setting_outline_storage" />
         <Preference
-            android:id="@+id/LanguageSetting"
             android:title="@string/language_setting"
             app:fragment="com.panabey.smartnotebook.SettingsApp.SettingLanguage"
             app:icon="@drawable/setting_outline_language" />
 
     <PreferenceCategory android:title="Помощь">
         <Preference
-            android:id="@+id/InfoSetting"
             android:title="@string/info_setting"
             app:fragment="com.panabey.smartnotebook.SettingsApp.SettingsFragmentAbout"
             app:icon="@drawable/ic_outline_info" />
         <Preference
-            android:id="@+id/BugReportSetting"
             android:title="@string/bug_setting"
             app:icon="@drawable/setting_outline_bug_report" />
     </PreferenceCategory>
