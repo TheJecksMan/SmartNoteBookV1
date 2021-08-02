@@ -50,17 +50,25 @@ public class notes_fg extends Fragment {
             public void run() {
                 sqLiteHelper = new SQLiteHelper(getContext());
                 database = sqLiteHelper.getReadableDatabase();
-                Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes", null);
 
-                String temp = null;
-                cursor.moveToFirst();
-                if(cursor!=null && cursor.getCount()>0) {
-                    do {
-                        temp = cursor.getString(cursor.getColumnIndex("HeadNotes"));
-                        if (temp != null) {
-                            NotesList.add(temp);
-                        }
-                    } while (cursor.moveToNext());
+                    Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes", null);
+                try {
+
+                    String temp = null;
+                    cursor.moveToFirst();
+                    if (cursor != null && cursor.getCount() > 0) {
+                        do {
+                            temp = cursor.getString(cursor.getColumnIndex("HeadNotes"));
+                            if (temp != null) {
+                                NotesList.add(temp);
+                            }
+                        } while (cursor.moveToNext());
+                    }
+                }
+                finally {
+                    if (cursor != null) {
+                        cursor.close();
+                    }
                 }
             }
         }).start();
@@ -73,7 +81,7 @@ public class notes_fg extends Fragment {
         recyclerView.setHasFixedSize(true);
         //recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setItemViewCacheSize(30);
-        //recyclerView.getRecycledViewPool().setMaxRecycledViews(0,20);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(0,10);
         //recyclerAdapter.setHasStableIds(true);
 
 
@@ -114,7 +122,6 @@ public class notes_fg extends Fragment {
                 case ItemTouchHelper.LEFT:
                     NotesList.remove(position);
                     recyclerView.getAdapter().notifyItemRemoved(position);
-
 
                     SQLiteDatabase databaseDelete = sqLiteHelper.getWritableDatabase();
                     sqLiteHelper.deleteNote(databaseDelete, position + 1);

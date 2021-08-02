@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
 
+    //Database Notes
     public static final int VERSION = 1;
     public static final String BD_TABLE_NAME = "Notes";
     public static final String TABLE_CONTACTS = "contactsNotes";
@@ -22,7 +23,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table " + TABLE_CONTACTS + "(" + KEY_ID + " integer primary key," + KEY_HEAD_NOTES + " text not null," + KEY_BODY_NOTES + " text," + KEY_DATETIME + " text" + ")");
+        db.execSQL("create table " + TABLE_CONTACTS + "(" + KEY_ID + " integer primary key,"
+                + KEY_HEAD_NOTES + " text not null,"
+                + KEY_BODY_NOTES + " text,"
+                + KEY_DATETIME + " text" + ")");
     }
 
     @Override
@@ -36,12 +40,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return db.delete(TABLE_CONTACTS, KEY_ID + "=" + id, null) > 0;
     }
 
-    /*
-    public boolean updateNotes(SQLiteDatabase db, int toPos, int fromPos)
-    {
-        return  db.update(TABLE_CONTACTS, )
+    public  void Upload(SQLiteDatabase db){
+
     }
-     */
 
     public void SearchItem(SQLiteDatabase db, String Item)
     {

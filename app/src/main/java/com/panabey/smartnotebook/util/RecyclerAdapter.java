@@ -18,14 +18,13 @@ import com.panabey.smartnotebook.CreateNote;
 import com.panabey.smartnotebook.Database.SQLiteHelper;
 import com.panabey.smartnotebook.R;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     List<String> NotesList;
-    Context context;
+    final Context context;
 
     public RecyclerAdapter(List<String> NotesList, Context context) {
         this.NotesList = NotesList;
@@ -66,7 +65,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         //ImageView imageView;
         TextView textView, rowCountTextView;
-        RelativeLayout container;
+        final RelativeLayout container;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

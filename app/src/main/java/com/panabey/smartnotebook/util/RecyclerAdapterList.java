@@ -15,14 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.panabey.smartnotebook.CreateList;
 import com.panabey.smartnotebook.R;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 
 public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterList.ViewHolder> {
 
     List<String> List;
-    Context context;
+    final Context context;
 
     public RecyclerAdapterList(List<String> List, Context context) {
         this.List = List;
@@ -30,9 +28,8 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
     }
 
     @NonNull
-    @NotNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater1 = LayoutInflater.from(parent.getContext());
         View view = layoutInflater1.inflate(R.layout.item_recyclerview_list, parent, false);
         RecyclerAdapterList.ViewHolder viewHolderList = new RecyclerAdapterList.ViewHolder(view);
@@ -40,7 +37,7 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.containerList.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_load_animate));
         holder.textViewList.setText(List.get(position));
     }

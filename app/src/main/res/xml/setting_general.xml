@@ -23,7 +23,8 @@
             android:id="@+id/DarkThemeSwitch"
             android:defaultValue="false"
             android:key="key_switch_DarkTheme"
-            android:title="Ночная тема" />
+            android:title="Ночная тема"
+            android:summary="Экспериментальная функция"/>
 
     </PreferenceCategory>
 
