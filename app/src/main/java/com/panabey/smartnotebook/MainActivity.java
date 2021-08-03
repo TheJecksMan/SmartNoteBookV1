@@ -27,13 +27,13 @@ public class MainActivity extends AppCompatActivity  {
         TextView mTextViewVersion = findViewById(R.id.textViewVersion);
 
         try {
-
             mTextViewVersion.setText(this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName);
         }
         catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
 
+        //загрузка файла конфигурации
         LoadPrefStartup loadPrefStartup = new LoadPrefStartup(MainActivity.this, this);
         loadPrefStartup.DarkThemeLoadPref();
 
@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity  {
             }
         }
     }
+
     private void StartApp(){
         Intent mainIntent = new Intent(this, MainMenu.class);
         startActivity(mainIntent);
@@ -65,7 +66,6 @@ public class MainActivity extends AppCompatActivity  {
     protected void onStop() {
         super.onStop();
         mImageView.setImageDrawable(null);
-
     }
 
     @Override
