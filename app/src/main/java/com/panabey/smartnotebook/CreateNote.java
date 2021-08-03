@@ -33,6 +33,7 @@ public class CreateNote extends AppCompatActivity {
     SQLiteDatabase database;
 
     private boolean clickNoteBoolean;
+    private String ItemID;
     String InfoDate = "Последние изменения: ";
 
     @Override
@@ -53,10 +54,11 @@ public class CreateNote extends AppCompatActivity {
 
         Bundle ClickNote = getIntent().getExtras();
 
+        //Изменения сообщения после нажатия
         if(ClickNote != null) {
             clickNoteBoolean = ClickNote.getBoolean("BooleanClickRecyclerView");
              if(clickNoteBoolean){
-                 String ItemID = ClickNote.getString("Id");
+                 ItemID = ClickNote.getString("Id");
 
                  Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes WHERE ID  = " + ItemID, null);
                  cursor.moveToFirst();
@@ -64,6 +66,7 @@ public class CreateNote extends AppCompatActivity {
                  EditTextHeadTextView.setText(cursor.getString(cursor.getColumnIndex("HeadNotes")));
                  EditTextBodyTextView.setText(cursor.getString(cursor.getColumnIndex("BodyNotes")));
                  lastModifiedDate.setText(InfoDate + cursor.getString(cursor.getColumnIndex("DateTime")));
+
              }
 
         }
@@ -124,13 +127,22 @@ public class CreateNote extends AppCompatActivity {
     }
 
     private void WriteSQLAndUpdate(){
-        //запись в базу данных
-        if(clickNoteBoolean != true) {
-            sqLiteHelper.UploadInDatabase(database, EditTextHeadTextView.getText().toString(),
-                    EditTextBodyTextView.getText().toString(),
-                    getDateTime());
-        }
+        new Thread(new Runnable() {
+            public void run() {
 
+                //запись в базу данных
+                if (clickNoteBoolean != true) {
+                    sqLiteHelper.UploadInDatabaseNotes(database, EditTextHeadTextView.getText().toString(),
+                            EditTextBodyTextView.getText().toString(),
+                            getDateTime());
+                } else {
+                    sqLiteHelper.UpdateNotes(database, EditTextHeadTextView.getText().toString(),
+                            EditTextBodyTextView.getText().toString(),
+                            getDateTime(),
+                            ItemID);
+                }
+            }
+        }).start();
     }
 
     @Override

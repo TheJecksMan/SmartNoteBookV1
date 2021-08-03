@@ -51,29 +51,22 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         }).start();
     }
 
-    public  void LoadItem(SQLiteDatabase db){
-        //db.execSQL(TABLE_CONTACTS, );
-    }
-
     private  ContentValues contentValues;
 
-    public void UploadInDatabase(SQLiteDatabase db, String HeadText, String BodyText, String DateTime){
+    public void UploadInDatabaseNotes(SQLiteDatabase db, String HeadText, String BodyText, String DateTime){
 
-        new Thread(new Runnable() {
-            public void run() {
                 contentValues = new ContentValues();
 
                 contentValues.put(SQLiteHelper.KEY_HEAD_NOTES, HeadText);
                 contentValues.put(SQLiteHelper.KEY_BODY_NOTES, BodyText);
                 contentValues.put(SQLiteHelper.KEY_DATETIME, DateTime);
 
-                db.insert(SQLiteHelper.TABLE_CONTACTS, null, contentValues);
-            }
-        }).start();
+                db.insert(TABLE_CONTACTS, null, contentValues);
+
     }
 
-    public void SearchItem(SQLiteDatabase db, String Item)
-    {
-        db.execSQL("select * from " + TABLE_CONTACTS + "like '%" + Item + "%'");
+    public void UpdateNotes(SQLiteDatabase db,String HeadText, String BodyText, String DateTime, String id ){
+        db.execSQL("UPDATE contactsNotes SET HeadNotes = '" + HeadText + "' , BodyNotes = '"+ BodyText
+                +"' , DateTime = '" + DateTime + "' WHERE id =" + id);
     }
 }
