@@ -40,7 +40,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.container.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_load_animate));
+        //holder.container.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_load_animate));
         holder.rowCountTextView.setText(String.valueOf(position));
         holder.textView.setText(NotesList.get(position));
     }
@@ -83,8 +83,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             Intent intentOnClickRecyclerView =  new Intent(view.getContext(), CreateNote.class);
             intentOnClickRecyclerView.putExtra("BooleanClickRecyclerView", true);
 
-            int pos = getAdapterPosition() + 1;
-            intentOnClickRecyclerView.putExtra("Id", String.valueOf(pos));
+            //отправляем id для открытия
+            intentOnClickRecyclerView.putExtra("Id", getAdapterPosition() + 1);
 
             view.getContext().startActivity(intentOnClickRecyclerView);
         }

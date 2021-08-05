@@ -33,7 +33,7 @@ public class CreateNote extends AppCompatActivity {
     SQLiteDatabase database;
 
     private boolean clickNoteBoolean;
-    private String ItemID;
+    private int ItemID;
     String InfoDate = "Последние изменения: ";
 
     @Override
@@ -58,7 +58,7 @@ public class CreateNote extends AppCompatActivity {
         if(ClickNote != null) {
             clickNoteBoolean = ClickNote.getBoolean("BooleanClickRecyclerView");
              if(clickNoteBoolean){
-                 ItemID = ClickNote.getString("Id");
+                 ItemID = ClickNote.getInt("Id");
 
                  Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes WHERE ID  = " + ItemID, null);
                  cursor.moveToFirst();
@@ -68,7 +68,6 @@ public class CreateNote extends AppCompatActivity {
                  lastModifiedDate.setText(InfoDate + cursor.getString(cursor.getColumnIndex("DateTime")));
 
              }
-
         }
 
         //DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault());
@@ -132,11 +131,15 @@ public class CreateNote extends AppCompatActivity {
 
                 //запись в базу данных
                 if (clickNoteBoolean != true) {
-                    sqLiteHelper.UploadInDatabaseNotes(database, EditTextHeadTextView.getText().toString(),
+                    //Новая заметка
+                    sqLiteHelper.UploadInDatabaseNotes(database,
+                            EditTextHeadTextView.getText().toString(),
                             EditTextBodyTextView.getText().toString(),
                             getDateTime());
                 } else {
-                    sqLiteHelper.UpdateNotes(database, EditTextHeadTextView.getText().toString(),
+                    //изменение заметки (перезапись)
+                    sqLiteHelper.UpdateNotes(database,
+                            EditTextHeadTextView.getText().toString(),
                             EditTextBodyTextView.getText().toString(),
                             getDateTime(),
                             ItemID);

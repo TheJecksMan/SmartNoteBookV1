@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity  {
         mProgress = findViewById(R.id.progressBarLoad);
         TextView mTextViewVersion = findViewById(R.id.textViewVersion);
 
+        //получение текущей версии приложения
         try {
             mTextViewVersion.setText(this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName);
         }

@@ -21,6 +21,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
 
     public DrawerLayout drawerLayout;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         NavigationView navigationView = findViewById(R.id.dopMenuLeft);
 
         BottomNavigationView bottomNavigationMenu = findViewById(R.id.BottomNavigationMenu);
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentPager, new notes_fg()).commit();
 
         bottomNavigationMenu.setOnItemSelectedListener(navListener);
@@ -105,6 +107,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
                 .beginTransaction()
                 .replace(R.id.fragmentPager, selectedFragment)
                 .commit();
+
         return true;
     };
 

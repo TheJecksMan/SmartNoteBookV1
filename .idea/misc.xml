@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/drawable/main_outline_menu.xml" value="0.246875" />
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/activity_create_list.xml" value="0.23072916666666668" />
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/activity_create_note.xml" value="0.23072916666666668" />
+        <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/activity_trash.xml" value="0.23278985507246377" />
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/fragment_notes_fg.xml" value="0.4041666666666667" />
+        <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/item_recyclerview.xml" value="0.536" />
+        <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/main_menu.xml" value="0.19655521783181357" />
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/xml/setting_general.xml" value="0.4" />
       </map>
     </option>

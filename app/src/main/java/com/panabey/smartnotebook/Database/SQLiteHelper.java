@@ -37,11 +37,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    //удаление
     public boolean deleteNote(SQLiteDatabase db, int id)
     {
         return db.delete(TABLE_CONTACTS, KEY_ID + "=" + id, null) > 0;
     }
 
+    //переиндексация при удалении
     public void ReindexNotes(SQLiteDatabase db, int id){
         new Thread(new Runnable() {
             public void run() {
@@ -51,21 +53,20 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         }).start();
     }
 
-    private  ContentValues contentValues;
-
+    //запись в базу данных
     public void UploadInDatabaseNotes(SQLiteDatabase db, String HeadText, String BodyText, String DateTime){
 
-                contentValues = new ContentValues();
+                ContentValues contentValues = new ContentValues();
 
                 contentValues.put(SQLiteHelper.KEY_HEAD_NOTES, HeadText);
                 contentValues.put(SQLiteHelper.KEY_BODY_NOTES, BodyText);
                 contentValues.put(SQLiteHelper.KEY_DATETIME, DateTime);
 
                 db.insert(TABLE_CONTACTS, null, contentValues);
-
     }
 
-    public void UpdateNotes(SQLiteDatabase db,String HeadText, String BodyText, String DateTime, String id ){
+    //Изменение заметки в базе данных
+    public void UpdateNotes(SQLiteDatabase db,String HeadText, String BodyText, String DateTime, int id ){
         db.execSQL("UPDATE contactsNotes SET HeadNotes = '" + HeadText + "' , BodyNotes = '"+ BodyText
                 +"' , DateTime = '" + DateTime + "' WHERE id =" + id);
     }
