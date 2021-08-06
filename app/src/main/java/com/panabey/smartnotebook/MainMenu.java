@@ -103,6 +103,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
                     selectedFragment = new accountLogin_fg();
                 break;
         }
+        assert selectedFragment != null;
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragmentPager, selectedFragment)

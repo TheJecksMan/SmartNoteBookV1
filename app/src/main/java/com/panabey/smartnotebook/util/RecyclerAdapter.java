@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -64,13 +63,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        //ImageView imageView;
         final TextView textView, rowCountTextView;
         final RelativeLayout container;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-           // imageView = itemView.findViewById(R.id.imageView);
+
             textView = itemView.findViewById(R.id.textView);
             rowCountTextView = itemView.findViewById(R.id.rowCountTextView);
             container = itemView.findViewById(R.id.container);
@@ -90,6 +88,4 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
 
     }
-
-
 }

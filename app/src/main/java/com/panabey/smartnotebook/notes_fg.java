@@ -129,9 +129,6 @@ public class notes_fg extends Fragment {
                 recyclerAdapter.notifyDataSetChanged();
             }
         }
-
-
-
     };
 }
 

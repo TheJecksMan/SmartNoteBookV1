@@ -1,18 +1,18 @@
 package com.panabey.smartnotebook.util;
 
 import android.content.Context;
-import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
+import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.panabey.smartnotebook.CreateList;
 import com.panabey.smartnotebook.R;
 
 import java.util.List;
@@ -30,16 +30,16 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater1 = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater1.inflate(R.layout.item_recyclerview_list, parent, false);
+        LayoutInflater layoutInflaterList = LayoutInflater.from(parent.getContext());
+
+        View view = layoutInflaterList.inflate(R.layout.item_list, parent, false);
         RecyclerAdapterList.ViewHolder viewHolderList = new RecyclerAdapterList.ViewHolder(view);
         return viewHolderList;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.containerList.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_load_animate));
-        holder.textViewList.setText(List.get(position));
+        holder.BodyList.setText(List.get(position));
     }
 
     @Override
@@ -47,31 +47,41 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
         return List.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
-        //ImageView imageView;
-        TextView textViewList;
-        RelativeLayout containerList;
+        final CheckBox CheckBox;
+        final TextView BodyList;
+        final RelativeLayout containerList;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            // imageView = itemView.findViewById(R.id.imageView);
-            textViewList = itemView.findViewById(R.id.textViewList);
-            containerList = itemView.findViewById(R.id.ContainerList);
 
-            itemView.setOnClickListener(this);
+            CheckBox = itemView.findViewById(R.id.checkBoxList);
+            BodyList = itemView.findViewById(R.id.BodyList);
+            containerList = itemView.findViewById(R.id.containerList);
+        }
+    }
+
+    private static class EditTextListener implements TextWatcher {
+        private int position;
+
+        public void updatePosition(int position) {
+            this.position = position;
         }
 
         @Override
-        public void onClick(View view) {
- /*
-            TextView recycler = view.findViewHolderForAdapterPosition
-            int clickedPosition = getAdapterPosition();
-            TextView text1 = recyclerView.findViewHolderForAdapterPosition(position).itemView.findViewById(R.id.text1);
-            //Toast.makeText(view.getContext(), NotesList.get(getAdapterPosition()), Toast.LENGTH_SHORT).show();
-  */
-            view.getContext().startActivity(new Intent(view.getContext(), CreateList.class));
+        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
         }
 
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+
+        }
     }
 }

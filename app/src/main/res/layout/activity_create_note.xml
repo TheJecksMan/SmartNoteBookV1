@@ -2,12 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/BackgroundNotes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:focusableInTouchMode="true"
     tools:context=".CreateNote">
-
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarUpPanel"
@@ -23,10 +22,11 @@
         app:menu="@menu/notes_menu"
         app:navigationIcon="@drawable/notes_outline_arrow_back" />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fillViewport="true"
         android:background="@color/MainMenuBackground"
         app:layout_constraintBottom_toTopOf="@+id/viewEditMenu"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,49 +34,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarUpPanel">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:id="@+id/LinearLayoutList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/editTextNotes"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="@null"
-                android:ems="10"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:gravity="top"
-                android:hint="@string/textViewNotes"
-                android:importantForAutofill="no"
-                android:inputType="textLongMessage|textAutoCorrect|textMultiLine|textNoSuggestions|textPersonName"
-                android:padding="10dp"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextHeadText" />
-
-            <TextView
-                android:id="@+id/lastModifiedDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.833"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextNotes"
-                app:layout_constraintVertical_bias="0.0" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/editTextHeadText"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
@@ -90,15 +56,52 @@
                 android:hint="@string/textViewHead"
                 android:importantForAutofill="no"
                 android:inputType="textAutoCorrect|textMultiLine|textNoSuggestions|textPersonName"
+                android:minHeight="48dp"
                 android:padding="10dp"
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:textColorHint="#000000"
                 android:textSize="15sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+
+            <EditText
+                android:id="@+id/editTextNotes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@null"
+                android:ems="10"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="top"
+                android:hint="@string/textViewNotes"
+                android:importantForAutofill="no"
+                android:inputType="textLongMessage|textAutoCorrect|textMultiLine|textNoSuggestions|textPersonName"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextHeadText" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layoutManager="LinearLayoutManager" />
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
 
     <View
         android:id="@+id/viewEditMenu"
@@ -108,5 +111,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Добавить подзадачу"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewEditMenu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

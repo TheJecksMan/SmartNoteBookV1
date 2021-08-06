@@ -1,20 +1,29 @@
 package com.panabey.smartnotebook;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.panabey.smartnotebook.Database.SQLiteHelper;
+import com.panabey.smartnotebook.util.RecyclerAdapterList;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 
 public class CreateNote extends AppCompatActivity {
@@ -34,7 +43,11 @@ public class CreateNote extends AppCompatActivity {
 
     private boolean clickNoteBoolean;
     private int ItemID;
-    String InfoDate = "Последние изменения: ";
+
+    //список подзадач
+    List<String> List;
+    private RecyclerAdapterList recyclerAdapterList;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +57,34 @@ public class CreateNote extends AppCompatActivity {
         sqLiteHelper = new SQLiteHelper(this);
         database = sqLiteHelper.getWritableDatabase();
 
+        //список подзадач
+        Button buttonAdd = findViewById(R.id.buttonAdd);
+        Context context = this;
+        List = new ArrayList<>();
+
+
+        recyclerView = findViewById(R.id.recyclerViewList);
+
+
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List.add("Новая подзадача");
+                recyclerAdapterList = new RecyclerAdapterList(List, context);
+
+                recyclerView.setAdapter(recyclerAdapterList);
+            }
+        });
+
+        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setItemViewCacheSize(20);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(0,20);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
 
         editTextHead = findViewById(R.id.editTextHeadText);
         editTextBody= findViewById(R.id.editTextNotes);
-        lastModifiedDate = findViewById(R.id.lastModifiedDate);
 
         EditTextHeadTextView = findViewById(R.id.editTextHeadText);
         EditTextBodyTextView = findViewById(R.id.editTextNotes);
@@ -65,8 +102,6 @@ public class CreateNote extends AppCompatActivity {
 
                  EditTextHeadTextView.setText(cursor.getString(cursor.getColumnIndex("HeadNotes")));
                  EditTextBodyTextView.setText(cursor.getString(cursor.getColumnIndex("BodyNotes")));
-                 lastModifiedDate.setText(InfoDate + cursor.getString(cursor.getColumnIndex("DateTime")));
-
              }
         }
 
@@ -94,18 +129,17 @@ public class CreateNote extends AppCompatActivity {
             }
             return true;
         });
+
         //------------------------Последние изменения в тексте---------------------------//
         editTextBody.setOnFocusChangeListener((view, hasFocus) -> {
             if (!hasFocus) {
                 String lastModify = dateFormat.format(new Date());
-                lastModifiedDate.setText(InfoDate + lastModify);
             }
         });
 
         editTextHead.setOnFocusChangeListener((view, hasFocus) -> {
             if (!hasFocus) {
                 String lastModify = dateFormat.format(new Date());
-                lastModifiedDate.setText(InfoDate + lastModify);
             }
         });
 
@@ -151,7 +185,31 @@ public class CreateNote extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        lastModifiedDate = null;
         System.gc();
     }
+
+    final ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.START | ItemTouchHelper.END, ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+
+            int fromPosition = viewHolder.getAdapterPosition();
+            int toPosition = target.getAdapterPosition();
+            Collections.swap(List, fromPosition, toPosition);
+            recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
+
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            final int position = viewHolder.getAdapterPosition();
+            if (direction == ItemTouchHelper.LEFT) {
+                List.remove(position);
+
+                recyclerView.getAdapter().notifyItemRemoved(position);
+               // recyclerAdapterList.notifyDataSetChanged();
+            }
+        }
+    };
 }
