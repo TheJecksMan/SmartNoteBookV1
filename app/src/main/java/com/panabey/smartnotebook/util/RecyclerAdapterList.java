@@ -1,12 +1,12 @@
 package com.panabey.smartnotebook.util;
 
 import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -40,6 +40,17 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.BodyList.setText(List.get(position));
+        holder.CheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    holder.BodyList.setPaintFlags(holder.BodyList.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                }
+                else{
+                    holder.BodyList.setPaintFlags(0);
+                }
+            }
+        });
     }
 
     @Override
@@ -59,29 +70,6 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
             CheckBox = itemView.findViewById(R.id.checkBoxList);
             BodyList = itemView.findViewById(R.id.BodyList);
             containerList = itemView.findViewById(R.id.containerList);
-        }
-    }
-
-    private static class EditTextListener implements TextWatcher {
-        private int position;
-
-        public void updatePosition(int position) {
-            this.position = position;
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
         }
     }
 }

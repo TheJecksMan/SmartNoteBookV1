@@ -77,6 +77,7 @@ public class CreateNote extends AppCompatActivity {
         });
 
         recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setItemViewCacheSize(20);
         recyclerView.getRecycledViewPool().setMaxRecycledViews(0,20);
 
@@ -189,7 +190,7 @@ public class CreateNote extends AppCompatActivity {
     }
 
     final ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
-            ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.START | ItemTouchHelper.END, ItemTouchHelper.LEFT) {
+            ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.LEFT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
 

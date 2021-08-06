@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null"
+        android:drawingCacheQuality="low"
         android:paddingBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,6 +39,7 @@
             android:layout_marginEnd="10dp"
             android:layout_toStartOf="@+id/imageViewDragAndDrop"
             android:layout_toEndOf="@+id/checkBoxList"
+            android:drawingCacheQuality="low"
             android:ellipsize="end"
             android:inputType="textLongMessage|textAutoCorrect|textMultiLine|textNoSuggestions|textPersonName"
             android:text="Simple Title Text "
@@ -51,7 +53,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="5dp" />
+            android:layout_marginStart="5dp"
+            android:drawingCacheQuality="low" />
 
     </RelativeLayout>
 
