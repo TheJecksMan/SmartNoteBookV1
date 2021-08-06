@@ -41,7 +41,6 @@
             android:layout_toEndOf="@+id/checkBoxList"
             android:drawingCacheQuality="low"
             android:ellipsize="end"
-            android:inputType="textLongMessage|textAutoCorrect|textMultiLine|textNoSuggestions|textPersonName"
             android:text="Simple Title Text "
             android:textColor="@color/black"
             android:textStyle="bold" />

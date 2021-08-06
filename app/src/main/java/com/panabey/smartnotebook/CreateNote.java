@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -62,17 +63,16 @@ public class CreateNote extends AppCompatActivity {
         Context context = this;
         List = new ArrayList<>();
 
-
         recyclerView = findViewById(R.id.recyclerViewList);
 
+        recyclerAdapterList = new RecyclerAdapterList(List, context);
+        recyclerView.setAdapter(recyclerAdapterList);
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 List.add("Новая подзадача");
-                recyclerAdapterList = new RecyclerAdapterList(List, context);
-
-                recyclerView.setAdapter(recyclerAdapterList);
+                recyclerAdapterList.notifyDataSetChanged();
             }
         });
 
