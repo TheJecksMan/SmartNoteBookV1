@@ -18,6 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+
+
         <ImageView
             android:id="@+id/imageViewDragAndDrop"
             android:layout_width="wrap_content"
@@ -29,19 +31,22 @@
             android:drawingCacheQuality="low"
             app:srcCompat="@drawable/main_outline_menu" />
 
-        <TextView
+        <EditText
             android:id="@+id/BodyList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="11dp"
             android:layout_marginEnd="10dp"
             android:layout_toStartOf="@+id/imageViewDragAndDrop"
             android:layout_toEndOf="@+id/checkBoxList"
-            android:drawingCacheQuality="low"
+            android:background="@null"
             android:ellipsize="end"
-            android:text="Simple Title Text "
+            android:ems="10"
+            android:focusable="true"
+            android:hint="Новая подзадача"
+            android:inputType="textAutoCorrect|textMultiLine|textNoSuggestions|textPersonName"
             android:textColor="@color/black"
             android:textStyle="bold" />
 

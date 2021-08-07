@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,9 +22,8 @@ import java.util.List;
 
 public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterList.ViewHolder> {
 
-    List<String> List;
+    final List<String> List;
     final Context context;
-    String EditText;
 
     public RecyclerAdapterList(List<String> List, Context context) {
         this.List = List;
@@ -66,7 +66,7 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String ans = holder.BodyList.getText().toString();
+                List.set(holder.getAdapterPosition(), s.toString());
             }
 
             @Override
@@ -84,7 +84,7 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
     static class ViewHolder extends RecyclerView.ViewHolder{
 
         final CheckBox CheckBox;
-        final TextView BodyList;
+        final EditText BodyList;
         final RelativeLayout containerList;
 
         public ViewHolder(@NonNull View itemView) {

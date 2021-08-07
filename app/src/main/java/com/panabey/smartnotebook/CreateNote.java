@@ -10,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -71,7 +70,7 @@ public class CreateNote extends AppCompatActivity {
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List.add("Новая подзадача");
+                List.add("");
                 recyclerAdapterList.notifyDataSetChanged();
             }
         });
@@ -165,7 +164,7 @@ public class CreateNote extends AppCompatActivity {
             public void run() {
 
                 //запись в базу данных
-                if (clickNoteBoolean != true) {
+                if (!clickNoteBoolean) {
                     //Новая заметка
                     sqLiteHelper.UploadInDatabaseNotes(database,
                             EditTextHeadTextView.getText().toString(),
