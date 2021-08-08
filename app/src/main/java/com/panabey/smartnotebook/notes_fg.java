@@ -45,6 +45,7 @@ public class notes_fg extends Fragment {
         View v = inflater.inflate(R.layout.fragment_notes_fg, null);
         NotesList = new ArrayList<>();
 
+
         //---------------БД-----------------------------------
         new Thread(new Runnable() {
             public void run() {

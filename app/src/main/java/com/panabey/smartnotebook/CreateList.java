@@ -2,24 +2,13 @@ package com.panabey.smartnotebook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 public class CreateList extends AppCompatActivity {
 
-    private LinearLayout linearLayoutList;
-    private CheckBox checkBox;
-
-    private int countID = 1;
-
-    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,52 +16,11 @@ public class CreateList extends AppCompatActivity {
 
         Toolbar toolbarCreateList = findViewById(R.id.toolbarUpPanelList);
 
-        linearLayoutList = findViewById(R.id.LinearLayoutList);
-        Button buttonAddList = findViewById(R.id.buttonAddList);
-
-        final String TagText = "text";
-
-        //Создание списка
-        buttonAddList.setOnClickListener(v -> {
-
-            checkBox = new CheckBox(getApplicationContext());
-            checkBox.setText(TagText);
-            checkBox.setTextColor(R.color.black);
-
-            checkBox.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT));
-
-            checkBox.setOnLongClickListener(v1 -> {
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        "Длительное нажатие!", Toast.LENGTH_LONG);
-                toast.show();
-                return true;
-            });
-
-            checkBox.setId(countID);
-            linearLayoutList.addView(checkBox);
-            countID++;
-        });
-
         toolbarCreateList.setNavigationOnClickListener(v -> {
             Intent intentBackMenu = new Intent(getApplicationContext(), MainMenu.class);
             startActivity(intentBackMenu);
-            countID = 0;
         });
 
-        //Верхняя панель активности
-        toolbarCreateList.setOnMenuItemClickListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.UndoItem:
-                    break;
-                case R.id.RedoItem:
-                    break;
-                default:
-                    return false;
-            }
-            return true;
-        });
     }
 
     @Override
@@ -81,6 +29,5 @@ public class CreateList extends AppCompatActivity {
         Intent intentBackList = new Intent(this, MainMenu.class);
         startActivity(intentBackList);
         finish();
-        countID = 0;
     }
 }

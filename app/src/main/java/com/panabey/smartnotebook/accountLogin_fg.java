@@ -20,10 +20,8 @@ public class accountLogin_fg extends Fragment {
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
 
-    private Button LoginButton;
     private TextInputEditText email, password;
     private TextView InfoEmpty;
-    private TextView OnClickRegister;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,12 +37,12 @@ public class accountLogin_fg extends Fragment {
         email = view.findViewById(R.id.layoutEmail);
         password = view.findViewById(R.id.layoutPassword);
 
-        LoginButton = view.findViewById(R.id.buttonLoginAccount);
+        Button loginButton = view.findViewById(R.id.buttonLoginAccount);
         InfoEmpty = view.findViewById(R.id.CheckEmpty);
 
 
-        OnClickRegister = view.findViewById(R.id.textViewRegisterFragment);
-        OnClickRegister.setOnClickListener(v -> {
+        TextView onClickRegister = view.findViewById(R.id.textViewRegisterFragment);
+        onClickRegister.setOnClickListener(v -> {
             /*
             FragmentManager frag = getChildFragmentManager();
             frag.popBackStack();
@@ -59,9 +57,9 @@ public class accountLogin_fg extends Fragment {
              */
         });
 
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
 
-        LoginButton.setOnClickListener(v -> {
+        loginButton.setOnClickListener(v -> {
             String emailID = email.getText().toString();
             String passwordID = password.getText().toString();
 

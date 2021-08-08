@@ -22,21 +22,12 @@ public class Trash extends AppCompatActivity {
         String test = "test";
 
 
-        ButtonTestSQL.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                new Thread(new Runnable() {
-                    public void run() {
-                        int i =0;
-                        while(i < 10000){
-                            sqLiteHelper.UploadInDatabaseNotes(database, test, test, test);
-                            i++;
-                        }
-                    }
-                }).start();
-
+        ButtonTestSQL.setOnClickListener(v -> new Thread(() -> {
+            int i = 0;
+            while (i < 10000) {
+                sqLiteHelper.UploadInDatabaseNotes(database, test, test, test);
+                i++;
             }
-        });
+        }).start());
     }
 }

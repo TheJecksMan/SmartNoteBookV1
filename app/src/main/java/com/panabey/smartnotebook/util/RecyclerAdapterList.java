@@ -11,7 +11,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,7 +35,7 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
         LayoutInflater layoutInflaterList = LayoutInflater.from(parent.getContext());
 
         View view = layoutInflaterList.inflate(R.layout.item_list, parent, false);
-        RecyclerAdapterList.ViewHolder viewHolderList = new RecyclerAdapterList.ViewHolder(view);
+        RecyclerAdapterList.ViewHolder viewHolderList = new RecyclerAdapterList.ViewHolder(view,  new EditTextListener());
         return viewHolderList;
     }
 
@@ -44,36 +43,18 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.BodyList.setText(List.get(position));
+        holder.EditTextListener.updatePosition(holder.getAdapterPosition());
 
-        holder.CheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    holder.BodyList.setPaintFlags(holder.BodyList.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                }
+        holder.CheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked){
+                holder.BodyList.setPaintFlags(holder.BodyList.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            }
 
-                else{
-                    holder.BodyList.setPaintFlags(0);
-                }
+            else{
+                holder.BodyList.setPaintFlags(0);
             }
         });
 
-        holder.BodyList.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                List.set(holder.getAdapterPosition(), s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
     }
 
     @Override
@@ -86,12 +67,39 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
         final CheckBox CheckBox;
         final EditText BodyList;
         final RelativeLayout containerList;
+        final EditTextListener EditTextListener;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, EditTextListener EditTextListener) {
             super(itemView);
             CheckBox = itemView.findViewById(R.id.checkBoxList);
             BodyList = itemView.findViewById(R.id.BodyList);
             containerList = itemView.findViewById(R.id.containerList);
+
+            this.EditTextListener = EditTextListener;
+            this.BodyList.addTextChangedListener(EditTextListener);
+        }
+    }
+    private class EditTextListener implements TextWatcher {
+        private int position;
+
+        public void updatePosition(int position) {
+            this.position = position;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+            // no op
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int i, int i2, int i3) {
+            List.set(position, s.toString());
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            // no op
         }
     }
 }
+

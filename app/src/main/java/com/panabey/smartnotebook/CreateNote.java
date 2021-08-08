@@ -34,7 +34,6 @@ public class CreateNote extends AppCompatActivity {
     private TextView lastModifiedDate;
     private TextView EditTextHeadTextView;
     private TextView EditTextBodyTextView;
-    private Toolbar toolbarCreateNote;
     private String lastModify;
     private DateFormat dateFormat;
 
@@ -53,6 +52,7 @@ public class CreateNote extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
+        getWindow().setBackgroundDrawable(null);
 
         sqLiteHelper = new SQLiteHelper(this);
         database = sqLiteHelper.getWritableDatabase();
@@ -67,12 +67,9 @@ public class CreateNote extends AppCompatActivity {
         recyclerAdapterList = new RecyclerAdapterList(List, context);
         recyclerView.setAdapter(recyclerAdapterList);
 
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                List.add("");
-                recyclerAdapterList.notifyDataSetChanged();
-            }
+        buttonAdd.setOnClickListener(v -> {
+            List.add("");
+            recyclerAdapterList.notifyDataSetChanged();
         });
 
         recyclerView.setNestedScrollingEnabled(false);
@@ -82,9 +79,6 @@ public class CreateNote extends AppCompatActivity {
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
-
-        editTextHead = findViewById(R.id.editTextHeadText);
-        editTextBody= findViewById(R.id.editTextNotes);
 
         EditTextHeadTextView = findViewById(R.id.editTextHeadText);
         EditTextBodyTextView = findViewById(R.id.editTextNotes);
@@ -108,7 +102,7 @@ public class CreateNote extends AppCompatActivity {
         //DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault());
         dateFormat= new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 
-        toolbarCreateNote = findViewById(R.id.toolbarUpPanel);
+        Toolbar toolbarCreateNote = findViewById(R.id.toolbarUpPanel);
         toolbarCreateNote.setNavigationOnClickListener(v -> {
 
             WriteSQLAndUpdate();
@@ -116,6 +110,7 @@ public class CreateNote extends AppCompatActivity {
             startActivity(intentBackMenu);
         });
 
+        /*
         toolbarCreateNote.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.ImportItem:
@@ -130,18 +125,9 @@ public class CreateNote extends AppCompatActivity {
             return true;
         });
 
-        //------------------------Последние изменения в тексте---------------------------//
-        editTextBody.setOnFocusChangeListener((view, hasFocus) -> {
-            if (!hasFocus) {
-                String lastModify = dateFormat.format(new Date());
-            }
-        });
+         */
 
-        editTextHead.setOnFocusChangeListener((view, hasFocus) -> {
-            if (!hasFocus) {
-                String lastModify = dateFormat.format(new Date());
-            }
-        });
+        //------------------------Последние изменения в тексте---------------------------//
 
     }
     private String getDateTime() {
@@ -160,24 +146,22 @@ public class CreateNote extends AppCompatActivity {
     }
 
     private void WriteSQLAndUpdate(){
-        new Thread(new Runnable() {
-            public void run() {
+        new Thread(() -> {
 
-                //запись в базу данных
-                if (!clickNoteBoolean) {
-                    //Новая заметка
-                    sqLiteHelper.UploadInDatabaseNotes(database,
-                            EditTextHeadTextView.getText().toString(),
-                            EditTextBodyTextView.getText().toString(),
-                            getDateTime());
-                } else {
-                    //изменение заметки (перезапись)
-                    sqLiteHelper.UpdateNotes(database,
-                            EditTextHeadTextView.getText().toString(),
-                            EditTextBodyTextView.getText().toString(),
-                            getDateTime(),
-                            ItemID);
-                }
+            //запись в базу данных
+            if (!clickNoteBoolean) {
+                //Новая заметка
+                sqLiteHelper.UploadInDatabaseNotes(database,
+                        EditTextHeadTextView.getText().toString(),
+                        EditTextBodyTextView.getText().toString(),
+                        getDateTime());
+            } else {
+                //изменение заметки (перезапись)
+                sqLiteHelper.UpdateNotes(database,
+                        EditTextHeadTextView.getText().toString(),
+                        EditTextBodyTextView.getText().toString(),
+                        getDateTime(),
+                        ItemID);
             }
         }).start();
     }

@@ -5,7 +5,8 @@
       <map>
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/drawable/main_outline_menu.xml" value="0.246875" />
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/activity_create_list.xml" value="0.23072916666666668" />
-        <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/activity_create_note.xml" value="0.2986111111111111" />
+        <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/activity_create_note.xml" value="0.264" />
+        <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/activity_edit_text.xml" value="0.23072916666666668" />
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/activity_main.xml" value="0.2966485507246377" />
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/activity_trash.xml" value="0.23278985507246377" />
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/fragment_list.xml" value="0.30480072463768115" />
@@ -14,7 +15,7 @@
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/item_list_notes.xml" value="0.30480072463768115" />
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/item_recyclerview.xml" value="0.2622309197651663" />
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/item_recyclerview_list.xml" value="0.30480072463768115" />
-        <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/main_menu.xml" value="0.19655521783181357" />
+        <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/layout/main_menu.xml" value="0.264" />
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/menu/menu_dop_left.xml" value="0.4041666666666667" />
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/menu/notes_menu.xml" value="0.4041666666666667" />
         <entry key="..\:/Programming/AndroidProject/SmartNoteBook2/app/src/main/res/xml/setting_general.xml" value="0.4" />
