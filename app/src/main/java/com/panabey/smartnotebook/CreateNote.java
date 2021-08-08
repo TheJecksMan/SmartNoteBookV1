@@ -6,17 +6,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.panabey.smartnotebook.Database.SQLiteHelper;
-import com.panabey.smartnotebook.Notes.NotesRecyclerManager;
+import com.panabey.smartnotebook.Notes.ManagerCreateNotes;
 import com.panabey.smartnotebook.util.RecyclerAdapterList;
 
 import java.text.DateFormat;
@@ -40,7 +38,7 @@ public class CreateNote extends AppCompatActivity {
     private int ItemID;
 
     //список подзадач
-    private RecyclerView recyclerView;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,16 +48,16 @@ public class CreateNote extends AppCompatActivity {
         sqLiteHelper = new SQLiteHelper(this);
         database = sqLiteHelper.getWritableDatabase();
 
-        Button buttonAdd = findViewById(R.id.buttonAdd);
-
         recyclerView = findViewById(R.id.recyclerViewList);
 
+        ManagerCreateNotes managerCreateNotes = new ManagerCreateNotes(this, recyclerView);
+        managerCreateNotes.ManagerRecyclerView();
+
         //список подзадач
-        NotesRecyclerManager notesRecyclerManager = new NotesRecyclerManager(this, recyclerView);
-        notesRecyclerManager.ManagerCreateNote();
+        Button buttonAdd = findViewById(R.id.buttonAddTask);
 
         buttonAdd.setOnClickListener(v -> {
-            notesRecyclerManager.TaskListOnClick();
+            managerCreateNotes.onClickAddItem();
         });
 
 
@@ -153,6 +151,7 @@ public class CreateNote extends AppCompatActivity {
             }
         }).start();
     }
+
 
     @Override
     protected void onDestroy() {

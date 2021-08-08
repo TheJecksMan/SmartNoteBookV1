@@ -16,16 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.panabey.smartnotebook.R;
 
-import java.util.Collections;
 import java.util.List;
 
 public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterList.ViewHolder> {
 
-    final List<String> List;
+    final List<String> ListTask;
     final Context context;
 
-    public RecyclerAdapterList(List<String> List, Context context) {
-        this.List = List;
+    public RecyclerAdapterList(List<String> ListTask, Context context) {
+        this.ListTask = ListTask;
         this.context = context;
     }
 
@@ -33,7 +32,6 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflaterList = LayoutInflater.from(parent.getContext());
-
         View view = layoutInflaterList.inflate(R.layout.item_list, parent, false);
         RecyclerAdapterList.ViewHolder viewHolderList = new RecyclerAdapterList.ViewHolder(view,  new EditTextListener());
         return viewHolderList;
@@ -42,7 +40,7 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.BodyList.setText(List.get(position));
+        holder.BodyList.setText(ListTask.get(position));
         holder.EditTextListener.updatePosition(holder.getAdapterPosition());
 
         holder.CheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -58,7 +56,12 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
 
     @Override
     public int getItemCount() {
-        return List.size();
+        return ListTask.size();
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return super.getItemId(position);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
@@ -98,7 +101,7 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
 
         @Override
         public void afterTextChanged(Editable editable) {
-            List.set(position, editable.toString());
+            ListTask.set(position, editable.toString());
         }
     }
 }

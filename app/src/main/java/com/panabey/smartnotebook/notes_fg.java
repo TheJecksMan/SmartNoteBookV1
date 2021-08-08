@@ -75,7 +75,6 @@ public class notes_fg extends Fragment {
         recyclerView = v.findViewById(R.id.recyclerView);
         recyclerAdapter = new RecyclerAdapter(NotesList, getContext());
 
-
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemViewCacheSize(30);

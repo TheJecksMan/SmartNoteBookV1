@@ -6,40 +6,39 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.panabey.smartnotebook.CreateNote;
 import com.panabey.smartnotebook.util.RecyclerAdapterList;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class NotesRecyclerManager {
+public class ManagerCreateNotes {
 
-    private List<String> List;
-    private RecyclerAdapterList recyclerAdapterList;
-    private RecyclerView recyclerView;
+    private Context context;
 
+    List<String> ListTask;
+    RecyclerAdapterList recyclerAdapterList;
+    RecyclerView recyclerView;
 
-    Context context;
-
-    public NotesRecyclerManager(Context context, RecyclerView recyclerView){
+    public ManagerCreateNotes(Context context, RecyclerView recyclerView){
         this.context = context;
         this.recyclerView = recyclerView;
     }
 
-    private void CreateObject(){
-        List = new ArrayList<>();
+    private void CreateNote(){
+        ListTask = new ArrayList<>();
+        recyclerAdapterList = new RecyclerAdapterList(ListTask, context);
 
-        recyclerAdapterList = new RecyclerAdapterList(List, context);
         recyclerView.setAdapter(recyclerAdapterList);
 
         recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setItemViewCacheSize(20);
+        recyclerView.setItemViewCacheSize(30);
         recyclerView.getRecycledViewPool().setMaxRecycledViews(0,20);
+
     }
 
-    private void ManagerTouch(){
-
+    private void onTouch(){
         final ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
                 ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.LEFT) {
             @Override
@@ -47,7 +46,7 @@ public class NotesRecyclerManager {
 
                 int fromPosition = viewHolder.getAdapterPosition();
                 int toPosition = target.getAdapterPosition();
-                Collections.swap(List, fromPosition, toPosition);
+                Collections.swap(ListTask, fromPosition, toPosition);
                 recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
 
                 return false;
@@ -57,10 +56,9 @@ public class NotesRecyclerManager {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 final int position = viewHolder.getAdapterPosition();
                 if (direction == ItemTouchHelper.LEFT) {
-                    List.remove(position);
+                    ListTask.remove(position);
 
                     recyclerView.getAdapter().notifyItemRemoved(position);
-                    // recyclerAdapterList.notifyDataSetChanged();
                 }
             }
         };
@@ -68,14 +66,13 @@ public class NotesRecyclerManager {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
-
-    public void ManagerCreateNote(){
-        CreateObject();
-        ManagerTouch();
+    public void ManagerRecyclerView(){
+        CreateNote();
+        onTouch();
     }
 
-    public void TaskListOnClick(){
-        List.add("");
-       recyclerAdapterList.notifyDataSetChanged();
+    public void onClickAddItem(){
+        ListTask.add("");
+        recyclerAdapterList.notifyItemInserted(ListTask.size());
     }
 }
