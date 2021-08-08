@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.panabey.smartnotebook.R;
 
+import java.util.Collections;
 import java.util.List;
 
 public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterList.ViewHolder> {
@@ -87,17 +88,17 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
 
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-            // no op
+
         }
 
         @Override
         public void onTextChanged(CharSequence s, int i, int i2, int i3) {
-            List.set(position, s.toString());
+
         }
 
         @Override
         public void afterTextChanged(Editable editable) {
-            // no op
+            List.set(position, editable.toString());
         }
     }
 }

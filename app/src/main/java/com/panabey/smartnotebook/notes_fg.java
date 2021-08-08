@@ -26,8 +26,6 @@ import java.util.List;
 
 public class notes_fg extends Fragment {
 
-    private View view;
-    private LinearLayout linearLayout;
     SQLiteHelper sqLiteHelper;
     SQLiteDatabase database;
 
@@ -80,7 +78,6 @@ public class notes_fg extends Fragment {
 
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setHasFixedSize(true);
-        //recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setItemViewCacheSize(30);
         recyclerView.getRecycledViewPool().setMaxRecycledViews(0,10);
         //recyclerAdapter.setHasStableIds(true);
@@ -91,7 +88,6 @@ public class notes_fg extends Fragment {
 
 
         Button button = v.findViewById(R.id.buttonCreateNotes);
-        //linearLayout = (LinearLayout) v.findViewById(R.id.ListNotes);
 
         button.setOnClickListener(v1 -> {
             Intent intentCreateNote = new Intent(getContext(), CreateNote.class);

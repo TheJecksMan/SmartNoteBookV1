@@ -10,12 +10,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     //Database Notes
-    public static final int VERSION = 1;
+    public static final int VERSION = 3;
     public static final String BD_TABLE_NAME = "Notes";
+
     public static final String TABLE_CONTACTS = "contactsNotes";
     public static final String KEY_ID = "ID";
     public static final String KEY_HEAD_NOTES = "HeadNotes";
     public static final String KEY_BODY_NOTES = "BodyNotes";
+    public static final String KEY_TASK = "Task";
     public static final String KEY_DATETIME = "DateTime";
 
     public SQLiteHelper(Context context)
@@ -29,6 +31,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("create table " + TABLE_CONTACTS + "(" + KEY_ID + " integer primary key,"
                 + KEY_HEAD_NOTES + " text not null,"
                 + KEY_BODY_NOTES + " text,"
+                + KEY_TASK + " text,"
                 + KEY_DATETIME + " text" + ")");
     }
 
@@ -68,6 +71,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     //Изменение заметки в базе данных после выхода из Activity
     public void UpdateNotes(SQLiteDatabase db,String HeadText, String BodyText, String DateTime, int id ){
+
         db.execSQL("UPDATE contactsNotes SET HeadNotes = '" + HeadText + "' , BodyNotes = '"+ BodyText
                 +"' , DateTime = '" + DateTime + "' WHERE id =" + id);
     }

@@ -76,6 +76,6 @@ public class NotesRecyclerManager {
 
     public void TaskListOnClick(){
         List.add("");
-        recyclerAdapterList.notifyDataSetChanged();
+       recyclerAdapterList.notifyDataSetChanged();
     }
 }

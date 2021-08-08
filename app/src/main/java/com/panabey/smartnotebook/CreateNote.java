@@ -46,7 +46,6 @@ public class CreateNote extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
-        getWindow().setBackgroundDrawable(null);
 
         sqLiteHelper = new SQLiteHelper(this);
         database = sqLiteHelper.getWritableDatabase();
@@ -54,6 +53,7 @@ public class CreateNote extends AppCompatActivity {
         Button buttonAdd = findViewById(R.id.buttonAdd);
 
         recyclerView = findViewById(R.id.recyclerViewList);
+
         //список подзадач
         NotesRecyclerManager notesRecyclerManager = new NotesRecyclerManager(this, recyclerView);
         notesRecyclerManager.ManagerCreateNote();
@@ -68,22 +68,21 @@ public class CreateNote extends AppCompatActivity {
 
         Bundle ClickNote = getIntent().getExtras();
 
+        new Thread(() -> {
         //Изменения сообщения после нажатия
-        if(ClickNote != null) {
-            clickNoteBoolean = ClickNote.getBoolean("BooleanClickRecyclerView");
-             if(clickNoteBoolean){
-                 ItemID = ClickNote.getInt("Id");
+            if(ClickNote != null) {
+                clickNoteBoolean = ClickNote.getBoolean("BooleanClickRecyclerView");
+                if(clickNoteBoolean){
+                    ItemID = ClickNote.getInt("Id");
 
-                 Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes WHERE ID  = " + ItemID, null);
-                 cursor.moveToFirst();
+                    Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes WHERE ID  = " + ItemID, null);
+                    cursor.moveToFirst();
 
-                 EditTextHeadTextView.setText(cursor.getString(cursor.getColumnIndex("HeadNotes")));
-                 EditTextBodyTextView.setText(cursor.getString(cursor.getColumnIndex("BodyNotes")));
-             }
-        }
-
-        //DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault());
-        dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+                    EditTextHeadTextView.setText(cursor.getString(cursor.getColumnIndex("HeadNotes")));
+                    EditTextBodyTextView.setText(cursor.getString(cursor.getColumnIndex("BodyNotes")));
+                }
+            }
+        }).start();
 
         Toolbar toolbarCreateNote = findViewById(R.id.toolbarUpPanel);
         toolbarCreateNote.setNavigationOnClickListener(v -> {
@@ -112,6 +111,7 @@ public class CreateNote extends AppCompatActivity {
         //------------------------Последние изменения в тексте---------------------------//
     }
     private String getDateTime() {
+        dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
         Date dateBody = new Date();
         return dateFormat.format(new Date());
     }
@@ -128,6 +128,13 @@ public class CreateNote extends AppCompatActivity {
     private void WriteSQLAndUpdate(){
         new Thread(() -> {
 
+            //проверка на пустую строку
+            String CheckedNullText = EditTextHeadTextView.getText().toString();
+            if (CheckedNullText.trim().isEmpty()) {
+                CheckedNullText = null;
+                return;
+            }
+
             //запись в базу данных
             if (!clickNoteBoolean) {
                 //Новая заметка
@@ -135,7 +142,8 @@ public class CreateNote extends AppCompatActivity {
                         EditTextHeadTextView.getText().toString(),
                         EditTextBodyTextView.getText().toString(),
                         getDateTime());
-            } else {
+            }
+            else {
                 //изменение заметки (перезапись)
                 sqLiteHelper.UpdateNotes(database,
                         EditTextHeadTextView.getText().toString(),

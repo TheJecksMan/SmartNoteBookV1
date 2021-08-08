@@ -45,6 +45,7 @@
             android:focusable="true"
             android:hint="Новая подзадача"
             android:inputType="textAutoCorrect|textMultiLine|textNoSuggestions|textPersonName"
+            android:maxLength="100"
             android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold" />
