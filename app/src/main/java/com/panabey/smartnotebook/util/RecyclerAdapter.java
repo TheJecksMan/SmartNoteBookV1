@@ -17,7 +17,7 @@ import com.panabey.smartnotebook.R;
 
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
 
     final List<String> NotesList;
     final Context context;
@@ -36,10 +36,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return viewHolder;
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //holder.container.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_load_animate));
         holder.rowCountTextView.setText(String.valueOf(position));
         holder.textView.setText(NotesList.get(position));
     }

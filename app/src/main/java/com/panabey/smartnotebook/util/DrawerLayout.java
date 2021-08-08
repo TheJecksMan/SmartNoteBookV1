@@ -2,7 +2,6 @@ package com.panabey.smartnotebook.util;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.view.Gravity;
 import android.view.View;
 
 import androidx.annotation.NonNull;

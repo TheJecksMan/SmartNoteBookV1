@@ -2,6 +2,8 @@ package com.panabey.smartnotebook.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -64,7 +66,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 db.insert(TABLE_CONTACTS, null, contentValues);
     }
 
-    //Изменение заметки в базе данных
+    //Изменение заметки в базе данных после выхода из Activity
     public void UpdateNotes(SQLiteDatabase db,String HeadText, String BodyText, String DateTime, int id ){
         db.execSQL("UPDATE contactsNotes SET HeadNotes = '" + HeadText + "' , BodyNotes = '"+ BodyText
                 +"' , DateTime = '" + DateTime + "' WHERE id =" + id);

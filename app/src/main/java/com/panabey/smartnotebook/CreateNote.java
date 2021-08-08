@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.panabey.smartnotebook.Database.SQLiteHelper;
+import com.panabey.smartnotebook.Notes.NotesRecyclerManager;
 import com.panabey.smartnotebook.util.RecyclerAdapterList;
 
 import java.text.DateFormat;
@@ -28,13 +29,8 @@ import java.util.List;
 
 public class CreateNote extends AppCompatActivity {
 
-    private View editTextHead;
-    private View editTextBody;
-
-    private TextView lastModifiedDate;
     private TextView EditTextHeadTextView;
     private TextView EditTextBodyTextView;
-    private String lastModify;
     private DateFormat dateFormat;
 
     SQLiteHelper sqLiteHelper;
@@ -44,8 +40,6 @@ public class CreateNote extends AppCompatActivity {
     private int ItemID;
 
     //список подзадач
-    List<String> List;
-    private RecyclerAdapterList recyclerAdapterList;
     private RecyclerView recyclerView;
 
     @Override
@@ -57,28 +51,17 @@ public class CreateNote extends AppCompatActivity {
         sqLiteHelper = new SQLiteHelper(this);
         database = sqLiteHelper.getWritableDatabase();
 
-        //список подзадач
         Button buttonAdd = findViewById(R.id.buttonAdd);
-        Context context = this;
-        List = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recyclerViewList);
-
-        recyclerAdapterList = new RecyclerAdapterList(List, context);
-        recyclerView.setAdapter(recyclerAdapterList);
+        //список подзадач
+        NotesRecyclerManager notesRecyclerManager = new NotesRecyclerManager(this, recyclerView);
+        notesRecyclerManager.ManagerCreateNote();
 
         buttonAdd.setOnClickListener(v -> {
-            List.add("");
-            recyclerAdapterList.notifyDataSetChanged();
+            notesRecyclerManager.TaskListOnClick();
         });
 
-        recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setItemViewCacheSize(20);
-        recyclerView.getRecycledViewPool().setMaxRecycledViews(0,20);
-
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-        itemTouchHelper.attachToRecyclerView(recyclerView);
 
         EditTextHeadTextView = findViewById(R.id.editTextHeadText);
         EditTextBodyTextView = findViewById(R.id.editTextNotes);
@@ -100,7 +83,7 @@ public class CreateNote extends AppCompatActivity {
         }
 
         //DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault());
-        dateFormat= new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 
         Toolbar toolbarCreateNote = findViewById(R.id.toolbarUpPanel);
         toolbarCreateNote.setNavigationOnClickListener(v -> {
@@ -124,16 +107,13 @@ public class CreateNote extends AppCompatActivity {
             }
             return true;
         });
-
          */
 
         //------------------------Последние изменения в тексте---------------------------//
-
     }
     private String getDateTime() {
         Date dateBody = new Date();
-        String lastModify = dateFormat.format(new Date());
-        return lastModify;
+        return dateFormat.format(new Date());
     }
 
     @Override
@@ -171,29 +151,4 @@ public class CreateNote extends AppCompatActivity {
         super.onDestroy();
         System.gc();
     }
-
-    final ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
-            ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.LEFT) {
-        @Override
-        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-
-            int fromPosition = viewHolder.getAdapterPosition();
-            int toPosition = target.getAdapterPosition();
-            Collections.swap(List, fromPosition, toPosition);
-            recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
-
-            return false;
-        }
-
-        @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            final int position = viewHolder.getAdapterPosition();
-            if (direction == ItemTouchHelper.LEFT) {
-                List.remove(position);
-
-                recyclerView.getAdapter().notifyItemRemoved(position);
-               // recyclerAdapterList.notifyDataSetChanged();
-            }
-        }
-    };
 }
