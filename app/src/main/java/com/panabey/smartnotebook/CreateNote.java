@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.StringJoiner;
 
 
 public class CreateNote extends AppCompatActivity {
@@ -36,6 +37,7 @@ public class CreateNote extends AppCompatActivity {
 
     private boolean clickNoteBoolean;
     private int ItemID;
+    ManagerCreateNotes managerCreateNotes;
 
     //список подзадач
     RecyclerView recyclerView;
@@ -50,7 +52,7 @@ public class CreateNote extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerViewList);
 
-        ManagerCreateNotes managerCreateNotes = new ManagerCreateNotes(this, recyclerView);
+        managerCreateNotes = new ManagerCreateNotes(this, recyclerView);
         managerCreateNotes.ManagerRecyclerView();
 
         //список подзадач
@@ -140,6 +142,7 @@ public class CreateNote extends AppCompatActivity {
                         EditTextHeadTextView.getText().toString(),
                         EditTextBodyTextView.getText().toString(),
                         getDateTime());
+
             }
             else {
                 //изменение заметки (перезапись)
@@ -149,9 +152,10 @@ public class CreateNote extends AppCompatActivity {
                         getDateTime(),
                         ItemID);
             }
+
+            managerCreateNotes.WriteAndUpdateTask();
         }).start();
     }
-
 
     @Override
     protected void onDestroy() {

@@ -96,12 +96,11 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
 
         @Override
         public void onTextChanged(CharSequence s, int i, int i2, int i3) {
-
+            ListTask.set(position, s.toString());
         }
 
         @Override
         public void afterTextChanged(Editable editable) {
-            ListTask.set(position, editable.toString());
         }
     }
 }

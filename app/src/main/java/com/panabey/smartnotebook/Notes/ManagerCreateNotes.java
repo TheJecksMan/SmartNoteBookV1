@@ -66,6 +66,18 @@ public class ManagerCreateNotes {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
+
+    public String WriteAndUpdateTask(){
+        StringBuilder stringBuilder = new StringBuilder();
+
+
+        for (final String string: ListTask){
+            stringBuilder.append(string + ", ");
+        }
+        String text = stringBuilder.toString();
+        stringBuilder = null;
+        return  text;
+    }
     public void ManagerRecyclerView(){
         CreateNote();
         onTouch();
