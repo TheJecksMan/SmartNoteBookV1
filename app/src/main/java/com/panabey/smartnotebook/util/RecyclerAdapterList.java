@@ -23,16 +23,21 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
     final List<String> ListTask;
     final Context context;
 
-    public RecyclerAdapterList(List<String> ListTask, Context context) {
+    List<Boolean> BooleanTask;
+
+    public RecyclerAdapterList(List<String> ListTask, List<Boolean> BooleanTask, Context context) {
         this.ListTask = ListTask;
+        this.BooleanTask = BooleanTask;
         this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         LayoutInflater layoutInflaterList = LayoutInflater.from(parent.getContext());
         View view = layoutInflaterList.inflate(R.layout.item_list, parent, false);
+
         RecyclerAdapterList.ViewHolder viewHolderList = new RecyclerAdapterList.ViewHolder(view,  new EditTextListener());
         return viewHolderList;
     }
@@ -43,13 +48,16 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
         holder.BodyList.setText(ListTask.get(position));
         holder.EditTextListener.updatePosition(holder.getAdapterPosition());
 
+        holder.CheckBox.setChecked(BooleanTask.get(position));
         holder.CheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked){
-                holder.BodyList.setPaintFlags(holder.BodyList.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                holder.BodyList.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+                BooleanTask.set(position, true);
             }
 
             else{
                 holder.BodyList.setPaintFlags(0);
+                BooleanTask.set(position, false);
             }
         });
     }
@@ -73,6 +81,7 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
 
         public ViewHolder(@NonNull View itemView, EditTextListener EditTextListener) {
             super(itemView);
+
             CheckBox = itemView.findViewById(R.id.checkBoxList);
             BodyList = itemView.findViewById(R.id.BodyList);
             containerList = itemView.findViewById(R.id.containerList);
@@ -91,16 +100,18 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
 
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
         }
 
         @Override
         public void onTextChanged(CharSequence s, int i, int i2, int i3) {
-            ListTask.set(position, s.toString());
+            if(ListTask.size()-1 !=0 && BooleanTask.size()-1 !=0) {
+                ListTask.set(position, s.toString());
+            }
         }
 
         @Override
         public void afterTextChanged(Editable editable) {
+
         }
     }
 }

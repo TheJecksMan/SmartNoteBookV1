@@ -154,6 +154,7 @@ public class CreateNote extends AppCompatActivity {
             }
 
             managerCreateNotes.WriteAndUpdateTask();
+
         }).start();
     }
 

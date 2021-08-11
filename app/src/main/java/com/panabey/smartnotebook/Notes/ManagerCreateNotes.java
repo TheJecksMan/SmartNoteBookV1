@@ -1,6 +1,8 @@
 package com.panabey.smartnotebook.Notes;
 
 import android.content.Context;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -18,6 +20,7 @@ public class ManagerCreateNotes {
     private Context context;
 
     List<String> ListTask;
+    List<Boolean> BooleanTask;
     RecyclerAdapterList recyclerAdapterList;
     RecyclerView recyclerView;
 
@@ -28,7 +31,9 @@ public class ManagerCreateNotes {
 
     private void CreateNote(){
         ListTask = new ArrayList<>();
-        recyclerAdapterList = new RecyclerAdapterList(ListTask, context);
+        BooleanTask = new ArrayList<>();
+
+        recyclerAdapterList = new RecyclerAdapterList(ListTask, BooleanTask, context);
 
         recyclerView.setAdapter(recyclerAdapterList);
 
@@ -47,7 +52,7 @@ public class ManagerCreateNotes {
                 int fromPosition = viewHolder.getAdapterPosition();
                 int toPosition = target.getAdapterPosition();
                 Collections.swap(ListTask, fromPosition, toPosition);
-                recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
+                recyclerAdapterList.notifyItemMoved(fromPosition, toPosition);
 
                 return false;
             }
@@ -57,8 +62,9 @@ public class ManagerCreateNotes {
                 final int position = viewHolder.getAdapterPosition();
                 if (direction == ItemTouchHelper.LEFT) {
                     ListTask.remove(position);
+                    BooleanTask.remove(position);
 
-                    recyclerView.getAdapter().notifyItemRemoved(position);
+                    recyclerAdapterList.notifyItemRemoved(position);
                 }
             }
         };
@@ -67,17 +73,16 @@ public class ManagerCreateNotes {
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
-    public String WriteAndUpdateTask(){
+    public StringBuilder WriteAndUpdateTask(){
         StringBuilder stringBuilder = new StringBuilder();
 
-
-        for (final String string: ListTask){
-            stringBuilder.append(string + ", ");
+        for (String text: ListTask){
+            stringBuilder.append(text + " %`~ ");
         }
-        String text = stringBuilder.toString();
-        stringBuilder = null;
-        return  text;
+
+        return  stringBuilder;
     }
+
     public void ManagerRecyclerView(){
         CreateNote();
         onTouch();
@@ -85,6 +90,9 @@ public class ManagerCreateNotes {
 
     public void onClickAddItem(){
         ListTask.add("");
-        recyclerAdapterList.notifyItemInserted(ListTask.size());
+        BooleanTask.add(false);
+        recyclerAdapterList.notifyItemInserted(ListTask.size()-1);
+        recyclerAdapterList.notifyItemInserted(BooleanTask.size()-1);
+
     }
 }
