@@ -1,30 +1,26 @@
 package com.panabey.smartnotebook;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.panabey.smartnotebook.Database.SQLiteHelper;
+import com.panabey.smartnotebook.Notes.Fab_Button.FabButtonManager;
 import com.panabey.smartnotebook.Notes.ManagerCreateNotes;
-import com.panabey.smartnotebook.util.RecyclerAdapterList;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
-import java.util.StringJoiner;
-
 
 public class CreateNote extends AppCompatActivity {
 
@@ -37,10 +33,15 @@ public class CreateNote extends AppCompatActivity {
 
     private boolean clickNoteBoolean;
     private int ItemID;
+
     ManagerCreateNotes managerCreateNotes;
+    FabButtonManager FAB;
 
     //список подзадач
     RecyclerView recyclerView;
+
+    private FloatingActionButton fab_main, fab1_mail, fab2_share;
+    private TextView textview_mail, textview_share;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +56,6 @@ public class CreateNote extends AppCompatActivity {
         managerCreateNotes = new ManagerCreateNotes(this, recyclerView);
         managerCreateNotes.ManagerRecyclerView();
 
-        //список подзадач
-        Button buttonAdd = findViewById(R.id.buttonAddTask);
-
-        buttonAdd.setOnClickListener(v -> {
-            managerCreateNotes.onClickAddItem();
-        });
 
 
         EditTextHeadTextView = findViewById(R.id.editTextHeadText);
@@ -109,6 +104,23 @@ public class CreateNote extends AppCompatActivity {
          */
 
         //------------------------Последние изменения в тексте---------------------------//
+        fab_main = findViewById(R.id.fab);
+        fab1_mail = findViewById(R.id.fab1);
+        fab2_share = findViewById(R.id.fab2);
+
+        textview_mail = (TextView) findViewById(R.id.textview_mail);
+        textview_share = (TextView) findViewById(R.id.textview_share);
+
+        FAB = new FabButtonManager(fab_main, fab1_mail, fab2_share,textview_mail, textview_mail, getApplicationContext());
+        FAB.FabOnClicked();
+
+        fab1_mail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                managerCreateNotes.onClickAddItem();
+            }
+        });
+
     }
     private String getDateTime() {
         dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
