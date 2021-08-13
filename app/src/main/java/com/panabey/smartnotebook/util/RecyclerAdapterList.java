@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.panabey.smartnotebook.R;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterList.ViewHolder> {
 
@@ -46,7 +47,7 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.BodyList.setText(ListTask.get(position));
-        holder.EditTextListener.updatePosition(holder.getAdapterPosition());
+        holder.EditTextListener.updatePosition(position);
 
         holder.CheckBox.setChecked(BooleanTask.get(position));
         holder.CheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -104,7 +105,7 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
 
         @Override
         public void onTextChanged(CharSequence s, int i, int i2, int i3) {
-            if(ListTask.size()-1 !=0 && BooleanTask.size()-1 !=0) {
+            if (!s.toString().isEmpty()) {
                 ListTask.set(position, s.toString());
             }
         }

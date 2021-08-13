@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     //Database Notes
-    public static final int VERSION = 3;
+    public static final int VERSION = 4;
     public static final String BD_TABLE_NAME = "Notes";
 
     public static final String TABLE_CONTACTS = "contactsNotes";
@@ -18,6 +18,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static final String KEY_HEAD_NOTES = "HeadNotes";
     public static final String KEY_BODY_NOTES = "BodyNotes";
     public static final String KEY_TASK = "Task";
+    public static final String KEY_TASK_BOOLEAN = "TaskBoolean";
     public static final String KEY_DATETIME = "DateTime";
 
     public SQLiteHelper(Context context)
@@ -32,6 +33,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 + KEY_HEAD_NOTES + " text not null,"
                 + KEY_BODY_NOTES + " text,"
                 + KEY_TASK + " text,"
+                + KEY_TASK_BOOLEAN + " text,"
                 + KEY_DATETIME + " text" + ")");
     }
 
@@ -58,13 +60,15 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
     //запись в базу данных
-    public void UploadInDatabaseNotes(SQLiteDatabase db, String HeadText, String BodyText, String DateTime){
+    public void UploadInDatabaseNotes(SQLiteDatabase db, String HeadText, String BodyText, String DateTime, StringBuilder Task, StringBuilder BooleanTask){
 
                 ContentValues contentValues = new ContentValues();
 
                 contentValues.put(SQLiteHelper.KEY_HEAD_NOTES, HeadText);
                 contentValues.put(SQLiteHelper.KEY_BODY_NOTES, BodyText);
                 contentValues.put(SQLiteHelper.KEY_DATETIME, DateTime);
+                contentValues.put(SQLiteHelper.KEY_TASK, Task.toString());
+                contentValues.put(SQLiteHelper.KEY_TASK_BOOLEAN, BooleanTask.toString());
 
                 db.insert(TABLE_CONTACTS, null, contentValues);
     }
@@ -75,4 +79,5 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("UPDATE contactsNotes SET HeadNotes = '" + HeadText + "' , BodyNotes = '"+ BodyText
                 +"' , DateTime = '" + DateTime + "' WHERE id =" + id);
     }
+
 }

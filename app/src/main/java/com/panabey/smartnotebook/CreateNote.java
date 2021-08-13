@@ -141,7 +141,9 @@ public class CreateNote extends AppCompatActivity {
                 sqLiteHelper.UploadInDatabaseNotes(database,
                         EditTextHeadTextView.getText().toString(),
                         EditTextBodyTextView.getText().toString(),
-                        getDateTime());
+                        getDateTime(),
+                        managerCreateNotes.WriteAndUpdateTask(),
+                        managerCreateNotes.WriteAndUpdateTaskBoolean());
 
             }
             else {

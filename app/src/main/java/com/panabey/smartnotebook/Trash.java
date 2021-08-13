@@ -24,7 +24,7 @@ public class Trash extends AppCompatActivity {
         ButtonTestSQL.setOnClickListener(v -> new Thread(() -> {
             int i = 0;
             while (i < 10000) {
-                sqLiteHelper.UploadInDatabaseNotes(database, test, test, test);
+                sqLiteHelper.UploadInDatabaseNotes(database, test, test, test, null, null);
                 i++;
             }
         }).start());

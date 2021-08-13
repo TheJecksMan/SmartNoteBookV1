@@ -44,14 +44,17 @@ public class ManagerCreateNotes {
     }
 
     private void onTouch(){
-        final ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
+        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
                 ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
 
                 int fromPosition = viewHolder.getAdapterPosition();
                 int toPosition = target.getAdapterPosition();
+
                 Collections.swap(ListTask, fromPosition, toPosition);
+                Collections.swap(BooleanTask, fromPosition, toPosition);
+
                 recyclerAdapterList.notifyItemMoved(fromPosition, toPosition);
 
                 return false;
@@ -60,10 +63,10 @@ public class ManagerCreateNotes {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 final int position = viewHolder.getAdapterPosition();
+
                 if (direction == ItemTouchHelper.LEFT) {
                     ListTask.remove(position);
                     BooleanTask.remove(position);
-
                     recyclerAdapterList.notifyItemRemoved(position);
                 }
             }
@@ -76,11 +79,20 @@ public class ManagerCreateNotes {
     public StringBuilder WriteAndUpdateTask(){
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (String text: ListTask){
-            stringBuilder.append(text + " %`~ ");
+        for (int i=0;i<ListTask.size();i++) {
+            stringBuilder.append(ListTask.get(i));
+            stringBuilder.append(" $~`% ");
         }
-
         return  stringBuilder;
+    }
+    public StringBuilder WriteAndUpdateTaskBoolean(){
+        StringBuilder stringBuilderBoolean = new StringBuilder();
+
+        for (int i=0;i<BooleanTask.size();i++) {
+            int bool = BooleanTask.get(i) ? 1 : 0;
+            stringBuilderBoolean.append(bool);
+        }
+        return stringBuilderBoolean;
     }
 
     public void ManagerRecyclerView(){
@@ -89,6 +101,14 @@ public class ManagerCreateNotes {
     }
 
     public void onClickAddItem(){
+
+        if (ListTask.isEmpty()){
+            CreateNote();
+            recyclerAdapterList.notifyDataSetChanged();
+        }
+
+
+
         ListTask.add("");
         BooleanTask.add(false);
         recyclerAdapterList.notifyItemInserted(ListTask.size()-1);
