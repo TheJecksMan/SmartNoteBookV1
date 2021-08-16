@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textview_share"
+        android:id="@+id/textview_attachments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -13,9 +13,9 @@
         android:layout_marginBottom="188dp"
         android:background="@null"
         android:padding="8dp"
-        android:text="Пока не придумал"
-        android:textStyle="bold"
+        android:text="Добавить вложение"
         android:textColor="@color/black"
+        android:textStyle="bold"
         android:visibility="invisible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -31,12 +31,13 @@
         android:drawingCacheQuality="low"
         android:elevation="16dp"
         android:focusable="true"
+        android:src="@drawable/ic_outline_image_24"
         android:visibility="invisible"
         app:backgroundTint="@color/white"
         app:pressedTranslationZ="12dp" />
 
     <TextView
-        android:id="@+id/textview_mail"
+        android:id="@+id/textview_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

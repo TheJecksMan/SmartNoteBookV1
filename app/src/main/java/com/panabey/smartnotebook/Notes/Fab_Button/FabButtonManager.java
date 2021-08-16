@@ -11,25 +11,25 @@ import com.panabey.smartnotebook.R;
 
 public class FabButtonManager{
 
-    private FloatingActionButton fab_main, fab1_mail, fab2_share;
+    private FloatingActionButton fab_main, fab1_task, fab2_textview_task;
     private Animation fab_open, fab_close, fab_clock, fab_anticlock;
 
-    private TextView textview_mail, textview_share;
+    private TextView textview_task, textview_attachments;
 
     private Boolean isOpen = false;
 
     private Context context;
 
-    public FabButtonManager(FloatingActionButton fab_main, FloatingActionButton fab1_mail, FloatingActionButton fab2_share,
-                            TextView textview_mail, TextView textview_share,
+    public FabButtonManager(FloatingActionButton fab_main, FloatingActionButton fab1_task, FloatingActionButton fab2_textview_task,
+                            TextView textview_task, TextView textview_attachments,
                             Context context) {
 
         this.fab_main = fab_main;
-        this.fab1_mail = fab1_mail;
-        this.fab2_share = fab2_share;
+        this.fab1_task = fab1_task;
+        this.fab2_textview_task = fab2_textview_task;
 
-        this.textview_mail = textview_mail;
-        this.textview_share = textview_share;
+        this.textview_task = textview_task;
+        this.textview_attachments = textview_attachments;
 
         this.context = context;
     }
@@ -45,28 +45,28 @@ public class FabButtonManager{
             public void onClick(View view) {
 
                 if (isOpen) {
-                    textview_mail.setVisibility(View.INVISIBLE);
-                    textview_share.setVisibility(View.INVISIBLE);
+                    textview_task.setVisibility(View.INVISIBLE);
+                    textview_attachments.setVisibility(View.INVISIBLE);
 
-                    fab2_share.startAnimation(fab_close);
-                    fab1_mail.startAnimation(fab_close);
+                    fab2_textview_task.startAnimation(fab_close);
+                    fab1_task.startAnimation(fab_close);
                     fab_main.startAnimation(fab_anticlock);
 
-                    fab2_share.setClickable(false);
-                    fab1_mail.setClickable(false);
+                    fab2_textview_task.setClickable(false);
+                    fab1_task.setClickable(false);
 
                     isOpen = false;
                 }
                 else {
-                    textview_mail.setVisibility(View.VISIBLE);
-                    textview_share.setVisibility(View.VISIBLE);
+                    textview_task.setVisibility(View.VISIBLE);
+                    textview_attachments.setVisibility(View.VISIBLE);
 
-                    fab2_share.startAnimation(fab_open);
-                    fab1_mail.startAnimation(fab_open);
+                    fab2_textview_task.startAnimation(fab_open);
+                    fab1_task.startAnimation(fab_open);
                     fab_main.startAnimation(fab_clock);
 
-                    fab2_share.setClickable(true);
-                    fab1_mail.setClickable(true);
+                    fab2_textview_task.setClickable(true);
+                    fab1_task.setClickable(true);
 
                     isOpen = true;
                 }

@@ -1,6 +1,5 @@
 package com.panabey.smartnotebook;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,8 +38,8 @@ public class CreateNote extends AppCompatActivity {
     //список подзадач
     RecyclerView recyclerView;
 
-    private FloatingActionButton fab_main, fab1_mail, fab2_share;
-    private TextView textview_mail, textview_share;
+    private FloatingActionButton fab_main, fab1_task, fab2_attachments;
+    private TextView textview_task, textview_attachments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +53,6 @@ public class CreateNote extends AppCompatActivity {
 
         managerCreateNotes = new ManagerCreateNotes(this, recyclerView);
         managerCreateNotes.ManagerRecyclerView();
-
-
 
         EditTextHeadTextView = findViewById(R.id.editTextHeadText);
         EditTextBodyTextView = findViewById(R.id.editTextNotes);
@@ -104,16 +101,16 @@ public class CreateNote extends AppCompatActivity {
 
         //------------------------Последние изменения в тексте---------------------------//
         fab_main = findViewById(R.id.fab);
-        fab1_mail = findViewById(R.id.fab1);
-        fab2_share = findViewById(R.id.fab2);
+        fab1_task = findViewById(R.id.fab1);
+        fab2_attachments = findViewById(R.id.fab2);
 
-        textview_mail = (TextView) findViewById(R.id.textview_mail);
-        textview_share = (TextView) findViewById(R.id.textview_share);
+        textview_task = (TextView) findViewById(R.id.textview_task);
+        textview_attachments = (TextView) findViewById(R.id.textview_attachments);
 
-        FAB = new FabButtonManager(fab_main, fab1_mail, fab2_share,textview_mail, textview_mail, getApplicationContext());
+        FAB = new FabButtonManager(fab_main, fab1_task, fab2_attachments,textview_task, textview_attachments, getApplicationContext());
         FAB.FabOnClicked();
 
-        fab1_mail.setOnClickListener(new View.OnClickListener() {
+        fab1_task.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 managerCreateNotes.onClickAddItem();
