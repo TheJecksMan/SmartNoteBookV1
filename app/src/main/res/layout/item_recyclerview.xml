@@ -16,6 +16,7 @@
         android:background="@drawable/notes_custom_bg"
         android:drawingCacheQuality="low"
         android:paddingBottom="16dp"
+        android:foreground="@drawable/ripple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

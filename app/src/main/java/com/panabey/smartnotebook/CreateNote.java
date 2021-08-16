@@ -1,16 +1,15 @@
 package com.panabey.smartnotebook;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -122,6 +121,8 @@ public class CreateNote extends AppCompatActivity {
         });
 
     }
+
+
     private String getDateTime() {
         dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
         Date dateBody = new Date();
@@ -143,6 +144,7 @@ public class CreateNote extends AppCompatActivity {
             //проверка на пустую строку
             String CheckedNullText = EditTextHeadTextView.getText().toString();
             if (CheckedNullText.trim().isEmpty()) {
+
                 CheckedNullText = null;
                 return;
             }
@@ -177,4 +179,5 @@ public class CreateNote extends AppCompatActivity {
         super.onDestroy();
         System.gc();
     }
+
 }
