@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,7 @@ public class accountLogin_fg extends Fragment {
 
     private TextInputEditText email, password;
     private TextView InfoEmpty;
+    private TextView textViewRegister;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,27 +42,30 @@ public class accountLogin_fg extends Fragment {
 
         Button loginButton = view.findViewById(R.id.buttonLoginAccount);
         InfoEmpty = view.findViewById(R.id.CheckEmpty);
-
+        textViewRegister = view.findViewById(R.id.textViewRegisterFragment);
 
         TextView onClickRegister = view.findViewById(R.id.textViewRegisterFragment);
         onClickRegister.setOnClickListener(v -> {
-            /*
+/*
             FragmentManager frag = getChildFragmentManager();
             frag.popBackStack();
-
             Fragment newFragment = new accountRegister_fg();
             FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-
-            transaction.replace(R.id.FrameLayoutAccount, newFragment);
-
+            transaction.replace(R.id.fragmentPager, newFragment);
             transaction.commit();
+ */
+            Fragment selectedFragment = new accountRegister_fg();
+            selectedFragment.getChildFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentPager, selectedFragment)
+                    .commit();
 
-             */
         });
 
         //mAuth = FirebaseAuth.getInstance();
-
         loginButton.setOnClickListener(v -> {
+            InfoEmpty.setText("");
+
             String emailID = email.getText().toString();
             String passwordID = password.getText().toString();
 
@@ -68,7 +74,6 @@ public class accountLogin_fg extends Fragment {
                InfoEmpty.setText(R.string.checkTextEmpty);
             }
         });
-
         return view;
     }
 

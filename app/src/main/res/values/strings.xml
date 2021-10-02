@@ -12,6 +12,10 @@
     <string name="buttonList">Покупки</string>
     <!--MainMenu string end-->
 
+    <!--Account-->
+    <string name="AccountPrimaryKey"></string>
+    <!--Account-->
+
     <!--Account login string start-->
     <string name="Login">Login</string>
     <string name="hint_email">Почта</string>
