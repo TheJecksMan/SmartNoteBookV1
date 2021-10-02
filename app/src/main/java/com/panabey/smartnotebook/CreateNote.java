@@ -110,12 +110,7 @@ public class CreateNote extends AppCompatActivity {
         FAB = new FabButtonManager(fab_main, fab1_task, fab2_attachments,textview_task, textview_attachments, getApplicationContext());
         FAB.FabOnClicked();
 
-        fab1_task.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                managerCreateNotes.onClickAddItem();
-            }
-        });
+        fab1_task.setOnClickListener(view -> managerCreateNotes.onClickAddItem());
 
     }
 
