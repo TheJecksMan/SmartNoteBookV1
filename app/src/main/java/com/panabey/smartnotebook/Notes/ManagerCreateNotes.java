@@ -14,12 +14,12 @@ import java.util.List;
 
 public class ManagerCreateNotes {
 
-    private Context context;
+    private final Context context;
 
     List<String> ListTask;
     List<Boolean> BooleanTask;
     RecyclerAdapterList recyclerAdapterList;
-    RecyclerView recyclerView;
+    final RecyclerView recyclerView;
 
     public ManagerCreateNotes(Context context, RecyclerView recyclerView){
         this.context = context;

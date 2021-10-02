@@ -43,7 +43,7 @@
             android:ellipsize="end"
             android:ems="10"
             android:focusable="true"
-            android:hint="Новая подзадача"
+            android:hint="@string/NotesNewTask"
             android:inputType="textAutoCorrect|textMultiLine|textNoSuggestions|textPersonName"
             android:maxLength="100"
             android:textColor="@color/black"

@@ -1,6 +1,5 @@
 package com.panabey.smartnotebook;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -28,7 +27,6 @@ public class accountLogin_fg extends Fragment {
 
     private TextInputEditText email, password;
     private TextView InfoEmpty;
-    private TextView textViewRegister;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,7 +46,6 @@ public class accountLogin_fg extends Fragment {
 
         Button loginButton = view.findViewById(R.id.buttonLoginAccount);
         InfoEmpty = view.findViewById(R.id.CheckEmpty);
-        textViewRegister = view.findViewById(R.id.textViewRegisterFragment);
 
         loginButton.setOnClickListener(v -> {
             InfoEmpty.setText("");
@@ -79,18 +76,15 @@ public class accountLogin_fg extends Fragment {
         return view;
     }
     private void loginUsers(String Email, String Password){
-        mAuth.signInWithEmailAndPassword(Email, Password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                Toast.makeText(getContext(), "Вход выполнен успешно!", Toast.LENGTH_SHORT).show();
+        mAuth.signInWithEmailAndPassword(Email, Password).addOnSuccessListener(authResult -> {
+            Toast.makeText(getContext(), "Вход выполнен успешно!", Toast.LENGTH_SHORT).show();
 
-                Fragment newFragment = new account();
-                FragmentTransaction transaction =
-                        getParentFragmentManager().beginTransaction()
-                                .replace(R.id.fragmentPager, newFragment)
-                                .addToBackStack(null);
-                transaction.commit();
-            }
+            Fragment newFragment = new account();
+            FragmentTransaction transaction =
+                    getParentFragmentManager().beginTransaction()
+                            .replace(R.id.fragmentPager, newFragment)
+                            .addToBackStack(null);
+            transaction.commit();
         });
     }
 }

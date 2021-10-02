@@ -23,7 +23,7 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
     final List<String> ListTask;
     final Context context;
 
-    List<Boolean> BooleanTask;
+    final List<Boolean> BooleanTask;
 
     public RecyclerAdapterList(List<String> ListTask, List<Boolean> BooleanTask, Context context) {
         this.ListTask = ListTask;

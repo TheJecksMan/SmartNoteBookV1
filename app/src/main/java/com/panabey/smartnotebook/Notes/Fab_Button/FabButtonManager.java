@@ -11,14 +11,17 @@ import com.panabey.smartnotebook.R;
 
 public class FabButtonManager{
 
-    private FloatingActionButton fab_main, fab1_task, fab2_textview_task;
+    private final FloatingActionButton fab_main;
+    private final FloatingActionButton fab1_task;
+    private final FloatingActionButton fab2_textview_task;
     private Animation fab_open, fab_close, fab_clock, fab_anticlock;
 
-    private TextView textview_task, textview_attachments;
+    private final TextView textview_task;
+    private final TextView textview_attachments;
 
     private Boolean isOpen = false;
 
-    private Context context;
+    private final Context context;
 
     public FabButtonManager(FloatingActionButton fab_main, FloatingActionButton fab1_task, FloatingActionButton fab2_textview_task,
                             TextView textview_task, TextView textview_attachments,
@@ -40,36 +43,33 @@ public class FabButtonManager{
         fab_clock = AnimationUtils.loadAnimation(context, R.anim.fab_rotate_clock);
         fab_anticlock = AnimationUtils.loadAnimation(context, R.anim.fab_rotate_anticlock);
 
-        fab_main.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        fab_main.setOnClickListener(view -> {
 
-                if (isOpen) {
-                    textview_task.setVisibility(View.INVISIBLE);
-                    textview_attachments.setVisibility(View.INVISIBLE);
+            if (isOpen) {
+                textview_task.setVisibility(View.INVISIBLE);
+                textview_attachments.setVisibility(View.INVISIBLE);
 
-                    fab2_textview_task.startAnimation(fab_close);
-                    fab1_task.startAnimation(fab_close);
-                    fab_main.startAnimation(fab_anticlock);
+                fab2_textview_task.startAnimation(fab_close);
+                fab1_task.startAnimation(fab_close);
+                fab_main.startAnimation(fab_anticlock);
 
-                    fab2_textview_task.setClickable(false);
-                    fab1_task.setClickable(false);
+                fab2_textview_task.setClickable(false);
+                fab1_task.setClickable(false);
 
-                    isOpen = false;
-                }
-                else {
-                    textview_task.setVisibility(View.VISIBLE);
-                    textview_attachments.setVisibility(View.VISIBLE);
+                isOpen = false;
+            }
+            else {
+                textview_task.setVisibility(View.VISIBLE);
+                textview_attachments.setVisibility(View.VISIBLE);
 
-                    fab2_textview_task.startAnimation(fab_open);
-                    fab1_task.startAnimation(fab_open);
-                    fab_main.startAnimation(fab_clock);
+                fab2_textview_task.startAnimation(fab_open);
+                fab1_task.startAnimation(fab_open);
+                fab_main.startAnimation(fab_clock);
 
-                    fab2_textview_task.setClickable(true);
-                    fab1_task.setClickable(true);
+                fab2_textview_task.setClickable(true);
+                fab1_task.setClickable(true);
 
-                    isOpen = true;
-                }
+                isOpen = true;
             }
         });
     }
