@@ -1,14 +1,11 @@
 package com.panabey.smartnotebook.Notes;
 
 import android.content.Context;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.panabey.smartnotebook.CreateNote;
 import com.panabey.smartnotebook.util.RecyclerAdapterList;
 
 import java.util.ArrayList;

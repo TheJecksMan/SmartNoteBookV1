@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.panabey.smartnotebook.R;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterList.ViewHolder> {
 
