@@ -22,6 +22,4 @@ public class SharedPref extends Activity {
         boolean value = sharedPreferences.getBoolean(key_value, true);
         return value;
     }
-
-
 }

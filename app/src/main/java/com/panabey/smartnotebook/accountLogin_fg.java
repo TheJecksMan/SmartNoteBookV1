@@ -1,19 +1,25 @@
 package com.panabey.smartnotebook;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.panabey.smartnotebook.Account.account;
 
 public class accountLogin_fg extends Fragment {
 
@@ -26,13 +32,15 @@ public class accountLogin_fg extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        
+        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
     }
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState)
+    {
         View view = inflater.inflate(R.layout.fragment_account_login_fg, container, false);
 
         email = view.findViewById(R.id.layoutEmail);
@@ -42,25 +50,6 @@ public class accountLogin_fg extends Fragment {
         InfoEmpty = view.findViewById(R.id.CheckEmpty);
         textViewRegister = view.findViewById(R.id.textViewRegisterFragment);
 
-        TextView onClickRegister = view.findViewById(R.id.textViewRegisterFragment);
-        onClickRegister.setOnClickListener(v -> {
-/*
-            FragmentManager frag = getChildFragmentManager();
-            frag.popBackStack();
-            Fragment newFragment = new accountRegister_fg();
-            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragmentPager, newFragment);
-            transaction.commit();
- */
-            Fragment selectedFragment = new accountRegister_fg();
-            selectedFragment.getChildFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragmentPager, selectedFragment)
-                    .commit();
-
-        });
-
-        //mAuth = FirebaseAuth.getInstance();
         loginButton.setOnClickListener(v -> {
             InfoEmpty.setText("");
 
@@ -71,9 +60,37 @@ public class accountLogin_fg extends Fragment {
             {
                InfoEmpty.setText(R.string.checkTextEmpty);
             }
+            else{
+                loginUsers(emailID, passwordID);
+            }
+            loginUsers(emailID, passwordID);
+        });
+
+        TextView onClickRegister = view.findViewById(R.id.textViewRegisterFragment);
+        onClickRegister.setOnClickListener(v -> {
+
+            //Переход между фрагментами регистрации
+            Fragment newFragment = new accountRegister_fg();
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentPager, newFragment)
+                    .addToBackStack(null);
+            transaction.commit();
         });
         return view;
     }
+    private void loginUsers(String Email, String Password){
+        mAuth.signInWithEmailAndPassword(Email, Password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+            @Override
+            public void onSuccess(AuthResult authResult) {
+                Toast.makeText(getContext(), "Вход выполнен успешно!", Toast.LENGTH_SHORT).show();
 
-
+                Fragment newFragment = new account();
+                FragmentTransaction transaction =
+                        getParentFragmentManager().beginTransaction()
+                                .replace(R.id.fragmentPager, newFragment)
+                                .addToBackStack(null);
+                transaction.commit();
+            }
+        });
+    }
 }
