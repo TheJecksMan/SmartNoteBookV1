@@ -16,7 +16,16 @@ import com.panabey.smartnotebook.R;
 
 
 import java.util.List;
+/**
+ Уважаемый разработчик:
 
+ Как только ты прекратишь пытаться «оптимизировать» этот код
+ и поймёшь, какую ошибку ты допустил взявшись за это дело,
+ пожалуйста, увеличь номер на счётчике ниже
+ для следующего разработчика:
+
+ количество_часов_потрачено_впустую_здесь = 4
+ **/
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
 
     final List<String> NotesList;
@@ -76,10 +85,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         @Override
         public void onClick(View view) {
+            /**
+             *  Переход по нажатия для открытия заметок.
+             *  Открытие происходим по id списка.
+             *  P.S id списка должен соппадать с id в БД.
+             */
             Intent intentOnClickRecyclerView =  new Intent(view.getContext(), CreateNote.class);
             intentOnClickRecyclerView.putExtra("BooleanClickRecyclerView", true);
 
-            //отправляем id для открытия
             intentOnClickRecyclerView.putExtra("Id", getAdapterPosition() + 1);
 
             view.getContext().startActivity(intentOnClickRecyclerView);

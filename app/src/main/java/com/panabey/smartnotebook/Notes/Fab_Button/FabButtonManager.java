@@ -7,6 +7,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.panabey.smartnotebook.CreateNote;
 import com.panabey.smartnotebook.R;
 
 public class FabButtonManager{
