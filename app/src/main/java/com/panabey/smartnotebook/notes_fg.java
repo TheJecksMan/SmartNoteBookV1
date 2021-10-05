@@ -16,16 +16,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.panabey.smartnotebook.Database.SQLiteHelper;
+import com.panabey.smartnotebook.Database.SQLiteHelperKotlin;
 import com.panabey.smartnotebook.util.RecyclerAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
+/**
+ * Класс фрагмента.
+ * Используется только для отображения заметок на главном блоке.
+ */
 public class notes_fg extends Fragment {
 
-    SQLiteHelper sqLiteHelper;
+    SQLiteHelperKotlin sqLiteHelperKotlin;
     SQLiteDatabase database;
 
     RecyclerView recyclerView;
@@ -45,8 +49,8 @@ public class notes_fg extends Fragment {
         //---------------БД-----------------------------------
         new Thread(new Runnable() {
             public void run() {
-                sqLiteHelper = new SQLiteHelper(getContext());
-                database = sqLiteHelper.getReadableDatabase();
+                sqLiteHelperKotlin = new SQLiteHelperKotlin(getContext());
+                database = sqLiteHelperKotlin.getReadableDatabase();
 
                     Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes", null);
                 try {
@@ -78,12 +82,9 @@ public class notes_fg extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemViewCacheSize(30);
         recyclerView.getRecycledViewPool().setMaxRecycledViews(0,10);
-        //recyclerAdapter.setHasStableIds(true);
-
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
-
 
         Button button = v.findViewById(R.id.buttonCreateNotes);
 
@@ -91,7 +92,6 @@ public class notes_fg extends Fragment {
             Intent intentCreateNote = new Intent(getContext(), CreateNote.class);
             startActivity(intentCreateNote);
         });
-
         return v;
     }
 
@@ -105,8 +105,8 @@ public class notes_fg extends Fragment {
             Collections.swap(NotesList, fromPosition, toPosition);
             recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
 
-            sqLiteHelper = new SQLiteHelper(getContext());
-            database = sqLiteHelper.getWritableDatabase();
+            sqLiteHelperKotlin = new SQLiteHelperKotlin(getContext());
+            database = sqLiteHelperKotlin.getWritableDatabase();
             return false;
         }
 
@@ -117,9 +117,9 @@ public class notes_fg extends Fragment {
                 NotesList.remove(position);
                 recyclerView.getAdapter().notifyItemRemoved(position);
 
-                SQLiteDatabase databaseDelete = sqLiteHelper.getWritableDatabase();
-                sqLiteHelper.deleteNote(databaseDelete, position + 1);
-                sqLiteHelper.ReindexNotes(databaseDelete, position + 1);
+                SQLiteDatabase databaseDelete = sqLiteHelperKotlin.getWritableDatabase();
+                sqLiteHelperKotlin.deleteNote(databaseDelete, position + 1);
+                sqLiteHelperKotlin.ReindexNotes(databaseDelete, position + 1);
                 //recyclerAdapter.notifyDataSetChanged();
             }
         }

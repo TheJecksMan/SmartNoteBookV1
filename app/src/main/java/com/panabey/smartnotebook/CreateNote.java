@@ -13,23 +13,25 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.panabey.smartnotebook.Database.SQLiteHelper;
+import com.panabey.smartnotebook.Database.SQLiteHelperKotlin;
 import com.panabey.smartnotebook.Notes.Fab_Button.FabButtonManager;
-import com.panabey.smartnotebook.Notes.FileManager;
 import com.panabey.smartnotebook.Notes.ManagerCreateNotes;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Класс для работы заметок.
+ */
 public class CreateNote extends AppCompatActivity {
 
     private TextView EditTextHeadTextView;
     private TextView EditTextBodyTextView;
     private DateFormat dateFormat;
 
-    SQLiteHelper sqLiteHelper;
-    SQLiteDatabase database;
+    private SQLiteDatabase database;
+    private SQLiteHelperKotlin sqLiteHelperKotlin;
 
     private boolean clickNoteBoolean;
     private int ItemID;
@@ -50,19 +52,13 @@ public class CreateNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
-        sqLiteHelper = new SQLiteHelper(this);
-        database = sqLiteHelper.getWritableDatabase();
+        sqLiteHelperKotlin = new SQLiteHelperKotlin(this);
+        database = sqLiteHelperKotlin.getWritableDatabase();
 
         recyclerView = findViewById(R.id.recyclerViewList);
 
         managerCreateNotes = new ManagerCreateNotes(this, recyclerView);
         managerCreateNotes.ManagerRecyclerView();
-
-        context = getApplicationContext();
-        /**
-         * Управление файлового менеджера для работы с изображением для их хранения.
-         */
-        FileManager fileManager = new FileManager(context);
 
         EditTextHeadTextView = findViewById(R.id.editTextHeadText);
         EditTextBodyTextView = findViewById(R.id.editTextNotes);
@@ -134,7 +130,6 @@ public class CreateNote extends AppCompatActivity {
 
     private String getDateTime() {
         dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-        Date dateBody = new Date();
         return dateFormat.format(new Date());
     }
 
@@ -151,7 +146,7 @@ public class CreateNote extends AppCompatActivity {
             //запись в базу данных
             if (!clickNoteBoolean) {
                 //Новая заметка
-                sqLiteHelper.UploadInDatabaseNotes(database,
+                sqLiteHelperKotlin.UploadInDatabaseNotes(database,
                         EditTextHeadTextView.getText().toString(),
                         EditTextBodyTextView.getText().toString(),
                         getDateTime(),
@@ -160,7 +155,7 @@ public class CreateNote extends AppCompatActivity {
             }
             else {
                 //изменение заметки (перезапись)
-                sqLiteHelper.UpdateNotes(database,
+                sqLiteHelperKotlin.UpdateNotes(database,
                         EditTextHeadTextView.getText().toString(),
                         EditTextBodyTextView.getText().toString(),
                         getDateTime(),

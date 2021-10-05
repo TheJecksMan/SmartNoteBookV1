@@ -73,6 +73,7 @@ public class ManagerCreateNotes {
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
+
     public StringBuilder WriteAndUpdateTask(){
         StringBuilder stringBuilder = new StringBuilder();
 

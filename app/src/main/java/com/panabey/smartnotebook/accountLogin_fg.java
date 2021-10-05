@@ -13,13 +13,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.panabey.smartnotebook.Account.account;
 
+/**
+ * Класс авторазиции в аккаунт.
+ * Использует Firebase.
+ */
 public class accountLogin_fg extends Fragment {
 
     private FirebaseAuth mAuth;
@@ -30,7 +32,6 @@ public class accountLogin_fg extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        
         mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
     }

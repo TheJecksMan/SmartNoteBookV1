@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import java.lang.StringBuilder
+
 /**
  * Класс управления базой данных.
  */
@@ -37,7 +38,10 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
         onCreate(db)
     }
 
-    //удаление
+    /**
+     * Удаление из базы данных.
+     * Удаление происходит по id записи.
+     */
     fun deleteNote(db: SQLiteDatabase, id: Int): Boolean {
         return db.delete(tableConcats, "$keyID=$id", null) > 0
     }
@@ -50,6 +54,7 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
     //запись в базу данных
     fun UploadInDatabaseNotes(db: SQLiteDatabase, HeadText: String?, BodyText: String?, DateTime: String?, Task: StringBuilder, BooleanTask: StringBuilder) {
         val contentValues = ContentValues()
+
         contentValues.put(keyHeadNotes, HeadText)
         contentValues.put(keyBodyNotes, BodyText)
         contentValues.put(keyDatetime, DateTime)
