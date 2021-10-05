@@ -3,6 +3,7 @@ plugins {
     id 'com.google.gms.google-services'
     id "org.sonarqube" version "3.3"
 }
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 30
@@ -46,4 +47,9 @@ dependencies {
     //debugImplementation 'androidx.work:work-runtime:2.5.0'
 
     testImplementation 'junit:junit:4.13.2'
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
