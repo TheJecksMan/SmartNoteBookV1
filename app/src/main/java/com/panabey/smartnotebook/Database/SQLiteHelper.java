@@ -62,11 +62,11 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 
                 ContentValues contentValues = new ContentValues();
 
-                contentValues.put(SQLiteHelper.KEY_HEAD_NOTES, HeadText);
-                contentValues.put(SQLiteHelper.KEY_BODY_NOTES, BodyText);
-                contentValues.put(SQLiteHelper.KEY_DATETIME, DateTime);
-                contentValues.put(SQLiteHelper.KEY_TASK, Task.toString());
-                contentValues.put(SQLiteHelper.KEY_TASK_BOOLEAN, BooleanTask.toString());
+                contentValues.put(KEY_HEAD_NOTES, HeadText);
+                contentValues.put(KEY_BODY_NOTES, BodyText);
+                contentValues.put(KEY_DATETIME, DateTime);
+                contentValues.put(KEY_TASK, Task.toString());
+                contentValues.put(KEY_TASK_BOOLEAN, BooleanTask.toString());
 
                 db.insert(TABLE_CONTACTS, null, contentValues);
     }
