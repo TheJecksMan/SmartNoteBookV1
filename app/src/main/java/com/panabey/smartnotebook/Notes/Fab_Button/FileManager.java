@@ -16,8 +16,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  */
 public class FileManager extends AppCompatActivity {
 
-    private Context context;
-    private FloatingActionButton fab;
+    private final Context context;
+    private final FloatingActionButton fab;
 
     public FileManager(Context context, FloatingActionButton fab){
         this.context = context;
