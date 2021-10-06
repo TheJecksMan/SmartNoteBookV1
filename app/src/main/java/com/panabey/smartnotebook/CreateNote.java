@@ -1,6 +1,5 @@
 package com.panabey.smartnotebook;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +14,7 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.panabey.smartnotebook.Database.SQLiteHelperKotlin;
 import com.panabey.smartnotebook.Notes.Fab_Button.FabButtonManager;
+import com.panabey.smartnotebook.Notes.Fab_Button.FileManager;
 import com.panabey.smartnotebook.Notes.ManagerCreateNotes;
 
 import java.text.DateFormat;
@@ -51,6 +51,7 @@ public class CreateNote extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
+        context = getApplicationContext();
 
         sqLiteHelperKotlin = new SQLiteHelperKotlin(this);
         database = sqLiteHelperKotlin.getWritableDatabase();
@@ -117,15 +118,13 @@ public class CreateNote extends AppCompatActivity {
         FAB.FabOnClicked();
 
         fab1_task.setOnClickListener(view -> managerCreateNotes.onClickAddItem());
-        fab2_attachments.setOnClickListener(view -> ToOpenWith());
-    }
 
-    private void ToOpenWith(){ //Открытие файлового менеджера
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        startActivity(intent);
-        onActivityResult(RESULT_OK,100, intent);
+        /**
+         * Открытие файлового менеджера Android
+         * и последующая обработка
+         */
+        FileManager fileManager = new FileManager(getApplicationContext(), fab2_attachments);
+        fileManager.OnClickFileManager();
     }
 
     private String getDateTime() {
@@ -166,21 +165,11 @@ public class CreateNote extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == 100 && requestCode == RESULT_OK) {
-            if (data != null && data.getData() != null) {
-                String uriString = data.getDataString();
-            }
-        }
-
-    }
-    @Override
     public void onBackPressed() {
         WriteSQLAndUpdate();
 
-        Intent intentBackNotes = new Intent(this, MainMenu.class);
-        startActivity(intentBackNotes);
+        Intent intentBackNotes = new Intent(context, MainMenu.class);
+        context.startActivity(intentBackNotes);
         finish();
     }
 
