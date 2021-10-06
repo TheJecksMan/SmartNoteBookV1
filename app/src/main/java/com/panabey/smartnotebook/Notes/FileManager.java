@@ -1,4 +1,4 @@
-package com.panabey.smartnotebook.Notes.Fab_Button;
+package com.panabey.smartnotebook.Notes;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 

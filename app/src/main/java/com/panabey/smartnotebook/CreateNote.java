@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.panabey.smartnotebook.Database.SQLiteHelperKotlin;
 import com.panabey.smartnotebook.Notes.Fab_Button.FabButtonManager;
-import com.panabey.smartnotebook.Notes.Fab_Button.FileManager;
+import com.panabey.smartnotebook.Notes.FileManager;
 import com.panabey.smartnotebook.Notes.ManagerCreateNotes;
 
 import java.text.DateFormat;
