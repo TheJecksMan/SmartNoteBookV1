@@ -44,9 +44,12 @@ public class notes_fg extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_notes_fg, null);
-        NotesList = new ArrayList<>();
 
-        //---------------БД-----------------------------------
+        NotesList = new ArrayList<>();
+        /**
+         * Выгрузка всех заметок в массив,
+         * который используется в списоке RecyclerView.
+         */
         new Thread(new Runnable() {
             public void run() {
                 sqLiteHelperKotlin = new SQLiteHelperKotlin(getContext());
@@ -54,7 +57,6 @@ public class notes_fg extends Fragment {
 
                     Cursor cursor = database.rawQuery("SELECT * FROM Notes", null);
                 try {
-
                     String temp = null;
                     cursor.moveToFirst();
                     if (cursor.getCount() > 0) {
@@ -119,7 +121,6 @@ public class notes_fg extends Fragment {
 
                 SQLiteDatabase databaseDelete = sqLiteHelperKotlin.getWritableDatabase();
                 sqLiteHelperKotlin.deleteNote(databaseDelete, position + 1);
-                //recyclerAdapter.notifyDataSetChanged();
             }
         }
     };

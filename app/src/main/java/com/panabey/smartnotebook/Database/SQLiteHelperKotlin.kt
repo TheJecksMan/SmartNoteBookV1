@@ -15,7 +15,6 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
         const val version = 5
         const val db_table_name = "contactsNotes"
     }
-
     /**
      * Таблица Заметок,
      * используется для отображения на главном Activity и хранения данных.
@@ -30,16 +29,16 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
      * Таблица подзадач,
      * Используется для хранения подзадач заметок
      */
-    private val tableTask = "Tasks";
+    private val tableTask = "Tasks"
     private val keyIDTask = "IDNotes"
     private val keyNameTask = "Task"
     private val keyTaskBoolean = "TaskBoolean"
 
     /**
      * Триггер автодекремента.
-     * Срабатывает при удалении заметки. Используется для соранения индексов.
+     * Срабатывает при удалении заметки. Используется для сохранения индексов.
      */
-    private val triggerDecrementID = "DecID";
+    private val triggerDecrementID = "DecID"
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL("CREATE TABLE $tableNotes (" +
@@ -60,7 +59,7 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
         db.execSQL("CREATE TRIGGER $triggerDecrementID AFTER DELETE \n" +
                 "\tON $tableNotes\n" +
                 "    BEGIN \n" +
-                "    UPDATE $tableNotes SET $keyIDNotes = $keyIDNotes - 1 WHERE $keyIDNotes > old.IDNotes;\n" +
+                "    UPDATE $tableNotes SET $keyIDNotes = $keyIDNotes - 1 WHERE $keyIDNotes > old.$keyIDNotes;\n" +
                 "    END;")
     }
 
@@ -91,7 +90,16 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
 
     //Изменение заметки в базе данных после выхода из Activity
     fun UpdateNotes(db: SQLiteDatabase, HeadText: String, BodyText: String, DateTime: String, id: Int) {
+        /*
         db.execSQL("UPDATE $tableNotes SET HeadNotes = '" + HeadText + "' , BodyNotes = '" + BodyText
                 + "' , DateTime = '" + DateTime + "' WHERE IDNotes =" + id)
+
+         */
+        val contentValuesUpdate = ContentValues();
+        contentValuesUpdate.put(keyHeadNotes, HeadText)
+        contentValuesUpdate.put(keyBodyNotes, BodyText)
+        contentValuesUpdate.put(keyDateTimeNotes, DateTime)
+        db.update(tableNotes, contentValuesUpdate,"$keyIDNotes = $id", null )
+
     }
 }
