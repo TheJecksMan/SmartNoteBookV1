@@ -12,29 +12,62 @@ import java.lang.StringBuilder
 class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table_name, null, version) {
 
     companion object {
-        const val version = 4
-        const val db_table_name = "Notes"
-
-        const val tableConcats = "contactsNotes"
-        const val keyID = "ID"
-        const val keyHeadNotes= "HeadNotes"
-        const val keyBodyNotes= "BodyNotes"
-        const val keyTask = "Task"
-        const val keyTaskBoolean = "TaskBoolean"
-        const val keyDatetime = "DateTime"
+        const val version = 5
+        const val db_table_name = "contactsNotes"
     }
 
+    /**
+     * Таблица Заметок,
+     * используется для отображения на главном Activity и хранения данных.
+     */
+    private val tableNotes = "Notes"
+    private val keyIDNotes = "IDNotes"
+    private val keyHeadNotes= "HeadNotes"
+    private val keyBodyNotes= "BodyNotes"
+    private val keyDateTimeNotes = "DateTime"
+
+    /**
+     * Таблица подзадач,
+     * Используется для хранения подзадач заметок
+     */
+    private val tableTask = "Tasks";
+    private val keyIDTask = "IDNotes"
+    private val keyNameTask = "Task"
+    private val keyTaskBoolean = "TaskBoolean"
+
+    /**
+     * Триггер автодекремента.
+     * Срабатывает при удалении заметки. Используется для соранения индексов.
+     */
+    private val triggerDecrementID = "DecID";
+
     override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL("create table " + tableConcats + "(" + keyID + " integer primary key,"
-                + keyHeadNotes + " text not null,"
-                + keyBodyNotes + " text,"
-                + keyTask+ " text,"
-                + keyTaskBoolean+ " text,"
-                + keyDatetime + " text" + ")")
+        db.execSQL("CREATE TABLE $tableNotes (" +
+            "$keyIDNotes    INTEGER, " +
+            "$keyHeadNotes	TEXT NOT NULL, " +
+            "$keyBodyNotes	TEXT, " +
+            "$keyDateTimeNotes	TEXT, " +
+            "PRIMARY KEY($keyIDNotes));"
+        );
+        db.execSQL("CREATE TABLE $tableTask (" +
+            "$keyIDTask	INTEGER NOT NULL, " +
+            "$keyNameTask	TEXT, " +
+            "$keyTaskBoolean	INTEGER, " +
+            "FOREIGN KEY($keyIDTask) REFERENCES $tableNotes($keyIDNotes) " +
+                "ON DELETE CASCADE " +
+                "ON UPDATE CASCADE);"
+        );
+        db.execSQL("CREATE TRIGGER $triggerDecrementID AFTER DELETE \n" +
+                "\tON $tableNotes\n" +
+                "    BEGIN \n" +
+                "    UPDATE $tableNotes SET $keyIDNotes = $keyIDNotes - 1 WHERE $keyIDNotes > old.IDNotes;\n" +
+                "    END;")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("drop table if exists $tableConcats")
+        db.execSQL("drop table if exists $tableNotes")
+        db.execSQL("drop table if exists $tableTask")
+        db.execSQL("drop trigger if exists $triggerDecrementID")
         onCreate(db)
     }
 
@@ -43,29 +76,22 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
      * Удаление происходит по id записи.
      */
     fun deleteNote(db: SQLiteDatabase, id: Int): Boolean {
-        return db.delete(tableConcats, "$keyID=$id", null) > 0
-    }
-
-    //переиндексация при удалении
-    fun ReindexNotes(db: SQLiteDatabase, id: Int) {
-        Thread { db.execSQL("UPDATE contactsNotes SET ID = ID - 1 WHERE ID >$id") }.start()
+        return db.delete(tableNotes, "$keyIDNotes=$id", null) > 0
     }
 
     //запись в базу данных
-    fun UploadInDatabaseNotes(db: SQLiteDatabase, HeadText: String?, BodyText: String?, DateTime: String?, Task: StringBuilder, BooleanTask: StringBuilder) {
+    fun UploadInDatabaseNotes(db: SQLiteDatabase, HeadText: String?, BodyText: String?, DateTime: String?) {
         val contentValues = ContentValues()
 
         contentValues.put(keyHeadNotes, HeadText)
         contentValues.put(keyBodyNotes, BodyText)
-        contentValues.put(keyDatetime, DateTime)
-        contentValues.put(keyTask, Task.toString())
-        contentValues.put(keyTaskBoolean, BooleanTask.toString())
-        db.insert(tableConcats, null, contentValues)
+        contentValues.put(keyDateTimeNotes, DateTime)
+        db.insert(tableNotes, null, contentValues)
     }
 
     //Изменение заметки в базе данных после выхода из Activity
     fun UpdateNotes(db: SQLiteDatabase, HeadText: String, BodyText: String, DateTime: String, id: Int) {
-        db.execSQL("UPDATE contactsNotes SET HeadNotes = '" + HeadText + "' , BodyNotes = '" + BodyText
-                + "' , DateTime = '" + DateTime + "' WHERE id =" + id)
+        db.execSQL("UPDATE $tableNotes SET HeadNotes = '" + HeadText + "' , BodyNotes = '" + BodyText
+                + "' , DateTime = '" + DateTime + "' WHERE IDNotes =" + id)
     }
 }

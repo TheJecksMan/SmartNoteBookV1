@@ -52,7 +52,7 @@ public class notes_fg extends Fragment {
                 sqLiteHelperKotlin = new SQLiteHelperKotlin(getContext());
                 database = sqLiteHelperKotlin.getReadableDatabase();
 
-                    Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes", null);
+                    Cursor cursor = database.rawQuery("SELECT * FROM Notes", null);
                 try {
 
                     String temp = null;
@@ -119,7 +119,6 @@ public class notes_fg extends Fragment {
 
                 SQLiteDatabase databaseDelete = sqLiteHelperKotlin.getWritableDatabase();
                 sqLiteHelperKotlin.deleteNote(databaseDelete, position + 1);
-                sqLiteHelperKotlin.ReindexNotes(databaseDelete, position + 1);
                 //recyclerAdapter.notifyDataSetChanged();
             }
         }

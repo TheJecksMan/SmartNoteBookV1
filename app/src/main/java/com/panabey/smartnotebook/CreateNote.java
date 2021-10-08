@@ -73,7 +73,7 @@ public class CreateNote extends AppCompatActivity {
                 if(clickNoteBoolean){
                     ItemID = ClickNote.getInt("Id");
 
-                    Cursor cursor = database.rawQuery("SELECT * FROM contactsNotes WHERE ID  = " + ItemID, null);
+                    Cursor cursor = database.rawQuery("SELECT * FROM Notes WHERE IDNotes  = " + ItemID, null);
                     cursor.moveToFirst();
 
                     EditTextHeadTextView.setText(cursor.getString(cursor.getColumnIndex("HeadNotes")));
@@ -148,9 +148,7 @@ public class CreateNote extends AppCompatActivity {
                 sqLiteHelperKotlin.UploadInDatabaseNotes(database,
                         EditTextHeadTextView.getText().toString(),
                         EditTextBodyTextView.getText().toString(),
-                        getDateTime(),
-                        managerCreateNotes.WriteAndUpdateTask(),
-                        managerCreateNotes.WriteAndUpdateTaskBoolean());
+                        getDateTime());
             }
             else {
                 //изменение заметки (перезапись)
