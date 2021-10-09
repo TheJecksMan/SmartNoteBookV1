@@ -16,6 +16,7 @@ import com.panabey.smartnotebook.Database.SQLiteHelperKotlin;
 import com.panabey.smartnotebook.Notes.Fab_Button.FabButtonManager;
 import com.panabey.smartnotebook.Notes.FileManager;
 import com.panabey.smartnotebook.Notes.ManagerCreateNotes;
+import com.panabey.smartnotebook.Notes.UploadDatabase;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -66,6 +67,10 @@ public class CreateNote extends AppCompatActivity {
 
         Bundle ClickNote = getIntent().getExtras();
 
+        /**
+         * Выгрузка заметки по нажатию (ID).
+         * ID получаем от RecyclerView.
+         */
         new Thread(() -> {
         //Изменения сообщения после нажатия
             if(ClickNote != null) {
@@ -82,6 +87,10 @@ public class CreateNote extends AppCompatActivity {
             }
         }).start();
 
+        /**
+         * Верхняя панель взаиможействия.
+         * Испульзутеся для взаимодействия с текстом и Activity.
+         */
         Toolbar toolbarCreateNote = findViewById(R.id.toolbarUpPanel);
         toolbarCreateNote.setNavigationOnClickListener(v -> {
 
@@ -90,23 +99,6 @@ public class CreateNote extends AppCompatActivity {
             startActivity(intentBackMenu);
         });
 
-        /*
-        toolbarCreateNote.setOnMenuItemClickListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.ImportItem:
-                    break;
-                case R.id.UndoItem:
-                    break;
-                case R.id.RedoItem:
-                    break;
-                default:
-                    return false;
-            }
-            return true;
-        });
-         */
-
-        //------------------------Последние изменения в тексте---------------------------//
         fab_main = findViewById(R.id.fab);
         fab1_task = findViewById(R.id.fab1);
         fab2_attachments = findViewById(R.id.fab2);
@@ -127,39 +119,18 @@ public class CreateNote extends AppCompatActivity {
         fileManager.OnClickFileManager();
     }
 
+    private void WriteSQLAndUpdate(){
+        UploadDatabase uploadDatabase = new UploadDatabase(EditTextHeadTextView, EditTextBodyTextView, this);
+        uploadDatabase.setClickNoteBoolean(clickNoteBoolean);
+        uploadDatabase.setItemID(ItemID);
+
+        uploadDatabase.writeInDatabase();
+    }
+
+
     private String getDateTime() {
         dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
         return dateFormat.format(new Date());
-    }
-
-    private void WriteSQLAndUpdate(){
-        new Thread(() -> {
-
-            //проверка на пустую строку
-            String CheckedNullText = EditTextHeadTextView.getText().toString();
-            if (CheckedNullText.trim().isEmpty()) {
-                CheckedNullText = null;
-                return;
-            }
-
-            //запись в базу данных
-            if (!clickNoteBoolean) {
-                //Новая заметка
-                sqLiteHelperKotlin.UploadInDatabaseNotes(database,
-                        EditTextHeadTextView.getText().toString(),
-                        EditTextBodyTextView.getText().toString(),
-                        getDateTime());
-            }
-            else {
-                //изменение заметки (перезапись)
-                sqLiteHelperKotlin.UpdateNotes(database,
-                        EditTextHeadTextView.getText().toString(),
-                        EditTextBodyTextView.getText().toString(),
-                        getDateTime(),
-                        ItemID);
-            }
-            managerCreateNotes.WriteAndUpdateTask();
-        }).start();
     }
 
     @Override
@@ -176,5 +147,4 @@ public class CreateNote extends AppCompatActivity {
         super.onDestroy();
         System.gc();
     }
-
 }

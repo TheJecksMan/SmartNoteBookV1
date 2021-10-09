@@ -37,9 +37,12 @@ public class ManagerCreateNotes {
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setItemViewCacheSize(30);
         recyclerView.getRecycledViewPool().setMaxRecycledViews(0,20);
-
     }
 
+    /**
+     * Навигация по RecyclerView.
+     * Используется для перетаскивания и удаления заметок.
+     */
     private void onTouch(){
         ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
                 ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.LEFT) {
@@ -53,7 +56,6 @@ public class ManagerCreateNotes {
                 Collections.swap(BooleanTask, fromPosition, toPosition);
 
                 recyclerAdapterList.notifyItemMoved(fromPosition, toPosition);
-
                 return false;
             }
 
@@ -68,29 +70,8 @@ public class ManagerCreateNotes {
                 }
             }
         };
-
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
-    }
-
-
-    public StringBuilder WriteAndUpdateTask(){
-        StringBuilder stringBuilder = new StringBuilder();
-
-        for (int i=0;i<ListTask.size();i++) {
-            stringBuilder.append(ListTask.get(i));
-            stringBuilder.append(" $~`% ");
-        }
-        return  stringBuilder;
-    }
-    public StringBuilder WriteAndUpdateTaskBoolean(){
-        StringBuilder stringBuilderBoolean = new StringBuilder();
-
-        for (int i=0;i<BooleanTask.size();i++) {
-            int bool = BooleanTask.get(i) ? 1 : 0;
-            stringBuilderBoolean.append(bool);
-        }
-        return stringBuilderBoolean;
     }
 
     public void ManagerRecyclerView(){
@@ -99,18 +80,13 @@ public class ManagerCreateNotes {
     }
 
     public void onClickAddItem(){
-
         if (ListTask.isEmpty()){
             CreateNote();
             recyclerAdapterList.notifyDataSetChanged();
         }
-
-
-
         ListTask.add("");
         BooleanTask.add(false);
         recyclerAdapterList.notifyItemInserted(ListTask.size()-1);
         recyclerAdapterList.notifyItemInserted(BooleanTask.size()-1);
-
     }
 }

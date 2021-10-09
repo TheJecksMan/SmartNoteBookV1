@@ -18,6 +18,17 @@ import com.panabey.smartnotebook.R;
 
 import java.util.List;
 
+/**
+ Уважаемый разработчик:
+
+ Как только ты прекратишь пытаться «оптимизировать» этот код
+ и поймёшь, какую ошибку ты допустил взявшись за это дело,
+ пожалуйста, увеличь номер на счётчике ниже
+ для следующего разработчика:
+
+ количество_часов_потрачено_впустую_здесь = 6
+ **/
+
 public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterList.ViewHolder> {
 
     final List<String> ListTask;
@@ -34,7 +45,6 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         LayoutInflater layoutInflaterList = LayoutInflater.from(parent.getContext());
         View view = layoutInflaterList.inflate(R.layout.item_list, parent, false);
 
@@ -54,7 +64,6 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
                 holder.BodyList.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
                 BooleanTask.set(position, true);
             }
-
             else{
                 holder.BodyList.setPaintFlags(0);
                 BooleanTask.set(position, false);
@@ -111,7 +120,6 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
 
         @Override
         public void afterTextChanged(Editable editable) {
-
         }
     }
 }

@@ -4,7 +4,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import java.lang.StringBuilder
+import androidx.core.content.contentValuesOf
+import java.lang.Exception
 
 /**
  * Класс управления базой данных.
@@ -78,28 +79,59 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
         return db.delete(tableNotes, "$keyIDNotes=$id", null) > 0
     }
 
-    //запись в базу данных
-    fun UploadInDatabaseNotes(db: SQLiteDatabase, HeadText: String?, BodyText: String?, DateTime: String?) {
-        val contentValues = ContentValues()
+    /**
+     * Запись в базу даннных в классе CreateNote.
+     * Используется при возврате на главный экран.
+     */
+    fun insertNotesInDatabase(db: SQLiteDatabase, HeadText: String?, BodyText: String?, DateTime: String?) {
+        val contentValuesInsertNotes = ContentValues()
 
-        contentValues.put(keyHeadNotes, HeadText)
-        contentValues.put(keyBodyNotes, BodyText)
-        contentValues.put(keyDateTimeNotes, DateTime)
-        db.insert(tableNotes, null, contentValues)
+        contentValuesInsertNotes.put(keyHeadNotes, HeadText)
+        contentValuesInsertNotes.put(keyBodyNotes, BodyText)
+        contentValuesInsertNotes.put(keyDateTimeNotes, DateTime)
+        db.insert(tableNotes, null, contentValuesInsertNotes)
     }
 
-    //Изменение заметки в базе данных после выхода из Activity
-    fun UpdateNotes(db: SQLiteDatabase, HeadText: String, BodyText: String, DateTime: String, id: Int) {
-        /*
-        db.execSQL("UPDATE $tableNotes SET HeadNotes = '" + HeadText + "' , BodyNotes = '" + BodyText
-                + "' , DateTime = '" + DateTime + "' WHERE IDNotes =" + id)
+    /**
+     * Перезапись заметки, елси та была уже создана.
+     * Используется при возврате на главный экран.
+     */
+    fun updateNotes(db: SQLiteDatabase, HeadText: String, BodyText: String, DateTime: String, IDNotes: Int) {
+        val contentValuesUpdateNotes = ContentValues()
 
-         */
-        val contentValuesUpdate = ContentValues();
-        contentValuesUpdate.put(keyHeadNotes, HeadText)
-        contentValuesUpdate.put(keyBodyNotes, BodyText)
-        contentValuesUpdate.put(keyDateTimeNotes, DateTime)
-        db.update(tableNotes, contentValuesUpdate,"$keyIDNotes = $id", null )
+        contentValuesUpdateNotes.put(keyHeadNotes, HeadText)
+        contentValuesUpdateNotes.put(keyBodyNotes, BodyText)
+        contentValuesUpdateNotes.put(keyDateTimeNotes, DateTime)
+        db.update(tableNotes, contentValuesUpdateNotes,"$keyIDNotes = $IDNotes", null )
+    }
 
+    /**
+     * Запись подзадач в базу данных.
+     */
+    fun insertTaskInDatabase(db: SQLiteDatabase, IDNotes: Int, NameTask: String, TaskBoolean: Int ){
+        val contentValuesInsertTask = ContentValues()
+        try{
+            db.beginTransaction()
+
+            contentValuesInsertTask.put(keyIDTask, IDNotes)
+            contentValuesInsertTask.put(keyNameTask, NameTask)
+            contentValuesInsertTask.put(keyTaskBoolean, TaskBoolean)
+            db.insert(tableTask,null, contentValuesInsertTask)
+
+            db.setTransactionSuccessful()
+        }
+        finally {
+            db.endTransaction()
+        }
+
+
+    }
+
+    /**
+     * Удаление заметок.
+     * Используется как для перезаписи, так и для полного удаления из базы данных.
+     */
+    fun deleteTaskInDatabase(db: SQLiteDatabase, IDNotes: Int){
+        db.delete(tableTask, "$keyIDTask = $IDNotes",null)
     }
 }
