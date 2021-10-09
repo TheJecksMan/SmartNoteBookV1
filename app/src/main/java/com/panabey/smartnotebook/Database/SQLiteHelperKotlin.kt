@@ -13,7 +13,7 @@ import java.lang.Exception
 class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table_name, null, version) {
 
     companion object {
-        const val version = 5
+        const val version = 6
         const val db_table_name = "contactsNotes"
     }
     /**
@@ -110,21 +110,10 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
      */
     fun insertTaskInDatabase(db: SQLiteDatabase, IDNotes: Int, NameTask: String, TaskBoolean: Int ){
         val contentValuesInsertTask = ContentValues()
-        try{
-            db.beginTransaction()
-
-            contentValuesInsertTask.put(keyIDTask, IDNotes)
-            contentValuesInsertTask.put(keyNameTask, NameTask)
-            contentValuesInsertTask.put(keyTaskBoolean, TaskBoolean)
-            db.insert(tableTask,null, contentValuesInsertTask)
-
-            db.setTransactionSuccessful()
-        }
-        finally {
-            db.endTransaction()
-        }
-
-
+        contentValuesInsertTask.put(keyIDTask, IDNotes)
+        contentValuesInsertTask.put(keyNameTask, NameTask)
+        contentValuesInsertTask.put(keyTaskBoolean, TaskBoolean)
+        db.insert(tableTask,null, contentValuesInsertTask)
     }
 
     /**

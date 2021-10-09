@@ -124,7 +124,7 @@ public class CreateNote extends AppCompatActivity {
         uploadDatabase.setClickNoteBoolean(clickNoteBoolean);
         uploadDatabase.setItemID(ItemID);
 
-        uploadDatabase.writeInDatabase();
+        uploadDatabase.writeInDatabaseNotes();
     }
 
 

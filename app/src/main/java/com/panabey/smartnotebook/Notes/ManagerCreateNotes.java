@@ -21,12 +21,12 @@ public class ManagerCreateNotes {
     RecyclerAdapterList recyclerAdapterList;
     final RecyclerView recyclerView;
 
-    public ManagerCreateNotes(Context context, RecyclerView recyclerView){
+    public ManagerCreateNotes(Context context, RecyclerView recyclerView) {
         this.context = context;
         this.recyclerView = recyclerView;
     }
 
-    private void CreateNote(){
+    private void CreateNote() {
         ListTask = new ArrayList<>();
         BooleanTask = new ArrayList<>();
 
@@ -36,14 +36,14 @@ public class ManagerCreateNotes {
 
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setItemViewCacheSize(30);
-        recyclerView.getRecycledViewPool().setMaxRecycledViews(0,20);
+        recyclerView.getRecycledViewPool().setMaxRecycledViews(0, 20);
     }
 
     /**
      * Навигация по RecyclerView.
      * Используется для перетаскивания и удаления заметок.
      */
-    private void onTouch(){
+    private void onTouch() {
         ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
                 ItemTouchHelper.UP | ItemTouchHelper.DOWN, ItemTouchHelper.LEFT) {
             @Override
@@ -74,19 +74,19 @@ public class ManagerCreateNotes {
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
-    public void ManagerRecyclerView(){
+    public void ManagerRecyclerView() {
         CreateNote();
         onTouch();
     }
 
-    public void onClickAddItem(){
-        if (ListTask.isEmpty()){
+    public void onClickAddItem() {
+        if (ListTask.isEmpty()) {
             CreateNote();
             recyclerAdapterList.notifyDataSetChanged();
         }
         ListTask.add("");
         BooleanTask.add(false);
-        recyclerAdapterList.notifyItemInserted(ListTask.size()-1);
-        recyclerAdapterList.notifyItemInserted(BooleanTask.size()-1);
+        recyclerAdapterList.notifyItemInserted(ListTask.size() - 1);
+        recyclerAdapterList.notifyItemInserted(BooleanTask.size() - 1);
     }
 }
