@@ -6,8 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.panabey.smartnotebook.Database.SQLiteHelper;
-
 public class Trash extends AppCompatActivity {
 
     @Override
@@ -16,7 +14,7 @@ public class Trash extends AppCompatActivity {
         setContentView(R.layout.activity_trash);
         Button ButtonTestSQL = findViewById(R.id.buttonTestSQL);
 
-        SQLiteHelper sqLiteHelper = new SQLiteHelper(getApplicationContext());
+        /*SQLiteHelper sqLiteHelper = new SQLiteHelper(getApplicationContext());
         SQLiteDatabase database = sqLiteHelper.getWritableDatabase();
         String test = "test";
 
@@ -28,5 +26,7 @@ public class Trash extends AppCompatActivity {
                 i++;
             }
         }).start());
+
+         */
     }
 }

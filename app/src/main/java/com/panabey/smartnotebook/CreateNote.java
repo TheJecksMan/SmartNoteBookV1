@@ -16,11 +16,6 @@ import com.panabey.smartnotebook.Database.SQLiteHelperKotlin;
 import com.panabey.smartnotebook.Notes.Fab_Button.FabButtonManager;
 import com.panabey.smartnotebook.Notes.FileManager;
 import com.panabey.smartnotebook.Notes.ManagerCreateNotes;
-import com.panabey.smartnotebook.Notes.UploadDatabase;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Класс для работы заметок.
@@ -29,7 +24,6 @@ public class CreateNote extends AppCompatActivity {
 
     private TextView EditTextHeadTextView;
     private TextView EditTextBodyTextView;
-    private DateFormat dateFormat;
 
     private SQLiteDatabase database;
     private SQLiteHelperKotlin sqLiteHelperKotlin;
@@ -120,17 +114,8 @@ public class CreateNote extends AppCompatActivity {
     }
 
     private void WriteSQLAndUpdate(){
-        UploadDatabase uploadDatabase = new UploadDatabase(EditTextHeadTextView, EditTextBodyTextView, this);
-        uploadDatabase.setClickNoteBoolean(clickNoteBoolean);
-        uploadDatabase.setItemID(ItemID);
+        managerCreateNotes.writeInDatabaseNotes(EditTextHeadTextView, EditTextBodyTextView, clickNoteBoolean, ItemID);
 
-        uploadDatabase.writeInDatabaseNotes();
-    }
-
-
-    private String getDateTime() {
-        dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-        return dateFormat.format(new Date());
     }
 
     @Override

@@ -123,4 +123,12 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
     fun deleteTaskInDatabase(db: SQLiteDatabase, IDNotes: Int){
         db.delete(tableTask, "$keyIDTask = $IDNotes",null)
     }
+
+    /*
+    fun getItemID(db: SQLiteDatabase): Int{
+        db.execSQL("SELECT count(ID)+1 from $tableNotes")
+        return 1
+    }
+     */
+
 }

@@ -1,24 +1,31 @@
 package com.panabey.smartnotebook.Notes;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.panabey.smartnotebook.Database.SQLiteHelperKotlin;
+import com.panabey.smartnotebook.EditText;
 import com.panabey.smartnotebook.util.RecyclerAdapterList;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class ManagerCreateNotes {
 
     private final Context context;
 
-    List<String> ListTask;
-    List<Boolean> BooleanTask;
-    RecyclerAdapterList recyclerAdapterList;
+    private List<String> ListTask;
+    private List<Boolean> BooleanTask;
+    private RecyclerAdapterList recyclerAdapterList;
     final RecyclerView recyclerView;
 
     public ManagerCreateNotes(Context context, RecyclerView recyclerView) {
@@ -89,4 +96,30 @@ public class ManagerCreateNotes {
         recyclerAdapterList.notifyItemInserted(ListTask.size() - 1);
         recyclerAdapterList.notifyItemInserted(BooleanTask.size() - 1);
     }
+
+    public void writeInDatabaseNotes(TextView Head, TextView Body, Boolean clickNoteBoolean, int ItemID){
+
+        SQLiteHelperKotlin sqLiteHelperKotlin = new SQLiteHelperKotlin(context);
+        SQLiteDatabase database = sqLiteHelperKotlin.getWritableDatabase();
+
+        String checkedNullText = Head.getText().toString();
+        if (checkedNullText.trim().isEmpty()){
+            return;
+        }
+
+        if(!clickNoteBoolean){ //Запись
+            sqLiteHelperKotlin.insertNotesInDatabase(database,
+                    Head.getText().toString(),Body.getText().toString(),getDateTime());
+        }
+        else{ //Перезапись
+            sqLiteHelperKotlin.updateNotes(database,
+                    Head.getText().toString(),Body.getText().toString(), getDateTime(),ItemID);
+        }
+    }
+    private String getDateTime() {
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        return dateFormat.format(new Date());
+    }
+
+
 }
