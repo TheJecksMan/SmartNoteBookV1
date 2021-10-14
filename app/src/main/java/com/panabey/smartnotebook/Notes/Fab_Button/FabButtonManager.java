@@ -7,7 +7,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.panabey.smartnotebook.CreateNote;
 import com.panabey.smartnotebook.R;
 
 public class FabButtonManager{
@@ -15,7 +14,7 @@ public class FabButtonManager{
     private final FloatingActionButton fab_main;
     private final FloatingActionButton fab1_task;
     private final FloatingActionButton fab2_textview_task;
-    private Animation fab_open, fab_close, fab_clock, fab_anticlock;
+    private Animation fab_open, fab_close, fab_clock, fab_anticlick;
 
     private final TextView textview_task;
     private final TextView textview_attachments;
@@ -42,7 +41,7 @@ public class FabButtonManager{
         fab_close = AnimationUtils.loadAnimation(context, R.anim.fab_close);
         fab_open = AnimationUtils.loadAnimation(context, R.anim.fab_open);
         fab_clock = AnimationUtils.loadAnimation(context, R.anim.fab_rotate_clock);
-        fab_anticlock = AnimationUtils.loadAnimation(context, R.anim.fab_rotate_anticlock);
+        fab_anticlick = AnimationUtils.loadAnimation(context, R.anim.fab_rotate_anticlock);
 
         fab_main.setOnClickListener(view -> {
 
@@ -52,7 +51,7 @@ public class FabButtonManager{
 
                 fab2_textview_task.startAnimation(fab_close);
                 fab1_task.startAnimation(fab_close);
-                fab_main.startAnimation(fab_anticlock);
+                fab_main.startAnimation(fab_anticlick);
 
                 fab2_textview_task.setClickable(false);
                 fab1_task.setClickable(false);
@@ -73,5 +72,8 @@ public class FabButtonManager{
                 isOpen = true;
             }
         });
+    }
+    public void OpenFab(Boolean isOpen){
+        this.isOpen = isOpen;
     }
 }

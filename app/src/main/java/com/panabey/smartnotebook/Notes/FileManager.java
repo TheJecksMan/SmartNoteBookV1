@@ -4,7 +4,6 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 

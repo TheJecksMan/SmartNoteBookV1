@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.panabey.smartnotebook.Database.SQLiteHelperKotlin;
-import com.panabey.smartnotebook.EditText;
 import com.panabey.smartnotebook.util.RecyclerAdapterList;
 
 import java.text.DateFormat;
