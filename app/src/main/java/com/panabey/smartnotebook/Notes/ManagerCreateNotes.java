@@ -1,8 +1,10 @@
 package com.panabey.smartnotebook.Notes;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -96,15 +98,31 @@ public class ManagerCreateNotes {
         recyclerAdapterList.notifyItemInserted(BooleanTask.size() - 1);
     }
 
-    public void writeInDatabaseNotes(TextView Head, TextView Body, Boolean clickNoteBoolean, int ItemID){
+    public void loadTaskFromDatabase(int IDNotes){
 
         SQLiteHelperKotlin sqLiteHelperKotlin = new SQLiteHelperKotlin(context);
-        SQLiteDatabase database = sqLiteHelperKotlin.getWritableDatabase();
+        SQLiteDatabase database = sqLiteHelperKotlin.getReadableDatabase();
+        Toast.makeText(context, "IDNotes: " + IDNotes, Toast.LENGTH_SHORT).show();
+        Cursor cursor = database.rawQuery("SELECT * FROM Tasks where IDNotes = " + IDNotes, null);
+        cursor.moveToFirst();
+        for(int i = 0; i<cursor.getCount(); i++){
+            ListTask.add(cursor.getString(cursor.getColumnIndex("Task")));
+            BooleanTask.add(cursor.getInt(cursor.getColumnIndex("TaskBoolean")) == 1? true:false);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        recyclerAdapterList.notifyDataSetChanged();
+    }
+
+    public void writeInDatabaseNotes(TextView Head, TextView Body, Boolean clickNoteBoolean, int ItemID){
 
         String checkedNullText = Head.getText().toString();
         if (checkedNullText.trim().isEmpty()){
             return;
         }
+
+        SQLiteHelperKotlin sqLiteHelperKotlin = new SQLiteHelperKotlin(context);
+        SQLiteDatabase database = sqLiteHelperKotlin.getWritableDatabase();
 
         if(!clickNoteBoolean){ //Запись
             int ItemIDWithDatabase = sqLiteHelperKotlin.getItemID(database);

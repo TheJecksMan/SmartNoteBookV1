@@ -66,21 +66,24 @@ public class CreateNote extends AppCompatActivity {
          * Выгрузка заметки по нажатию (ID).
          * ID получаем от RecyclerView.
          */
-        new Thread(() -> {
-        //Изменения сообщения после нажатия
-            if(ClickNote != null) {
-                clickNoteBoolean = ClickNote.getBoolean("BooleanClickRecyclerView");
-                if(clickNoteBoolean){
-                    ItemID = ClickNote.getInt("Id");
 
+        //Изменения сообщения после нажатия
+        if(ClickNote != null) {
+            clickNoteBoolean = ClickNote.getBoolean("BooleanClickRecyclerView");
+            if(clickNoteBoolean){
+                ItemID = ClickNote.getInt("Id");
+
+                new Thread(() -> {
                     Cursor cursor = database.rawQuery("SELECT * FROM Notes WHERE IDNotes  = " + ItemID, null);
                     cursor.moveToFirst();
 
                     EditTextHeadTextView.setText(cursor.getString(cursor.getColumnIndex("HeadNotes")));
                     EditTextBodyTextView.setText(cursor.getString(cursor.getColumnIndex("BodyNotes")));
-                }
+                }).start();
             }
-        }).start();
+        }
+
+        managerCreateNotes.loadTaskFromDatabase(ItemID);
 
         /**
          * Верхняя панель взаиможействия.

@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import androidx.browser.browseractions.BrowserActionsIntent
 
 /**
  * Класс управления базой данных.
@@ -128,7 +129,7 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
      */
     fun getItemID(db: SQLiteDatabase): Int{
         val cursor: Cursor = db.rawQuery("SELECT count($keyIDNotes)+1 from $tableNotes", null)
-        cursor.moveToFirst();
+        cursor.moveToFirst()
         return cursor.getInt(0)
     }
 }
