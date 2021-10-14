@@ -116,8 +116,6 @@ public class ManagerCreateNotes {
             for (int i = 0; i < ListTask.size(); i++){
                 sqLiteHelperKotlin.insertTaskInDatabase(database, ItemIDWithDatabase, ListTask.get(i), BooleanTask.get(i)? 1: 0);
             }
-            database.setTransactionSuccessful();
-            database.endTransaction();
         }
         else{ //Перезапись
             sqLiteHelperKotlin.updateNotes(database,
@@ -129,9 +127,9 @@ public class ManagerCreateNotes {
             for (int i = 0; i < ListTask.size(); i++){
                 sqLiteHelperKotlin.insertTaskInDatabase(database, ItemID, ListTask.get(i), BooleanTask.get(i)? 1: 0);
             }
-            database.setTransactionSuccessful();
-            database.endTransaction();
         }
+        database.setTransactionSuccessful();
+        database.endTransaction();
     }
 
     private String getDateTime() {
