@@ -13,7 +13,7 @@ import androidx.browser.browseractions.BrowserActionsIntent
 class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table_name, null, version) {
 
     companion object {
-        const val version = 6
+        const val version = 7
         const val db_table_name = "contactsNotes"
     }
     /**
@@ -42,6 +42,8 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
     private val triggerDecrementID = "DecID"
 
     override fun onCreate(db: SQLiteDatabase) {
+        db.execSQL("PRAGMA foreign_keys=ON")
+
         db.execSQL("CREATE TABLE $tableNotes (" +
             "$keyIDNotes    INTEGER, " +
             "$keyHeadNotes	TEXT NOT NULL, " +
@@ -69,6 +71,15 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
         db.execSQL("drop table if exists $tableTask")
         db.execSQL("drop trigger if exists $triggerDecrementID")
         onCreate(db)
+    }
+
+    /**
+     * Срабатывает каждый раз при открытии базы данных.
+     * Требуется для каскадного удаления заметки и её подзадач.
+     */
+    override fun onOpen(db: SQLiteDatabase?) {
+        super.onOpen(db)
+        db?.execSQL("PRAGMA foreign_keys=ON")
     }
 
     /**

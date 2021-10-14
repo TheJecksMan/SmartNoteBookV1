@@ -69,6 +69,10 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
                 BooleanTask.set(position, false);
             }
         });
+
+        if(holder.CheckBox.isChecked()){
+            holder.BodyList.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        }
     }
 
     @Override

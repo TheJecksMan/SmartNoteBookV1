@@ -3,6 +3,7 @@ package com.panabey.smartnotebook.Notes;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Paint;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -98,22 +99,33 @@ public class ManagerCreateNotes {
         recyclerAdapterList.notifyItemInserted(BooleanTask.size() - 1);
     }
 
+    /**
+     * Загрузка подзадач из баз данных.
+     */
     public void loadTaskFromDatabase(int IDNotes){
 
         SQLiteHelperKotlin sqLiteHelperKotlin = new SQLiteHelperKotlin(context);
         SQLiteDatabase database = sqLiteHelperKotlin.getReadableDatabase();
+
         Toast.makeText(context, "IDNotes: " + IDNotes, Toast.LENGTH_SHORT).show();
         Cursor cursor = database.rawQuery("SELECT * FROM Tasks where IDNotes = " + IDNotes, null);
         cursor.moveToFirst();
+
         for(int i = 0; i<cursor.getCount(); i++){
             ListTask.add(cursor.getString(cursor.getColumnIndex("Task")));
             BooleanTask.add(cursor.getInt(cursor.getColumnIndex("TaskBoolean")) == 1? true:false);
+            recyclerAdapterList.notifyItemInserted(ListTask.size() - 1);
+            recyclerAdapterList.notifyItemInserted(BooleanTask.size() - 1);
             cursor.moveToNext();
         }
         cursor.close();
-        recyclerAdapterList.notifyDataSetChanged();
+        //recyclerAdapterList.notifyDataSetChanged();
     }
 
+    /**
+     * Перезапись и запись заметок из базы данных
+     * для последующего использования.
+     */
     public void writeInDatabaseNotes(TextView Head, TextView Body, Boolean clickNoteBoolean, int ItemID){
 
         String checkedNullText = Head.getText().toString();
@@ -130,7 +142,6 @@ public class ManagerCreateNotes {
             sqLiteHelperKotlin.insertNotesInDatabase(database,
                     Head.getText().toString(),Body.getText().toString(),getDateTime());
 
-            database.beginTransaction();
             for (int i = 0; i < ListTask.size(); i++){
                 sqLiteHelperKotlin.insertTaskInDatabase(database, ItemIDWithDatabase, ListTask.get(i), BooleanTask.get(i)? 1: 0);
             }
@@ -139,15 +150,15 @@ public class ManagerCreateNotes {
             sqLiteHelperKotlin.updateNotes(database,
                     Head.getText().toString(),Body.getText().toString(), getDateTime(),ItemID);
 
+            /**
+             * Где то тут происходит магия
+             */
             sqLiteHelperKotlin.deleteTaskInDatabase(database, ItemID);
-
-            database.beginTransaction();
+            Toast.makeText(context, "Удалена заметка : " + ItemID, Toast.LENGTH_SHORT).show();
             for (int i = 0; i < ListTask.size(); i++){
                 sqLiteHelperKotlin.insertTaskInDatabase(database, ItemID, ListTask.get(i), BooleanTask.get(i)? 1: 0);
             }
         }
-        database.setTransactionSuccessful();
-        database.endTransaction();
     }
 
     private String getDateTime() {
