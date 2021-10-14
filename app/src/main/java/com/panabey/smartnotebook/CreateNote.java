@@ -122,8 +122,8 @@ public class CreateNote extends AppCompatActivity {
     public void onBackPressed() {
         WriteSQLAndUpdate();
 
-        Intent intentBackNotes = new Intent(context, MainMenu.class);
-        context.startActivity(intentBackNotes);
+        Intent intentBackNotes = new Intent(this, MainMenu.class);
+        startActivity(intentBackNotes);
         finish();
     }
 

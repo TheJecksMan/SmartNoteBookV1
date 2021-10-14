@@ -4,8 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import androidx.core.content.contentValuesOf
-import java.lang.Exception
 
 /**
  * Класс управления базой данных.
@@ -47,16 +45,16 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
             "$keyHeadNotes	TEXT NOT NULL, " +
             "$keyBodyNotes	TEXT, " +
             "$keyDateTimeNotes	TEXT, " +
-            "PRIMARY KEY($keyIDNotes));"
-        );
+            "PRIMARY KEY($keyIDNotes));")
+
         db.execSQL("CREATE TABLE $tableTask (" +
             "$keyIDTask	INTEGER NOT NULL, " +
             "$keyNameTask	TEXT, " +
             "$keyTaskBoolean	INTEGER, " +
             "FOREIGN KEY($keyIDTask) REFERENCES $tableNotes($keyIDNotes) " +
                 "ON DELETE CASCADE " +
-                "ON UPDATE CASCADE);"
-        );
+                "ON UPDATE CASCADE);")
+
         db.execSQL("CREATE TRIGGER $triggerDecrementID AFTER DELETE \n" +
                 "\tON $tableNotes\n" +
                 "    BEGIN \n" +
