@@ -2,6 +2,7 @@ package com.panabey.smartnotebook.Database
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
@@ -122,11 +123,12 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
         db.delete(tableTask, "$keyIDTask = $IDNotes",null)
     }
 
-    /*
-    fun getItemID(db: SQLiteDatabase): Int{
-        db.execSQL("SELECT count(ID)+1 from $tableNotes")
-        return 1
-    }
+    /**
+     * Получение нового ID для записи Подзадач
      */
-
+    fun getItemID(db: SQLiteDatabase): Int{
+        val cursor: Cursor = db.rawQuery("SELECT count($keyIDNotes)+1 from $tableNotes", null)
+        cursor.moveToFirst();
+        return cursor.getInt(0)
+    }
 }

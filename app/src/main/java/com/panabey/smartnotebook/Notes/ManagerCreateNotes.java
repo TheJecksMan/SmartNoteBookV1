@@ -107,18 +107,26 @@ public class ManagerCreateNotes {
         }
 
         if(!clickNoteBoolean){ //Запись
+            ItemID = sqLiteHelperKotlin.getItemID(database);
+
             sqLiteHelperKotlin.insertNotesInDatabase(database,
                     Head.getText().toString(),Body.getText().toString(),getDateTime());
+
+            database.beginTransaction();
+            for (int i = 0; i > ListTask.size(); i++){
+                sqLiteHelperKotlin.insertTaskInDatabase(database, ItemID, ListTask.get(i), BooleanTask.get(i)? 1: 0);
+            }
+            database.setTransactionSuccessful();
+            database.endTransaction();
         }
         else{ //Перезапись
             sqLiteHelperKotlin.updateNotes(database,
                     Head.getText().toString(),Body.getText().toString(), getDateTime(),ItemID);
         }
     }
+
     private String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
         return dateFormat.format(new Date());
     }
-
-
 }

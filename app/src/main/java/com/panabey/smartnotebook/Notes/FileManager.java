@@ -5,6 +5,7 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import android.content.Context;
 import android.content.Intent;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -37,4 +38,8 @@ public class FileManager extends AppCompatActivity {
         onActivityResult(RESULT_OK,100, intent);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }
