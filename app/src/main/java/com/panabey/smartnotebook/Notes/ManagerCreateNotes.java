@@ -107,14 +107,14 @@ public class ManagerCreateNotes {
         }
 
         if(!clickNoteBoolean){ //Запись
-            ItemID = sqLiteHelperKotlin.getItemID(database);
+            int ItemIDWithDatabase = sqLiteHelperKotlin.getItemID(database);
 
             sqLiteHelperKotlin.insertNotesInDatabase(database,
                     Head.getText().toString(),Body.getText().toString(),getDateTime());
 
             database.beginTransaction();
-            for (int i = 0; i > ListTask.size(); i++){
-                sqLiteHelperKotlin.insertTaskInDatabase(database, ItemID, ListTask.get(i), BooleanTask.get(i)? 1: 0);
+            for (int i = 0; i < ListTask.size(); i++){
+                sqLiteHelperKotlin.insertTaskInDatabase(database, ItemIDWithDatabase, ListTask.get(i), BooleanTask.get(i)? 1: 0);
             }
             database.setTransactionSuccessful();
             database.endTransaction();
@@ -122,6 +122,15 @@ public class ManagerCreateNotes {
         else{ //Перезапись
             sqLiteHelperKotlin.updateNotes(database,
                     Head.getText().toString(),Body.getText().toString(), getDateTime(),ItemID);
+
+            sqLiteHelperKotlin.deleteTaskInDatabase(database, ItemID);
+
+            database.beginTransaction();
+            for (int i = 0; i < ListTask.size(); i++){
+                sqLiteHelperKotlin.insertTaskInDatabase(database, ItemID, ListTask.get(i), BooleanTask.get(i)? 1: 0);
+            }
+            database.setTransactionSuccessful();
+            database.endTransaction();
         }
     }
 
