@@ -21,3 +21,5 @@
 | GitHub | [plugins/github/README.md][PlGh] |
 | Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
 
+## Скриншоты
+<img src="https://sun9-12.userapi.com/impg/pchLw0OiYsF7f8dQwgODEBO2EtF_rlDqSz6iyg/2jOZ95F7pME.jpg?size=543x1152&quality=96&sign=4a353dd02e370434e29785ce4ec5fad8&type=album" width="400" height="800">
