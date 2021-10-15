@@ -2,14 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/UndoItem"
-        android:icon="@drawable/notes_outline_undo"
-        android:title=""
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/RedoItem"
-        android:icon="@drawable/notes_outline_redo"
+        android:id="@+id/ThemeItem"
+        android:icon="@drawable/ic_outline_palette_"
         android:title=""
         app:showAsAction="ifRoom"/>
 
