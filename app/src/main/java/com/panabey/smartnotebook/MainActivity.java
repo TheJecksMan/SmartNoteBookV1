@@ -11,7 +11,10 @@ import android.widget.TextView;
 
 import com.panabey.smartnotebook.util.LoadPrefStartup;
 
-
+/**
+ * Класс для исполнения загрузочного окна
+ * главнного Activity.
+ */
 public class MainActivity extends AppCompatActivity  {
 
     private ProgressBar mProgress;
@@ -26,7 +29,10 @@ public class MainActivity extends AppCompatActivity  {
         mProgress = findViewById(R.id.progressBarLoad);
         TextView mTextViewVersion = findViewById(R.id.textViewVersion);
 
-        //получение текущей версии приложения
+        /*
+          Получнение текущей версии сборки.
+          Для его отборажения в окне загрузки.
+         */
         try {
             mTextViewVersion.setText(this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName);
         }
@@ -34,7 +40,7 @@ public class MainActivity extends AppCompatActivity  {
             e.printStackTrace();
         }
 
-        //загрузка файла конфигурации
+        //Получние и загрузка файла конфигуации приложения
         LoadPrefStartup loadPrefStartup = new LoadPrefStartup(MainActivity.this, this);
         loadPrefStartup.DarkThemeLoadPref();
 

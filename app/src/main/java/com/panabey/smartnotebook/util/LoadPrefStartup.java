@@ -6,7 +6,9 @@ import android.content.SharedPreferences;
 
 import androidx.appcompat.app.AppCompatDelegate;
 
-
+/**
+ * Класс для загрузки настроек при запуске
+ */
 public class LoadPrefStartup {
     Boolean ChangeDarkTheme;
     Boolean ChangeAnim;
@@ -21,6 +23,10 @@ public class LoadPrefStartup {
         this.activity = activity;
     }
 
+    /**
+     * Загрузка параметров тёмной темы из файла xml.
+     * Исползуется для запуска сохранённых настоек после перезапуска приложения.
+     */
     public void DarkThemeLoadPref(){
         Pref = activity.getSharedPreferences("com.panabey.smartnotebook_preferences", Context.MODE_PRIVATE);
         ChangeDarkTheme = Pref.getBoolean("key_switch_DarkTheme", false);
@@ -33,6 +39,10 @@ public class LoadPrefStartup {
         }
     }
 
+    /**
+     * Включение и отключения анимации во всём приложении.
+     * (Изменения применяются только при следующей загрузки приложения)
+     */
     public boolean AnimLoadPref(){
         return ChangeAnim = Pref.getBoolean("key_preference_animate", false);
     }

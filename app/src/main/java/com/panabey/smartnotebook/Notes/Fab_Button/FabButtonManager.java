@@ -9,6 +9,11 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.panabey.smartnotebook.R;
 
+/**
+ * Класс для исполнения логики кнопки для добавления следующих действий:
+ * Открытия и сохранния изображения
+ * Добавления подзадачи
+ */
 public class FabButtonManager{
 
     private final FloatingActionButton fab_main;

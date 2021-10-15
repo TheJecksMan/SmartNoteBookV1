@@ -25,7 +25,6 @@ import com.panabey.smartnotebook.Account.account;
 public class accountLogin_fg extends Fragment {
 
     private FirebaseAuth mAuth;
-    private FirebaseUser mUser;
 
     private TextInputEditText email, password;
     private TextView InfoEmpty;

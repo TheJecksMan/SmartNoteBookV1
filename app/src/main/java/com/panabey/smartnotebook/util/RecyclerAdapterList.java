@@ -19,6 +19,8 @@ import com.panabey.smartnotebook.R;
 import java.util.List;
 
 /**
+ * Класс для создания списка Подадач в CreateNote
+
  Уважаемый разработчик:
 
  Как только ты прекратишь пытаться «оптимизировать» этот код

@@ -14,19 +14,5 @@ public class Trash extends AppCompatActivity {
         setContentView(R.layout.activity_trash);
         Button ButtonTestSQL = findViewById(R.id.buttonTestSQL);
 
-        /*SQLiteHelper sqLiteHelper = new SQLiteHelper(getApplicationContext());
-        SQLiteDatabase database = sqLiteHelper.getWritableDatabase();
-        String test = "test";
-
-
-        ButtonTestSQL.setOnClickListener(v -> new Thread(() -> {
-            int i = 0;
-            while (i < 10000) {
-                sqLiteHelper.UploadInDatabaseNotes(database, test, test, test, null, null);
-                i++;
-            }
-        }).start());
-
-         */
     }
 }

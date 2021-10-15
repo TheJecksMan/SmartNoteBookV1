@@ -122,6 +122,7 @@ public class notes_fg extends Fragment {
                 sqLiteHelperKotlin.deleteNote(databaseDelete, position + 1);
             }
         }
+
     };
 }
 

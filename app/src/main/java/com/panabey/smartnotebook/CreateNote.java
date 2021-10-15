@@ -26,9 +26,6 @@ public class CreateNote extends AppCompatActivity {
     private TextView EditTextHeadTextView;
     private TextView EditTextBodyTextView;
 
-    private SQLiteDatabase database;
-    private SQLiteHelperKotlin sqLiteHelperKotlin;
-
     private boolean clickNoteBoolean;
     private int ItemID;
 
@@ -49,8 +46,8 @@ public class CreateNote extends AppCompatActivity {
         setContentView(R.layout.activity_create_note);
         context = getApplicationContext();
 
-        sqLiteHelperKotlin = new SQLiteHelperKotlin(this);
-        database = sqLiteHelperKotlin.getWritableDatabase();
+        SQLiteHelperKotlin sqLiteHelperKotlin = new SQLiteHelperKotlin(this);
+        SQLiteDatabase database = sqLiteHelperKotlin.getWritableDatabase();
 
         recyclerView = findViewById(R.id.recyclerViewList);
 

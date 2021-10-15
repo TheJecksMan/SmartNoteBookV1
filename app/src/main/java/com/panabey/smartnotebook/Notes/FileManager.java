@@ -28,6 +28,9 @@ public class FileManager extends AppCompatActivity {
         fab.setOnClickListener(v -> ToOpenWith());
     }
 
+    /**
+     * Открытие файлового мендежера для получения path изображения
+     */
     private void ToOpenWith(){
 
         Intent intent = new Intent();
@@ -38,6 +41,10 @@ public class FileManager extends AppCompatActivity {
         onActivityResult(RESULT_OK,100, intent);
     }
 
+    /**
+     * Получение path из Intent, для последующего хранения
+     * в базе данных и обработки изображения
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
