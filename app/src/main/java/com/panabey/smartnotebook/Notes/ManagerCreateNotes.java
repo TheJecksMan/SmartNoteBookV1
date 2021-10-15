@@ -114,12 +114,13 @@ public class ManagerCreateNotes {
         for(int i = 0; i<cursor.getCount(); i++){
             ListTask.add(cursor.getString(cursor.getColumnIndex("Task")));
             BooleanTask.add(cursor.getInt(cursor.getColumnIndex("TaskBoolean")) == 1? true:false);
-            recyclerAdapterList.notifyItemInserted(ListTask.size() - 1);
-            recyclerAdapterList.notifyItemInserted(BooleanTask.size() - 1);
+            recyclerAdapterList.notifyItemInserted(i);
+            recyclerAdapterList.notifyItemInserted(i);
             cursor.moveToNext();
         }
         cursor.close();
-        //recyclerAdapterList.notifyDataSetChanged();
+       // recyclerAdapterList.notifyDataSetChanged();
+
     }
 
     /**
@@ -150,11 +151,7 @@ public class ManagerCreateNotes {
             sqLiteHelperKotlin.updateNotes(database,
                     Head.getText().toString(),Body.getText().toString(), getDateTime(),ItemID);
 
-            /**
-             * Где то тут происходит магия
-             */
             sqLiteHelperKotlin.deleteTaskInDatabase(database, ItemID);
-            Toast.makeText(context, "Удалена заметка : " + ItemID, Toast.LENGTH_SHORT).show();
             for (int i = 0; i < ListTask.size(); i++){
                 sqLiteHelperKotlin.insertTaskInDatabase(database, ItemID, ListTask.get(i), BooleanTask.get(i)? 1: 0);
             }

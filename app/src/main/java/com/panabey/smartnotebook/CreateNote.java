@@ -72,14 +72,12 @@ public class CreateNote extends AppCompatActivity {
             clickNoteBoolean = ClickNote.getBoolean("BooleanClickRecyclerView");
             if(clickNoteBoolean){
                 ItemID = ClickNote.getInt("Id");
+                Cursor cursor = database.rawQuery("SELECT * FROM Notes WHERE IDNotes  = " + ItemID, null);
+                cursor.moveToFirst();
 
-                new Thread(() -> {
-                    Cursor cursor = database.rawQuery("SELECT * FROM Notes WHERE IDNotes  = " + ItemID, null);
-                    cursor.moveToFirst();
-
-                    EditTextHeadTextView.setText(cursor.getString(cursor.getColumnIndex("HeadNotes")));
-                    EditTextBodyTextView.setText(cursor.getString(cursor.getColumnIndex("BodyNotes")));
-                }).start();
+                EditTextHeadTextView.setText(cursor.getString(cursor.getColumnIndex("HeadNotes")));
+                EditTextBodyTextView.setText(cursor.getString(cursor.getColumnIndex("BodyNotes")));
+                cursor.close();
             }
         }
 

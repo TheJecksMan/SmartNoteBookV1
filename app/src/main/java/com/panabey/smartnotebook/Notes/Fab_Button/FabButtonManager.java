@@ -73,7 +73,4 @@ public class FabButtonManager{
             }
         });
     }
-    public void OpenFab(Boolean isOpen){
-        this.isOpen = isOpen;
-    }
 }
