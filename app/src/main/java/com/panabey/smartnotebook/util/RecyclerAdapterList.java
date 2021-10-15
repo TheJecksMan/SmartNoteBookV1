@@ -54,9 +54,8 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        holder.BodyList.setText(ListTask.get(position));
         holder.EditTextListener.updatePosition(position);
+        holder.BodyList.setText(ListTask.get(position));
 
         holder.CheckBox.setChecked(BooleanTask.get(position));
         holder.CheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
