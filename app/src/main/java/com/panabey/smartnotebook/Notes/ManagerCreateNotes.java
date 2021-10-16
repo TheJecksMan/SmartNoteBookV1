@@ -3,9 +3,7 @@ package com.panabey.smartnotebook.Notes;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Paint;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -107,7 +105,6 @@ public class ManagerCreateNotes {
         SQLiteHelperKotlin sqLiteHelperKotlin = new SQLiteHelperKotlin(context);
         SQLiteDatabase database = sqLiteHelperKotlin.getReadableDatabase();
 
-        Toast.makeText(context, "IDNotes: " + IDNotes, Toast.LENGTH_SHORT).show();
         Cursor cursor = database.rawQuery("SELECT * FROM Tasks where IDNotes = " + IDNotes, null);
         cursor.moveToFirst();
 

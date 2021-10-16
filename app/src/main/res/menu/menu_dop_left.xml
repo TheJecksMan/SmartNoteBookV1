@@ -5,14 +5,14 @@
         <item
             android:id="@+id/editTextItem"
             android:icon="@drawable/ic_outline_edit_note"
-            android:title="Редактор текста" />
+            android:title="@string/DopMenuEditText" />
     </group>
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/TrashItem"
             android:icon="@drawable/main_menu_outline_delete"
-            android:title="Корзина" />
+            android:title="@string/DopMenuTrash" />
     </group>
 
     <group android:checkableBehavior="single">
@@ -20,12 +20,12 @@
             <item
             android:id="@+id/SettingItem"
             android:icon="@drawable/ic_outline_settings"
-            android:title="Настройки" />
+            android:title="@string/DopMenuSetting" />
 
             <item
             android:id="@+id/InfoItem"
             android:icon="@drawable/ic_outline_info"
-            android:title="Справка" />
+            android:title="@string/DopMenuAbout" />
         </group>
 
 </menu>

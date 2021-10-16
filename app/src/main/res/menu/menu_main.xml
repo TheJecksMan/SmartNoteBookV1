@@ -6,15 +6,15 @@
         android:icon="@drawable/ic_outline_event_note"
         android:title="@string/buttonNotes" />
     <item
-        android:id="@+id/ItemList"
-        android:enabled="true"
-        android:icon="@drawable/outline_shopping_cart"
-        android:title="@string/buttonList" />
-    <item
         android:id="@+id/ItemFolders"
         android:enabled="true"
         android:icon="@drawable/main_menu_outline_folder"
         android:title="@string/buttonFolder" />
+    <item
+        android:id="@+id/ItemVoiceAssistant"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_voice_assistant"
+        android:title="@string/buttonAssistant" />
     <item
         android:id="@+id/ItemAccount"
         android:enabled="true"

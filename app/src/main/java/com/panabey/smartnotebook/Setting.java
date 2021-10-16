@@ -11,14 +11,12 @@ import com.panabey.smartnotebook.SettingsApp.SettingsFragment;
 
 public class Setting extends AppCompatActivity {
 
-    private FragmentManager fragmentManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        fragmentManager = getSupportFragmentManager();
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.settings_container, new SettingsFragment())
                 .commit();

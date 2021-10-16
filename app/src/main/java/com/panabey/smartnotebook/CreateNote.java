@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.widget.EditText;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -29,16 +28,9 @@ public class CreateNote extends AppCompatActivity {
     private boolean clickNoteBoolean;
     private int ItemID;
 
-    ManagerCreateNotes managerCreateNotes;
-    FabButtonManager FAB;
-
-    //список подзадач
-    RecyclerView recyclerView;
+    private ManagerCreateNotes managerCreateNotes;
 
     private Context context;
-
-    private FloatingActionButton fab_main, fab1_task, fab2_attachments;
-    private TextView textview_task, textview_attachments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +41,8 @@ public class CreateNote extends AppCompatActivity {
         SQLiteHelperKotlin sqLiteHelperKotlin = new SQLiteHelperKotlin(this);
         SQLiteDatabase database = sqLiteHelperKotlin.getWritableDatabase();
 
-        recyclerView = findViewById(R.id.recyclerViewList);
+        //список подзадач
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewList);
 
         managerCreateNotes = new ManagerCreateNotes(this, recyclerView);
         managerCreateNotes.ManagerRecyclerView();
@@ -92,14 +85,14 @@ public class CreateNote extends AppCompatActivity {
             startActivity(intentBackMenu);
         });
 
-        fab_main = findViewById(R.id.fab);
-        fab1_task = findViewById(R.id.fab1);
-        fab2_attachments = findViewById(R.id.fab2);
+        FloatingActionButton fab_main = findViewById(R.id.fab);
+        FloatingActionButton fab1_task = findViewById(R.id.fab1);
+        FloatingActionButton fab2_attachments = findViewById(R.id.fab2);
 
-        textview_task = (TextView) findViewById(R.id.textview_task);
-        textview_attachments = (TextView) findViewById(R.id.textview_attachments);
+        TextView textview_task = (TextView) findViewById(R.id.textview_task);
+        TextView textview_attachments = (TextView) findViewById(R.id.textview_attachments);
 
-        FAB = new FabButtonManager(fab_main, fab1_task, fab2_attachments,textview_task, textview_attachments, getApplicationContext());
+        FabButtonManager FAB = new FabButtonManager(fab_main, fab1_task, fab2_attachments, textview_task, textview_attachments, getApplicationContext());
         FAB.FabOnClicked();
 
         fab1_task.setOnClickListener(view -> managerCreateNotes.onClickAddItem());

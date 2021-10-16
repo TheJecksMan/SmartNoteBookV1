@@ -140,6 +140,8 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
     fun getItemID(db: SQLiteDatabase): Int{
         val cursor: Cursor = db.rawQuery("SELECT count($keyIDNotes)+1 from $tableNotes", null)
         cursor.moveToFirst()
-        return cursor.getInt(0)
+        val itemID: Int = cursor.getInt(0)
+        cursor.close()
+        return  itemID
     }
 }

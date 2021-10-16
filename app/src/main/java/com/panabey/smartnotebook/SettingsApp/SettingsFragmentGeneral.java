@@ -12,13 +12,10 @@ public class SettingsFragmentGeneral extends PreferenceFragmentCompat {
 
     SwitchPreference darkTheme;
 
-    public static final String APP_PREFERENCES = "SettingsApp";
-
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.setting_general, rootKey);
         darkTheme = findPreference("key_switch_DarkTheme");
-
     }
 
     @Override
@@ -30,7 +27,6 @@ public class SettingsFragmentGeneral extends PreferenceFragmentCompat {
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             }
-
             return true;
         });
     }

@@ -50,8 +50,7 @@ public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterLis
         LayoutInflater layoutInflaterList = LayoutInflater.from(parent.getContext());
         View view = layoutInflaterList.inflate(R.layout.item_list, parent, false);
 
-        RecyclerAdapterList.ViewHolder viewHolderList = new RecyclerAdapterList.ViewHolder(view,  new EditTextListener());
-        return viewHolderList;
+        return new ViewHolder(view,  new EditTextListener());
     }
 
     @Override

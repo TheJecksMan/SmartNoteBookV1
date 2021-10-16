@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:title="@string/buttomSearch"
+        android:title="@string/buttonSearch"
         android:icon="@drawable/menu_outline_search"
         app:showAsAction="ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
     <item
-        android:title="@string/buttomSearch"
+        android:title="@string/buttonSearch"
         android:icon="@drawable/ic_outline_notifications"
         app:showAsAction="ifRoom" />
 </menu>

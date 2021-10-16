@@ -23,7 +23,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Класс фрагмента.
+ * Класс фрагмента Заметок.
  * Используется только для отображения заметок на главном блоке.
  */
 public class notes_fg extends Fragment {
@@ -54,7 +54,7 @@ public class notes_fg extends Fragment {
                 sqLiteHelperKotlin = new SQLiteHelperKotlin(getContext());
                 database = sqLiteHelperKotlin.getReadableDatabase();
 
-                    Cursor cursor = database.rawQuery("SELECT * FROM Notes", null);
+                    Cursor cursor = database.rawQuery("SELECT HeadNotes FROM Notes", null);
                 try {
                     String temp = null;
                     cursor.moveToFirst();
@@ -105,9 +105,6 @@ public class notes_fg extends Fragment {
             int toPosition = target.getAdapterPosition();
             Collections.swap(NotesList, fromPosition, toPosition);
             recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
-
-            sqLiteHelperKotlin = new SQLiteHelperKotlin(getContext());
-            database = sqLiteHelperKotlin.getWritableDatabase();
             return false;
         }
 
@@ -122,7 +119,6 @@ public class notes_fg extends Fragment {
                 sqLiteHelperKotlin.deleteNote(databaseDelete, position + 1);
             }
         }
-
     };
 }
 

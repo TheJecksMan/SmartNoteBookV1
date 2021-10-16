@@ -19,7 +19,6 @@ public class SharedPref extends Activity {
     public boolean LoadSetting(String key_value){
 
         SharedPreferences sharedPreferences = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
-        boolean value = sharedPreferences.getBoolean(key_value, true);
-        return value;
+        return sharedPreferences.getBoolean(key_value, true);
     }
 }

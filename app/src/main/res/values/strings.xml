@@ -2,18 +2,24 @@
     <string name="app_name">SmartNoteBook</string>
     <string name="app_name_menu"> <font color="#5F6368"> SmartNoteBook </font></string>
 
+    <!--DopMainMenu string start-->
+    <string name="DopMenuEditText">Редактор текста</string>
+    <string name="DopMenuTrash">Корзина</string>
+    <string name="DopMenuSetting">Настройки</string>
+    <string name="DopMenuAbout">Справка</string>
+    <!--DopMainMenu string end-->
+
     <!--MainMenu string start-->
     <string name="buttonNotes">Заметки</string>
     <string name="buttonFolder">Папки</string>
     <string name="buttonAccount">Аккаунт</string>
     <string name="textViewHead">Заголовок</string>
     <string name="textViewNotes">Заметки</string>
-    <string name="buttomSearch">Поиск</string>
-    <string name="buttonList">Покупки</string>
+    <string name="buttonSearch">Поиск</string>
+    <string name="buttonAssistant">Помощник</string>
     <!--MainMenu string end-->
 
     <!--Account-->
-    <string name="AccountPrimaryKey"></string>
     <!--Account-->
 
     <!--Account login string start-->
