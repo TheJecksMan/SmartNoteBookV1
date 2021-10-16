@@ -10,8 +10,6 @@ import androidx.appcompat.app.AppCompatDelegate;
  * Класс для загрузки настроек при запуске
  */
 public class LoadPrefStartup {
-    Boolean ChangeDarkTheme;
-    Boolean ChangeAnim;
 
     final Context context;
     final Activity activity;
@@ -29,7 +27,7 @@ public class LoadPrefStartup {
      * Исползуется для запуска сохранённых настоек после перезапуска приложения.
      */
     public void DarkThemeLoadPref(){
-        ChangeDarkTheme = Preferences.getBoolean("key_switch_DarkTheme", false);
+        Boolean ChangeDarkTheme = Preferences.getBoolean("key_switch_DarkTheme", false);
 
         if (!ChangeDarkTheme) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -43,8 +41,8 @@ public class LoadPrefStartup {
      * Включение и отключения анимации во всём приложении.
      * (Изменения применяются только при следующей загрузки приложения)
      */
-    public boolean AnimLoadPref(){
-        return ChangeAnim = Preferences.getBoolean("key_preference_animate", false);
+    public void  AnimLoadPref(){
+        Boolean ChangeAnim = Preferences.getBoolean("key_preference_animate", false);
     }
 
     /**
