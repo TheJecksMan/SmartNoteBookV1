@@ -94,6 +94,9 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
             case R.id.ItemFolders:
                 selectedFragment = new folders_fg();
                 break;
+            case R.id.ItemVoiceAssistant:
+                selectedFragment = new list_fg();
+                break;
             case R.id.ItemAccount:
                     selectedFragment = new accountLogin_fg();
                 break;
