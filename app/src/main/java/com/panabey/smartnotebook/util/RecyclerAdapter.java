@@ -66,7 +66,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return true;
     }
 
-
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         final TextView textView, rowCountTextView;
@@ -96,6 +95,5 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
             view.getContext().startActivity(intentOnClickRecyclerView);
         }
-
     }
 }

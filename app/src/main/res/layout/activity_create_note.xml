@@ -21,6 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/notes_menu"
+        app:title="@string/Notes"
         app:navigationIcon="@drawable/notes_outline_arrow_back" />
 
     <androidx.core.widget.NestedScrollView

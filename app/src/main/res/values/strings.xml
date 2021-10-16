@@ -67,6 +67,7 @@
     <!--Setting About end-->
 
     <!--CreateNotes start-->
+    <string name="Notes">Заметка</string>
     <string name="NotesImportItem">Импорт файла</string>
     <string name="NotesAdvanceSettingNotesItem">Расширенные настройки</string>
     <string name="NotesAddImage">Добавить вложение</string>
