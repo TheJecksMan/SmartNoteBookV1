@@ -11,13 +11,11 @@ import androidx.appcompat.app.AppCompatDelegate;
  */
 public class LoadPrefStartup {
 
-    final Context context;
     final Activity activity;
 
     SharedPreferences Preferences;
 
-    public LoadPrefStartup(Context context, Activity activity) {
-        this.context = context;
+    public LoadPrefStartup( Activity activity) {
         this.activity = activity;
         Preferences = activity.getSharedPreferences("com.panabey.smartnotebook_preferences", Context.MODE_PRIVATE);
     }
@@ -27,7 +25,7 @@ public class LoadPrefStartup {
      * Исползуется для запуска сохранённых настоек после перезапуска приложения.
      */
     public void DarkThemeLoadPref(){
-        Boolean ChangeDarkTheme = Preferences.getBoolean("key_switch_DarkTheme", false);
+        boolean ChangeDarkTheme = Preferences.getBoolean("key_switch_DarkTheme", false);
 
         if (!ChangeDarkTheme) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -42,14 +40,14 @@ public class LoadPrefStartup {
      * (Изменения применяются только при следующей загрузки приложения)
      */
     public void  AnimLoadPref(){
-        Boolean ChangeAnim = Preferences.getBoolean("key_preference_animate", false);
+        boolean ChangeAnim = Preferences.getBoolean("key_preference_animate", false);
     }
 
     /**
      * Определеям первый запуск приложения
      */
     public void FirstStartupApp(){
-        Boolean isFirstStartup = Preferences.getBoolean("isFirstStartup", false);
+        boolean isFirstStartup = Preferences.getBoolean("isFirstStartup", false);
         if (!isFirstStartup) {
             SharedPreferences.Editor edit = Preferences.edit();
             edit.putBoolean("isFirstStartup", true);

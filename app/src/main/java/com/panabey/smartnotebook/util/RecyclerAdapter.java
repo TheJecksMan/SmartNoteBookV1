@@ -1,6 +1,5 @@
 package com.panabey.smartnotebook.util;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,11 +28,9 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
 
     final List<String> NotesList;
-    final Context context;
 
-    public RecyclerAdapter(List<String> NotesList, Context context) {
+    public RecyclerAdapter(List<String> NotesList) {
         this.NotesList = NotesList;
-        this.context = context;
     }
 
     @NonNull

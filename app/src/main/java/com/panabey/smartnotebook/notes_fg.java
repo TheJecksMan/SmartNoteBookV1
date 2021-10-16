@@ -49,35 +49,33 @@ public class notes_fg extends Fragment {
          * Выгрузка всех заметок в массив,
          * который используется в списоке RecyclerView.
          */
-        new Thread(new Runnable() {
-            public void run() {
-                sqLiteHelperKotlin = new SQLiteHelperKotlin(getContext());
-                database = sqLiteHelperKotlin.getReadableDatabase();
+        new Thread(() -> {
+            sqLiteHelperKotlin = new SQLiteHelperKotlin(getContext());
+            database = sqLiteHelperKotlin.getReadableDatabase();
 
-                    Cursor cursor = database.rawQuery("SELECT HeadNotes FROM Notes", null);
-                try {
-                    String temp = null;
-                    cursor.moveToFirst();
-                    if (cursor.getCount() > 0) {
-                        do {
-                            temp = cursor.getString(cursor.getColumnIndex("HeadNotes"));
-                            if (temp != null) {
-                                NotesList.add(temp);
-                            }
-                        } while (cursor.moveToNext());
-                    }
+                Cursor cursor = database.rawQuery("SELECT HeadNotes FROM Notes", null);
+            try {
+                String temp = null;
+                cursor.moveToFirst();
+                if (cursor.getCount() > 0) {
+                    do {
+                        temp = cursor.getString(cursor.getColumnIndex("HeadNotes"));
+                        if (temp != null) {
+                            NotesList.add(temp);
+                        }
+                    } while (cursor.moveToNext());
                 }
-                finally {
-                    if (cursor != null) {
-                        cursor.close();
-                    }
+            }
+            finally {
+                if (cursor != null) {
+                    cursor.close();
                 }
             }
         }).start();
         //-----------------------------------------------------
 
         recyclerView = v.findViewById(R.id.recyclerView);
-        recyclerAdapter = new RecyclerAdapter(NotesList, getContext());
+        recyclerAdapter = new RecyclerAdapter(NotesList);
 
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setHasFixedSize(true);

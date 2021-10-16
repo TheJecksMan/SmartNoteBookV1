@@ -37,7 +37,7 @@ public class ManagerCreateNotes {
         ListTask = new ArrayList<>();
         BooleanTask = new ArrayList<>();
 
-        recyclerAdapterList = new RecyclerAdapterList(ListTask, BooleanTask, context);
+        recyclerAdapterList = new RecyclerAdapterList(ListTask, BooleanTask);
 
         recyclerView.setAdapter(recyclerAdapterList);
 

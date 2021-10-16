@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity  {
         }
 
         //Получние и загрузка файла конфигуации приложения
-        LoadPrefStartup loadPrefStartup = new LoadPrefStartup(MainActivity.this, this);
+        LoadPrefStartup loadPrefStartup = new LoadPrefStartup(MainActivity.this);
         loadPrefStartup.FirstStartupApp();
         loadPrefStartup.DarkThemeLoadPref();
 

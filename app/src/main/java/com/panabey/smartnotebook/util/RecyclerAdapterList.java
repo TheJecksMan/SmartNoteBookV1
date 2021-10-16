@@ -1,6 +1,5 @@
 package com.panabey.smartnotebook.util;
 
-import android.content.Context;
 import android.graphics.Paint;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -34,14 +33,12 @@ import java.util.List;
 public class RecyclerAdapterList extends RecyclerView.Adapter<RecyclerAdapterList.ViewHolder> {
 
     final List<String> ListTask;
-    final Context context;
 
     final List<Boolean> BooleanTask;
 
-    public RecyclerAdapterList(List<String> ListTask, List<Boolean> BooleanTask, Context context) {
+    public RecyclerAdapterList(List<String> ListTask, List<Boolean> BooleanTask) {
         this.ListTask = ListTask;
         this.BooleanTask = BooleanTask;
-        this.context = context;
     }
 
     @NonNull
