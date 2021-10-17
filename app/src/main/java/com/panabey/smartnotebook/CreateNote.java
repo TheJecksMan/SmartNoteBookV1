@@ -106,9 +106,9 @@ public class CreateNote extends AppCompatActivity {
     }
 
     private void WriteSQLAndUpdate(){
-        new MaterialAlertDialogBuilder(CreateNote.this)
-                .setTitle("Внимание!")
-                .setMessage("Вы действительно хотите сохранить изменения?")
+        new MaterialAlertDialogBuilder(CreateNote.this, R.style.AlertDialogTheme)
+                .setTitle(getString(R.string.DialogAlert))
+                .setMessage(getString(R.string.DialogSaveText))
                 .setPositiveButton(getString(R.string.DialogYes), (dialogInterface, i) -> {
                     managerCreateNotes.writeInDatabaseNotes(EditTextHeadTextView, EditTextBodyTextView, clickNoteBoolean, ItemID);
                     Intent intentBackNotes = new Intent(CreateNote.this, MainMenu.class);
