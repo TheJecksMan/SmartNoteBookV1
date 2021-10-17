@@ -86,4 +86,10 @@
     <!--Setting Security start-->
 
     <!--Setting Security end-->
+
+    <!--Alert Dialog start-->
+    <string name="DialogCancel">Отмена</string>
+    <string name="DialogYes">Да</string>
+    <string name="DialogNo">Нет</string>
+    <!--Alert Dialog end-->
 </resources>

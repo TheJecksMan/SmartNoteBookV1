@@ -5,12 +5,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.panabey.smartnotebook.Database.SQLiteHelperKotlin;
 import com.panabey.smartnotebook.Notes.Fab_Button.FabButtonManager;
@@ -81,8 +83,6 @@ public class CreateNote extends AppCompatActivity {
         toolbarCreateNote.setNavigationOnClickListener(v -> {
 
             WriteSQLAndUpdate();
-            Intent intentBackMenu = new Intent(context, MainMenu.class);
-            startActivity(intentBackMenu);
         });
 
         FloatingActionButton fab_main = findViewById(R.id.fab);
@@ -106,17 +106,29 @@ public class CreateNote extends AppCompatActivity {
     }
 
     private void WriteSQLAndUpdate(){
-        managerCreateNotes.writeInDatabaseNotes(EditTextHeadTextView, EditTextBodyTextView, clickNoteBoolean, ItemID);
-
+        new MaterialAlertDialogBuilder(CreateNote.this)
+                .setTitle("Внимание!")
+                .setMessage("Вы действительно хотите сохранить изменения?")
+                .setPositiveButton(getString(R.string.DialogYes), (dialogInterface, i) -> {
+                    managerCreateNotes.writeInDatabaseNotes(EditTextHeadTextView, EditTextBodyTextView, clickNoteBoolean, ItemID);
+                    Intent intentBackNotes = new Intent(CreateNote.this, MainMenu.class);
+                    startActivity(intentBackNotes);
+                    finish();
+                })
+                .setNegativeButton(getString(R.string.DialogNo), (dialogInterface, i) -> {
+                    Intent intentBackNotes = new Intent(CreateNote.this, MainMenu.class);
+                    startActivity(intentBackNotes);
+                    finish();
+                })
+                .setNeutralButton(getString(R.string.DialogCancel), (dialogInterface, i) -> {
+                    return;
+                })
+                .show();
     }
 
     @Override
     public void onBackPressed() {
         WriteSQLAndUpdate();
-
-        Intent intentBackNotes = new Intent(this, MainMenu.class);
-        startActivity(intentBackNotes);
-        finish();
     }
 
     @Override
