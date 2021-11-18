@@ -1,5 +1,5 @@
 # SmartNoteBook
-[![Build status](https://img.shields.io/badge/2020.3.1-AndroiStudio-green)](https://developer.android.com/studio)
+[![Build status](https://img.shields.io/badge/2020.3.1-AndroidStudio-green)](https://developer.android.com/studio)
 [![Build status](https://img.shields.io/badge/1.5-Kotlin-blueviolet)](https://kotlinlang.org/)
 [![Build status](https://img.shields.io/badge/1.8-Java-important)](https://www.oracle.com/ru/java/technologies/javase/javase8-archive-downloads.html)
 
