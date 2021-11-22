@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity  {
             e.printStackTrace();
         }
 
+
+
         //Получние и загрузка файла конфигуации приложения
         LoadPrefStartup loadPrefStartup = new LoadPrefStartup(MainActivity.this);
         loadPrefStartup.FirstStartupApp();

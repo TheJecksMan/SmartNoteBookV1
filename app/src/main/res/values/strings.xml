@@ -73,6 +73,7 @@
     <string name="NotesAddImage">Добавить вложение</string>
     <string name="NoteAddTask">Добавить подзадачу</string>
     <string name="NotesNewTask">Новая подзадача</string>
+    <string name="NotesAddTag">Добавить тег</string>
     <!--CreateNotes end-->
 
     <!--Setting Security start-->

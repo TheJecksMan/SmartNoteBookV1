@@ -19,6 +19,8 @@ import com.panabey.smartnotebook.Notes.Fab_Button.FabButtonManager;
 import com.panabey.smartnotebook.Notes.FileManager;
 import com.panabey.smartnotebook.Notes.ManagerCreateNotes;
 
+import org.w3c.dom.Text;
+
 /**
  * Класс для работы заметок.
  */
@@ -88,11 +90,14 @@ public class CreateNote extends AppCompatActivity {
         FloatingActionButton fab_main = findViewById(R.id.fab);
         FloatingActionButton fab1_task = findViewById(R.id.fab1);
         FloatingActionButton fab2_attachments = findViewById(R.id.fab2);
+        FloatingActionButton fab3_tag = findViewById(R.id.fab3);
 
         TextView textview_task = (TextView) findViewById(R.id.textview_task);
         TextView textview_attachments = (TextView) findViewById(R.id.textview_attachments);
+        TextView textview_tag = (TextView) findViewById(R.id.textview_tag);
 
-        FabButtonManager FAB = new FabButtonManager(fab_main, fab1_task, fab2_attachments, textview_task, textview_attachments, getApplicationContext());
+        FabButtonManager FAB = new FabButtonManager(fab_main, fab1_task, fab2_attachments, fab3_tag,
+                textview_task, textview_attachments,textview_tag, getApplicationContext());
         FAB.FabOnClicked();
 
         fab1_task.setOnClickListener(view -> managerCreateNotes.onClickAddItem());

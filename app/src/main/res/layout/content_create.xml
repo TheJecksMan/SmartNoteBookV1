@@ -6,13 +6,46 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textview_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="256dp"
+        android:background="@null"
+        android:padding="8dp"
+        android:text="@string/NotesAddTag"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="244dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawingCacheQuality="low"
+        android:elevation="16dp"
+        android:focusable="true"
+        android:src="@drawable/ic_outline_tag"
+        android:visibility="invisible"
+        app:backgroundTint="@color/white"
+        app:pressedTranslationZ="12dp" />
+
+    <TextView
         android:id="@+id/textview_attachments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="88dp"
-        android:layout_marginBottom="188dp"
+        android:layout_marginBottom="186dp"
         android:background="@null"
         android:padding="8dp"
         android:text="@string/NotesAddImage"
