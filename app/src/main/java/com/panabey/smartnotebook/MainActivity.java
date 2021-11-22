@@ -2,7 +2,9 @@ package com.panabey.smartnotebook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -28,16 +30,19 @@ public class MainActivity extends AppCompatActivity  {
         mImageView = findViewById(R.id.imageViewSplashScreen);
         mProgress = findViewById(R.id.progressBarLoad);
         TextView mTextViewVersion = findViewById(R.id.textViewVersion);
-
+        Context context = getApplicationContext();
         /*
           Получнение текущей версии сборки.
           Для его отборажения в окне загрузки.
          */
         try {
-            mTextViewVersion.setText(this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName);
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            String version = pInfo.versionName;
+            mTextViewVersion.setText(version);
         }
         catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
+            mTextViewVersion.setText("Error");
         }
 
 
