@@ -52,9 +52,8 @@ public class accountLogin_fg extends Fragment {
             String emailID = email.getText().toString();
             String passwordID = password.getText().toString();
 
-            if (emailID.isEmpty() || passwordID.isEmpty())
-            {
-               InfoEmpty.setText(R.string.checkTextEmpty);
+            if (emailID.isEmpty() || passwordID.isEmpty()){
+                InfoEmpty.setText(R.string.checkTextEmpty);
             }
             else{
                 loginUsers(emailID, passwordID);
@@ -64,26 +63,23 @@ public class accountLogin_fg extends Fragment {
 
         TextView onClickRegister = view.findViewById(R.id.textViewRegisterFragment);
         onClickRegister.setOnClickListener(v -> {
-
-            //Переход между фрагментами регистрации
-            Fragment newFragment = new accountRegister_fg();
-            FragmentTransaction transaction = getParentFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentPager, newFragment)
-                    .addToBackStack(null);
-            transaction.commit();
+            ReplaceFragment(new accountRegister_fg());
         });
         return view;
     }
+
     private void loginUsers(String Email, String Password){
         mAuth.signInWithEmailAndPassword(Email, Password).addOnSuccessListener(authResult -> {
             Toast.makeText(getContext(), "Вход выполнен успешно!", Toast.LENGTH_SHORT).show();
-
-            Fragment newFragment = new account();
-            FragmentTransaction transaction =
-                    getParentFragmentManager().beginTransaction()
-                            .replace(R.id.fragmentPager, newFragment)
-                            .addToBackStack(null);
-            transaction.commit();
+            ReplaceFragment(new account());
         });
+    }
+
+    private void ReplaceFragment(Fragment newFragment ){
+        FragmentTransaction transaction =
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.fragmentPager, newFragment)
+                        .addToBackStack(null);
+        transaction.commit();
     }
 }
