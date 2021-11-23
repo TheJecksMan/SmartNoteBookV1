@@ -19,7 +19,7 @@ public class FabButtonManager{
     private final FloatingActionButton fab_main;
     private final FloatingActionButton fab1_task;
     private final FloatingActionButton fab2_textview_task;
-    private FloatingActionButton fab3_tag;
+    private final FloatingActionButton fab3_tag;
 
     private Animation fab_open;
     private Animation fab_close;
@@ -60,10 +60,9 @@ public class FabButtonManager{
         fab_main.setOnClickListener(view -> {
 
             if (isOpen) {
-
-                textview_task.setVisibility(View.INVISIBLE);
                 textview_attachments.setVisibility(View.INVISIBLE);
                 textview_tag.setVisibility(View.INVISIBLE);
+                textview_task.setVisibility(View.INVISIBLE);
 
                 fab3_tag.startAnimation(fab_close);
                 fab2_textview_task.startAnimation(fab_close);
@@ -77,9 +76,9 @@ public class FabButtonManager{
                 isOpen = false;
             }
             else {
-                textview_task.setVisibility(View.VISIBLE);
-                textview_attachments.setVisibility(View.VISIBLE);
                 textview_tag.setVisibility(View.VISIBLE);
+                textview_attachments.setVisibility(View.VISIBLE);
+                textview_task.setVisibility(View.VISIBLE);
 
                 fab3_tag.startAnimation(fab_open);
                 fab2_textview_task.startAnimation(fab_open);

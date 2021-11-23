@@ -41,15 +41,14 @@ public class ManagerCreateTagNotes {
     }
 
     private void CreateTag(){
-        ListTag= new ArrayList<>();
+        ListTag = new ArrayList<>();
         ColorTag = new ArrayList<>();
-
-        recyclerAdapterTag = new RecyclerAdapterTag(ListTag, ColorTag);
+        recyclerAdapterTag = new RecyclerAdapterTag(ListTag);
 
         recyclerViewTag.setAdapter(recyclerAdapterTag);
 
         recyclerViewTag.setNestedScrollingEnabled(false);
-        recyclerViewTag.setItemViewCacheSize(5);
+        //recyclerViewTag.setItemViewCacheSize(5);
         //recyclerViewTag.getRecycledViewPool().setMaxRecycledViews(0, 2);
     }
 }

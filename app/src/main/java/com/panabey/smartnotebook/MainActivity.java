@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity  {
 
     private ProgressBar mProgress;
     private ImageView mImageView;
-    private TextView mTextViewVersion;
+    private TextView textViewVersionApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity  {
 
         mImageView = findViewById(R.id.imageViewSplashScreen);
         mProgress = findViewById(R.id.progressBarLoad);
-        mTextViewVersion = findViewById(R.id.textViewVersion);
+        textViewVersionApp = (TextView)findViewById(R.id.textViewVersionApp);
 
         Context context = getApplicationContext();
         /*
@@ -40,11 +40,11 @@ public class MainActivity extends AppCompatActivity  {
         try {
             PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             String version = pInfo.versionName;
-            mTextViewVersion.setText(version);
+            textViewVersionApp.setText(version);
         }
-        catch (PackageManager.NameNotFoundException e) {
+        catch (Exception e) {
             e.printStackTrace();
-            mTextViewVersion.setText("Error");
+
         }
 
         //Получние и загрузка файла конфигуации приложения

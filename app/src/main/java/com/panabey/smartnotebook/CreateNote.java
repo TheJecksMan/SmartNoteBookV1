@@ -86,10 +86,7 @@ public class CreateNote extends AppCompatActivity {
          * Испульзутеся для взаимодействия с текстом и Activity.
          */
         Toolbar toolbarCreateNote = findViewById(R.id.toolbarUpPanel);
-        toolbarCreateNote.setNavigationOnClickListener(v -> {
-
-            WriteSQLAndUpdate();
-        });
+        toolbarCreateNote.setNavigationOnClickListener(v -> {WriteSQLAndUpdate();});
 
         FloatingActionButton fab_main = findViewById(R.id.fab);
         FloatingActionButton fab1_task = findViewById(R.id.fab1);

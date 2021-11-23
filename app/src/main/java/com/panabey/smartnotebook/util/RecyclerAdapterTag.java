@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,11 +16,11 @@ import java.util.List;
 
 public class RecyclerAdapterTag extends RecyclerView.Adapter<RecyclerAdapterTag.ViewHolder>{
     final List<String> ListTag;
-    final List<String> TagColor;
+    //final List<String> TagColor;
 
-    public RecyclerAdapterTag(List<String> ListTag, List<String>TagColor){
+    public RecyclerAdapterTag(List<String> ListTag){
         this.ListTag = ListTag;
-        this.TagColor = TagColor;
+        //this.TagColor = TagColor;
     }
 
     @NonNull
@@ -32,7 +33,7 @@ public class RecyclerAdapterTag extends RecyclerView.Adapter<RecyclerAdapterTag.
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerAdapterTag.ViewHolder holder, int position) {
-        holder.editTextTag.setText(String.valueOf(position));
+        holder.editTextTagNotes.setText(ListTag.get(position));
     }
 
     @Override
@@ -48,12 +49,12 @@ public class RecyclerAdapterTag extends RecyclerView.Adapter<RecyclerAdapterTag.
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         final RelativeLayout containerTag;
-        final EditText editTextTag;
+        final TextView editTextTagNotes;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             containerTag = itemView.findViewById(R.id.containerTag);
-            editTextTag = itemView.findViewById(R.id.textview_tag);
+            editTextTagNotes = itemView.findViewById(R.id.textViewEditTagNotes);
         }
     }
 }

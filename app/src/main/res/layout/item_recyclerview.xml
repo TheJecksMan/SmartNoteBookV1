@@ -8,7 +8,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/containerTag"
+        android:id="@+id/containerNotes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/textViewEditTag"
+            android:id="@+id/textViewEditNotes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -45,9 +45,9 @@
             android:id="@+id/rowCountTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewEditTag"
-            android:layout_alignStart="@+id/textViewEditTag"
-            android:layout_alignLeft="@id/textViewEditTag"
+            android:layout_below="@id/textViewEditNotes"
+            android:layout_alignStart="@+id/textViewEditNotes"
+            android:layout_alignLeft="@id/textViewEditNotes"
             android:layout_marginTop="8dp"
             android:layout_marginRight="16dp"
             android:background="@null"

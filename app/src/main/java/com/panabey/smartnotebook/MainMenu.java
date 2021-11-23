@@ -13,9 +13,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -28,12 +25,6 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
-
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
 
         drawerLayout =  findViewById(R.id.MainDrawerLayout);
         NavigationView navigationView = findViewById(R.id.dopMenuLeft);
@@ -80,18 +71,6 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         return true;
     }
 
-    @Override
-    public void onBackPressed(){
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else
-        {
-            super.onBackPressed();
-            finish();
-        }
-    }
-
     //---------------------------------------Нижняя панель-----------------------------------//
     private final BottomNavigationView.OnItemSelectedListener navListener = item -> {
 
@@ -115,8 +94,19 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
                 .beginTransaction()
                 .replace(R.id.fragmentPager, selectedFragment)
                 .commit();
-
         return true;
     };
+
+    @Override
+    public void onBackPressed(){
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else
+        {
+            super.onBackPressed();
+            finish();
+        }
+    }
 }
 
