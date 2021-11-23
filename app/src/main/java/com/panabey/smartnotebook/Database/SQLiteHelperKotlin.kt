@@ -35,6 +35,14 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
     private val keyTaskBoolean = "TaskBoolean"
 
     /**
+     * Таблица Тегов Заметок
+     */
+    private val tableTag = "Tag"
+    private val keyIDNotesTag = "IDNotes"
+    private val keyNameTag = "NameTag"
+    private val keyColorTag = "ColorTag"
+
+    /**
      * Триггер автодекремента.
      * Срабатывает при удалении заметки. Используется для сохранения индексов.
      */
@@ -63,6 +71,14 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
                 "    BEGIN \n" +
                 "    UPDATE $tableNotes SET $keyIDNotes = $keyIDNotes - 1 WHERE $keyIDNotes > old.$keyIDNotes;\n" +
                 "    END;")
+
+        db.execSQL("CREATE TABLE $tableTag (" +
+                "$keyIDNotesTag INTEGER NOT NULL, " +
+                "$keyNameTag TEXT, " +
+                "$keyColorTag TEXT, " +
+                "FOREIGN KEY($keyIDNotesTag) REFERENCES $tableNotes($keyIDNotes) " +
+                "ON DELETE CASCADE " +
+                "ON UPDATE CASCADE);")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
