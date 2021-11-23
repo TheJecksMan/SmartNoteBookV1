@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity  {
          */
         try {
             PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            String version = pInfo.versionName;
-            textViewVersionApp.setText(version);
+            textViewVersionApp.setText(pInfo.versionName);
         }
         catch (Exception e) {
             e.printStackTrace();

@@ -34,10 +34,12 @@ public class ManagerCreateTagNotes {
             CreateTag();
             recyclerAdapterTag.notifyDataSetChanged();
         }
-        ListTag.add("Другое");
-        //ColorTag.add()
-        recyclerAdapterTag.notifyItemInserted(ListTag.size() - 1);
-        //recyclerAdapterList.notifyItemInserted(ColorTag.size() - 1);
+        if (ListTag.size() <= 3) {
+            ListTag.add("Другое");
+            //ColorTag.add()
+            recyclerAdapterTag.notifyItemInserted(ListTag.size() - 1);
+            //recyclerAdapterList.notifyItemInserted(ColorTag.size() - 1);
+        }
     }
 
     private void CreateTag(){

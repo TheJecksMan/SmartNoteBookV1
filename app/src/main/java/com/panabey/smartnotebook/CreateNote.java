@@ -5,7 +5,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,8 +18,6 @@ import com.panabey.smartnotebook.Notes.Fab_Button.FabButtonManager;
 import com.panabey.smartnotebook.Notes.FileManager;
 import com.panabey.smartnotebook.Notes.ManagerCreateNotes;
 import com.panabey.smartnotebook.Notes.ManagerCreateTagNotes;
-
-import org.w3c.dom.Text;
 
 /**
  * Класс для работы заметок.

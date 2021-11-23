@@ -74,6 +74,7 @@
     <string name="NoteAddTask">Добавить подзадачу</string>
     <string name="NotesNewTask">Новая подзадача</string>
     <string name="NotesAddTag">Добавить тег</string>
+    <string name="DefaultTagName">Прочее</string>
     <!--CreateNotes end-->
 
     <!--Setting Security start-->
