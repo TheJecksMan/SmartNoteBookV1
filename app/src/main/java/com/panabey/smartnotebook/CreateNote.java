@@ -18,6 +18,7 @@ import com.panabey.smartnotebook.Database.SQLiteHelperKotlin;
 import com.panabey.smartnotebook.Notes.Fab_Button.FabButtonManager;
 import com.panabey.smartnotebook.Notes.FileManager;
 import com.panabey.smartnotebook.Notes.ManagerCreateNotes;
+import com.panabey.smartnotebook.Notes.ManagerCreateTagNotes;
 
 import org.w3c.dom.Text;
 
@@ -33,23 +34,26 @@ public class CreateNote extends AppCompatActivity {
     private int ItemID;
 
     private ManagerCreateNotes managerCreateNotes;
-
-    private Context context;
+    private ManagerCreateTagNotes managerCreateTagNotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
-        context = getApplicationContext();
+        Context context = getApplicationContext();
 
         SQLiteHelperKotlin sqLiteHelperKotlin = new SQLiteHelperKotlin(this);
         SQLiteDatabase database = sqLiteHelperKotlin.getWritableDatabase();
 
-        //список подзадач
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewList);
+        //Инициализация списоков
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewList); //список подзадач
+        RecyclerView recyclerViewTag = findViewById(R.id.recyclerViewTag); //список тегов
 
-        managerCreateNotes = new ManagerCreateNotes(this, recyclerView);
+        managerCreateNotes = new ManagerCreateNotes(this, recyclerView); //Управление заметками
         managerCreateNotes.ManagerRecyclerView();
+
+        managerCreateTagNotes = new ManagerCreateTagNotes(this, recyclerViewTag); //Управление тегами
+        managerCreateTagNotes.ManagerRecyclerViewTag();
 
         EditTextHeadTextView = findViewById(R.id.editTextHeadText);
         EditTextBodyTextView = findViewById(R.id.editTextNotes);
@@ -101,6 +105,7 @@ public class CreateNote extends AppCompatActivity {
         FAB.FabOnClicked();
 
         fab1_task.setOnClickListener(view -> managerCreateNotes.onClickAddItem());
+        fab3_tag.setOnClickListener(view -> managerCreateTagNotes.onClickAddTag());
 
         /**
          * Открытие файлового менеджера Android

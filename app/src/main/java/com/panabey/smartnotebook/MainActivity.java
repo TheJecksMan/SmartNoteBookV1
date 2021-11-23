@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity  {
 
     private ProgressBar mProgress;
     private ImageView mImageView;
+    private TextView mTextViewVersion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,8 @@ public class MainActivity extends AppCompatActivity  {
 
         mImageView = findViewById(R.id.imageViewSplashScreen);
         mProgress = findViewById(R.id.progressBarLoad);
-        TextView mTextViewVersion = findViewById(R.id.textViewVersion);
+        mTextViewVersion = findViewById(R.id.textViewVersion);
+
         Context context = getApplicationContext();
         /*
           Получнение текущей версии сборки.
@@ -44,8 +46,6 @@ public class MainActivity extends AppCompatActivity  {
             e.printStackTrace();
             mTextViewVersion.setText("Error");
         }
-
-
 
         //Получние и загрузка файла конфигуации приложения
         LoadPrefStartup loadPrefStartup = new LoadPrefStartup(MainActivity.this);

@@ -71,9 +71,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            textView = itemView.findViewById(R.id.textView);
+            textView = itemView.findViewById(R.id.textViewEditTag);
             rowCountTextView = itemView.findViewById(R.id.rowCountTextView);
-            container = itemView.findViewById(R.id.container);
+            container = itemView.findViewById(R.id.containerTag);
 
             itemView.setOnClickListener(this);
         }
