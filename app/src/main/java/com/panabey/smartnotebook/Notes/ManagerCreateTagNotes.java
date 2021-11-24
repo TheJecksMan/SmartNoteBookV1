@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,7 +22,7 @@ public class ManagerCreateTagNotes {
     private List<String> ListTag;
     private List<String> ColorTag;
 
-    private RecyclerView recyclerViewTag;
+    private final RecyclerView recyclerViewTag;
     private RecyclerAdapterTag recyclerAdapterTag;
 
     public ManagerCreateTagNotes(Context context, RecyclerView recyclerViewTag)

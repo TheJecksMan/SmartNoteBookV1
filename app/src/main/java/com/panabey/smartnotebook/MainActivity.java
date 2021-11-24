@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -21,7 +20,6 @@ public class MainActivity extends AppCompatActivity  {
 
     private ProgressBar mProgress;
     private ImageView mImageView;
-    private TextView textViewVersionApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +28,7 @@ public class MainActivity extends AppCompatActivity  {
 
         mImageView = findViewById(R.id.imageViewSplashScreen);
         mProgress = findViewById(R.id.progressBarLoad);
-        textViewVersionApp = (TextView)findViewById(R.id.textViewVersionApp);
+        TextView textViewVersionApp = (TextView) findViewById(R.id.textViewVersionApp);
 
         Context context = getApplicationContext();
         /*

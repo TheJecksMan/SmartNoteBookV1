@@ -13,7 +13,7 @@ public class LoadPrefStartup {
 
     final Activity activity;
 
-    SharedPreferences Preferences;
+    final SharedPreferences Preferences;
 
     public LoadPrefStartup( Activity activity) {
         this.activity = activity;

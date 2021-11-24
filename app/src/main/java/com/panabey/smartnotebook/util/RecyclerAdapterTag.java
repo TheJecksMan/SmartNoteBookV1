@@ -1,6 +1,5 @@
 package com.panabey.smartnotebook.util;
 
-import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
