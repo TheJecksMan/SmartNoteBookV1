@@ -40,7 +40,6 @@ public class ManagerCreateNotes {
         recyclerAdapterList = new RecyclerAdapterList(ListTask, BooleanTask);
 
         recyclerView.setAdapter(recyclerAdapterList);
-
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setItemViewCacheSize(30);
         recyclerView.getRecycledViewPool().setMaxRecycledViews(0, 20);
@@ -124,7 +123,7 @@ public class ManagerCreateNotes {
      * Перезапись и запись заметок из базы данных
      * для последующего использования.
      */
-    public void writeInDatabaseNotes(TextView Head, TextView Body, Boolean clickNoteBoolean, int ItemID){
+    public void writeInDatabaseNotes(TextView Head, TextView Body, Boolean clickNoteBoolean, List<String> ListTag, int ItemID){
 
         String checkedNullText = Head.getText().toString();
         if (checkedNullText.trim().isEmpty()){
@@ -143,6 +142,9 @@ public class ManagerCreateNotes {
             for (int i = 0; i < ListTask.size(); i++){
                 sqLiteHelperKotlin.insertTaskInDatabase(database, ItemIDWithDatabase, ListTask.get(i), BooleanTask.get(i)? 1: 0);
             }
+            for (int j = 0; j < ListTag.size(); j++){
+                sqLiteHelperKotlin.insertTagInDatabase(database, ItemIDWithDatabase, ListTag.get(j));
+            }
         }
         else{ //Перезапись
             sqLiteHelperKotlin.updateNotes(database,
@@ -151,6 +153,10 @@ public class ManagerCreateNotes {
             sqLiteHelperKotlin.deleteTaskInDatabase(database, ItemID);
             for (int i = 0; i < ListTask.size(); i++){
                 sqLiteHelperKotlin.insertTaskInDatabase(database, ItemID, ListTask.get(i), BooleanTask.get(i)? 1: 0);
+            }
+            sqLiteHelperKotlin.deleteTafInDatabase(database, ItemID);
+            for (int j = 0; j < ListTag.size(); j++){
+                sqLiteHelperKotlin.insertTagInDatabase(database, ItemID, ListTag.get(j));
             }
         }
     }

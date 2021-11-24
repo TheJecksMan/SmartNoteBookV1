@@ -102,6 +102,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@null"
+                android:orientation="vertical"
                 app:layoutManager="LinearLayoutManager">
 
             </androidx.recyclerview.widget.RecyclerView>
@@ -110,11 +111,11 @@
                 android:id="@+id/recyclerViewTag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@null"
+                android:orientation="horizontal"
                 app:layoutManager="LinearLayoutManager"/>
 
         </LinearLayout>

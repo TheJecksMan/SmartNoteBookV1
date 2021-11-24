@@ -85,6 +85,7 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
         db.execSQL("drop table if exists $tableNotes")
         db.execSQL("drop table if exists $tableTask")
         db.execSQL("drop trigger if exists $triggerDecrementID")
+        db.execSQL("drop table if exists $tableTag")
         onCreate(db)
     }
 
@@ -143,11 +144,28 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
     }
 
     /**
+     * Запись тегов в базу данных
+     */
+    fun insertTagInDatabase(db: SQLiteDatabase, IDNotes: Int, NameTag: String ){
+        val contentValuesInsertTask = ContentValues()
+        contentValuesInsertTask.put(keyIDTask, IDNotes)
+        contentValuesInsertTask.put(keyNameTag, NameTag)
+        db.insert(tableTag,null, contentValuesInsertTask)
+    }
+
+    /**
      * Удаление заметок.
      * Используется как для перезаписи, так и для полного удаления из базы данных.
      */
     fun deleteTaskInDatabase(db: SQLiteDatabase, IDNotes: Int){
         db.delete(tableTask, "$keyIDTask = $IDNotes",null)
+    }
+    /**
+     * Удаление Тегов.
+     * Используется как для перезаписи, так и для полного удаления из базы данных.
+     */
+    fun deleteTafInDatabase(db: SQLiteDatabase, IDNotes: Int){
+        db.delete(tableTag, "$keyIDTask = $IDNotes",null)
     }
 
     /**

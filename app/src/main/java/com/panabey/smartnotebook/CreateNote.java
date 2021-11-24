@@ -77,6 +77,7 @@ public class CreateNote extends AppCompatActivity {
         }
 
         managerCreateNotes.loadTaskFromDatabase(ItemID);
+        managerCreateTagNotes.loadTagFromDatabase(ItemID);
 
         /**
          * Верхняя панель взаиможействия.
@@ -114,7 +115,8 @@ public class CreateNote extends AppCompatActivity {
                 .setTitle(getString(R.string.DialogAlert))
                 .setMessage(getString(R.string.DialogSaveText))
                 .setPositiveButton(getString(R.string.DialogYes), (dialogInterface, i) -> {
-                    managerCreateNotes.writeInDatabaseNotes(EditTextHeadTextView, EditTextBodyTextView, clickNoteBoolean, ItemID);
+                    managerCreateNotes.writeInDatabaseNotes(EditTextHeadTextView, EditTextBodyTextView,
+                            clickNoteBoolean,managerCreateTagNotes.getListTag(), ItemID);
                     Intent intentBackNotes = new Intent(CreateNote.this, MainMenu.class);
                     startActivity(intentBackNotes);
                     finish();
