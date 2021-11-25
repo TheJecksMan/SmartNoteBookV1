@@ -56,6 +56,12 @@
     <string name="bug_setting">Сообщить об ошибке</string>
     <!--Setting Main end-->
 
+    <!--Setting Main start-->
+    <string name="Data_setting">Память устройства</string>
+    <string name="SizeDatabase_setting">Размер базы данных: </string>
+    <string name="ClearDatabase_setting">Очистить базу данных</string>
+    <!--Setting Main end-->
+
     <string name="SettingPref">Настройки</string>
 
     <!--Setting General start-->
@@ -93,11 +99,11 @@
 
     <!--Setting Security end-->
 
-    <!--Alert Dialog start-->
+    <!--Alert Dialog Notes start-->
     <string name="DialogAlert">Внимание!</string>
     <string name="DialogSaveText">Вы действительно хотите сохранить изменения?</string>
     <string name="DialogCancel">Отмена</string>
     <string name="DialogYes">Да</string>
     <string name="DialogNo">Нет</string>
-    <!--Alert Dialog end-->
+    <!--Alert Dialog Notes end-->
 </resources>

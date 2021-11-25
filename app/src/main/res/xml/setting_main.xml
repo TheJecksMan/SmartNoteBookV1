@@ -16,7 +16,7 @@
             app:icon="@drawable/setting_outline_lock" />
         <Preference
             android:title="@string/date_setting"
-            app:fragment="com.panabey.smartnotebook.SettingsApp.SettingDate"
+            app:fragment="com.panabey.smartnotebook.SettingsApp.SettingData"
             app:icon="@drawable/setting_outline_storage" />
         <Preference
             android:title="@string/language_setting"

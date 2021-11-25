@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory android:title="Память устройства">
+    <PreferenceCategory android:title="@string/Data_setting">
 
     </PreferenceCategory>
-    <Preference android:title="Очистить базу данных" />
+    <Preference android:title="@string/SizeDatabase_setting"
+        android:key="key_sizeDatabase"/>
+    <Preference android:title="@string/ClearDatabase_setting" />
 </PreferenceScreen>
