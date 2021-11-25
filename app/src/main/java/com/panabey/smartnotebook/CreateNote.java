@@ -37,7 +37,6 @@ public class CreateNote extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
-        Context context = getApplicationContext();
 
         SQLiteHelperKotlin sqLiteHelperKotlin = new SQLiteHelperKotlin(this);
         SQLiteDatabase database = sqLiteHelperKotlin.getWritableDatabase();

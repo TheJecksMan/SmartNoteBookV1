@@ -28,9 +28,11 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
 
     final List<String> NotesList;
+    final List<String> DateTimeList;
 
-    public RecyclerAdapter(List<String> NotesList) {
+    public RecyclerAdapter(List<String> NotesList, List<String> DateTimeList) {
         this.NotesList = NotesList;
+        this.DateTimeList = DateTimeList;
     }
 
     @NonNull
@@ -45,6 +47,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.rowCountTextView.setText(String.valueOf(position));
         holder.textView.setText(NotesList.get(position));
+        holder.textViewDate.setText(DateTimeList.get(position));
     }
 
     @Override
@@ -65,7 +68,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        final TextView textView, rowCountTextView;
+        final TextView textView, rowCountTextView, textViewDate;
         final RelativeLayout container;
 
         public ViewHolder(@NonNull View itemView) {
@@ -73,6 +76,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
             textView = itemView.findViewById(R.id.textViewEditNotes);
             rowCountTextView = itemView.findViewById(R.id.rowCountTextView);
+            textViewDate = itemView.findViewById(R.id.textViewDateTime);
             container = itemView.findViewById(R.id.containerNotes);
 
             itemView.setOnClickListener(this);

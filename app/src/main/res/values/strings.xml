@@ -22,6 +22,10 @@
     <!--Account-->
     <!--Account-->
 
+    <!--NotesMain string start-->
+    <string name="MainStringTag">Теги: </string>
+    <!--NotesMain string end-->
+
     <!--Account login string start-->
     <string name="Login">Login</string>
     <string name="hint_email">Почта</string>

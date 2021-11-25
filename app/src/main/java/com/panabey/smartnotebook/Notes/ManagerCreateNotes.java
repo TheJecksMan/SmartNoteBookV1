@@ -162,7 +162,8 @@ public class ManagerCreateNotes {
     }
 
     private String getDateTime() {
-        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        //DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
         return dateFormat.format(new Date());
     }
 }

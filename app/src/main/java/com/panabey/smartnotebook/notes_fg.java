@@ -34,6 +34,7 @@ public class notes_fg extends Fragment {
     RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
     List<String> NotesList;
+    List<String> DateTimeList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class notes_fg extends Fragment {
         View v = inflater.inflate(R.layout.fragment_notes_fg, null);
 
         NotesList = new ArrayList<>();
+        DateTimeList = new ArrayList<>();
         /**
          * Выгрузка всех заметок в массив,
          * который используется в списоке RecyclerView.
@@ -53,15 +55,18 @@ public class notes_fg extends Fragment {
             sqLiteHelperKotlin = new SQLiteHelperKotlin(getContext());
             database = sqLiteHelperKotlin.getReadableDatabase();
 
-                Cursor cursor = database.rawQuery("SELECT HeadNotes FROM Notes", null);
+                Cursor cursor = database.rawQuery("SELECT HeadNotes, DateTime FROM Notes", null);
             try {
-                String temp = null;
+                String tempHeadNotes;
+                String tempDateTime;
                 cursor.moveToFirst();
                 if (cursor.getCount() > 0) {
                     do {
-                        temp = cursor.getString(cursor.getColumnIndex("HeadNotes"));
-                        if (temp != null) {
-                            NotesList.add(temp);
+                        tempHeadNotes = cursor.getString(cursor.getColumnIndex("HeadNotes"));
+                        tempDateTime = cursor.getString(cursor.getColumnIndex("DateTime"));
+                        if (tempHeadNotes != null) {
+                            NotesList.add(tempHeadNotes);
+                            DateTimeList.add(tempDateTime);
                         }
                     } while (cursor.moveToNext());
                 }
@@ -75,7 +80,7 @@ public class notes_fg extends Fragment {
         //-----------------------------------------------------
 
         recyclerView = v.findViewById(R.id.recyclerView);
-        recyclerAdapter = new RecyclerAdapter(NotesList);
+        recyclerAdapter = new RecyclerAdapter(NotesList, DateTimeList);
 
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setHasFixedSize(true);
@@ -102,6 +107,8 @@ public class notes_fg extends Fragment {
             int fromPosition = viewHolder.getAdapterPosition();
             int toPosition = target.getAdapterPosition();
             Collections.swap(NotesList, fromPosition, toPosition);
+            Collections.swap(DateTimeList, fromPosition, toPosition);
+
             recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
             return false;
         }
@@ -111,6 +118,7 @@ public class notes_fg extends Fragment {
             final int position = viewHolder.getAdapterPosition();
             if (direction == ItemTouchHelper.LEFT) {
                 NotesList.remove(position);
+                DateTimeList.remove(position);
                 recyclerView.getAdapter().notifyItemRemoved(position);
 
                 SQLiteDatabase databaseDelete = sqLiteHelperKotlin.getWritableDatabase();
