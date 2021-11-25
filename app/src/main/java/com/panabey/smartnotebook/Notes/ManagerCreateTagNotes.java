@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.flexbox.FlexboxLayoutManager;
 import com.panabey.smartnotebook.Database.SQLiteHelperKotlin;
 import com.panabey.smartnotebook.util.RecyclerAdapterTag;
 
@@ -41,7 +42,7 @@ public class ManagerCreateTagNotes {
             CreateTag();
             recyclerAdapterTag.notifyDataSetChanged();
         }
-        if (ListTag.size() <= 2) {
+        if (ListTag.size() <= 3) {
             ListTag.add("Другое");
             //ColorTag.add()
             recyclerAdapterTag.notifyItemInserted(ListTag.size() - 1);
@@ -57,6 +58,11 @@ public class ManagerCreateTagNotes {
         recyclerViewTag.setAdapter(recyclerAdapterTag);
         recyclerViewTag.setNestedScrollingEnabled(false);
         recyclerViewTag.setItemViewCacheSize(5);
+
+        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(context);
+        layoutManager.getFlexWrap();
+        recyclerViewTag.setLayoutManager(layoutManager);
+
         //recyclerViewTag.getRecycledViewPool().setMaxRecycledViews(0, 2);
     }
 
