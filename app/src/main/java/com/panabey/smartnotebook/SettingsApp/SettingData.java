@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.room.RawQuery;
 
 import com.panabey.smartnotebook.Database.SQLiteHelperKotlin;
 import com.panabey.smartnotebook.R;
@@ -23,10 +24,7 @@ public class SettingData extends PreferenceFragmentCompat {
         SQLiteHelperKotlin sqLiteHelperKotlin = new SQLiteHelperKotlin(getContext());
         SQLiteDatabase database = sqLiteHelperKotlin.getReadableDatabase();
 
-        final String sqlSizeDatabase = "SELECT page_count * page_size as " +
-                "size FROM pragma_page_count(), pragma_page_size();";
-
-        Cursor cursor = database.rawQuery(sqlSizeDatabase, null);
+        Cursor cursor = database.rawQuery("SELECT page_count * page_size as size FROM pragma_page_count, pragma_page_size;", null);
         try {
             cursor.moveToFirst();
             preferenceSizeDatabase.setSummary("Фактический размер: " +
