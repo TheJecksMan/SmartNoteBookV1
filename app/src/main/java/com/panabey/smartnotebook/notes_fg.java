@@ -55,7 +55,7 @@ public class notes_fg extends Fragment {
             sqLiteHelperKotlin = new SQLiteHelperKotlin(getContext());
             database = sqLiteHelperKotlin.getReadableDatabase();
 
-                Cursor cursor = database.rawQuery("SELECT HeadNotes, DateTime FROM Notes", null);
+                Cursor cursor = database.rawQuery("SELECT HeadNotes, DateTime FROM Notes;", null);
             try {
                 String tempHeadNotes;
                 String tempDateTime;
