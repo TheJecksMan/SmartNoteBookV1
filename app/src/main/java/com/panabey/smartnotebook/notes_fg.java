@@ -38,6 +38,8 @@ public class notes_fg extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerAdapter recyclerAdapter;
+
+    private List<Integer> NotesID;
     private List<String> NotesList;
     private List<String> DateTimeList;
 
@@ -52,6 +54,7 @@ public class notes_fg extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_notes_fg, null);
 
+        NotesID = new ArrayList<>();
         NotesList = new ArrayList<>();
         DateTimeList = new ArrayList<>();
 
@@ -63,16 +66,23 @@ public class notes_fg extends Fragment {
             sqLiteHelperKotlin = new SQLiteHelperKotlin(getContext());
             database = sqLiteHelperKotlin.getReadableDatabase();
 
-                Cursor cursor = database.rawQuery("SELECT HeadNotes, DateTime FROM Notes;", null);
+                Cursor cursor = database.rawQuery("SELECT IDNotes, HeadNotes, DateTime FROM Notes;", null);
             try {
                 String tempHeadNotes;
                 String tempDateTime;
+                int IDNotes;
+
                 cursor.moveToFirst();
                 if (cursor.getCount() > 0) {
                     do {
+
+                        IDNotes = cursor.getInt(cursor.getColumnIndex("IDNotes"));
                         tempHeadNotes = cursor.getString(cursor.getColumnIndex("HeadNotes"));
                         tempDateTime = cursor.getString(cursor.getColumnIndex("DateTime"));
+
                         if (tempHeadNotes != null) {
+
+                            NotesID.add(IDNotes);
                             NotesList.add(tempHeadNotes);
                             DateTimeList.add(tempDateTime);
                         }
@@ -115,7 +125,7 @@ public class notes_fg extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                    recyclerAdapter.getFilter().filter(newText);
+                recyclerAdapter.getFilter().filter(newText);
                 return false;
             }
         });

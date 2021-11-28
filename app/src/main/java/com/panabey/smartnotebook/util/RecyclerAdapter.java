@@ -30,6 +30,7 @@ import java.util.List;
  **/
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> implements Filterable {
 
+    //final List<Integer> NotesID;
     final List<String> NotesList;
     final List<String> DateTimeList;
     final List<String> NotesListAll;
@@ -37,6 +38,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public RecyclerAdapter(List<String> NotesList, List<String> DateTimeList) {
         this.NotesList = NotesList;
         this.DateTimeList = DateTimeList;
+        //this.NotesID = NotesID;
+
         NotesListAll = new ArrayList<>();
         NotesListAll.addAll(NotesList);
     }
@@ -78,7 +81,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         protected FilterResults performFiltering(CharSequence constraint) {
             List<String> filteredList = new ArrayList<>();
 
-            if (constraint == null || constraint.length() == 0 || constraint == "") {
+            if (constraint == null || constraint.length() == 0 ||constraint == "") {
                 filteredList.addAll(NotesListAll);
             } else {
                 for (String movie: NotesList) {
@@ -96,6 +99,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             //DateTimeList.clear();
+
             NotesList.clear();
             NotesList.addAll((ArrayList) results.values);
             notifyDataSetChanged();
