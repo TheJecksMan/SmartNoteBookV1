@@ -6,11 +6,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -28,17 +33,19 @@ import java.util.List;
  */
 public class notes_fg extends Fragment {
 
-    SQLiteHelperKotlin sqLiteHelperKotlin;
-    SQLiteDatabase database;
+    private SQLiteHelperKotlin sqLiteHelperKotlin;
+    private SQLiteDatabase database;
 
-    RecyclerView recyclerView;
-    RecyclerAdapter recyclerAdapter;
-    List<String> NotesList;
-    List<String> DateTimeList;
+    private RecyclerView recyclerView;
+    private RecyclerAdapter recyclerAdapter;
+    private List<String> NotesList;
+    private List<String> DateTimeList;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -47,6 +54,7 @@ public class notes_fg extends Fragment {
 
         NotesList = new ArrayList<>();
         DateTimeList = new ArrayList<>();
+
         /**
          * Выгрузка всех заметок в массив,
          * который используется в списоке RecyclerView.
@@ -84,6 +92,7 @@ public class notes_fg extends Fragment {
 
         recyclerView.setAdapter(recyclerAdapter);
         recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setItemViewCacheSize(30);
         recyclerView.getRecycledViewPool().setMaxRecycledViews(0,10);
 
@@ -96,8 +105,24 @@ public class notes_fg extends Fragment {
             Intent intentCreateNote = new Intent(getContext(), CreateNote.class);
             startActivity(intentCreateNote);
         });
+
+        SearchView  searchView = ((MainMenu)getActivity()).findViewById(R.id.SearchTextViewAll);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                    recyclerAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
         return v;
     }
+
+
 
     final ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP | ItemTouchHelper.DOWN , ItemTouchHelper.LEFT) {

@@ -19,7 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    public DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,7 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         Toolbar toolbar = findViewById(R.id.toolbarMenuMainBar);
         toolbar.setNavigationOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
     }
+
 
     @Override
     public final boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

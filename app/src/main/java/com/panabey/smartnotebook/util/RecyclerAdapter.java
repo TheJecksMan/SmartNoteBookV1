@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ import com.panabey.smartnotebook.CreateNote;
 import com.panabey.smartnotebook.R;
 
 
+import java.util.ArrayList;
 import java.util.List;
 /**
  Уважаемый разработчик:
@@ -25,14 +28,17 @@ import java.util.List;
 
  количество_часов_потрачено_впустую_здесь = 4
  **/
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> implements Filterable {
 
     final List<String> NotesList;
     final List<String> DateTimeList;
+    final List<String> NotesListAll;
 
     public RecyclerAdapter(List<String> NotesList, List<String> DateTimeList) {
         this.NotesList = NotesList;
         this.DateTimeList = DateTimeList;
+        NotesListAll = new ArrayList<>();
+        NotesListAll.addAll(NotesList);
     }
 
     @NonNull
@@ -47,7 +53,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.rowCountTextView.setText(String.valueOf(position));
         holder.textView.setText(NotesList.get(position));
-        holder.textViewDate.setText(DateTimeList.get(position));
+        //holder.textViewDate.setText(DateTimeList.get(position));
     }
 
     @Override
@@ -60,11 +66,41 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return super.getItemId(position);
     }
 
+
     @Override
-    public boolean onFailedToRecycleView(@NonNull ViewHolder holder) {
-        super.onFailedToRecycleView(holder);
-        return true;
+    public Filter getFilter() {
+        return Searched_Filter;
     }
+
+    private Filter Searched_Filter = new Filter(){
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<String> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0 || constraint == "") {
+                filteredList.addAll(NotesListAll);
+            } else {
+                for (String movie: NotesList) {
+                    if (movie.toLowerCase().contains(constraint.toString().toLowerCase())) {
+                        filteredList.add(movie);
+                    }
+                }
+            }
+
+            FilterResults filterResults = new FilterResults();
+            filterResults.values = filteredList;
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            //DateTimeList.clear();
+            NotesList.clear();
+            NotesList.addAll((ArrayList) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

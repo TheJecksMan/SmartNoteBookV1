@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
-import androidx.room.RawQuery;
 
 import com.panabey.smartnotebook.Database.SQLiteHelperKotlin;
 import com.panabey.smartnotebook.R;
