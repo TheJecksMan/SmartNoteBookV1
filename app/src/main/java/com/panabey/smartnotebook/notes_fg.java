@@ -13,9 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -126,6 +123,7 @@ public class notes_fg extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 recyclerAdapter.getFilter().filter(newText);
+                recyclerAdapter.notifyDataSetChanged();
                 return false;
             }
         });
@@ -143,6 +141,7 @@ public class notes_fg extends Fragment {
             int toPosition = target.getAdapterPosition();
             Collections.swap(NotesList, fromPosition, toPosition);
             Collections.swap(DateTimeList, fromPosition, toPosition);
+            Collections.swap(NotesID, fromPosition, toPosition);
 
             recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
             return false;
@@ -154,6 +153,7 @@ public class notes_fg extends Fragment {
             if (direction == ItemTouchHelper.LEFT) {
                 NotesList.remove(position);
                 DateTimeList.remove(position);
+                NotesID.remove(position);
                 recyclerView.getAdapter().notifyItemRemoved(position);
 
                 SQLiteDatabase databaseDelete = sqLiteHelperKotlin.getWritableDatabase();
