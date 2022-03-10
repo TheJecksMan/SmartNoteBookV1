@@ -11,26 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.FirebaseAuth;
-import com.panabey.smartnotebook.Account.account;
 
-/**
- * Класс авторазиции в аккаунт.
- * Использует Firebase.
- */
 public class accountLogin_fg extends Fragment {
 
-    private FirebaseAuth mAuth;
 
     private TextInputEditText email, password;
     private TextView InfoEmpty;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
     }
 
@@ -69,10 +60,6 @@ public class accountLogin_fg extends Fragment {
     }
 
     private void loginUsers(String Email, String Password){
-        mAuth.signInWithEmailAndPassword(Email, Password).addOnSuccessListener(authResult -> {
-            Toast.makeText(getContext(), "Вход выполнен успешно!", Toast.LENGTH_SHORT).show();
-            ReplaceFragment(new account());
-        });
     }
 
     private void ReplaceFragment(Fragment newFragment ){
