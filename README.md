@@ -16,7 +16,7 @@
 ## Использованные технологии
 
 - Java 8.
-- Koltin.
+- Kotlin.
 - Android Studio.
 
 ## Плагины

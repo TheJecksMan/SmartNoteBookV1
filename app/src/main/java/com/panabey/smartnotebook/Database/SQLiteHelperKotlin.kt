@@ -5,6 +5,8 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import androidx.core.content.contentValuesOf
+import java.util.*
 
 /**
  * Класс управления базой данных.
@@ -43,6 +45,17 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
     private val keyColorTag = "ColorTag"
 
     /**
+     *  Таблица хранения данных пользователя
+     */
+    private val tableAccount = "Account"
+    private val keyIDAccount = "ID"
+    private val username = "Username"
+    private val password = "Password"
+    private val firstname = "Firstname"
+    private val lastname = "Lastname"
+    private val joinedDate = "Joined"
+
+    /**
      * Триггер автодекремента.
      * Срабатывает при удалении заметки. Используется для сохранения индексов.
      */
@@ -79,6 +92,14 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
                 "FOREIGN KEY($keyIDNotesTag) REFERENCES $tableNotes($keyIDNotes) " +
                 "ON DELETE CASCADE " +
                 "ON UPDATE CASCADE);")
+
+        db.execSQL("CREATE TABLE $tableAccount ("+
+            "$keyIDAccount INTEGER NOT NULL, "+
+            "$username TEXT, "+
+            "$password TEXT, "+
+            "$firstname TEXT, "+
+            "$lastname TEXT, "+
+            "$joinedDate TEXT);")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -86,6 +107,7 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
         db.execSQL("drop table if exists $tableTask")
         db.execSQL("drop trigger if exists $triggerDecrementID")
         db.execSQL("drop table if exists $tableTag")
+        db.execSQL("drop table if exists $tableAccount")
         onCreate(db)
     }
 
@@ -160,6 +182,7 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
     fun deleteTaskInDatabase(db: SQLiteDatabase, IDNotes: Int){
         db.delete(tableTask, "$keyIDTask = $IDNotes",null)
     }
+
     /**
      * Удаление Тегов.
      * Используется как для перезаписи, так и для полного удаления из базы данных.
@@ -177,5 +200,37 @@ class SQLiteHelperKotlin (context: Context): SQLiteOpenHelper (context, db_table
         val itemID: Int = cursor.getInt(0)
         cursor.close()
         return  itemID
+    }
+
+
+    /**
+     * Добавление пользователя в базу данных
+     */
+    fun appendUser(db: SQLiteDatabase, username_user: String, password_user: String, firstname_user
+    : String, lastname_user: String, joined: String){
+        val contentValuesUser = ContentValues()
+        contentValuesUser.put(keyIDAccount, 1)
+        contentValuesUser.put(username, username_user)
+        contentValuesUser.put(password, password_user)
+        contentValuesUser.put(firstname, firstname_user)
+        contentValuesUser.put(lastname, lastname_user)
+        contentValuesUser.put(joinedDate, joined)
+
+        db.insert(tableAccount, null, contentValuesUser)
+    }
+
+    /**
+     * Получение пероначальных данных пользователя
+     */
+    fun getInfoAboutUser(db: SQLiteDatabase): MutableMap<String, String> {
+        val userObject = mutableMapOf<String, String>()
+        val cursor: Cursor = db.rawQuery("SELECT *  FROM $tableAccount where $keyIDAccount = 1;", null)
+        cursor.moveToFirst()
+        userObject["username"] = cursor.getString(cursor.getColumnIndex((username)))
+        userObject["password"] = cursor.getString(cursor.getColumnIndex(password))
+        userObject["firstname"] = cursor.getString(cursor.getColumnIndex(firstname))
+        userObject["lastname"] = cursor.getString(cursor.getColumnIndex(lastname))
+        userObject["joined"] = cursor.getString(cursor.getColumnIndex((joinedDate)))
+        return userObject
     }
 }
