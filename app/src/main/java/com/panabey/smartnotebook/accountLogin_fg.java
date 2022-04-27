@@ -1,21 +1,31 @@
 package com.panabey.smartnotebook;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.material.textfield.TextInputEditText;
+import com.panabey.smartnotebook.Account.AccountManager.WebRequest;
+import com.panabey.smartnotebook.Account.IResult;
+import com.panabey.smartnotebook.Account.account;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Map;
 
 /**
  * Класс авторазиции в аккаунт.
@@ -23,15 +33,37 @@ import org.json.JSONObject;
  */
 public class accountLogin_fg extends Fragment {
 
-//    private FirebaseAuth mAuth;
-
     private TextInputEditText username, password;
     private TextView InfoEmpty;
 
+    private IResult ResultCallback = null;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
-//        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
+    }
+
+    void initVolleyCallback(){
+        ResultCallback = new IResult() {
+
+            @Override
+            public void notifySuccessPatch(JSONObject jsonObject) {
+                try {
+                    if ((int)jsonObject.get("ErrorCode") == 0)
+                        ReplaceFragment(new account(ResultCallback));
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                Toast.makeText(getContext(), jsonObject.toString(), Toast.LENGTH_SHORT);
+            }
+
+            @Override
+            public void notifyError(VolleyError error) {
+                Log.d("Json Error", "Volley ERROR JSON post" + error.toString());
+            }
+        };
     }
 
     @Nullable
@@ -67,23 +99,20 @@ public class accountLogin_fg extends Fragment {
         return view;
     }
 
-//    private void loginUsers(String Email, String Password){
-//        mAuth.signInWithEmailAndPassword(Email, Password).addOnSuccessListener(authResult -> {
-//            Toast.makeText(getContext(), "Вход выполнен успешно!", Toast.LENGTH_SHORT).show();
-//            ReplaceFragment(new account());
-//        });
-//    }
-
-    private JSONObject LoginIn(String username, String password){
+    private void LoginIn(String username, String password){
         JSONObject json = new JSONObject();
         try{
             json.put("username", username);
-            json.put("password", password);
+            json.put("password_user", password);
+
         }
         catch (JSONException e){
             e.printStackTrace();
         }
-        return json;
+        WebRequest webRequest = new WebRequest(ResultCallback, getContext());
+        webRequest.LoginIn(json);
+
+        initVolleyCallback();
     }
 
     private void ReplaceFragment(Fragment newFragment ){
