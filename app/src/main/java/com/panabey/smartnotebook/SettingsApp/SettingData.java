@@ -29,6 +29,9 @@ public class SettingData extends PreferenceFragmentCompat {
             preferenceSizeDatabase.setSummary("Фактический размер: " +
                     cursor.getInt(cursor.getColumnIndex("size"))/1024 + "Мб");
         }
+        catch (Exception e){
+            cursor.close();
+        }
         finally {
             if (cursor != null) {
                 cursor.close();

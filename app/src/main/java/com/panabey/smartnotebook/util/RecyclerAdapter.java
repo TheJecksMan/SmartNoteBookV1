@@ -17,6 +17,7 @@ import com.panabey.smartnotebook.R;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 /**
  Уважаемый разработчик:
@@ -75,7 +76,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return Searched_Filter;
     }
 
-    private Filter Searched_Filter = new Filter(){
+    protected Filter Searched_Filter = new Filter(){
 
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
@@ -101,8 +102,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             //DateTimeList.clear();
 
             NotesList.clear();
-            NotesList.addAll((ArrayList) results.values);
-            notifyDataSetChanged();
+            NotesList.addAll((Collection<? extends String>) results.values);
+            //notifyDataSetChanged();
         }
     };
 

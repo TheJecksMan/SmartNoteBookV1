@@ -29,6 +29,7 @@
     <!--Account login string start-->
     <string name="Login">Login</string>
     <string name="hint_email">Почта</string>
+    <string name="hint_username">Логин</string>
     <string name="hint_password">Пароль</string>
     <string name="hint_button_login">Войти</string>
     <string name="forgotPass">Забыли пароль?</string>
@@ -38,7 +39,7 @@
 
     <!--Account register string start-->
     <string name="Register">Register</string>
-    <string name="hint_username_register">Имя пользователя (Необязательно)</string>
+    <string name="hint_username_register">Имя пользователя (Обязательно)</string>
     <string name="hint_button_register">Регистрация</string>
     <string name="textLogin">Ужe есть аккаунт? <font color="#FF6200EE"> Login</font></string>
     <!--Account register string end-->

@@ -14,14 +14,23 @@ import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * Класс авторазиции в аккаунт.
+ * Использует Firebase.
+ */
 public class accountLogin_fg extends Fragment {
 
+//    private FirebaseAuth mAuth;
 
-    private TextInputEditText email, password;
+    private TextInputEditText username, password;
     private TextView InfoEmpty;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+//        mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
     }
 
@@ -31,7 +40,7 @@ public class accountLogin_fg extends Fragment {
     {
         View view = inflater.inflate(R.layout.fragment_account_login_fg, container, false);
 
-        email = view.findViewById(R.id.layoutEmail);
+        username = view.findViewById(R.id.layoutEmail);
         password = view.findViewById(R.id.layoutPassword);
 
         Button loginButton = view.findViewById(R.id.buttonLoginAccount);
@@ -40,16 +49,15 @@ public class accountLogin_fg extends Fragment {
         loginButton.setOnClickListener(v -> {
             InfoEmpty.setText("");
 
-            String emailID = email.getText().toString();
+            String usernameID = username.getText().toString();
             String passwordID = password.getText().toString();
 
-            if (emailID.isEmpty() || passwordID.isEmpty()){
+            if (usernameID.isEmpty() || passwordID.isEmpty()){
                 InfoEmpty.setText(R.string.checkTextEmpty);
             }
             else{
-                loginUsers(emailID, passwordID);
+                LoginIn(usernameID, passwordID);
             }
-            loginUsers(emailID, passwordID);
         });
 
         TextView onClickRegister = view.findViewById(R.id.textViewRegisterFragment);
@@ -59,7 +67,23 @@ public class accountLogin_fg extends Fragment {
         return view;
     }
 
-    private void loginUsers(String Email, String Password){
+//    private void loginUsers(String Email, String Password){
+//        mAuth.signInWithEmailAndPassword(Email, Password).addOnSuccessListener(authResult -> {
+//            Toast.makeText(getContext(), "Вход выполнен успешно!", Toast.LENGTH_SHORT).show();
+//            ReplaceFragment(new account());
+//        });
+//    }
+
+    private JSONObject LoginIn(String username, String password){
+        JSONObject json = new JSONObject();
+        try{
+            json.put("username", username);
+            json.put("password", password);
+        }
+        catch (JSONException e){
+            e.printStackTrace();
+        }
+        return json;
     }
 
     private void ReplaceFragment(Fragment newFragment ){
