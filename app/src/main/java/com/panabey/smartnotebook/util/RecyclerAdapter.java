@@ -55,9 +55,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.rowCountTextView.setText(String.valueOf(position));
         holder.textView.setText(NotesList.get(position));
-        //holder.textViewDate.setText(DateTimeList.get(position));
+        holder.textViewDate.setText(DateTimeList.get(position));
     }
 
     @Override
@@ -109,14 +108,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        final TextView textView, rowCountTextView, textViewDate;
+        final TextView textView, textViewDate;
         final RelativeLayout container;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textView = itemView.findViewById(R.id.textViewEditNotes);
-            rowCountTextView = itemView.findViewById(R.id.rowCountTextView);
             textViewDate = itemView.findViewById(R.id.textViewDateTime);
             container = itemView.findViewById(R.id.containerNotes);
 

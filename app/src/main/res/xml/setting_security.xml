@@ -27,8 +27,4 @@
             android:summary="Удаление заметок"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Прочее">
-        <Preference android:title="Фото взломщика"/>
-    </PreferenceCategory>
-
 </PreferenceScreen>

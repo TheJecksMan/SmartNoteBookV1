@@ -2,9 +2,8 @@ package com.panabey.smartnotebook.Account.AccountManager;
 
 
 import android.content.Context;
-import android.widget.Toast;
+import android.util.Log;
 
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -18,16 +17,13 @@ public class WebRequest{
 
     IResult ResultCallback = null;
 
-    private final String URL = "http://localhost:8000/api/";
-    // private final String URL = "http://192.168.130.36:8000/api/";
-//    private final String URL = "http://192.168.43.81:8000/api/";
+    private final String URL = "http://192.168.1.161:8000/api/";
     private Context context;
 
     public WebRequest(IResult ResultCallback,Context context){
         this.ResultCallback = ResultCallback;
         this.context = context;
     }
-
     /**
      * Первоночальный вход в аккаунта
      * @param jsonObject - объект json с входящими параметрами
@@ -37,19 +33,20 @@ public class WebRequest{
         RequestQueue queue = Volley.newRequestQueue(context);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, response -> {
-            Toast.makeText(context, response.toString(), Toast.LENGTH_SHORT);
             if(ResultCallback != null)
                 ResultCallback.notifySuccessPatch(response);
+                Log.i("JSON", response.toString());
 
         }, error -> {
-            Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT);
             if(ResultCallback != null)
                 ResultCallback.notifyError(error);
+                Log.i("JSON", error.toString());
         });
 //        jsonObjectRequest.setShouldCache(false);
-        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, 1, 1.0f));
+//        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10000, 1, 1.0f));
         queue.add(jsonObjectRequest);
     }
+
 
     /**
      * Выход из аккаунта
@@ -66,3 +63,5 @@ public class WebRequest{
 //    }
 
 }
+
+

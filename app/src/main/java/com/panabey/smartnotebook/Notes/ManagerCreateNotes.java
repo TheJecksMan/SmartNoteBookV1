@@ -3,6 +3,7 @@ package com.panabey.smartnotebook.Notes;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,9 +16,11 @@ import com.panabey.smartnotebook.util.RecyclerAdapterList;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ManagerCreateNotes {
 
@@ -142,6 +145,9 @@ public class ManagerCreateNotes {
             for (int i = 0; i < ListTask.size(); i++){
                 sqLiteHelperKotlin.insertTaskInDatabase(database, ItemIDWithDatabase, ListTask.get(i), BooleanTask.get(i)? 1: 0);
             }
+
+            ListTag.removeAll(Arrays.asList("", null));
+
             for (int j = 0; j < ListTag.size(); j++){
                 sqLiteHelperKotlin.insertTagInDatabase(database, ItemIDWithDatabase, ListTag.get(j));
             }
@@ -154,6 +160,7 @@ public class ManagerCreateNotes {
             for (int i = 0; i < ListTask.size(); i++){
                 sqLiteHelperKotlin.insertTaskInDatabase(database, ItemID, ListTask.get(i), BooleanTask.get(i)? 1: 0);
             }
+            ListTag.removeAll(Arrays.asList("", null));
             sqLiteHelperKotlin.deleteTafInDatabase(database, ItemID);
             for (int j = 0; j < ListTag.size(); j++){
                 sqLiteHelperKotlin.insertTagInDatabase(database, ItemID, ListTag.get(j));

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/ImportFileItem"
-        android:title="Открыть файл"/>
-    <item
-    android:id="@+id/SaveFileItem"
-    android:title="Сохранить как"/>
-</menu>

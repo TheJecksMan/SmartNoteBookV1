@@ -51,10 +51,6 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     public final boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case R.id.editTextItem:
-                Intent intentEditText = new Intent(this, EditText.class);
-                startActivity(intentEditText);
-                break;
             case R.id.TrashItem:
                 Intent intentTrash = new Intent(this, Trash.class);
                 startActivity(intentTrash);
@@ -82,9 +78,6 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
                 break;
             case R.id.ItemFolders:
                 selectedFragment = new folders_fg();
-                break;
-            case R.id.ItemVoiceAssistant:
-                selectedFragment = new list_fg();
                 break;
             case R.id.ItemAccount:
                     selectedFragment = new accountLogin_fg();

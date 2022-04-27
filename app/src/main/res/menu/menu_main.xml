@@ -11,11 +11,6 @@
         android:icon="@drawable/main_menu_outline_folder"
         android:title="@string/buttonFolder" />
     <item
-        android:id="@+id/ItemVoiceAssistant"
-        android:enabled="true"
-        android:icon="@drawable/ic_outline_voice_assistant"
-        android:title="@string/buttonAssistant" />
-    <item
         android:id="@+id/ItemAccount"
         android:enabled="true"
         android:icon="@drawable/main_menu_outline_account_circle"

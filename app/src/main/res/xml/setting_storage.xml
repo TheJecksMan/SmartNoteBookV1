@@ -5,7 +5,5 @@
     <PreferenceCategory android:title="@string/Data_setting">
 
     </PreferenceCategory>
-    <Preference android:title="@string/SizeDatabase_setting"
-        android:key="key_sizeDatabase"/>
     <Preference android:title="@string/ClearDatabase_setting" />
 </PreferenceScreen>

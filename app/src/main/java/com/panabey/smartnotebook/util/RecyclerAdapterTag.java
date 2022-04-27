@@ -36,6 +36,13 @@ public class RecyclerAdapterTag extends RecyclerView.Adapter<RecyclerAdapterTag.
     public void onBindViewHolder(@NonNull RecyclerAdapterTag.ViewHolder holder, int position) {
         holder.EditTextListener.updatePosition(position);
         holder.editTextTagNotes.setText(ListTag.get(position));
+        holder.editTextTagNotes.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!v.isFocused()){
+//                String text = holder.editTextTagNotes.getText().toString();
+//                if (text.length() == 0)
+//                    ListTag.remove(position);
+            }
+        });
     }
 
     @Override
@@ -77,14 +84,16 @@ public class RecyclerAdapterTag extends RecyclerView.Adapter<RecyclerAdapterTag.
 
         @Override
         public void onTextChanged(CharSequence s, int i, int i2, int i3) {
-            if (!s.toString().isEmpty()) {
-                ListTag.set(position, s.toString());
-            }
+            ListTag.set(position, s.toString());
+//            if (!s.toString().isEmpty() || s.toString() != null) {
+//                ListTag.set(position, s.toString());
+//            }
         }
 
         @Override
         public void afterTextChanged(Editable editable) {
         }
+
     }
 }
 

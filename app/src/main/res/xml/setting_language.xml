@@ -4,20 +4,4 @@
         android:title="Русский"
         android:summary="Russian"
         android:key="key_Russian"/>
-    <Preference
-        android:title="English"
-        android:summary="English"
-        android:key="key_English"/>
-    <Preference
-        android:title="Deutsch"
-        android:summary="Deutsch"
-        android:key="key_Deutsch"/>
-    <Preference
-        android:title="Français"
-        android:summary="French"
-        android:key="key_French"/>
-    <Preference
-        android:title="Español"
-        android:summary="Spanish"
-        android:key="key_Spanish"/>
 </PreferenceScreen>

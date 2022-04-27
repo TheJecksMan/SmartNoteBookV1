@@ -13,19 +13,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.material.textfield.TextInputEditText;
 import com.panabey.smartnotebook.Account.AccountManager.WebRequest;
 import com.panabey.smartnotebook.Account.IResult;
+import com.panabey.smartnotebook.Account.User;
 import com.panabey.smartnotebook.Account.account;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Map;
 
 /**
  * Класс авторазиции в аккаунт.
@@ -38,7 +36,6 @@ public class accountLogin_fg extends Fragment {
 
     private IResult ResultCallback = null;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,13 +47,18 @@ public class accountLogin_fg extends Fragment {
             @Override
             public void notifySuccessPatch(JSONObject jsonObject) {
                 try {
-                    if ((int)jsonObject.get("ErrorCode") == 0)
-                        ReplaceFragment(new account(ResultCallback));
+                    if ((int)jsonObject.get("ErrorCode") == 0) {
+                        User.Username = (String)jsonObject.get("username");
+                        User.FirstName = (String)jsonObject.get("firstname");
+                        User.LastName = (String)jsonObject.get("lastname");
+                        User.DateJoin = (String)jsonObject.get("date_joined");
+                        User.isLogin = true;
+                        ReplaceFragment(new account());
+                    }
                 }
                 catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(getContext(), jsonObject.toString(), Toast.LENGTH_SHORT);
             }
 
             @Override
@@ -111,7 +113,6 @@ public class accountLogin_fg extends Fragment {
         }
         WebRequest webRequest = new WebRequest(ResultCallback, getContext());
         webRequest.LoginIn(json);
-
         initVolleyCallback();
     }
 
