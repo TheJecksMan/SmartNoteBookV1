@@ -97,8 +97,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
 
         @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            //DateTimeList.clear();
+                   protected void publishResults(CharSequence constraint, FilterResults results) {
+                //DateTimeList.clear();
 
             NotesList.clear();
             NotesList.addAll((Collection<? extends String>) results.values);
