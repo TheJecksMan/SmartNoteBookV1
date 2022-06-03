@@ -19,11 +19,11 @@
 - Kotlin.
 - Android Studio.
 
-## Плагины
-| Plugin | README |
-| ------ | ------ |
-| GitHub | [plugins/github/README.md]|
-| Google Analytics | [plugins/googleanalytics/README.md]|
-
 ## Скриншоты
-<img src="https://sun9-12.userapi.com/impg/pchLw0OiYsF7f8dQwgODEBO2EtF_rlDqSz6iyg/2jOZ95F7pME.jpg?size=543x1152&quality=96&sign=4a353dd02e370434e29785ce4ec5fad8&type=album" width="400" height="800">
+<div>
+  <img src="https://sun9-46.userapi.com/s/v1/ig2/jD9H8m0Uyg6TpXDeqhGXAy5fQJBpLfzLCwTVqUmlrDwCTCW1srtT4soV7ME_UsjmDsYNmKeAYVmwIVCFqP3TSTix.jpg?size=533x1125&quality=96&type=album" width="400" height="800" margin="50px">
+  &nbsp&nbsp&nbsp&nbsp&nbsp
+  <img src="https://sun1-25.userapi.com/s/v1/ig2/Kn4MaxebJUT5-5I1VVky1PTEdYFnyw521j1d_4Z-uSRdBRMcwKK_0jMV9JrP9sI8pc1FUc3bVZmXeqpzhlybfLea.jpg?size=532x1125&quality=96&type=album" width="400" height="800">
+ </div>
+
+
